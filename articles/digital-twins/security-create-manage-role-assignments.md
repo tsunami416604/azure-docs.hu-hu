@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815640"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703355"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
 Az Azure Digital Twins szerepköralapú hozzáférés-vezérlést ([RBAC](./security-role-based-access-control.md)) használ az erőforrásokhoz való hozzáférés kezelésére.
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Szerepkör-hozzárendelések áttekintése
 
@@ -39,10 +36,10 @@ Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
 Az alábbi táblázat az egyes attribútumokat ismerteti:
 
-| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
+| Attribútum | Name (Név) | Szükséges | Típus | Leírás |
 | --- | --- | --- | --- | --- |
 | Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
-| objectId | Objektumazonosító | Igen | Karakterlánc | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId `“@”` karakterrel kell kezdődnie. |
+| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId `“@”` karakterrel kell kezdődnie. |
 | objectIdType | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
 | path | Hely elérési útja | Igen | Sztring | Az `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha az azonosítónak a teljes gráf szerepkör-hozzárendelésére van szüksége `"/"`, akkor a következőt kell megadnia:. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
 | tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. A és `DeviceId` `TenantId` a ObjectIdTypes nem engedélyezett. A és `UserId` `ServicePrincipalId` a ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
@@ -63,7 +60,7 @@ Korábban a **objectIdType** attribútum lett bevezetve.
 
 Az Azure digitális Twins támogatjaa szerepkör-hozzárendelések teljes létrehozási, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
 
-![Szerepkör-hozzárendelési végpontok][1]
+[@no__t – 1Role-hozzárendelési végpontok](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
 
 A rendelkezésre álló hencegés dokumentációja további információkat tartalmaz az összes elérhető API-végpontról, a kérelmek műveleteiről és a definícióról.
 
@@ -71,23 +68,28 @@ A rendelkezésre álló hencegés dokumentációja további információkat tart
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-<div id="grant"></div>
-
 ### <a name="grant-permissions-to-your-service-principal"></a>Engedélyek megadása az egyszerű szolgáltatásnév számára
 
 Az Azure-beli digitális Twins-használat során az első lépések egyike az, hogy a szolgáltatáshoz engedélyeket adjon meg. A következőket vonja maga után:
 
-1. Jelentkezzen be az Azure-példányba a PowerShell használatával.
+1. Jelentkezzen be az Azure-példányba az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy a [PowerShell](https://docs.microsoft.com/powershell/azure/)használatával.
 1. Az egyszerű szolgáltatásnév adatainak beszerzése.
 1. Rendelje hozzá a kívánt szerepkört az egyszerű szolgáltatáshoz.
 
-Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne megtudni a Active Directory Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a [](./quickstart-view-occupancy-dotnet.md)gyors üzembe helyezési útmutatót.
+Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne megtudni a Active Directory Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a gyors üzembe helyezési [útmutatót.](./quickstart-view-occupancy-dotnet.md)
 
-Miután megadta az alkalmazás AZONOSÍTÓját, hajtsa végre a következő PowerShell-parancsokat:
+Miután elvégezte az alkalmazás AZONOSÍTÓját, hajtsa végre a következő parancsok egyikét. Az Azure CLI-ben:
 
-```shell
+```azurecli
+az login
+az ad sp show --id <ApplicationId>
+```
+
+A PowerShellben:
+
+```powershell
 Login-AzAccount
-Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
+Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
 A **rendszergazdai** szerepkörrel rendelkező felhasználók ezt követően az URL-címre egy hitelesített http post-kérést rendelhetnek a felhasználóhoz.
@@ -108,11 +110,9 @@ A következő JSON-törzstel:
 }
 ```
 
-<div id="all"></div>
-
 ### <a name="retrieve-all-roles"></a>Összes szerepkör beolvasása
 
-![Rendszerszerepkörök][2]
+[@no__t – 1System szerepkörök](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
 
 Az összes elérhető szerepkör (szerepkör-definíció) listázásához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
 
@@ -153,8 +153,6 @@ Egy sikeres kérelem egy JSON-tömböt ad vissza, amely az egyes hozzárendelt s
 ]
 ```
 
-<div id="check"></div>
-
 ### <a name="check-a-specific-role-assignment"></a>Adott szerepkör-hozzárendelés keresése
 
 Egy adott szerepkör-hozzárendelés vizsgálatához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
@@ -165,7 +163,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Paraméter értéke** | **Kötelező** |  **Típus** |  **Leírás** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Karakterlánc |   A UserId-objectIdType objectId. |
+| YOUR_USER_ID |  True | Sztring |   A UserId-objectIdType objectId. |
 | YOUR_PATH | True | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
 | YOUR_ACCESS_TYPE |  True | Sztring |   A kereséshez használandó hozzáférési típus. |
 | YOUR_RESOURCE_TYPE | True | Sztring |  Az ellenőrzött erőforrás. |
@@ -210,7 +208,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | Az eltávolítandó szerepkör-hozzárendelés **azonosítója** |
 
-A sikeres TÖRLÉSi kérelem egy 204-es válasz állapotot ad vissza. Ellenőrizze a szerepkör-hozzárendelés eltávolítását, ha [ellenőrzi](#check) , hogy a szerepkör-hozzárendelés továbbra is fennáll-e.
+A sikeres TÖRLÉSi kérelem egy 204-es válasz állapotot ad vissza. Ellenőrizze a szerepkör-hozzárendelés eltávolítását, ha [ellenőrzi](#check-a-specific-role-assignment) , hogy a szerepkör-hozzárendelés továbbra is fennáll-e.
 
 ### <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
@@ -282,7 +280,3 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
 - Az Azure digitális Twins szerepköralapú hozzáférés-vezérlésének áttekintéséhez olvassa el a [szerepköralapú hozzáférés-vezérlés](./security-authenticating-apis.md)című részt.
 
 - Az Azure Digital Twins API-hitelesítéssel kapcsolatos információkért olvassa el az [API-hitelesítés](./security-authenticating-apis.md)című témakört.
-
-<!-- Images -->
-[1]: media/security-roles/roleassignments.png
-[2]: media/security-roles/system.png

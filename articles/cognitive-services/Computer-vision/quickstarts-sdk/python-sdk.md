@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d47ae84fd489b4841d8bcf7755da6c30cf6035d
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
-ms.translationtype: MT
+ms.openlocfilehash: a9f49eb884de92fb00951a08cc2bc3079ab7b95d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966996"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695181"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Gyors útmutató: Computer Vision a Pythonhoz készült ügyféloldali kódtár
 
@@ -64,7 +64,7 @@ Ezután hozzon létre változókat az erőforrás Azure-végpontjának és-kulcs
 Az ügyféloldali kódtár a használatával telepíthető:
 
 ```console
-pip install --upgrade azure-cognitiveservices-Computer Vision
+pip install --upgrade azure-cognitiveservices-computervision
 ```
 
 ## <a name="object-model"></a>Objektummodell
@@ -94,7 +94,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Kép elemzése
+## <a name="analyze-an-image"></a>Rendszerkép elemzése
 
 Mentse az elemezni kívánt rendszerkép URL-címére mutató hivatkozást.
 

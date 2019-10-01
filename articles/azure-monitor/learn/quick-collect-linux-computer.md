@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: cdaca0fd3e314ecb5c0b68438eaaf87fbfb699b0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 72f50754a28f0bbf5648ae64299d28ff13e2ec31
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933031"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703055"
 ---
-# <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
+# <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: Adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
 A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezetében található fizikai vagy virtuális Linux rendszerű számítógépekről egy log Analytics munkaterületre, amely részletes elemzést és korrelációt biztosít. A [log Analytics ügynök](../platform/log-analytics-agent.md) telepítése lehetővé teszi, hogy a Azure monitor adatközpontból vagy más felhőalapú környezetből gyűjtsön adatokat. Ez a rövid útmutató bemutatja, hogyan konfigurálhat és gyűjthet adatokat a Linux-kiszolgálóról néhány egyszerű lépéssel. Az Azure Linux virtuális gépekkel kapcsolatos további információkért lásd: [adatok gyűjtése az Azure Virtual Machines szolgáltatással kapcsolatban](../../azure-monitor/learn/quick-collect-azurevm.md).  
 

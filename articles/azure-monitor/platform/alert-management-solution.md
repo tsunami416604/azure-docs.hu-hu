@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741267"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702968"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
 
 ![Kezelési figyelmeztető ikon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  A Azure Monitor mostantól támogatja a nagy mennyiségű [riasztások kezelésére](https://aka.ms/azure-alerts-overview)szolgáló továbbfejlesztett képességeket, beleértve a [SCOM, a Zabbix vagy a Nagios figyelési eszközei](https://aka.ms/managing-alerts-other-monitoring-services)által generált lehetőségeket is.
+>  A Azure Monitor mostantól támogatja a [riasztások nagy léptékű kezelésére](https://aka.ms/azure-alerts-overview)szolgáló továbbfejlesztett képességeket, beleértve az olyan [figyelési eszközök által generált eszközöket is, mint a System Center Operations Manager, a Zabbix vagy a Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
@@ -74,7 +74,7 @@ Kattintson a **Riasztáskezelés** csempére kattintva nyissa meg a **Riasztásk
 |:--- |:--- |
 | Kritikus riasztások |Minden riasztás az a súlyossági kritikus riasztás neve szerint csoportosítva.  Kattintson a riasztás minden rekordot ad vissza egy Naplókeresés futtatásához riasztás nevét. |
 | Figyelmeztető riasztások |Minden riasztás és a egy figyelmeztető riasztás neve szerint csoportosítva súlyosságát.  Kattintson a riasztás minden rekordot ad vissza egy Naplókeresés futtatásához riasztás nevét. |
-| Aktív SCOM-riasztások |Minden riasztás az Operations Manager az gyűjtött minden más, *lezárva* a riasztást kiváltó forrás szerint csoportosítva. |
+| Aktív System Center Operations Manager riasztások |Minden riasztás az Operations Manager az gyűjtött minden más, *lezárva* a riasztást kiváltó forrás szerint csoportosítva. |
 | Összes aktív riasztás |Minden riasztás neve szerint csoportosítva súlyossági az összes riasztás. Csak más, az Operations Manager riasztásait bármely állapotú tartalmazza *lezárva*. |
 
 Görgessen jobbra, ha az irányítópult megjeleníti-e a számos gyakori lekérdezések végrehajtásához kattinthat egy [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) riasztási adatok.

@@ -8,12 +8,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: laobri
-ms.openlocfilehash: 50648d22a62199d27374a1cacf617858ce9e7d6a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329273"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703577"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Azure Search Knowledge Store létrehozása REST használatával
 
@@ -53,7 +53,7 @@ Töltse be a Hotel a CSV-fájlt az Azure Blob Storage-ba, hogy az egy Azure Sear
 
 ## <a name="3---configure-postman"></a>3 – Poster konfigurálása
 
-Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) , és importálja a Poster-ba a **fájl, importálás..** . használatával. Váltson a **gyűjtemények** lapra, és kattintson a **...** gombra, és válassza a **Szerkesztés**lehetőséget. 
+Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) , és importálja a Poster-ba a **fájl, importálás..** . használatával. Váltson a **gyűjtemények** lapra, és kattintson a **...** gombra, és válassza a **Szerkesztés**lehetőséget. 
 
 ![Poster-alkalmazás, amely a navigációs](media/knowledge-store-create-rest/postman-edit-menu.png "menüben navigáljon a Poster szerkesztési menüjébe")
 

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981237"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703273"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése
 
@@ -26,7 +26,7 @@ ms.locfileid: "69981237"
 > [!IMPORTANT]
 > Ez a cikk *nem* vonatkozik **Azure SQL Database felügyelt példányra**. a hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás felügyelt példányhoz](sql-database-managed-instance-connect-app.md) .
 
-Amikor új Azure-SQL Server hoz létre [](sql-database-single-database-get-started.md)a Azure Portalból, az eredmény egy nyilvános végpont a *yourservername.database.Windows.net*formátumban. A terv szerint a nyilvános végponthoz való hozzáférés megtagadva. A következő hálózati hozzáférés-vezérlések használatával szelektíven engedélyezheti az SQl Database-hez való hozzáférést a nyilvános végponton keresztül.
+Amikor új Azure-SQL Server hoz létre a [Azure Portalból](sql-database-single-database-get-started.md), az eredmény egy nyilvános végpont a *yourservername.database.Windows.net*formátumban. A terv szerint a nyilvános végponthoz való hozzáférés megtagadva. A következő hálózati hozzáférés-vezérlések használatával szelektíven engedélyezheti az SQl Database-hez való hozzáférést a nyilvános végponton keresztül.
 - Azure-szolgáltatások engedélyezése: – Ha be van kapcsolva, az Azure határán belüli egyéb erőforrások, például egy Azure-beli virtuális gép, hozzáférhetnek SQL Database
 
 - IP-tűzfalszabályok: – ezzel a funkcióval explicit módon engedélyezheti a kapcsolódást egy adott IP-címről, például a helyszíni gépekről.
@@ -36,7 +36,7 @@ Amikor új Azure-SQL Server hoz létre [](sql-database-single-database-get-start
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 ## <a name="allow-azure-services"></a>Azure-szolgáltatások engedélyezése 
-Új Azure-SQL Server Azure Portalból való [](sql-database-single-database-get-started.md)létrehozásakor a beállítás nincs bejelölve.
+Új Azure-SQL Server [Azure Portalból](sql-database-single-database-get-started.md)való létrehozásakor a beállítás nincs bejelölve.
 
  ![Képernyőfelvétel az új kiszolgáló létrehozásáról][1]
 
@@ -72,7 +72,9 @@ Az IP-alapú tűzfal az Azure SQL Server egyik funkciója, amely megakadályozza
 ## <a name="virtual-network-firewall-rules"></a>Tűzfalszabályok Virtual Network
 
 Az IP-szabályok mellett az Azure SQL Server tűzfala lehetővé teszi a *virtuális hálózati szabályok*megadását.  
-További információ: [Virtual Network szolgáltatási végpontok és a Azure SQL Database szabályai](sql-database-vnet-service-endpoint-rule-overview.md).
+További információ: [Virtual Network szolgáltatási végpontok és a Azure SQL Database szabályai](sql-database-vnet-service-endpoint-rule-overview.md) , vagy tekintse meg ezt a videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
  ### <a name="azure-networking-terminology"></a>Azure hálózati terminológia  
 Vegye figyelembe a következő Azure-hálózatkezelési feltételeket az Virtual Network tűzfalszabályok megismerése során
@@ -105,7 +107,7 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 
 - A nyílt forráskódú vagy külső alkalmazásokból származó Azure SQL Database-adatbázisokhoz való csatlakozással kapcsolatos segítségért tekintse meg a következő témakört: az ügyfél-útmutató [kódok mintái SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- További információ a megnyitható **további portokról: SQL Database: A [ADO.net 4,5-es és az SQL Database-es portokon túli portok](sql-database-develop-direct-route-ports-adonet-v12.md) szakaszánkívüla1433**
+- További információ a megnyitható további portokról: **SQL Database: N kívül a @ no__t-0 szakaszban a [1433-nál nem nagyobb portok ADO.NET 4,5 és SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](sql-database-connectivity-architecture.md)
 

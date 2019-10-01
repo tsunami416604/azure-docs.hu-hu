@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467fbc421cdd681d0aab52faf75a4987ee849b15
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e7555dc44e533945d360a3d2e4120f71f953a6d2
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345519"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709352"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -84,9 +84,7 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 - Továbbfejlesztett diagnosztika és hibaelhárítás a csoportházirendekben, amelyek nem teszik lehetővé, hogy a ADSync szolgáltatás az első telepítésekor induljon el.
 - Kijavítva egy hiba, amelyben a Windows rendszerű számítógép megjelenítendő neve helytelenül lett írva.
 - Javítsa ki a hibát, ha a Windows rendszerű számítógép operációsrendszer-típusa helytelenül lett írva.
-- Kijavítva egy olyan hibát, amelyben a nem Windows 10 rendszerű számítógépek váratlanul szinkronizálva lettek. Vegye figyelembe, hogy ennek a változásnak a hatása az, hogy a korábban szinkronizált, nem Windows 10 rendszerű számítógépek most törlődnek. Ez nem befolyásolja az olyan szolgáltatásokat, mint a Windows rendszerű számítógépek szinkronizálása kizárólag hibrid Azure AD-tartományhoz való csatlakozáshoz, amely csak Windows-10 rendszerű eszközökhöz használható. 
-- Javítsa ki a hibát, hogy a Windows rendszerű számítógép megjelenítendő neve helytelenül lett írva.
-- Javítsa ki a hibát, ha a Windows rendszerű számítógép operációsrendszer-típusa helytelenül lett írva.
+- Kijavítva egy olyan hibát, amelyben a nem Windows 10 rendszerű számítógépek váratlanul szinkronizálva lettek. Vegye figyelembe, hogy ennek a változásnak a hatása az, hogy a korábban szinkronizált, nem Windows 10 rendszerű számítógépek most törlődnek. Ez nem befolyásolja az olyan szolgáltatásokat, mint a Windows rendszerű számítógépek szinkronizálása kizárólag hibrid Azure AD-tartományhoz való csatlakozáshoz, amely csak Windows-10 rendszerű eszközökhöz használható.
 - Számos új (belső) parancsmagot adott hozzá a ADSync PowerShell-modulhoz.
 
 

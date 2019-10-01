@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679543"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710184"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -204,7 +204,7 @@ A rendszerkép feltöltésre való előkészítése után győződjön meg arró
 
 Ez a szakasz csak akkor érvényes, ha a fő lemezképet helyileg hozták létre.
 
-Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezképet egy Azure Storage-fiókba. Ha még nem rendelkezik Azure Storage-fiókkal, akkor a [cikk](https://code.visualstudio.com/tutorials/static-website/create-storage) utasításait követve hozzon létre egyet.
+Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezképet egy Azure Storage-fiókba. Ha még nem rendelkezik Azure Storage-fiókkal, akkor a [cikk](/azure/javascript/tutorial-vscode-static-website-node-03) utasításait követve hozzon létre egyet.
 
 1. Ha még nem tette meg, alakítsa át a virtuális gép rendszerképét (VHD). Ha nem alakítja át a képet Rögzítettre, nem tudja sikeresen létrehozni a rendszerképet.
 

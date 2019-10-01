@@ -9,17 +9,17 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 6b80cbd16ac78f7f347bef9ab8e22c4d67d31058
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301029"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695499"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása a Azure Logic Appsba
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a jelen cikkben leírtak szerint a lehető leghamarabb Azure Logic Apps.
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a jelen cikkben leírtak szerint a lehető leghamarabb Azure Logic Apps. 
 
 Ez a cikk bemutatja, hogyan ütemezhet egyszeri és ismétlődő feladatokat úgy, hogy az Azure Scheduler helyett Azure Logic Apps használatával automatizált munkafolyamatokat hoz létre. Ha Logic Apps-val ütemezett feladatokat hoz létre, a következő előnyöket kapja:
 
@@ -38,6 +38,10 @@ További információ: [Mi a Azure Logic apps?](../logic-apps/logic-apps-overvie
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * A logikai alkalmazás HTTP-kérelmek küldésével történő elindításához használjon olyan eszközt, mint például a [Poster Desktop alkalmazás](https://www.getpostman.com/apps).
+
+## <a name="migrate-by-using-a-script"></a>Migrálás parancsfájl használatával
+
+Minden ütemező feladat egyedi, így a Feladatütemező feladatok Azure Logic Appsba való áttelepítéséhez nincs egyetlen méretre kiterjedő eszköz. [Ezt a szkriptet](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration) azonban az igényeinek megfelelően módosíthatja.
 
 ## <a name="schedule-one-time-jobs"></a>Egyszeri feladatok beütemezett feladatai
 
@@ -203,7 +207,7 @@ További információ a kivételek kezeléséről: [hibák és kivételek kezel�
 **A**: Ajánlott eljárásként mindig készítse elő a munkáját. Győződjön meg arról, hogy a létrehozott logikai alkalmazások a várt módon futnak a Scheduler-feladatok törlése vagy letiltása előtt. 
 
 **K**: Van olyan eszköz, amely segíthet a feladatok áttelepíthetők a feladatütemezőből a Logic Appsba? <br>
-**A**: Az egyes ütemező feladatok egyediek, így nem létezik egy egyméretű eszköz. Azonban különböző szkriptek lesznek elérhetők az igényeinek megfelelően. A parancsfájlok rendelkezésre állása esetén térjen vissza később.
+**A**: Az egyes ütemező feladatok egyediek, így nem létezik egy egyméretű eszköz. Igény szerint azonban [szerkesztheti ezt a parancsfájlt, hogy áttelepítse az Azure Scheduler-feladatokat Azure Logic Appsba](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
 
 **K**: Hol kaphatok támogatást a Scheduler-feladatok áttelepítéséhez? <br>
 **A**: Íme néhány lehetőség a támogatás beszerzésére: 

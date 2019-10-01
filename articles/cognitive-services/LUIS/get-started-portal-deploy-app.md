@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257076"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703218"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: Alkalmazás üzembe helyezése a LUIS-portálon
 
@@ -34,7 +34,7 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
 
 1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/).
 
-1. Kattintson a zöld **+** jelre a bal felső panelen. `Cognitive Services` Keresse meg a piactéren, és válassza ki.
+1. Válassza ki a zöld **+** jelet a bal felső panelen. Keresse meg `Cognitive Services` értéket a piactéren, és válassza ki.
 
 1. Konfigurálja az előfizetést a következő beállításokkal:
 
@@ -69,7 +69,7 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
    ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Keresse meg az új sort a táblázatban, és másolja a végpont URL-címe. A rendszer megfelelően van kiépítve `HTTP GET` , hogy a Luis API-végpontra irányuló kérést hozzon létre egy előrejelzéshez.
+1. Keresse meg az új sort a táblázatban, és másolja a végpont URL-címe. A rendszer megfelelően van kialakítva, hogy a LUIS API-végpontra `HTTP GET` kérést hozzon létre egy előrejelzéshez.
 
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 
@@ -85,51 +85,58 @@ Az alkalmazás betanítása, amikor készen áll a tesztelésre. Tegye közzé a
 
 1. A **kulcsok és végpont beállításai** lapon keresse meg a hozzárendelt erőforrások listáját és a hozzá tartozó végpont URL-címeit az alján.
 
-1. Válassza ki az új erőforrás nevéhez társított végpont URL-címét. Ez a művelet egy megfelelő módon létrehozott URL-címmel nyit meg egy webböngészőt, amely az előrejelzési végpont futtatókörnyezetére `GET` irányuló kérést tesz elérhetővé.
+1. Válassza ki az új erőforrás nevéhez társított végpont URL-címét. Ez a művelet egy megfelelően kialakított URL-címmel nyit meg egy webböngészőt, amely `GET` kérést hoz létre az előrejelzési végpont futtatókörnyezetének.
 
-1. Az URL-cím végén a lekérdezés rövid, az pedig az, ahol a felhasználó a Get kérelemhez van hozzáfűzve. `q=` A `q=`(z) után adja meg ugyanazt a felhasználói kiírást, amelyet az előző rövid útmutató végén használ:
+## <a name="prediction-endpoint-request"></a>Előrejelzési végpont kérése
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    A böngésző megjeleníti a választ, amely ugyanaz a JSON, amelyet az ügyfélalkalmazás fog kapni:
+Az URL-cím végén található `q=` a **lekérdezéshez** rövid, az pedig az, ahol a felhasználóhoz tartozó kifejezés a Get kérelemhez van hozzáfűzve. A `q=` után adja meg ugyanazt a felhasználói kiírást, amelyet az előző rövid útmutató végén használ:
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+A böngésző megjeleníti a választ, amely ugyanaz a JSON, amelyet az ügyfélalkalmazás fog kapni:
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    Ez a válasz több információt nyújt, mint az előző oktatóanyag alapértelmezett teszt panelje. Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közzé kell tennie az alkalmazást. Az alkalmazás közzététele után válassza az **összehasonlítás a közzétételsel** a teszt ablaktáblán. A közzétett teszt ablaktáblán a **JSON megjelenítése nézet** használatával megtekintheti az előző lépéssel MEGegyező JSON-t. Így összehasonlíthatja a jelenleg használt alkalmazást a végponton közzétett alkalmazással.
+Ez a válasz több információt nyújt, mint az előző oktatóanyag alapértelmezett teszt panelje. Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közzé kell tennie az alkalmazást. Az alkalmazás közzététele után válassza az **összehasonlítás a közzétételsel** a teszt ablaktáblán. A közzétett teszt ablaktáblán a **JSON megjelenítése nézet** használatával megtekintheti az előző lépéssel MEGegyező JSON-t. Így összehasonlíthatja a jelenleg használt alkalmazást a végponton közzétett alkalmazással.
 
-    [![Az alkalmazás aktuális szerkesztésének és közzétett verziójának összehasonlítása](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[@no__t – az 1Compare jelenleg szerkesztés és az alkalmazás közzétett verziója](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+
+
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-[![Alkalmazás törlése a saját alkalmazások listájáról](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[@no__t 1Delete alkalmazás a saját alkalmazások listájából](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

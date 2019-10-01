@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c9b4cdfb77f1605a6730d0735541eeb78dcd323
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075532"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702037"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Red Hat Enterprise Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
@@ -78,14 +78,24 @@ Ha elkészült, mentse és zárja be a *hosts* fájlt `:wq` a szerkesztő paranc
 
 A virtuális gépnek szüksége van néhány további csomagra a virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához. A csomagok telepítéséhez és konfigurálásához frissítse és telepítse a tartományhoz csatlakozó eszközöket a következő `yum`használatával:
 
+ **7. RHEL** 
+
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
+
+ **6. RHEL** 
+
+```console
+sudo yum install adcli sssd authconfig krb5-workstation
 ```
 
 ## <a name="join-vm-to-the-managed-domain"></a>Virtuális gép csatlakoztatása a felügyelt tartományhoz
 
 Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, csatlakoztassa a virtuális gépet az Azure AD DS felügyelt tartományhoz.
-
+ 
+  **7. RHEL**
+     
 1. Használja az `realm discover` parancsot az Azure AD DS felügyelt tartomány felderítéséhez. A következő példa felfedi a *contoso.com*tartományát. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
@@ -93,7 +103,7 @@ Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, csatlak
     ```
 
    Ha a `realm discover` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
-
+   
     * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja `ping contoso.com` meg megtekinteni, hogy a rendszer pozitív választ ad-e vissza.
     * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
     * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
@@ -101,10 +111,10 @@ Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, csatlak
 1. Most inicializálja a Kerberost `kinit` a parancs használatával. Olyan felhasználót válasszon, amely a *HRE DC-rendszergazdák* csoportjához tartozik. Ha szükséges, [vegyen fel egy felhasználói fiókot egy csoportba az Azure ad-ben](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
     Ismét az Azure AD DS felügyelt tartománynevet minden nagybetűvel meg kell adni. A következő példában a nevű `contosoadmin@contoso.com` fiók a Kerberos inicializálására szolgál. Adja meg saját felhasználói fiókját, amely a *HRE DC-rendszergazdák* csoport tagja:
-
+    
     ```console
     kinit contosoadmin@CONTOSO.COM
-    ```
+    ``` 
 
 1. Végül csatlakoztassa a gépet az Azure AD DS felügyelt tartományhoz az `realm join` paranccsal. Ugyanazt a felhasználói fiókot használja, amely az előző `kinit` `contosoadmin@CONTOSO.COM`parancsban megadott *HRE DC-rendszergazdák* csoport tagja, például:
 
@@ -118,7 +128,108 @@ Néhány percet vesz igénybe, hogy csatlakozzon a virtuális géphez az Azure A
 Successfully enrolled machine in realm
 ```
 
+  **6. RHEL** 
+
+1. Használja az `adcli info` parancsot az Azure AD DS felügyelt tartomány felderítéséhez. A következő példa felfedi a *contoso.com*tartományát. Adja meg saját Azure AD DS felügyelt tartománynevét az összes nagybetűvel:
+
+    ```console
+    sudo adcli info contoso.com
+    ```
+    
+   Ha a `adcli info` parancs nem találja az Azure AD DS felügyelt tartományát, tekintse át a következő hibaelhárítási lépéseket:
+   
+    * Győződjön meg arról, hogy a tartomány elérhető a virtuális gépről. Próbálja `ping contoso.com` meg megtekinteni, hogy a rendszer pozitív választ ad-e vissza.
+    * Győződjön meg arról, hogy a virtuális gép üzembe helyezése ugyanarra a virtuális gépre történik, ahol az Azure AD DS felügyelt tartomány elérhető.
+    * Győződjön meg arról, hogy a virtuális hálózat DNS-kiszolgálójának beállításai frissítve lettek, hogy az Azure AD DS felügyelt tartományának tartományvezérlőjére mutasson.
+
+1. Először csatlakoztassa a tartományt a `adcli join` paranccsal, ezzel a paranccsal a gép hitelesítéséhez a keytab kiterjesztésű is létrejön. Olyan felhasználói fiókot használjon, amely a *HRE DC-rendszergazdák* csoport tagja. 
+
+    ```console
+    sudo adcli join contoso.com -U contosoadmin
+    ```
+
+1. Most konfigurálja a `/ect/krb5.conf` értéket, és hozza létre a `/etc/sssd/sssd.conf` fájlokat a `contoso.com` Active Directory tartomány használatához. 
+   Győződjön meg arról, hogy a `CONTOSO.COM` helyére a saját tartománynév van lecserélve:
+
+    Nyissa meg a `/ect/krb5.conf` fájlt egy szerkesztővel:
+
+    ```console
+    sudo vi /etc/krb5.conf
+    ```
+
+    Frissítse a `krb5.conf` fájlt, hogy az megfeleljen a következő mintának:
+
+    ```console
+    [logging]
+     default = FILE:/var/log/krb5libs.log
+     kdc = FILE:/var/log/krb5kdc.log
+     admin_server = FILE:/var/log/kadmind.log
+    
+    [libdefaults]
+     default_realm = CONTOSO.COM
+     dns_lookup_realm = true
+     dns_lookup_kdc = true
+     ticket_lifetime = 24h
+     renew_lifetime = 7d
+     forwardable = true
+    
+    [realms]
+     CONTOSO.COM = {
+     kdc = CONTOSO.COM
+     admin_server = CONTOSO.COM
+     }
+    
+    [domain_realm]
+     .CONTOSO.COM = CONTOSO.COM
+     CONTOSO.COM = CONTOSO.COM
+    ```
+    
+   Hozza létre a `/etc/sssd/sssd.conf` fájlt:
+    
+    ```console
+    sudo vi /etc/sssd/sssd.conf
+    ```
+
+    Frissítse a `sssd.conf` fájlt, hogy az megfeleljen a következő mintának:
+
+    ```console
+    [sssd]
+     services = nss, pam, ssh, autofs
+     config_file_version = 2
+     domains = CONTOSO.COM
+    
+    [domain/CONTOSO.COM]
+    
+     id_provider = ad
+    ```
+
+1. Győződjön meg arról, hogy a (z) `/etc/sssd/sssd.conf` engedély a 600, és a root felhasználó tulajdonában van:
+
+    ```console
+    sudo chmod 600 /etc/sssd/sssd.conf
+    sudo chown root:root /etc/sssd/sssd.conf
+    ```
+
+1. Használja `authconfig` utasítást a virtuális gép számára az AD Linux-integrációval kapcsolatban:
+
+    ```console
+    sudo authconfig --enablesssd --enablesssdauth --update
+    ```
+    
+1. A sssd szolgáltatás elindítása és engedélyezése:
+
+    ```console
+    sudo service sssd start
+    sudo chkconfig sssd on
+    ```
+
 Ha a virtuális gép nem tudja sikeresen befejezni a tartományhoz való csatlakozás folyamatát, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat a 464-as TCP + UDP-porton az Azure AD DS felügyelt tartományának virtuális hálózati alhálózatán.
+
+Most ellenőrizze, hogy az `getent` használatával kérdezheti le a felhasználói AD-információkat
+
+```console
+sudo getent passwd contosoadmin
+```
 
 ## <a name="allow-password-authentication-for-ssh"></a>Jelszó-hitelesítés engedélyezése SSH-hoz
 
@@ -136,12 +247,20 @@ Alapértelmezés szerint a felhasználók csak az SSH nyilvános kulcs-alapú hi
     PasswordAuthentication yes
     ```
 
-    Ha elkészült, mentse és zárja be a *sshd_conf* fájlt `:wq` a szerkesztő parancsával.
+    Ha elkészült, mentse és zárja be a *sshd_conf* fájlt a szerkesztő `:wq` parancsának használatával.
 
 1. A módosítások alkalmazásához és a felhasználók jelszóval való bejelentkezéséhez indítsa újra az SSH-szolgáltatást:
 
+   **7. RHEL** 
+    
     ```console
     sudo systemctl restart sshd
+    ```
+
+   **6. RHEL** 
+    
+    ```console
+    sudo service sshd restart
     ```
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>A "HRE DC Administrators" csoport sudo-jogosultságának megadása

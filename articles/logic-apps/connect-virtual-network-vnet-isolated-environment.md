@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 0b04ca5c4bea00221d5a823432b6fc1934badb1a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 15e1f1c4c8757ca55ec27659a4ca11b1729aebc2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320516"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701945"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -67,17 +67,19 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
 ## <a name="check-network-ports"></a>Hálózati portok keresése
 
-Ha egy meglévő virtuális hálózattal rendelkező ISE-t használ, egy gyakori telepítési probléma egy vagy több letiltott porttal rendelkezik. Az ISE és a célként megadott rendszer közötti kapcsolatok létrehozásához használt összekötők magukban foglalhatják a saját portra vonatkozó követelményeket is. Ha például az FTP-összekötő használatával kommunikál egy FTP-rendszerrel, győződjön meg arról, hogy az adott FTP-rendszeren használt port, például a 21. port a parancsok küldéséhez lehetőség elérhető.
-
-Ha megkötések nélkül hozott létre új virtuális hálózatot és alhálózatokat, akkor nem szükséges [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md) beállítania a virtuális hálózatban, így szabályozhatja az alhálózatok közötti forgalmat. Meglévő virtuális hálózat esetén *igény* szerint beállíthatja a NSG, ha az [alhálózatok közötti hálózati forgalmat szűri](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat választja, győződjön meg arról, hogy az ISE megnyit bizonyos portokat az alábbi táblázatban leírtak szerint azon a virtuális hálózaton, amelyen a NSG található. Tehát a virtuális hálózat meglévő NSG vagy tűzfalak esetén győződjön meg arról, hogy ezek a portok meg vannak nyitva. Így az ISE elérhető marad, és megfelelően működik, hogy ne veszítse el az ISE hozzáférését. Ellenkező esetben, ha a szükséges portok nem érhetők el, az ISE működése leáll.
+Ha egy Azure-beli virtuális hálózattal rendelkező ISE-t használ, egy gyakori telepítési probléma egy vagy több letiltott porttal rendelkezik. Az ISE és a célként megadott rendszer közötti kapcsolatok létrehozásához használt összekötők magukban foglalhatják a saját portra vonatkozó követelményeket is. Ha például az FTP-összekötő használatával kommunikál egy FTP-rendszerrel, győződjön meg arról, hogy az FTP-rendszeren használt port elérhető, például a 21-es port a parancsok küldéséhez. Győződjön meg arról, hogy az ISE elérhető marad, és megfelelően működik, majd nyissa meg az alábbi táblázatban megadott portokat. Ellenkező esetben, ha a szükséges portok nem érhetők el, az ISE működése leáll.
 
 > [!IMPORTANT]
+> A forrásoldali portok elmúlóak, ezért ügyeljen arra, hogy az összes szabály esetében `*` értéket állítsa be.
 > Az alhálózatokon belüli belső kommunikációhoz az ISE megköveteli, hogy az alhálózatokon belül minden portot meg lehessen nyitni.
 
-Ez a táblázat a virtuális hálózat azon portjait ismerteti, amelyeket az ISE használ, és ahol a portok használatban vannak. A [Resource Manager szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) olyan IP-cím-előtagokat jelölnek, amelyek a biztonsági szabályok létrehozásakor megkönnyítik a bonyolultságot.
+* Ha megkötések nélkül hozott létre új virtuális hálózatot és alhálózatokat, nem kell beállítania [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md#network-security-groups) a virtuális hálózatban az alhálózatok közötti adatforgalom szabályozásához.
 
-> [!NOTE]
-> A forrásoldali portok elmúlóak, ezért minden `*` szabályhoz állítsa be őket.
+* Egy meglévő virtuális hálózatban *opcionálisan* beállíthatja a NSG a [hálózati forgalom alhálózatok közötti szűrésével](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat választja, azon a virtuális hálózaton, amelyen be szeretné állítani a NSG, győződjön meg arról, hogy az alábbi táblázatban megadott portokat nyitja meg. [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
+
+* Ha korábban már meglévő NSG vagy tűzfallal rendelkezik a virtuális hálózatban, győződjön meg arról, hogy az alábbi táblázatban megadott portok vannak megnyitva. [NSG biztonsági szabályok](../virtual-network/security-overview.md#security-rules)használata esetén a TCP-és UDP-protokollokra is szükség van.
+
+Az alábbi táblázat leírja a virtuális hálózat azon portjait, amelyeket az ISE használ, és ahol a portok használatban vannak. A [Resource Manager szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) olyan IP-cím-előtagokat jelölnek, amelyek a biztonsági szabályok létrehozásakor megkönnyítik a bonyolultságot.
 
 | Cél | Direction | Célportok | Forrás-szolgáltatáscímke | Cél-szolgáltatáscímke | Megjegyzések |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|

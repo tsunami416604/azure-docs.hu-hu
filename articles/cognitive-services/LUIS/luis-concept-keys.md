@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256954"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703182"
 ---
-# <a name="authoring-and-runtime-keys"></a>Szerzői és futtatókörnyezeti kulcsok
+# <a name="authoring-and-runtime-keys"></a>Tartalomkészítési és futtatókörnyezeti kulcsok
 
 
 >[!NOTE]
@@ -29,7 +29,7 @@ A LUIS két típusú Azure-erőforrást használ, minden típushoz kulcs tartozi
 * [Létrehozás a](#programmatic-key) szándékok, az entitások és a címkék hosszúságú kimondott szöveg, betanításához és közzétételéhez. Ha készen áll a LUIS-alkalmazás közzétételére, szüksége lesz az alkalmazáshoz rendelt [futtatókörnyezet előrejelzési végponti kulcsára](luis-how-to-azure-subscription.md) .
 * [A futtatókörnyezet előrejelzési végpontjának kulcsa](#prediction-endpoint-runtime-key). Az ügyfélalkalmazások, például a csevegési robot esetében ehhez a kulcshoz hozzá kell férniük a futásidejű **lekérdezés-előrejelzési végponthoz** . 
 
-|Kulcs|Cél|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
+|Kulcs|Cél|Kognitív szolgáltatás @no__t – 0|Kognitív szolgáltatás @no__t – 0|
 |--|--|--|--|
 |[Kulcs létrehozási](#programmatic-key)|Szerzői műveletek, képzés, közzététel és tesztelés.|`LUIS.Authoring`|`Cognitive Services`|
 |[Előrejelzési végpont futtatókörnyezetének kulcsa](#prediction-endpoint-runtime-key)| Lekérdezés-előrejelzési végpont futtatókörnyezete felhasználói Kimondás alapján a szándékok és az entitások meghatározásához.|`LUIS`|`Cognitive Services`|
@@ -83,12 +83,30 @@ Ez egy speciális erőforrás, amelyet Ön hoz létre. Ez nem jelenik meg az Azu
 ### <a name="use-runtime-key-in-query"></a>Futásidejű kulcs használata a lekérdezésben
 A LUIS Runtime végpont két stílust fogad el, mindkettő az előrejelzési végpont futtatókörnyezetének kulcsát használja, de különböző helyeken.
 
-A futtatókörnyezet eléréséhez használt végpont olyan altartományt használ, amely egyedi az erőforrás régiójában, és `{region}` az alábbi táblázatban látható. 
+A futtatókörnyezet eléréséhez használt végpont olyan altartományt használ, amely egyedi az erőforrás régiójában, és az alábbi táblázatban `{region}` jelöli. 
+
+
+#### <a name="v2-prediction-endpointtabv2"></a>[V2 előrejelzési végpont](#tab/V2)
 
 |művelet|Példa URL-cím és a kulcs helyét|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>a lekérdezési karakterlánc értéke `runtime-key`<br><br>A végpont lekérdezés értékének módosításához a `runtime-key` kulcsból a szerzői műveletekhez részben (alapszintű), az új végpont kulcs a LUIS végponti kulcs kvóta arány használatához. Ha a kulcs létrehozása és hozzárendelése a kulcs, de ne módosítsa a lekérdezés végpontértéknek `runtime-key`, nem használja a végpont-kvótát.|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> a fejléc értéke `Ocp-Apim-Subscription-Key`<br>Ha létrehozza a futásidejű kulcsot, és hozzárendeli a futásidejű kulcsot, de nem módosítja a végpont lekérdezési értékét `Ocp-Apim-Subscription-Key`, akkor nem a futásidejű kulcsot használja.|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
+
+#### <a name="v3-prediction-endpointtabv3"></a>[V3 előrejelzési végpont](#tab/V3)
+
+|művelet|Példa URL-cím és a kulcs helyét|
+|--|--|
+|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+
+* * * 
+
+**BEOLVASÁS**: A végpont lekérdezés értékének módosításához a `runtime-key` kulcsból a szerzői műveletekhez részben (alapszintű), az új végpont kulcs a LUIS végponti kulcs kvóta arány használatához. Ha a kulcs létrehozása és hozzárendelése a kulcs, de ne módosítsa a lekérdezés végpontértéknek `runtime-key`, nem használja a végpont-kvótát.
+
+**POST**: @No__t-0 fejléc értékének módosítása<br>Ha létrehozza a futásidejű kulcsot, és hozzárendeli a futásidejű kulcsot, de nem módosítja `Ocp-Apim-Subscription-Key` végpont-lekérdezési értékét, akkor nem a futásidejű kulcsot használja.
 
 Az Alkalmazásazonosító, az előző URL-címeket, a használt `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, a használt nyilvános IoT-alkalmazás a [interaktív bemutató](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
 
@@ -187,7 +205,7 @@ A nyilvános alkalmazás közzé van téve az összes régióban, hogy egy felha
 
 ## <a name="transfer-of-ownership"></a>A tulajdonjog átruházása
 
-**[Erőforrás-áttelepített alkalmazások létrehozásához](luis-migration-authoring.md)** : 
+**[Erőforrás-áttelepített alkalmazások létrehozásához](luis-migration-authoring.md)** : Az erőforrás tulajdonosaként hozzáadhat egy `contributor` értéket.
 
 **Még nem áttelepített alkalmazások esetén**: Az alkalmazás exportálása JSON-fájlként. Egy másik LUIS-felhasználó is importálhatja az alkalmazást, így az alkalmazás tulajdonosa válik. Az új alkalmazás egy másik alkalmazás-AZONOSÍTÓval fog rendelkezni.  
 

@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033827"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702809"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -90,34 +90,32 @@ A naplók ugyanazon a folyamaton lesznek közzétéve, mint a Azure Active Direc
 Az Azure AD Reporting API-hoz való parancsfájl-vagy alkalmazás-hozzáférés engedélyezéséhez Azure Active Directory alkalmazásra van szükség a Azure AD B2C-bérlőben a következő API-engedélyekkel:
 
 * Microsoft Graph
-  * Alkalmazás: Az összes naplózási napló adatolvasása
+  * Alkalmazás: Az összes auditnapló adatainak olvasása
 
 Ezeket az engedélyeket engedélyezheti a B2C-bérlőn belüli meglévő Azure Active Directory alkalmazások regisztrálásához, vagy létrehozhat egy újat, kifejezetten a log Automation használatával.
 
-Új alkalmazás létrehozásához rendelje hozzá a szükséges API-engedélyeket, és hozzon létre egy titkos kulcsot, hajtsa végre a következő lépéseket:
+Kövesse az alábbi lépéseket egy alkalmazás regisztrálásához, adja meg a szükséges Microsoft Graph API-engedélyeket, majd hozzon létre egy ügyfél-titkot.
 
-1. Alkalmazás regisztrálása a Azure Active Directoryban
-    1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és váltson arra a könyvtárra, amely a Azure ad B2C bérlőjét tartalmazza.
-    1. A bal oldali menüben válassza a **Azure Active Directory** (*nem* Azure ad B2C) lehetőséget. Vagy válassza a **minden szolgáltatás**lehetőséget, majd keresse meg és válassza a **Azure Active Directory**lehetőséget.
-    1. A bal oldali menü **kezelés** területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
-    1. **Új alkalmazás regisztrációjának** kiválasztása
-    1. Adja meg az alkalmazás nevét. Például *naplózási napló alkalmazás*.
-    1. Írjon be egy érvényes URL-címet a **bejelentkezési URL-cím**mezőbe. Például: *https://localhost* . A végpontnak nem kell elérhetőnek lennie, de érvényes URL-címnek kell lennie.
-    1. Kattintson a **Létrehozás** gombra.
-    1. Jegyezze fel a **regisztrált** alkalmazás oldalán megjelenő **alkalmazásspecifikus azonosítót** . Ezt az értéket kell megadnia a hitelesítéshez az Automation-parancsfájlokban, például az egy későbbi szakaszban látható PowerShell-szkripttel.
-1. API-hozzáférési engedélyek kiosztása
-    1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
-    1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.
-    1. Válassza a **Hozzáadás**lehetőséget, majd **válasszon ki egy API**-t.
-    1. Válassza a **Microsoft Graph**lehetőséget, majd **válassza a elemet**.
-    1. Az **alkalmazás engedélyei**területen válassza az **összes naplózási napló adatának olvasása**elemet.
-    1. Kattintson a **kiválasztás** gombra, majd válassza a **kész**lehetőséget.
-    1. Válassza ki **engedélyeket**, majd válassza ki **Igen**.
-1. Ügyfél titkos kulcsának létrehozása
-    1. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget.
-    1. A kulcs **leírása** mezőben adja meg a kulcs leírását. Például a *naplózási napló kulcsa*.
-    1. Válasszon ki egy érvényességi **időtartamot**, majd kattintson a **Mentés**gombra.
-    1. Jegyezze fel a kulcs **értékét**. Ezt az értéket kell megadnia a hitelesítéshez az Automation-parancsfájlokban, például az egy későbbi szakaszban látható PowerShell-szkripttel.
+### <a name="register-application-in-azure-active-directory"></a>Alkalmazás regisztrálása a Azure Active Directoryban
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>API-hozzáférési engedélyek kiosztása
+
+1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
+1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.
+1. Válassza a **Hozzáadás**lehetőséget, majd **válasszon ki egy API**-t.
+1. Válassza a **Microsoft Graph**lehetőséget, majd **válassza a elemet**.
+1. Az **alkalmazás engedélyei**területen válassza az **összes naplózási napló adatának olvasása**elemet.
+1. Kattintson a **kiválasztás** gombra, majd válassza a **kész**lehetőséget.
+1. Válassza ki **engedélyeket**, majd válassza ki **Igen**.
+
+### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
+
+1. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget.
+1. A kulcs **leírása** mezőben adja meg a kulcs leírását. Például a *naplózási napló kulcsa*.
+1. Válasszon ki egy érvényességi **időtartamot**, majd kattintson a **Mentés**gombra.
+1. Jegyezze fel a kulcs **értékét**. Ezt az értéket kell megadnia a hitelesítéshez az Automation-parancsfájlokban, például az egy későbbi szakaszban látható PowerShell-szkripttel.
 
 Most már rendelkezik egy alkalmazással a szükséges API-hozzáféréssel, egy alkalmazás-AZONOSÍTÓval és egy, az Automation-parancsfájlokban használható kulccsal. A cikk későbbi részében a PowerShell-szkript című szakaszban talál példát arra, hogyan kérhető le a tevékenység eseményei egy parancsfájl használatával.
 

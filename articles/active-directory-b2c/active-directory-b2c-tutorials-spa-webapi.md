@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f940893a5328db65549b40269578399655f8539e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679274"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694576"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása egy ASP.NET Core webes API-hoz egy egyoldalas alkalmazásból Azure Active Directory B2C használatával
 
@@ -54,12 +54,7 @@ Ha egy védett webes API-t szeretne meghívni egy másik alkalmazásból, meg ke
 
 Az előfeltételként szolgáló oktatóanyagban létrehozott egy *webapp1*nevű webalkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy hívja meg az előző szakaszban létrehozott webes API-t ( *webapi1*).
 
-1. Navigáljon a B2C-bérlőhöz Azure Portal
-1. Válassza az **alkalmazások**, majd a *webapp1*lehetőséget.
-1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
-1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
-1. Kattintson az **OK** gombra.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Az egyoldalas webalkalmazás regisztrálva van a védett webes API meghívásához. A felhasználók a Azure AD B2C használatával hitelesítik egyoldalas alkalmazást. Az egyoldalas alkalmazás engedélyezési engedélyt ad a Azure AD B2Ctól a védett webes API eléréséhez.
 

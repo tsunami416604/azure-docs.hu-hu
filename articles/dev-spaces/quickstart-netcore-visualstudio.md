@@ -12,12 +12,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: ece47c86fba6bc975a4146f596fa001014352a4f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725846"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695478"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studióval és a .NET Core-val a Kubernetes az Azure dev Spaces használatával
 
@@ -26,6 +26,11 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
 - Iteratív kódfejlesztés tárolókban a Visual Studio használatával.
 - A fürtön futó hibakeresési kód a Visual Studio használatával.
+
+Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
+- [A Java és a Visual Studio Code](quickstart-java.md)
+- [Node. js és Visual Studio Code](quickstart-nodejs.md)
+- [A .NET Core és a Visual Studio Code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -99,7 +104,7 @@ Előfordulhat, hogy a folyamat letiltotta a szolgáltatáshoz való nyilvános h
 
 ## <a name="update-code"></a>Kód frissítése
 
-Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. A 20. sor `Controllers/HomeController.cs` módosítása a következőre:
+Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. Módosítsa a 20. sort `Controllers/HomeController.cs` értékre:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -111,13 +116,13 @@ Az új Container-lemezképek újraépítése és újratelepítése helyett az Az
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Töréspontok beállítása és használata hibakereséshez
 
-Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. Nyissa meg `Controllers/HomeController.cs` , majd kattintson a 20. sorban a kurzor mozgatásához. Ha a töréspontot az *F9 billentyűre* szeretné beállítani, vagy kattintson a *hibakeresés* lehetőségre, majd a *töréspontot*. Ha hibakeresési módban szeretné elindítani a szolgáltatást a fejlesztői térben, nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés elemre* , majd *indítsa el*a hibakeresést.
+Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. Nyissa meg `Controllers/HomeController.cs` értéket, és kattintson a 20. sorban a kurzorra. Ha a töréspontot az *F9 billentyűre* szeretné beállítani, vagy kattintson a *hibakeresés* lehetőségre, majd a *töréspontot*. Ha hibakeresési módban szeretné elindítani a szolgáltatást a fejlesztői térben, nyomja meg az *F5 billentyűt* , vagy kattintson a hibakeresés elemre, majd *indítsa el*a hibakeresést.
 
-Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual studióhoz, és figyelje meg, hogy a 20. sor ki van emelve. A beállított töréspont szüneteltette a szolgáltatást a 20. sorban. A szolgáltatás folytatásához nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés* gombra, és *folytassa*a művelettel. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
+Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual studióhoz, és figyelje meg, hogy a 20. sor ki van emelve. A beállított töréspont szüneteltette a szolgáltatást a 20. sorban. A szolgáltatás folytatásához nyomja meg az *F5 billentyűt* , vagy kattintson a *hibakeresés* gombra, és *folytassa a művelettel*. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort a 20-as és az `Controllers/HomeController.cs` *F9 billentyű*megnyomásával helyezi el.
+Távolítsa el a töréspontot úgy, hogy az egérmutatót a 20. sorba helyezi a `Controllers/HomeController.cs` és az *F9 billentyűt*.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 

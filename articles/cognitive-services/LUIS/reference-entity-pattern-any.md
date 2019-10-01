@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: cda6c724a36a73dc34c2bf8e7158e3e3ec92d46b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563224"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695094"
 ---
 # <a name="patternany-entity"></a>Pattern.any entitás 
 
@@ -29,7 +29,7 @@ Minta. minden entitást meg kell adni a [minta](luis-how-to-model-intent-pattern
 
 ## <a name="usage"></a>Használat
 
-Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon kimondása minta `Was {BookTitle} written by an American this year[?]`használatával 
+Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon teljes használata minta használatával. a könyvben végzett kereséshez a `Was {BookTitle} written by an American this year[?]`. 
 
 A következő táblázatban az egyes sorok a teljes verzió két változatával rendelkeznek. A legelső Kimondás, hogy a LUIS kezdetben hogyan látja a megnyilatkozás módját. Nem egyértelmű, hogy a könyv címe hol kezdődik és végződik. Az alsó lemondás egy mintát használ. bármely entitás, amely az entitás kezdetét és végét jelöli. 
 
@@ -37,52 +37,74 @@ A következő táblázatban az egyes sorok a teljes verzió két változatával 
 |--|
 |`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Volt **az az ember, aki eltartotta a feleségét egy kalapban és más** , az idén amerikai klinikai mesében?|
 |`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>**Félig aludt a béka pizsamában,** amelyet egy amerikai idén írt?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>A **Lemon Cake adott szomorúsága volt: Az év** egy amerikai regénye?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>@No__t 0The a citromos torta adott szomorúsága: A regény @ no__t-0 írt egy Amerikai Egyesült Államok ebben az évben?|
 |`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>Volt **egy Wocket a zsebemben!** írta egy Amerikai Egyesült államokbeli év?|
 ||
 
+
+
 ## <a name="example-json"></a>Példa JSON-ban
 
+Vegye figyelembe a következő lekérdezést:
+
+`where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
+
+A beágyazott űrlap neve kinyerhető mintázatként. bármelyik:
+
+`Understand your responsibilities as a member of the community`
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+
 ```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
+"entities": [
+  {
+    "entity": "understand your responsibilities as a member of the community",
+    "type": "FormName",
+    "startIndex": 18,
+    "endIndex": 78,
+    "role": ""
+  }
+```
+
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+
+Ez a JSON, ha `verbose=false` van beállítva a lekérdezési karakterláncban:
+
+```json
+"entities": {
+    "FormName": [
+        "Understand your responsibilities as a member of the community"
+    ]
 }
 ```
+
+Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
+
+```json
+"entities": {
+    "FormName": [
+        "Understand your responsibilities as a member of the community"
+    ],
+    "$instance": {
+        "FormName": [
+            {
+                "type": "FormName",
+                "text": "Understand your responsibilities as a member of the community",
+                "startIndex": 18,
+                "length": 61,
+                "modelTypeId": 7,
+                "modelType": "Pattern.Any Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * * 
 
 ## <a name="next-steps"></a>További lépések
 

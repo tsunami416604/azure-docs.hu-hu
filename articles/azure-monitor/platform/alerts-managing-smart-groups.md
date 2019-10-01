@@ -1,30 +1,30 @@
 ---
 title: Intelligens csoportok kezelése
-description: A riasztási példányok létre intelligens csoportok kezelése
+description: A riasztási példányokon létrehozott intelligens csoportok kezelése
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: a9434bebe82687b14f45b3c375572717d71d0e55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42b4bd7427191bcec531ff883efa0d3297a9fd1f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713384"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702844"
 ---
 # <a name="manage-smart-groups"></a>Intelligens csoportok kezelése
-[Csoportok intelligens](https://aka.ms/smart-groups) csoport együtt riasztások alapján közös előfordulás vagy a hasonló, gépi tanulási algoritmusok használata, hogy a felhasználó is intelligens csoportokat helyett minden riasztás kezelése külön-külön kellene kezelni. Ez a cikk végigvezeti elérése és intelligens csoportok használata az Azure monitorban.
-1.  Az intelligens csoportokat létrehozni a riasztási példányok megtekintéséhez lehetőségek közül választhat
-     1. Kattintson a **intelligens csoportok** származó a **riasztások szerint** lap    
+Az [intelligens csoportok](https://aka.ms/smart-groups) a gépi tanulási algoritmusok használatával csoportosítják a riasztásokat a közös előfordulás vagy a hasonlóság alapján, így a felhasználó mostantól kezelheti az intelligens csoportokat ahelyett, hogy egyenként kellene kezelnie a riasztásokat. Ebből a cikkből megtudhatja, hogyan érheti el és használhatja az intelligens csoportokat Azure Monitorban.
+1.  A riasztási példányok számára létrehozott intelligens csoportok megtekintéséhez használhatja a következőt:
+     1. Kattintson az **intelligens csoportok** elemre a riasztások összegzése lapon    
     ![Monitorozás](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
-     2. Kattintson a riasztások intelligens csoportok szerint az összes riasztás oldalról   
+     2. Kattintson a riasztások intelligens csoportok szerint lehetőségre az összes riasztás lapon   
      ![Figyelés](./media/alerts-managing-smart-groups/sg-all-alerts.jpg)
-2.  Ekkor megjelenik a lista nézet a riasztás példányok létre intelligens csoportokhoz. Több riasztás átnéznie, helyett mostantól kezelhető, az intelligens csoportok helyette.   
+2.  Ekkor megjelenik a riasztási példányokon létrehozott összes intelligens csoport listájának nézete. A több riasztáson keresztül történő rostálás helyett mostantól az intelligens csoportokat is kezelheti.   
 ![Figyelés](./media/alerts-managing-smart-groups/sg-list.jpg)
-3.  Intelligens egyetlen csoportnak sem a hivatkozásra kattintva megnyílik a Részletek lap, ahol megtekintheti a csoportosítási OK, tag riasztások együtt fel. Ez az összesítés lehetővé teszi egyetlen intelligens csoport helyett több riasztás átnéznie foglalkozik.   
+3.  Ha bármelyik intelligens csoportra kattint, megnyílik a Részletek lap, ahol megtekintheti a csoportosítás okát, valamint a tag riasztásait. Ez az Összesítés lehetővé teszi, hogy egy egyedi intelligens csoporttal foglalkozzon több riasztás helyett.   
 ![Figyelés](./media/alerts-managing-smart-groups/sg-details.jpg)
 
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 52c675369fa70d1b1113f34b9b0dda2126547e0a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3b8f213bd614e4adce74b83c87649a0f248cba7b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002517"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710106"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>TensorFlow mély tanulási modellt készíthet Azure Machine Learning
 
@@ -32,7 +32,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
  - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
      - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
-    - A notebook-kiszolgáló minták mély tanulási mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **How-to-use-azureml > Training-with-Deep-learning > Train-hiperparaméter-Tune-Deploy-with-tensorflow** mappa. 
+    - A notebook-kiszolgáló minták mély tanulási mappájában keresse meg a kitöltött és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **útmutató – használat-azureml > ml-keretrendszerek > tensorflow > üzembe helyezése > Train-hiperparaméter-Tune-tensorflow** mappa. 
  
  - Saját Jupyter Notebook-kiszolgáló
 
@@ -40,7 +40,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
     - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` és`utils.py`
      
-    Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
+    Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 ## <a name="set-up-the-experiment"></a>A kísérlet beállítása
 
@@ -84,34 +84,33 @@ os.makedirs(script_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='tf-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Adatkészlet és parancsfájlok feltöltése
+### <a name="create-a-file-dataset"></a>Fájl adatkészletének létrehozása
 
-Az [adattár](how-to-access-data.md) olyan hely, ahol az adatok tárolása és elérése az adatoknak a számítási célra való csatlakoztatásával vagy másolásával történik. Mindegyik munkaterület alapértelmezett adattárt biztosít. Töltse fel az adatok és a betanítási szkripteket az adattárba, hogy azok könnyen elérhetők legyenek a betanítás során.
+Egy `FileDataset` objektum egy vagy több fájlra hivatkozik a munkaterület adattárában vagy a nyilvános URL-címekben. A fájlok bármilyen formátumúak lehetnek, és a osztály lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számítási feladatokhoz. A `FileDataset`létrehozásával létrehoz egy hivatkozást az adatforrás helyére. Ha az adatkészletbe átalakításokat alkalmazott, azokat az adatkészletben is tárolja a rendszer. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek. További információért tekintse `Dataset` [meg a csomag útmutatóját](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) .
 
-1. Töltse le helyileg a MNIST adatkészletet.
+```python
+from azureml.core.dataset import Dataset
 
-    ```Python
-    os.makedirs('./data/mnist', exist_ok=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
 
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename = './data/mnist/train-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename = './data/mnist/train-labels.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/mnist/test-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
-    ```
+`register()` A módszer használatával regisztrálja az adatkészletet a munkaterületen, hogy másokkal is megoszthatók legyenek, újra felhasználható a különböző kísérletekben, és nevük szerint a képzési szkriptben.
 
-1. Töltse fel a MNIST-adatkészletet az alapértelmezett adattárba.
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
-    ```
-
-1. Töltse fel a TensorFlow-betanítási szkriptet `tf_mnist.py`, és a segítő `utils.py`fájlt.
-
-    ```Python
-    shutil.copy('./tf_mnist.py', script_folder)
-    shutil.copy('./utils.py', script_folder)
-    ```
+# list the files referenced by dataset
+dataset.to_path()
+```
 
 ## <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
 

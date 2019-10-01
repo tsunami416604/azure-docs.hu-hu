@@ -4,36 +4,28 @@ description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsít�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300027"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710035"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
-A *tárolási célok* az Azure HPC cache-példányon keresztül elért fájlok háttérbeli tárolói. Hozzáadhat NFS-tárhelyet, például egy helyszíni hardvereszközt, vagy tárolhatja az Azure-blobban tárolt adattárakat.
+A *tárolási célok* az Azure HPC cache-példányon keresztül elért fájlok háttérbeli tárolói. Hozzáadhat NFS-tárolót (például helyszíni hardverrendszer), vagy tárolhat adattárolást az Azure blobban.
 
 Akár tíz különböző tárolási célt is meghatározhat egy gyorsítótárhoz. A gyorsítótár egy összesített névtérben jeleníti meg az összes tárolási célt.
 
 Ne feledje, hogy a tárolók exportálásának elérhetőnek kell lennie a gyorsítótár virtuális hálózatáról. A helyszíni hardveres tároláshoz előfordulhat, hogy olyan DNS-kiszolgálót kell beállítania, amely képes az NFS-tároló elérésére szolgáló gazdagépek feloldására. További információk: [DNS-hozzáférés](hpc-cache-prereqs.md#dns-access).
 
-A gyorsítótár létrehozásakor vagy később is hozzáadhat tárolási célokat. Az eljárás némileg eltérő attól függően, hogy az Azure Blob Storage-t vagy egy NFS-exportálást ad hozzá. A részleteket az alábbiakban találja.
+Adja hozzá a tárolási célokat a gyorsítótár létrehozása után. Az eljárás némileg eltérő attól függően, hogy az Azure Blob Storage-t vagy egy NFS-exportálást ad hozzá. A részleteket az alábbiakban találja.
 
-## <a name="add-storage-targets-while-creating-the-cache"></a>Tárolási célok hozzáadása a gyorsítótár létrehozásakor
+## <a name="open-the-storage-targets-page"></a>A tárolási célok lap megnyitása
 
-Az Azure HPC gyorsítótár-létrehozási varázsló **tárolási célok** lapján definiálhatja a tárterületet, amikor létrehozza a gyorsítótár-példányt.
-
-![a tárolási célok oldalának képernyőképe](media/hpc-cache-storage-targets-pop.png)
-
-A tárterület hozzáadásához kattintson a **tároló hozzáadása** hivatkozásra.
-
-## <a name="add-storage-targets-from-the-cache"></a>Tárolási célok hozzáadása a gyorsítótárból
-
-A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a bal oldali oldalsávon található **tárolási célok** elemre. A tárolási cél lap felsorolja az összes meglévő célt, és egy hivatkozást ad hozzá egy újat.
+A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a bal oldali oldalsávon található **tárolási célok** elemre. A tárolási célok lap felsorolja az összes meglévő célt, és egy hivatkozást ad hozzá egy újat.
 
 ![képernyőfelvétel a Storage Targets hivatkozásáról az oldalsávon, a configure (Konfigurálás) fejléc alatt, amely a kategória fejlécek beállításai és figyelése között található.](media/hpc-cache-storage-targets-sidebar.png)
 
@@ -107,7 +99,7 @@ Egy NFS-tárolási cél több virtuális útvonallal is rendelkezhet, ha az egye
 Hozza létre az összes elérési utat egy tárolási tárolóból.
 <!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
 
-Adja meg ezeket az értékeket az egyes névterek elérési útjához: 
+Adja meg ezeket az értékeket az egyes névterek elérési útjához:
 
 * **Virtuális névtér elérési útja** – a tárolási cél ügyféloldali elérési útjának beállítása. A virtuális névtér szolgáltatással kapcsolatos további tudnivalókért olvassa el az [összesített névtér konfigurálása](hpc-cache-namespace.md) című témakört.
 
@@ -115,7 +107,7 @@ Adja meg ezeket az értékeket az egyes névterek elérési útjához:
 
 * **NFS-exportálási útvonal** – adja meg az NFS-exportálás elérési útját.
 
-* **Alkönyvtár elérési útja** – ha az Exportálás egy adott alkönyvtárát szeretné csatlakoztatni, írja be ide. Ha nem, hagyja üresen ezt a mezőt. 
+* **Alkönyvtár elérési útja** – ha az Exportálás egy adott alkönyvtárát szeretné csatlakoztatni, írja be ide. Ha nem, hagyja üresen ezt a mezőt.
 
 Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
@@ -124,7 +116,7 @@ Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
 Amikor egy NFS Storage rendszerre mutató tárolási célt hoz létre, ki kell választania az adott cél *használati modelljét* . Ez a modell határozza meg, hogyan gyorsítótárazza az adatait.
 
-* Beolvasás – ha többnyire a cache használatával felgyorsítja az adatolvasási hozzáférést, válassza ezt a lehetőséget. 
+* Beolvasás – ha többnyire a cache használatával felgyorsítja az adatolvasási hozzáférést, válassza ezt a lehetőséget.
 
 * Olvasás/írás – ha az ügyfelek a gyorsítótárat használják olvasásra és írásra, válassza ezt a lehetőséget.
 

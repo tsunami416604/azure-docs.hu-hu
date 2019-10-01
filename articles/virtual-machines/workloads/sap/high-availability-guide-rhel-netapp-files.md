@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/14/2019
 ms.author: radeltch
-ms.openlocfilehash: d3fbd38484696f0b133e7494fed11a22dc038148
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98a12e6892ac8710ae2195cd2c29df43b4c65aba
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101102"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71706297"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files
 
@@ -95,7 +95,7 @@ Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használat
 
 ![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A következő lista a terheléselosztó konfigurációját mutatja be a (A) SCS és ERS különálló elülső IP-címeivel.
+Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A következő lista a terheléselosztó konfigurációját mutatja be a (A) SCS és ERS különálló előtér-IP-címeivel.
 
 > [!IMPORTANT]
 > Az SAP ASCS/ERS és a Red Hat Linux rendszerű, az Azure-beli virtuális gépeken futó vendég operációs rendszerek többszörös SID-fürtszolgáltatása **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben.
@@ -148,7 +148,7 @@ A lépések azt feltételezik, hogy már telepítette az [Azure Virtual Network]
 A jelen cikkben bemutatott SAP NetWeaver architektúra egy Azure NetApp Files kapacitási készletet, prémium SKU-t használ. Javasoljuk, hogy az Azure-ban az SAP NetWeaver alkalmazás számítási feladataihoz Azure NetApp Files Premium SKU-t.  
 4. Az alhálózat delegálása az Azure NetApp-fájlokba az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
 
-5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)alhálózatban. Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Ebben a példában két Azure NetApp Files kötetet használunk: az SAP<b>QAS</b> és a transSAP. A megfelelő csatlakoztatási pontokhoz csatlakoztatott fájlelérési utak a következők:/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b></b>QAS sys stb.  
+5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Ebben a példában két Azure NetApp Files kötetet használunk: az SAP<b>QAS</b> és a transSAP. A megfelelő csatlakoztatási pontokhoz csatlakoztatott fájlelérési utak a következők:/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS sys stb</b>.  
 
    1. mennyiségi SAP-<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
    2. mennyiségi SAP-<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ASCs)
@@ -747,7 +747,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 ## <a name="install-database"></a>Adatbázis telepítése
 
-Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-beli telepítésével kapcsolatos további információkért lásd: a [SAP HANA magas rendelkezésre állása az Azure][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533]-beli virtuális gépeken Red Hat Enterprise Linuxon.
+Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-ban való telepítésével kapcsolatos további információkért lásd: [Az Azure-beli virtuális gépek magas rendelkezésre állása SAP HANA Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Az SAP Database-példány telepítésének futtatása
 
@@ -781,7 +781,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
    Frissítse a SAP HANA biztonságos tárolót, hogy az SAP HANA rendszerreplikáció beállításának virtuális nevére mutasson.
 
-   Futtassa a következő parancsot a bejegyzések listázásához sapsid \<> adm-ként
+   A következő parancs futtatásával sorolja fel a bejegyzéseket \<sapsid > adm-ként
 
    ```
    hdbuserstore List
@@ -945,7 +945,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart`. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer megöli az üzenetet a kiszolgálón, a `sapstart` lesz újraindítva. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00

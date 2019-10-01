@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a199dde6b9e36683b817f908e385aabcc431ce16
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: b2e935a3a5ff2b6da99ad693f2d4e924ae811caf
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155124"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694834"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -113,11 +113,11 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
 
-Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) sablont, amely a következőket tartalmazza:
+Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók az ügyfél számára, amikor a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) megtekinti az ajánlat részleteit.
 
 |Mező  |Meghatározás  |
 |---------|---------|
-|**mspName**     |Szolgáltató neve         |
+|**mspOfferName**     |A definíciót leíró név. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként.         |
 |**mspOfferDescription**     |Az ajánlat rövid leírása (például "contoso VM Management ajánlat")      |
 |**managedByTenantId**     |A bérlő azonosítója         |
 |**engedélyek**     |A bérlőből származó felhasználók/csoportok/SPN- **principalId** értékei, amelyek mindegyike **principalIdDisplayName** segíti az ügyfél számára az engedélyezés céljának megértését, és a beépített **roleDefinitionId** értékre van leképezve, hogy megadja a hozzáférési szint         |
@@ -132,9 +132,9 @@ Az ügyfél előfizetésének bevezetéséhez használja a [minták](https://git
 |Előfizetés (az Azure Marketplace-en közzétett ajánlat használata esetén)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Az itt leírt folyamatnak külön üzembe kell helyeznie a bevezetéshez szükséges összes előfizetést.
-> 
-> Külön központi telepítések is szükségesek, ha több különböző előfizetésben lévő erőforráscsoportot készít elő. Egy adott előfizetésen belül több erőforráscsoport bevezetését azonban egyetlen központi telepítésben is elvégezheti.
+> Az itt leírt folyamatnak külön üzembe kell helyeznie a bevezetéshez szükséges összes előfizetést. Külön központi telepítések is szükségesek, ha több különböző előfizetésben lévő erőforráscsoportot készít elő. Egy adott előfizetésen belül több erőforráscsoport bevezetését azonban egyetlen központi telepítésben is elvégezheti.
+>
+> Külön központi telepítések is szükségesek ahhoz, hogy több ajánlat is alkalmazható legyen ugyanarra az előfizetésre (vagy az előfizetésen belüli erőforráscsoportok). Minden egyes alkalmazásnak eltérő **mspOfferName**kell használnia.
 
 Az alábbi példa egy módosított **resourceProjection. Parameters. JSON** fájlt mutat be, amely egy előfizetés bevezetéséhez használható. Az erőforráscsoport-paraméter fájljai (az [RG-delegált erőforrás-kezelő](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) mappában találhatók) hasonlóak, de tartalmaznak egy **rgName** paramétert is a bevezetéshez megadott erőforráscsoport (ok) azonosításához.
 
@@ -143,7 +143,7 @@ Az alábbi példa egy módosított **resourceProjection. Parameters. JSON** fáj
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "mspName": {
+        "mspOfferName": {
             "value": "Fabrikam Managed Services - Interstellar"
         },
         "mspOfferDescription": {

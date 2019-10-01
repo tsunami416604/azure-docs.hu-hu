@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676944"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710153"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -76,7 +76,7 @@ Határozottan javasoljuk, hogy tesztelje az éles környezetbe szánt tényleges
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Átválthatom a felügyelt példányok hardveres generációját a Gen 4 és a Gen 5 online között? 
 
-A hardveres generációk közötti automatizált online váltás akkor lehetséges, ha mindkét hardveres generáció elérhető abban a régióban, ahol a felügyelt példány kiépítve van. Ebben az esetben lehetősége van a Azure Portal díjszabási szintje szakaszában a hardveres generációk közötti váltásra.
+A hardveres generációk közötti automatizált online váltás akkor lehetséges, ha mindkét hardveres generáció elérhető abban a régióban, ahol a felügyelt példány kiépítve van. Ebben az esetben a [blogbejegyzésben található parancsfájl](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) használatával elmagyarázza, hogyan válthat a hardveres generációk között.
 
 Ez egy hosszan futó művelet, mivel új felügyelt példány lesz kiépítve a háttérben, és az adatbázisok automatikusan átkerülnek a régi és az új példány között a folyamat végén található gyors feladatátvételsel. 
 

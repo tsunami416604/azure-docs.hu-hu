@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076419"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710091"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Láncolt modellek betanítása és regisztrálása Azure Machine Learning
 
@@ -34,14 +34,14 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
 - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
     - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
-    - A notebook-kiszolgáló minták Deep learning mappájában keresse meg az elkészült jegyzetfüzeteket és fájlokat a **használati útmutató-azureml/Training-with-Deep-learning/Train-hiperparaméter-Tune-Deploy-with-láncolási** mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
+    - A notebook-kiszolgáló minták mély tanulási mappájában keresse meg az elkészült jegyzetfüzeteket és fájlokat a **használati útmutató-azureml > ml-keretrendszerek > a láncolt > üzembe helyezés > a Train-hiperparaméter-Tune-Deploy-with-chainer** mappában.  A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 - Saját Jupyter Notebook-kiszolgáló
 
     - [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
     - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - Töltse le a [chainer_mnist.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)a minta parancsfájlt.
-     - Megtalálhatja az útmutató befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) is a GitHub-minták oldalon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
+     - Megtalálhatja az útmutató befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) is a GitHub-minták oldalon. A jegyzetfüzet tartalmaz kibővített szakaszt az intelligens hiperparaméter hangolás, a modell üzembe helyezése és a notebook widgetek számára.
 
 ## <a name="set-up-the-experiment"></a>A kísérlet beállítása
 
@@ -82,9 +82,9 @@ os.makedirs(project_folder, exist_ok=True)
 
 Ebben az oktatóanyagban már meg van biztosítva a **chainer_mnist.** a betanítási szkript. A gyakorlatban a kód módosítása nélkül is elvégezheti az egyéni betanítási szkriptek futtatását, és futtathatja azt az Azure ML-ben.
 
-Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **chainer_mnist.** a betanítási szkript azt mutatja be, hogyan lehet naplózni néhány mérőszámot az `Run` Azure ml-ben a szkripten belüli objektum használatával.
+Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **chainer_mnist.** a betanítási szkript bemutatja, hogyan naplózhat néhány mérőszámot az Azure ml-re az `Run` objektum használatával a parancsfájlon belül.
 
-A megadott betanítási parancsfájl példákat használ a láncolási `datasets.mnist.get_mnist` függvényből.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md) , hogy az adatok elérhetők legyenek a képzés során.
+A megadott betanítási parancsfájl példákat használ a láncolási `datasets.mnist.get_mnist` függvényből.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md#data-upload) , hogy az adatok elérhetők legyenek a képzés során.
 
 Másolja a **chainer_mnist.** a betanítási szkriptet a projekt könyvtárába.
 

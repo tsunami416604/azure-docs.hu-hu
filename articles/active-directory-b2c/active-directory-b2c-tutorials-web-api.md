@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 77cd720ffd2763b2ad3d73559a5363989f9e3e3a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: fd4bf602cb5ca409b957e9dbd6f963d88428a63f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679292"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694642"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
@@ -60,11 +60,7 @@ A hatókörök lehetővé teszik a védett erőforrásokhoz való hozzáférés 
 
 Ha egy védett webes API-t szeretne meghívni egy alkalmazásból, meg kell adnia az alkalmazás engedélyeit az API-nak. Az előfeltételként szolgáló oktatóanyagban létrehozott egy webalkalmazást a *webapp1*nevű Azure ad B2Cban. Ezt az alkalmazást használhatja a webes API meghívásához.
 
-1. Válassza az **alkalmazások**, majd a *webapp1*lehetőséget.
-1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
-1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
-1. Kattintson az **OK** gombra.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Az alkalmazás regisztrálva van a védett webes API meghívásához. A felhasználók a Azure AD B2C használatával hitelesítik az alkalmazást. Az alkalmazás a védett webes API-hoz való hozzáféréshez Azure AD B2C engedélyezési engedélyt kap.
 
@@ -73,8 +69,6 @@ Az alkalmazás regisztrálva van a védett webes API meghívásához. A felhaszn
 Most, hogy regisztrálta a webes API-t, és hatókörök vannak definiálva, a webes API-t a Azure AD B2C bérlő használatára konfigurálja. Ebben az oktatóanyagban egy mintául szolgáló webes API-t fog konfigurálni. A minta webes API az előfeltételként megadott oktatóanyagban letöltött projekt részét képezi.
 
 Két projekt szerepel a mintául szolgáló megoldásban:
-
-A következő két projekt szerepel a minta megoldásban:
 
 * **TaskWebApp** – Feladatlista létrehozása és szerkesztése. A minta a **regisztrációs vagy bejelentkezési** felhasználói folyamat használatával regisztrálja vagy bejelentkezik a felhasználók számára.
 * **TaskService** – támogatja a Feladatlista létrehozását, olvasását, frissítését és törlését. Az API-t a Azure AD B2C és a TaskWebApp által védettnek nevezzük.

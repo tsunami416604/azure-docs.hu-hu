@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104821"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695529"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás Azure pont – hely kapcsolati problémák
 
@@ -84,7 +84,7 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
    | Windows 10 1709-es verzió | Március 22.2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. Adja meg a beállításkulcs értékét. Hozzon létre `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` vagy állítson be REG_DWORD kulcsot a beállításjegyzékben 1 értékre.
+2. Adja meg a beállításkulcs értékét. Hozzon létre vagy állítson be `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD kulcsot a beállításjegyzékben 1 értékre.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-ügyfél hiba: A kapott üzenet váratlan vagy helytelen formátumú volt.
 
@@ -250,32 +250,6 @@ A probléma megoldásához töltse le és telepítse újra a pont és a hely cso
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Túl sok VPN-ügyfél csatlakozik egyszerre
 
 Elérte az engedélyezett kapcsolatok maximális számát. A csatlakoztatott ügyfelek teljes száma a Azure Portalban látható.
-
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>A pont – hely típusú VPN-kapcsolat helytelenül adja hozzá a 10.0.0.0/8 útvonalat az útválasztási táblázathoz
-
-### <a name="symptom"></a>Jelenség
-
-Amikor a VPN-kapcsolatot a pont – hely ügyfélen tárcsázza, a VPN-ügyfélnek hozzá kell adnia egy útvonalat az Azure-beli virtuális hálózat felé. Az IP-segítő szolgáltatásnak hozzá kell adnia egy útvonalat a VPN-ügyfelek alhálózatához. 
-
-A VPN-ügyfél tartománya 10.0.0.0/8 kisebb alhálózathoz tartozik, például 10.0.12.0/24. A 10.0.12.0/24 útvonala helyett a 10.0.0.0/8 útvonala magasabb prioritású. 
-
-Ez a helytelen útvonal megszakítja a kapcsolatot más helyszíni hálózatokkal, amelyek a 10.0.0.0/8 tartomány egy másik alhálózatához tartoznak, például a 10.50.0.0/24, amelyek nem rendelkeznek meghatározott útvonallal. 
-
-### <a name="cause"></a>Ok
-
-Ez a viselkedés a Windows-ügyfelek számára készült kialakítás. Amikor az ügyfél a PPP IPCP protokollt használja, a kiszolgálóról szerzi be az alagút felületének IP-címét (ebben az esetben a VPN-átjárót). A protokoll korlátai miatt azonban az ügyfél nem rendelkezik alhálózati maszkkal. Mivel nincs más mód a beszerzésre, az ügyfél megpróbálja kitalálni az alhálózati maszkot az alagút interfészének IP-címének osztálya alapján. 
-
-Ezért az alábbi statikus hozzárendelések alapján adnak hozzá útvonalat: 
-
-Ha A címe az A osztályhoz tartozik – > Apply/8
-
-Ha a címe a B osztályhoz tartozik – > Apply/16
-
-Ha a címe a C osztályhoz tartozik – > Apply/24
-
-### <a name="solution"></a>Megoldás
-
-Más hálózatokhoz tartozó útvonalakat kell befecskendezni az útválasztási táblában a leghosszabb előtag-egyezéssel vagy az alacsonyabb metrikával (ezért magasabb prioritással), mint a pont – hely. 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>A VPN-ügyfél nem fér hozzá a hálózati fájlmegosztás
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 0a5059382c26afd6120dc14a1ab2c7e5d281e7a1
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421430"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695266"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -21,7 +21,7 @@ A vállalatok a globális átviteli hálózati architektúrát a felhőalapú mo
 
 ![architektúra](./media/virtual-wan-global-transit-network-architecture/architecture2.png)
 
-**1. ábra: Globális átviteli hálózat virtuális WAN-kapcsolattal**
+**1. ábra: Globális átviteli hálózat virtuális WAN @ no__t-0
 
 A modern vállalatok a felhőben és a helyszíni környezetekben a Hyper-elosztott alkalmazások, az adatközpontok és a felhasználók közötti mindennapos kapcsolatokat igénylik. Az Azure Virtual WAN a globálisan elosztott virtuális hálózatok,-helyek,-alkalmazások és-felhasználók közötti, mindenütt elérhető, bármilyen típusú kapcsolat engedélyezésével lehetővé teszi a globális átviteli hálózati architektúrát. Az Azure Virtual WAN egy Microsoft által felügyelt szolgáltatás. A szolgáltatás által alkotott összes hálózati összetevőt a Microsoft üzemelteti és kezeli. A virtuális WAN-ról további információt a [virtuális WAN áttekintése](virtual-wan-about.md) című cikkben talál.
 
@@ -44,7 +44,7 @@ Ebben a modellben a küllő a következő lehet:
 
 **2. ábra: Hub-and-spoke**
 
-A 2. ábrán a globális hálózat logikai nézete látható, ahol a földrajzilag elosztott felhasználók, fizikai helyek és virtuális hálózatok a felhőben üzemeltetett hálózati elosztón keresztül kapcsolódnak egymáshoz. Ez az architektúra lehetővé teszi a logikai egyugrásos átviteli kapcsolatok használatát a hálózati végpontok között. A küllők különböző Azure hálózati szolgáltatások, például a ExpressRoute vagy a helyek közötti VPN fizikai ágakhoz való csatlakoztatásához, valamint a virtuális hálózatok és pont – hely típusú VPN távoli felhasználók számára történő VNet.
+A 2. ábrán a globális hálózat logikai nézete látható, ahol a földrajzilag elosztott felhasználók, fizikai helyek és virtuális hálózatok a felhőben üzemeltetett hálózati elosztón keresztül kapcsolódnak egymáshoz. Ez az architektúra lehetővé teszi a logikai egyugrásos átviteli kapcsolatok használatát a hálózati végpontok között. A küllők különböző Azure hálózati szolgáltatások, például a ExpressRoute vagy a helyek közötti VPN fizikai ágakhoz való csatlakoztatásához, a virtuális hálózatok VNet kapcsolataihoz és pont – hely VPN-hez kapcsolódnak a távoli felhasználók számára.
 
 ## <a name="crossregion"></a>Régiók közötti kapcsolat
 
@@ -58,7 +58,7 @@ Bármely – bármely kapcsolat – globális architektúra kontextusában lehet
 
 ![forgalmi útvonalak](./media/virtual-wan-global-transit-network-architecture/trafficpath.png)
 
-**3. ábra: Virtuális WAN-forgalom elérési útjai**
+**3. ábra: Virtuális WAN-forgalom elérési útjai @ no__t-0
 
 Az Azure Virtual WAN a következő globális átviteli csatlakozási útvonalakat támogatja. A zárójelben lévő betűk a 3. ábrán láthatók.
 
@@ -67,11 +67,11 @@ Az Azure Virtual WAN a következő globális átviteli csatlakozási útvonalaka
 * Távoli felhasználó – VNet (c)
 * Távoli felhasználó – ág (d)
 * VNet – VNet az VNet-társítás használatával (e)
-* ExpressRoute Global Reach 
+* Az ExpressRoute Global Reach 
 
 ### <a name="branchvnet"></a>Ág – VNet
 
-A VNet az Azure Virtual WAN által támogatott elsődleges elérési út. Ez az elérési út lehetővé teszi, hogy az Azure virtuális hálózatok üzembe helyezett Azure IAAS Enterprise-munkaterhelésekhez csatlakozhasson ágakat. Az ágak a ExpressRoute vagy a helyek közötti VPN használatával csatlakoztathatók a virtuális WAN-hoz. A VNet-kapcsolatokon keresztül a virtuális WAN-központokhoz csatlakozó virtuális hálózatok áthaladó forgalom.
+A VNet az Azure Virtual WAN által támogatott elsődleges elérési út. Ez az elérési út lehetővé teszi, hogy az Azure virtuális hálózatok üzembe helyezett Azure IAAS Enterprise-munkaterhelésekhez csatlakozhasson ágakat. Az ágak a ExpressRoute vagy a helyek közötti VPN használatával csatlakoztathatók a virtuális WAN-hoz. A VNet-kapcsolatokon keresztül a virtuális WAN-központokhoz csatlakozó virtuális hálózatok áthaladó forgalom. A virtuális WAN esetében nem szükséges az [átjáró átvitele](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) , mert a virtuális WAN automatikusan engedélyezi az átjárók számára az ágakba való átvitelt.
 
 ### <a name="branchbranch"></a>Ág – ág
 
@@ -89,7 +89,7 @@ A távoli felhasználó – ág elérési út lehetővé teszi, hogy a távoli f
 
 ### <a name="vnetvnet"></a>VNet-VNet átvitel a VNet-társítással
 
-A virtuális hálózatok egymáshoz való összekapcsolásához a több virtuális hálózatok megvalósított többrétegű alkalmazások támogatásához használja a VNet-társítást. Az Azure Virtual WAN-on keresztüli VNet-VNet továbbítási forgatókönyv jelenleg nem támogatott, de az Azure-útitervben van. A virtuális hálózatok VNet-közvetítésen keresztüli csatlakoztatása a virtuális hálózatok ajánlott megoldása, amelynek csatlakoznia kell egymáshoz. [Átjáró átvitele](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (a VNet-társítások kontextusában nem szükséges a virtuális WAN, mert a virtuális WAN automatikusan engedélyezi az átjárók átvitelét.
+A virtuális hálózatok egymáshoz való összekapcsolásához a több virtuális hálózatok megvalósított többrétegű alkalmazások támogatásához használja a VNet-társítást. Az Azure Virtual WAN-on keresztüli VNet-VNet továbbítási forgatókönyv jelenleg nem támogatott, de az Azure-útitervben van. A virtuális hálózatok VNet-közvetítésen keresztüli csatlakoztatása a virtuális hálózatok ajánlott megoldása, amelynek csatlakoznia kell egymáshoz. 
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 

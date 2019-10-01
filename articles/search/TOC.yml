@@ -244,7 +244,7 @@
             - name: Tudástár létrehozása az Azure Portalon
               href: knowledge-store-create-portal.md
             - name: Létrehozás a REST és a Postman használatával
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: Megtekintés a Storage Explorerrel
               href: knowledge-store-view-storage-explorer.md
             - name: Kapcsolódás Power BI-jal

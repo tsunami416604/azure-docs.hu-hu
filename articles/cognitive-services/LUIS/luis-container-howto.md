@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7de529c9478b78ff9dd042df90a061f0a96f5427
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a718a2335ed4928c6cd40ad4dc832eaf82bc6a2b
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316403"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695299"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
  
@@ -80,7 +80,7 @@ Az elérhető címkék teljes leírását, például `latest` az előző parancs
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Miután a tároló a gazdagépen [](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
+Miután a tároló a [gazdagépen](#the-host-computer) található, a következő eljárással dolgozhat a tárolóval.
 
 ![Language Understanding (LUIS) tároló használatának folyamata](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
@@ -200,7 +200,7 @@ A betanított csomag letöltéséhez tekintse meg az [API dokumentációját itt
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A`{ENDPOINT_URI}` és`{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
-[](luis-container-configuration.md#example-docker-run-commands) A`docker run` parancs például elérhető.
+A`docker run` parancs [például](luis-container-configuration.md#example-docker-run-commands) elérhető.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -309,7 +309,7 @@ A tároló leállításához a parancssori környezetben, ahol a tároló fut, n
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a tárolót egy kimeneti csatlakoztatással [](luis-container-configuration.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
+Ha a tárolót egy kimeneti [csatlakoztatással](luis-container-configuration.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
@@ -325,7 +325,6 @@ Ezek a beállítások kapcsolatos további információkért lásd: [tárolók k
 
 A 2019 Build kiadásban kiadott legújabb tároló a következőt fogja támogatni:
 
-* Bing helyesírás-ellenőrzés: kérelmek a lekérdezés-előrejelzési végponthoz a `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` lekérdezési karakterlánc paraméterei alapján. További információért használja a [Bing Spell Check v7](luis-tutorial-bing-spellcheck.md) -oktatóanyagot. Ha ezt a funkciót használja, a tároló elküldi a teljes Bing Spell Check v7-erőforrást.
 * [Új előre összeépített tartományok](luis-reference-prebuilt-domains.md): ezek a nagyvállalati szintű tartományok többek között entitásokat, például hosszúságú kimondott szöveg és mintákat tartalmaznak. Kiterjesztheti ezeket a tartományokat saját használatra. 
 
 <a name="unsupported-dependencies"></a>
@@ -343,6 +342,7 @@ Nem támogatott alkalmazások konfigurációi|Részletek|
 |Nem támogatott entitások angol (en-US) kulturális környezetekben|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) előre elkészített entitások|
 |Beszéd alapozó|A tárolóban a külső függőségek nem támogatottak.|
 |Hangulatelemzés|A tárolóban a külső függőségek nem támogatottak.|
+|Bing – helyesírás-ellenőrzés|A tárolóban a külső függőségek nem támogatottak.|
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

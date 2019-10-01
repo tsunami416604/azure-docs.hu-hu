@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés a tárolókkal, a szolgáltatásokkal és a Java szolgáltatással az Azure-ban
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Java, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 28b6a2ecff756c878bb3bc0a69976e7cede5f7ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 160787ba9766d27f9497b4fd6822fc5bc25cd4ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772663"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695517"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Visual Studio Code és a Java on Kubernetes az Azure dev Spaces használatával
 
@@ -25,6 +25,10 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A Visual Studio Code használatával iteratív fejleszthet a tárolókban.
 - Hibakeresés a kód alapján a fejlesztői térben a Visual Studio Code-ból.
 
+Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
+- [Node. js és Visual Studio Code](quickstart-nodejs.md)
+- [A .NET Core és a Visual Studio Code](quickstart-netcore.md)
+- [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -115,7 +119,7 @@ A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állí
 A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *Java program elindítása (AZDS)* . Példa:
 
 1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
-1. [A 19. sor `src/main/java/com/ms/sample/webfrontend/Application.java` frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) :
+1. Frissítse [a 19. sort a `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) értékre a következőre:
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -136,7 +140,7 @@ Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jele
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort a 19 `src/main/java/com/ms/sample/webfrontend/Application.java` . sorba helyezi, és az *F9 billentyűt*.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 19. sorba helyezi a `src/main/java/com/ms/sample/webfrontend/Application.java` és az *F9 billentyűt*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
@@ -145,7 +149,7 @@ Amíg a szolgáltatás hibakeresési módban fut, frissítse a 19. sort `src/mai
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra a hibakeresést* , vagy a hibakeresés *eszköztáron*kattintson a *hibakeresés újraindítása* gombra.
+Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra* a hibakeresést, vagy a hibakeresés *eszköztáron*kattintson a hibakeresés újraindítása gombra.
 
 ![Hibakeresés frissítése](media/common/debug-action-refresh.png)
 

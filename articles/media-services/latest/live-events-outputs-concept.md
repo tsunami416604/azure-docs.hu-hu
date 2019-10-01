@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 196565e84ec493352ca9765d5502c9ad8ac7edd3
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350368"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703496"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -86,6 +86,9 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 * A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell követnie: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
 Lásd még: a [folyamatos átviteli végpontok elnevezési konvenciói](streaming-endpoint-concept.md#naming-convention).
+
+> [!TIP]
+> Az élő esemény nevének egyediségének biztosításához létrehozhat egy GUID azonosítót, és eltávolíthatja az összes kötőjelet és kapcsos zárójelet (ha van ilyen). A karakterlánc az összes élő eseménynél egyedi lesz, és a hossza garantált, hogy 32.
 
 ## <a name="live-event-ingest-urls"></a>Élő esemény betöltésének URL-címei
 

@@ -15,144 +15,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 30f6f81234ce34e40a29a04f6b795aab991a8824
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: a4ddcf27869ea7484f98329d14d01bfad83af219
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802861"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709535"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: Elium konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Elium és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Elium.
+Ez az oktatóanyag bemutatja, hogyan konfigurálhatja a Elium és a Azure Active Directory (Azure AD) a felhasználók vagy csoportok automatikus kiépítésére és kiépítésére a Elium.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
+> Ez az oktatóanyag egy, az Azure AD-felhasználó kiépítési szolgáltatására épülő összekötőt ismertet. A szolgáltatás működéséről és működéséről, valamint a gyakori kérdésekről a következő témakörben talál további információt: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg előzetes verzióban érhető el. Az előzetes verzióban elérhető Azure-funkciók általános használati feltételeiért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
+Ez az oktatóanyag feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Egy Azure AD-bérlő.
-* [Elium-bérlő](https://www.elium.com/pricing/)
-* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Elium-ben.
+* Azure AD-bérlő
+* [Egy Elium-bérlő](https://www.elium.com/pricing/)
+* Felhasználói fiók a Elium-ben rendszergazdai engedélyekkel
 
 ## <a name="assigning-users-to-elium"></a>Felhasználók kiosztása a Elium
 
-Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Az Azure AD a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak azok a felhasználók és csoportok lesznek szinkronizálva, amelyek az Azure AD-alkalmazáshoz vannak rendelve.
 
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai számára szükséges a Elium való hozzáférés. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Elium az alábbi utasításokat követve:
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználói és csoportjai férhetnek hozzá a Elium. Ezután rendelje hozzá ezeket a felhasználókat és csoportokat a Elium-hez a [felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)című témakör lépéseit követve.
 
 ## <a name="important-tips-for-assigning-users-to-elium"></a>Fontos Tippek a felhasználók Elium való hozzárendeléséhez 
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a Elium-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+Azt javasoljuk, hogy egyetlen Azure AD-felhasználót rendeljen hozzá a Elium-hez az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. További felhasználók és csoportok később is hozzárendelhetők.
 
-* Amikor Elium rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+Amikor Elium rendel hozzá egy felhasználóhoz, ki kell választania egy érvényes, alkalmazásspecifikus szerepkört (ha vannak ilyenek) a hozzárendelés párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
 
 ## <a name="set-up-elium-for-provisioning"></a>Elium beállítása a kiépítés számára
 
-Az Azure AD-vel való automatikus Elium konfigurálása előtt engedélyeznie kell a SCIM-létesítést a Elium-on.
+Az Azure AD-vel való automatikus Elium konfigurálása előtt engedélyeznie kell a rendszer számára a tartományok közötti Identitáskezelés-felügyelet (SCIM) létesítését a Elium-on. Kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a Elium-ba. Navigáljon a **saját profil** > **beállításaihoz**.
+1. Jelentkezzen be a Elium-ba, és lépjen a **saját profil** > **Beállítások menüpontra**.
 
-    ![Elium](media/Elium-provisioning-tutorial/setting.png)
+    ![Beállítások menüelem a Elium](media/Elium-provisioning-tutorial/setting.png)
 
-2. A speciális válassza a **Biztonság**elemet a bal alsó sarokban.
+1. A bal alsó sarokban, a **speciális**alatt válassza a **Biztonság**elemet.
 
-    ![Elium](media/Elium-provisioning-tutorial/security.png)
+    ![Biztonsági hivatkozás a Elium](media/Elium-provisioning-tutorial/security.png)
 
-3. Másolja a **titkos jogkivonatot**. Ez az érték a Elium alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
+1. Másolja a **bérlői URL-címet** és a **titkos jogkivonat** értékeit. Ezeket az értékeket később, a Elium alkalmazás **üzembe** helyezés lapjának megfelelő mezőiben fogja használni a Azure Portal.
 
-    ![Elium](media/Elium-provisioning-tutorial/token.png)
+    ![Bérlői URL-cím és titkos jogkivonat mezői a Elium](media/Elium-provisioning-tutorial/token.png)
 
+## <a name="add-elium-from-the-gallery"></a>Elium hozzáadása a gyűjteményből
 
-## <a name="add-elium--from-the-gallery"></a>Elium hozzáadása a gyűjteményből
+Az Azure AD-vel való automatikus Elium konfigurálásához az Azure AD Elium is hozzá kell adnia a felügyelt szolgáltatott szoftveres (SaaS) alkalmazások listájához. Kövesse az alábbi lépéseket:
 
-Az Azure AD-vel való automatikus Elium konfigurálásához hozzá kell adnia a Elium az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-**Ha Elium szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
+    ![Azure Active Directory menüelem](common/select-azuread.png)
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+     ![Azure AD Enterprise-alkalmazások panel](common/enterprise-applications.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza a panel tetején található **új alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Új alkalmazás hivatkozása](common/add-new-app.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+1. A keresőmezőbe írja be a **Elium**kifejezést, válassza az **Elium** elemet az eredmények listájában, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Katalógus – keresőmező](common/search-new-app.png)
 
-4. A keresőmezőbe írja be a **Elium**kifejezést, válassza az **Elium** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+## <a name="configure-automatic-user-provisioning-to-elium"></a>Automatikus felhasználó-kiépítés beállítása a Elium
 
-    ![Elium az eredmények listájában](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-elium"></a>Automatikus felhasználó-kiépítés beállítása a Elium  
-
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy Elium alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és csoportos hozzárendeléseken alapuló felhasználókat és csoportokat hozzon létre, frissítsen és tiltsa le az Elium-ben.
 
 > [!TIP]
-> Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Elium számára, az [Elium egyszeri bejelentkezés oktatóanyagában](Elium-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés függetlenül lehet konfigurálni, bár ez a két funkció
+> Azt is megteheti, hogy engedélyezi az egyszeri bejelentkezést a Elium Security Assertion Markup Language (SAML) alapján, az [Elium egyszeri bejelentkezési oktatóanyag](Elium-tutorial.md)utasításait követve. Az egyszeri bejelentkezést az automatikus felhasználó-kiépítés lehetőségtől függetlenül is konfigurálhatja, bár a két szolgáltatás kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-provisioning-for-elium--in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Elium az Azure AD-ben:
+Az Azure AD-beli Elium automatikus felhasználó-kiépítés konfigurálásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Azure AD Enterprise-alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Elium**lehetőséget.
+1. Az alkalmazások listában válassza a **Elium**lehetőséget.
 
-    ![Az Elium hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Alkalmazások listája a vállalati alkalmazások panelen](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+1. Válassza ki a kiépítés lapot.
 
-    ![Kiépítés lap](common/provisioning.png)
+    ![Kiépítés lap a vállalati alkalmazások panelen](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+1. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![Kiépítés lap](common/provisioning-automatic.png)
+    ![Automatikus beállítás a kiépítési mód esetében](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban adja meg `<tenantURL>/scim/v2` , hogy a **{TeanantURL}** érték a korábban a Elium felügyeleti konzolról lekért értéket adja meg. Adja meg a **titkos jogkivonat** értékét a **titkos jogkivonatban** kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Elium. Ha a kapcsolat meghiúsul, ellenőrizze, hogy a Elium rendelkezik-e rendszergazdai jogosultságokkal, és próbálkozzon újra.
+1. A **rendszergazdai hitelesítő adatok** szakaszban írja be a következőt: **\<tenantURL @ no__t-3/scim/v2** a **bérlői URL-cím** mezőben. (A **tenantURL** a Elium felügyeleti konzolról korábban beolvasott érték.) Írja be a Elium **titkos jogkivonat** értékét is a **titkos jogkivonat** mezőbe. Végül kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad tud-e csatlakozni a Elium. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Elium-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![A bérlői URL-cím és a titkos jogkivonat mezői a rendszergazdai hitelesítő adatokban](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+1. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, aki megkapja a kiépítési hibákra vonatkozó értesítéseket. Ezután jelölje be az **e-mailes értesítés küldése hiba** esetén jelölőnégyzetet.
 
     ![Értesítő e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Elium**lehetőséget.
+1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Elium**lehetőséget.
 
-    ![Elium felhasználói leképezések](media/Elium-provisioning-tutorial/usermapping.png)
+    ![Az Azure AD-felhasználók Elium való leképezésére szolgáló hivatkozás szinkronizálása](media/Elium-provisioning-tutorial/usermapping.png)
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Elium. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Elium felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+1. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelések** szakasz Elium. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Elium felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
-    ![Elium felhasználói attribútumai](media/Elium-provisioning-tutorial/userattribute.png)
+    ![Attribútumok hozzárendelése az Azure AD és a Elium között](media/Elium-provisioning-tutorial/userattribute.png)
 
+1. A hatóköri szűrők konfigurálásához kövesse a hatókör- [szűrő oktatóanyagának](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Az Azure AD-kiépítési szolgáltatás Elium való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-12. Az Azure AD-kiépítési szolgáltatás Elium való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+    ![Kiépítési állapot beállítása be](common/provisioning-toggle-on.png)
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+1. Adja meg a Elium kiépíteni kívánt felhasználókat és csoportokat a **Beállítások** szakasz **hatókör** legördülő listájában a kívánt értékek kiválasztásával.
 
-13. Adja meg a Elium kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+    ![Kiépítés hatóköre lista](common/provisioning-scope.png)
 
-    ![Kiépítési hatókör](common/provisioning-scope.png)
+1. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+    ![Mentés gomb a kiépítési konfigurációhoz](common/provisioning-configuration-save.png)
 
-    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálását. Ez a kezdeti szinkronizálási folyamat hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ a kiépítés szükséges időpontjáról: meddig tart a [felhasználók kiépítése?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. További információ arról, hogy mennyi ideig tart a felhasználók és/vagy csoportok kiépítése, hogy [mennyi ideig tart a felhasználók kiépítése](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
-
-A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Elium-on végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../manage-apps/check-status-user-account-provisioning.md)során.
-
+A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat. A kiépítési tevékenység jelentés az Azure AD-kiépítési szolgáltatás által a Elium-on végrehajtott összes műveletet ismerteti. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../manage-apps/check-status-user-account-provisioning.md)során.
 
 ## <a name="additional-resources"></a>További források
 

@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: aahi
-ms.openlocfilehash: 59a4d79cc68c57faf54bde3d42370fb17a317325
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725563"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694915"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Gyors útmutató: A Pythonhoz készült adatrendellenesség-detektor ügyféloldali kódtára
 
-Ismerkedés az anomália-detektor .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
+Ismerkedjen meg a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
 A következőhöz használhatja a a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtárat:
 
@@ -70,7 +70,7 @@ Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.c
 
 ## <a name="code-examples"></a>Példák a kódokra 
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a következőhöz: az anomália-detektor .NET-hez készült ügyféloldali kódtára:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült rendellenesség-Kiderítő ügyféloldali kódtár használatával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Idősorozat-adatkészlet betöltése fájlból](#load-time-series-data-from-a-file)
@@ -85,14 +85,14 @@ Adja hozzá az Azure Location változót a végponthoz, és hitelesítse az ügy
 
 ## <a name="load-time-series-data-from-a-file"></a>Adatsorozat-adatok betöltése fájlból
 
-A rövid útmutatóhoz tartozó példa adatainak letöltése [](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv)a githubról:
+A rövid útmutatóhoz tartozó példa adatainak letöltése [a githubról](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
 1. A böngészőben kattintson a jobb gombbal a **RAW**elemre.
 2. Kattintson **a hivatkozás mentése másként**elemre.
 3. Mentse a fájlt egy. csv-fájlként az alkalmazás könyvtárába.
 
 Ez az idősoros adat. csv-fájlként van formázva, és a rendszer elküldi a rendellenesség-Kiderítő API-nak.
 
-Töltse be az adatfájlt a Panda Library `read_csv()` metódusával, és készítsen egy üres lista változót az adatsorozatok tárolásához. Ismételje meg a fájlt, és az adatpont objektumként [](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) fűzze hozzá az adatelemet. Ez az objektum a. csv-adatfájl soraiban található timestamp és numerikus értéket fogja tartalmazni. 
+Töltse be az adatfájlt a Panda Library `read_csv()` metódusával, és készítsen egy üres List változót az adatsorozatok tárolásához. Ismételje meg a fájlt, és az [adatpont](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) objektumként fűzze hozzá az adatelemet. Ez az objektum a. csv-adatfájl soraiban található timestamp és numerikus értéket fogja tartalmazni. 
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
@@ -114,7 +114,7 @@ A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legut
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást az ide-ban, vagy a parancssorban `python` a paranccsal és a fájl nevével.
+Futtassa az alkalmazást az IDE-ban, vagy a parancssorban a `python` paranccsal és a fájl nevével.
  
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -128,6 +128,6 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 > [!div class="nextstepaction"]
 >[Adatfolyam-rendellenességek észlelése Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
 
-* Mi a rendellenesség-Kiderítő [API?](../overview.md)
+* Mi a [rendellenesség-Kiderítő API?](../overview.md)
 * [Ajánlott eljárások](../concepts/anomaly-detection-best-practices.md) az anomália-detektor API használatakor.
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)található.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648728"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694760"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -27,24 +27,32 @@ A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat máso
 
 ## <a name="download-azcopy"></a>AzCopy letöltése
 
-Először töltse le a AzCopy V10-es végrehajtható fájlt a számítógép bármely könyvtárába.
+Először töltse le a AzCopy V10-es végrehajtható fájlt a számítógép bármely könyvtárába. A AzCopy v10 csak egy végrehajtható fájl, ezért nem kell telepítenie.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) zip
-- [Linuxos](https://aka.ms/downloadazcopy-v10-linux) Tar
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) zip
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-A AzCopy v10 csak egy végrehajtható fájl, ezért nem kell telepítenie.
+Ezek a fájlok zip-fájlként (Windows és Mac) vagy tar-fájlként (Linux) vannak tömörítve.
+
+Ezekkel a parancsokkal letöltheti és kibonthatja a tar-fájlt Linux rendszeren.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
+tar -xf azcopy.tar.gz
+```
 
 > [!NOTE]
 > Ha át szeretné másolni az adatait az [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) szolgáltatásba és onnan, akkor telepítse az [AzCopy 7,3](https://aka.ms/downloadazcopynet)-es verzióját.
 
+
 ## <a name="run-azcopy"></a>AzCopy futtatása
 
-A kényelmes használat érdekében érdemes lehet hozzáadni a AzCopy végrehajtható fájljának helyét a rendszer elérési útjához. Így bármilyen könyvtárból beírhatja `azcopy` a rendszerét.
+A kényelmes használat érdekében érdemes lehet hozzáadni a AzCopy végrehajtható fájljának helyét a rendszer elérési útjához. Így a rendszer bármely könyvtárából beírhatja a `azcopy` értéket.
 
-Ha úgy dönt, hogy nem adja hozzá a AzCopy könyvtárat az elérési úthoz, akkor módosítania kell a címtárakat a AzCopy végrehajtható fájljának `azcopy` és `.\azcopy` típusának, vagy a Windows PowerShell-parancssorban.
+Ha úgy dönt, hogy nem adja hozzá a AzCopy könyvtárat az elérési úthoz, akkor módosítania kell a címtárakat a AzCopy végrehajtható fájljának helyére, és be kell írnia `azcopy` vagy `.\azcopy` értéket a Windows PowerShell-parancssorba.
 
-A parancsok listájának megtekintéséhez írja be `azcopy -h` a parancsot, majd nyomja le az ENTER billentyűt.
+A parancsok listájának megtekintéséhez írja be a `azcopy -h` parancsot, majd nyomja le az ENTER billentyűt.
 
 Egy adott parancs megismeréséhez egyszerűen adja meg a parancs nevét (például: `azcopy list -h`).
 
@@ -65,16 +73,16 @@ A táblázat használata útmutatóként:
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
 |**File Storage** | Csak SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>1\. lehetőség: Azure Active Directory használata
+### <a name="option-1-use-azure-active-directory"></a>1\. módszer: Az Azure Active Directory használata
 
 Azure Active Directory használatával hitelesítő adatokat adhat meg, ahelyett, hogy SAS-tokent kellene hozzáfűzni az egyes parancsokhoz.  
 
 > [!NOTE]
-> Ha a jelenlegi kiadásban Blobok másolását tervezi a Storage-fiókok között, akkor minden forrás URL-címhez hozzá kell fűzni egy SAS-jogkivonatot. Az SAS-tokent csak a cél URL-címről hagyhatja ki. Példák: Blobok [másolása a Storage-fiókok között](storage-use-azcopy-blobs.md).
+> Ha a jelenlegi kiadásban Blobok másolását tervezi a Storage-fiókok között, akkor minden forrás URL-címhez hozzá kell fűzni egy SAS-jogkivonatot. Az SAS-tokent csak a cél URL-címről hagyhatja ki. Példák: [Blobok másolása a Storage-fiókok között](storage-use-azcopy-blobs.md).
 
 A szükséges engedély szintje attól függ, hogy fájlokat tölt fel, vagy csak letölti őket.
 
-Ha csak le szeretné tölteni a fájlokat, ellenőrizze, hogy a [tároló blob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) -adatolvasója hozzá van-e rendelve a felhasználói identitáshoz, a felügyelt identitáshoz vagy az egyszerű szolgáltatáshoz.
+Ha csak le szeretné tölteni a fájlokat, ellenőrizze, hogy a [tároló blob-Adatolvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) hozzá van-e rendelve a felhasználói identitáshoz, a felügyelt identitáshoz vagy az egyszerű szolgáltatáshoz.
 
 > A felhasználói identitások, a felügyelt identitások és az egyszerű szolgáltatások mindegyike *rendszerbiztonsági tag*, ezért a jelen cikk további részében a *rendszerbiztonsági tag* kifejezést fogjuk használni.
 
@@ -113,7 +121,7 @@ Ha egynél több szervezethez tartozik, adja meg annak a szervezetnek a bérlői
 azcopy login --tenant-id=<tenant-id>
 ```
 
-Cserélje le a helyőrzőt annak a szervezetnek a bérlői azonosítójával, amelyhez a Storage-fiók tartozik. `<tenant-id>` A bérlő AZONOSÍTÓjának megkereséséhez válassza a Azure Portal **Azure Active Directory > tulajdonságok > a könyvtár azonosítóját** .
+Cserélje le a `<tenant-id>` helyőrzőt annak a szervezetnek a bérlői azonosítójával, amelyhez a Storage-fiók tartozik. A bérlő AZONOSÍTÓjának megkereséséhez válassza a Azure Portal **Azure Active Directory > tulajdonságok > a könyvtár azonosítóját** .
 
 Ez a parancs egy hitelesítő kódot és egy webhely URL-címét adja vissza. Nyissa meg a webhelyet, adja meg a kódot, majd válassza a **tovább** gombot.
 
@@ -125,13 +133,13 @@ Ekkor megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az
 
 #### <a name="authenticate-a-service-principal"></a>Egyszerű szolgáltatásnév hitelesítése
 
-Ez nagyszerű megoldás, ha a AzCopy-t olyan parancsfájlon belül szeretné használni, amely felhasználói beavatkozás nélkül fut, különösen ha a helyszínen fut. Ha az Azure-ban futó virtuális gépeken szeretné futtatni a AzCopy-t, a felügyelt szolgáltatás identitása könnyebben felügyelhető. További információt a cikk felügyelt [identitások hitelesítése](#managed-identity) című szakaszában talál.
+Ez nagyszerű megoldás, ha a AzCopy-t olyan parancsfájlon belül szeretné használni, amely felhasználói beavatkozás nélkül fut, különösen ha a helyszínen fut. Ha az Azure-ban futó virtuális gépeken szeretné futtatni a AzCopy-t, a felügyelt szolgáltatás identitása könnyebben felügyelhető. További információt a cikk [felügyelt identitások hitelesítése](#managed-identity) című szakaszában talál.
 
 A szkript futtatása előtt interaktívan kell bejelentkeznie legalább egyszer, hogy AzCopy biztosítson a szolgáltatásnév hitelesítő adataival.  Ezeket a hitelesítő adatokat egy biztonságos és titkosított fájlban tárolja a rendszer, így a parancsfájlnak nem kell megadnia a bizalmas adatokat.
 
 Bejelentkezhet a fiókjába egy ügyfél titkos kódjával vagy egy olyan tanúsítvány jelszavával, amely társítva van a szolgáltatásnév alkalmazásának regisztrálásához.
 
-További információ az egyszerű [szolgáltatásnév létrehozásáról: How to: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)az erőforrásokhoz.
+Ha többet szeretne megtudni az egyszerű szolgáltatásnév létrehozásáról, tekintse meg a [How: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)az erőforrásokhoz.
 
 Az egyszerű szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 
@@ -154,10 +162,10 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Ezután írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id>
+azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-Cserélje le `<application-id>` a helyőrzőt a szolgáltatásbeli tag alkalmazás-regisztrációjának alkalmazás-azonosítójával.
+Cserélje le a `<application-id>` helyőrzőt a szolgáltatásbeli alkalmazás regisztrációjának alkalmazás-azonosítójával. Cserélje le a `<tenant-id>` helyőrzőt annak a szervezetnek a bérlői azonosítójával, amelyhez a Storage-fiók tartozik. A bérlő AZONOSÍTÓjának megkereséséhez válassza a Azure Portal **Azure Active Directory > tulajdonságok > a könyvtár azonosítóját** . 
 
 ##### <a name="using-a-certificate"></a>Tanúsítvány használata
 
@@ -179,10 +187,10 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 Ezután írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
 
 ```azcopy
-azcopy login --service-principal --certificate-path <path-to-certificate-file>
+azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-Cserélje le `<path-to-certificate-file>` a helyőrzőt a tanúsítványfájl relatív vagy teljesen minősített elérési útjára. A AzCopy menti a tanúsítvány elérési útját, de nem menti a tanúsítvány másolatát, ezért ügyeljen arra, hogy a tanúsítvány a helyén maradjon.
+Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl relatív vagy teljesen minősített elérési útjára. A AzCopy menti a tanúsítvány elérési útját, de nem menti a tanúsítvány másolatát, ezért ügyeljen arra, hogy a tanúsítvány a helyén maradjon. Cserélje le a `<tenant-id>` helyőrzőt annak a szervezetnek a bérlői azonosítójával, amelyhez a Storage-fiók tartozik. A bérlő AZONOSÍTÓjának megkereséséhez válassza a Azure Portal **Azure Active Directory > tulajdonságok > a könyvtár azonosítóját** .
 
 > [!NOTE]
 > Érdemes lehet egy parancssort használni, ahogy az ebben a példában is látható. Így a jelszó nem jelenik meg a konzolon a parancs előzményeiben. 
@@ -195,7 +203,7 @@ Ez nagyszerű megoldás, ha a AzCopy-t olyan parancsfájlon belül szeretné has
 
 A fiókba a rendszerszintű felügyelt identitás használatával jelentkezhet be, amelyet engedélyezett a virtuális gépen, vagy a virtuális géphez hozzárendelt, felhasználó által hozzárendelt felügyelt identitás ügyfél-AZONOSÍTÓjának, Objektumazonosítóának vagy erőforrás-AZONOSÍTÓjának használatával.
 
-Ha többet szeretne megtudni a rendszerszintű felügyelt identitás engedélyezéséről vagy a felhasználó által hozzárendelt felügyelt identitás létrehozásáról, tekintse meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a [Azure Portal használatával](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)című témakört.
+Ha többet szeretne megtudni a rendszerszintű felügyelt identitás engedélyezéséről vagy a felhasználó által hozzárendelt felügyelt identitás létrehozásáról, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal használatával](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)című témakört.
 
 ##### <a name="using-a-system-wide-managed-identity"></a>Rendszerszintű felügyelt identitás használata
 
@@ -217,19 +225,19 @@ Ezután a parancssorba írja be a következő parancsok bármelyikét, majd nyom
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-Cserélje le `<client-id>` a helyőrzőt a felhasználó által hozzárendelt felügyelt identitás ügyfél-azonosítójával.
+Cserélje le a `<client-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás ügyfél-azonosítójával.
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-Cserélje le `<object-id>` a helyőrzőt a felhasználó által hozzárendelt felügyelt identitás objektum-azonosítójával.
+Cserélje le a `<object-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás objektum-azonosítójával.
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-Cserélje le `<resource-id>` a helyőrzőt a felhasználó által hozzárendelt felügyelt identitás erőforrás-azonosítójával.
+Cserélje le a `<resource-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás erőforrás-azonosítójával.
 
 ### <a name="option-2-use-a-sas-token"></a>2\. lehetőség: SAS-token használata
 
@@ -273,7 +281,7 @@ A hivatkozás beszerzéséhez futtassa a következő parancsot:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> Linux esetén `--strip-components=1` `tar` a parancs eltávolítja a verziószámot tartalmazó legfelső szintű mappát, a bináris fájlt pedig közvetlenül az aktuális mappába bontja ki. Ez lehetővé teszi, hogy a parancsfájl a új verziójával `azcopy` frissüljön, és csak az `wget` URL-címet frissítse.
+> Linux esetén a `--strip-components=1` a `tar` parancsnál eltávolítja a verziószámot tartalmazó legfelső szintű mappát, és ehelyett a bináris fájlt közvetlenül az aktuális mappába bontja ki. Ez lehetővé teszi, hogy a parancsfájl a `azcopy` új verziójával frissüljön, mert csak a `wget` URL-címet frissíti.
 
 Az URL-cím megjelenik a parancs kimenetében. A szkript ezután letöltheti a AzCopy az adott URL-cím használatával.
 
@@ -284,13 +292,13 @@ Az URL-cím megjelenik a parancs kimenetében. A szkript ezután letöltheti a A
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciális karakterek elmenekülése SAS-jogkivonatokban
 
-A `.cmd` kiterjesztésű batch-fájlokban el kell menekülnie a `%` sas-jogkivonatokban megjelenő karaktereket. Ezt úgy teheti meg, hogy hozzáad `%` egy hozzáadási karaktert `%` az SAS-jogkivonat karakterláncának meglévő karakterei mellett.
+A `.cmd` kiterjesztésű batch-fájlokban el kell kerülnie az SAS-jogkivonatokban megjelenő `%` karaktereket. Ezt úgy teheti meg, hogy hozzáad egy `%` karaktert a meglévő `%` karakter mellett az SAS-jogkivonat karakterláncában.
 
 ## <a name="use-azcopy-in-storage-explorer"></a>AzCopy használata Storage Explorer
 
 Ha szeretné kihasználni a AzCopy teljesítményének előnyeit, de a parancssor helyett inkább Storage Explorer szeretne használni a fájlokkal való kommunikációhoz, akkor engedélyezze a AzCopy a Storage Explorer.
 
-Storage Explorer válassza az **előnézet**->**AzCopy használata a blob feltöltésének és letöltésének javítása**lehetőséget.
+A Storage Explorerban válassza az **előnézet**-> a**AzCopy használata a Blobok feltöltéséhez és letöltéséhez**lehetőséget.
 
 ![AzCopy engedélyezése Azure Storage Explorer](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Storage Explorer hibaelhárítási útmutató | Microsoft Docs
 description: A Azure Storage Explorer hibakeresési módszereinek áttekintése
-services: virtual-machines
+services: storage
 author: Deland-Han
 manager: dcscontentpm
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ad73520c99dd5418fd4444b3f41d7d1e22f8d52f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090827"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694698"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer hibaelhárítási útmutató
 
@@ -230,7 +230,7 @@ Ha ezt a hibaüzenetet kapja, amikor egyéni csatlakozást próbál hozzáadni, 
         * `StorageExplorer_CustomConnections_Blobs_v2`
     * Fájlmegosztások
         * `StorageExplorer_CustomConnections_Files_v1`
-    * Várólisták
+    * Üzenetsorok
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Táblák
         * `StorageExplorer_CustomConnections_Tables_v1`

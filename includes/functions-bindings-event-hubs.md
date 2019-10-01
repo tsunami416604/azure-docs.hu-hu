@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 938d7e0cbd493dcb269418e9fd364611d734a085
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0880d60f9cc7ca989194a98d96f9d5f118f028d0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68589964"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71692034"
 ---
 ## <a name="trigger"></a>Eseményindító
 
@@ -390,9 +390,9 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**name** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
 |**path** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | Csak 2. x funkció. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**consumerGroup** |**ConsumerGroup** | Nem kötelező tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md)állítja #event – fogyasztók számára). Ha nincs megadva, a `$Default` rendszer a fogyasztói csoportot használja. |
+|**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a `$Default` rendszer a fogyasztói csoportot használja. |
 |**számosság** | n/a | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa a következőre:.`many`  Ha nincs megadva, vagy a `one`értékre van állítva, a rendszer egyetlen üzenetet kapott a függvénynek. |
-|**kapcsolat** |**kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md)#create-a-Event-hubok-névtér **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
+|**kapcsolat** |**kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
 |**path**|**EventHubName**|Az Event hub neve. Az alkalmazás beállításain keresztül lehet hivatkozni`%eventHubName%`|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]

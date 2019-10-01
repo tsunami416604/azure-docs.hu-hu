@@ -7,12 +7,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: antchu
-ms.openlocfilehash: fbae9d15ba8572a8ae2c493ec85eb0010c2664eb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 728111548176a0a3212b1677eeb192ccdc47fe88
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882138"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709497"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Gyors útmutató: Csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Python használatával
 
@@ -74,7 +74,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: a *function. JSON* meghatározza a függvényben használt kötéseket, és  *\_ \_az\_init\_. a.* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
+1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: a *function. JSON* a függvényben használt kötéseket definiálja, és *\_ @ no__t-3init @ no__t-4\_.py* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
 
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
@@ -102,4 +102,4 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
-> [Az Azure Functions üzembe helyezése VS Code-dal](https://code.visualstudio.com/tutorials/functions-extension/getting-started)
+> [Az Azure Functions üzembe helyezése VS Code-dal](/azure/javascript/tutorial-vscode-serverless-node-01)

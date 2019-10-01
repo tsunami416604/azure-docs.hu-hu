@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242320"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695431"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 
@@ -73,7 +73,7 @@ A forráskódban tárolt jelszavak és egyéb titkos kódok jelentős problémá
 
 ### <a name="microsoft-security-risk-detection"></a>Microsoft biztonsági kockázatok észlelése
 
-A Microsoft biztonsági kockázatok észlelése (MSRD) egy felhőalapú szolgáltatás a fuzz Testing rendszerhez. Azonosíthatja a szoftverben található kihasználható biztonsági hibákat. A szolgáltatáshoz külön előkészítési folyamat szükséges. További információ: [MSRD fejlesztői központ](https://docs.microsoft.com/security-risk-detection/).
+A Microsoft biztonsági kockázatok észlelése (MSRD) egy felhőalapú szolgáltatás a fuzz Testing rendszerhez. Azonosíthatja a szoftverben található kihasználható biztonsági hibákat. A szolgáltatáshoz külön előfizetés és aktiválás szükséges. További információ: [MSRD fejlesztői központ](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>-Elemzők
 

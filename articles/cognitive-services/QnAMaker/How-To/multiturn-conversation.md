@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351295"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695145"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
@@ -55,23 +55,37 @@ Ha létrehoz egy tudásbázist, a **tudásbáziscikk feltöltése** szakasz megj
 
 ![A többszörös Kibontás engedélyezésének jelölőnégyzete](../media/conversational-context/enable-multi-turn.png)
 
-Ha bejelöli ezt a beállítást egy importált dokumentumhoz, a többfordulatú beszélgetés a dokumentum szerkezetétől is utalhat. Ha ez a struktúra létezik, QnA Maker létrehozza az importálási folyamat részeként megjelenő kérdéseit és válaszait. 
+Ha ezt a lehetőséget választja, a többfordulatú beszélgetés a dokumentum szerkezetétől is utalhat. Ha ez a struktúra létezik, QnA Maker létrehozza az importálási folyamat részeként megjelenő kérdéseit és válaszait. 
 
 A többszörös kapcsolási struktúra csak URL-címekből, PDF-fájlokból vagy DOCX-fájlokból következtethető ki. A struktúra példájának megtekintéséhez tekintse meg a [Microsoft Surface felhasználói manuális PDF-fájljának](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)képét. A PDF-fájl mérete miatt a QnA Maker erőforrás a (z) **b** (15 index) **keresési árképzési szintet** igényli, vagy nagyobb. 
 
 ![! [A felhasználói kézikönyv struktúrájának példája] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-Ha importálja a PDF-dokumentumot, QnA Maker meghatározza, hogy a rendszer a struktúra követő figyelmeztetéseit határozza meg a beszélgetési folyamat létrehozásához. 
+### <a name="determine-multi-turn-structure-from-format"></a>Többszörös kapcsolási struktúra meghatározása formátumból
 
-1. A QnA Maker területen válassza **a Tudásbázis létrehozása**elemet.
-1. Meglévő QnA Maker szolgáltatás létrehozása vagy használata. Az előző Microsoft Surface-példában, mivel a PDF-fájl túl nagy méretű a kisebb rétegek számára, használjon egy QnA Maker szolgáltatást **b** (15 Indexes) **keresési szolgáltatással** , vagy nagyobb.
-1. Adja meg a Tudásbázis nevét, például a **Surface Manual**nevet.
-1. Jelölje be a **többszörös kinyerés engedélyezése URL-címekből,. PDF vagy. docx fájlokból** jelölőnégyzetet. 
-1. Válassza ki a felület kézi URL-címét, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** .
+A QnA Maker több-turn struktúrát határoz meg a következőtől:
 
-1. Válassza a **saját kb létrehozása** gombot. 
+* Fejléc betűmérete – ha stílust, színt vagy valamilyen más mechanizmust használ a dokumentum struktúrájának megjelenítéséhez, QnA Maker nem fogja kibontani a többszörös bekapcsolási utasításokat. 
 
-    A Tudásbázis létrehozása után megjelenik a kérdés-válasz párok nézete.
+A fejlécek szabályai a következők:
+
+* Ne fejezze be a fejlécet kérdőjeltel, `?` értékkel. 
+
+### <a name="add-file-with-multi-turn-prompts"></a>Fájl hozzáadása több bekapcsolási kéréssel
+
+Ha többfordulatos dokumentumot ad hozzá, QnA Maker meghatározza a folyamaton belüli követési kéréseket a beszélgetési folyamat létrehozásához. 
+
+1. A QnA Maker területen válasszon ki egy meglévő tudásbázist, amely az **URL-címek,. PDF vagy. docx fájlok többszörös kinyerésének engedélyezése** beállítással lett létrehozva. engedélyezve. 
+1. Lépjen a **Beállítások** lapra, és válassza ki a hozzáadni kívánt fájlt vagy URL-címet. 
+1. **Mentse és tanítsa** a tudásbázist.
+
+> [!Caution]
+> Az exportált TSV vagy XLS multi-turn Tudásbázis-fájl adatforrásként való használatának támogatása nem támogatott az új vagy az üres Tudásbázisban. Ezt a fájltípust a QnA Maker portál **Beállítások** oldaláról kell **importálnia** , hogy az exportált többszörös bekapcsolási kérések egy tudásbázishoz legyenek hozzáadva.
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tudásbázis létrehozása több bekapcsolási kéréssel a Create API használatával
+
+A [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával létrehozhat egy, a több bekapcsolást kérő kérdésekkel kapcsolatos tudásbázist. A rendszer a `context` tulajdonság `prompts` tömbben való hozzáadását kéri. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Kérdések és válaszok megjelenítése a kontextusban
 
@@ -126,29 +140,6 @@ Ha a rendszer egy követő kérdést hoz létre, és egy meglévő kérdés-vál
 1. Ha elkészült a megjelenítési szöveg szerkesztésével, válassza a **Mentés**lehetőséget. 
 1. A felső navigációs sávban **mentse és betanítása**.
 
-
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
 
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Új kérdés-válasz pár hozzáadása követő üzenetként
 
@@ -374,21 +365,13 @@ A Tudásbázisban felvette a kérdéseit, és tesztelte a folyamatot a teszt abl
 
 A JSON-válaszban visszaadott [szöveg és megjelenítési sorrend](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)is támogatott a [frissítési API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)-val való szerkesztéshez. 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tudásbázis létrehozása több bekapcsolási kéréssel a Create API használatával
-
-A [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával több bekapcsolási kéréssel is létrehozhat egy tudásbázist. A rendszer a `context` tulajdonság `prompts` tömbben való hozzáadását kéri. 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Több bekapcsolási kérés hozzáadása vagy törlése a frissítési API-val
 
 A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával több bekapcsolási kérést is hozzáadhat vagy törölhet.  A rendszer a `context` tulajdonság `promptsToAdd` tömbben és a `promptsToDelete` tömbben adja hozzá az utasításokat. 
 
+## <a name="export-knowledge-base-for-version-control"></a>Tudásbázis exportálása a verziókövetés számára
+
+A QnA Maker a QnA Maker portálon [támogatja a verziókövetés használatát](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) , többek között az exportált fájlban lévő több lépésből álló beszélgetés lépéseivel.
 
 ## <a name="next-steps"></a>További lépések
 

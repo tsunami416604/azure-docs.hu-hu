@@ -1,66 +1,66 @@
 ---
 title: Intelligens csoportok
-description: Az intelligens csoportok olyan riasztásokat, amelyek segítséget nyújtanak az összesítések riasztási zaj csökkentésére
+description: Az intelligens csoportok olyan riasztások összesítései, amelyek segítenek csökkenteni a riasztási zajt
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346322"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702858"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
-A riasztások kezelésével kapcsolatosan van átnéznie a zaj ismerje meg, hogy ténylegesen lényegre – intelligens csoportok szánt a megoldást a problémára, ha megmérkőzött közös kihívást.  
+A riasztások kezelése során felmerülő gyakori kihívás, hogy megtudja, mi a helyzet, ha az intelligens csoportok a probléma megoldására szolgálnak.  
 
-Intelligens csoportokat úgy, hogy egyetlen problémára képviselő kapcsolódó riasztások gépi tanulási algoritmusok használatával automatikusan jönnek létre.  Ha riasztás jön létre, az algoritmus hozzáad egy új intelligens csoportot vagy egy meglévő, például a korábbi minták, hasonló tulajdonságok és hasonló szerkezet információi alapján intelligens csoporthoz. Ha egy adott előfizetéshez több virtuális gépen % CPU egyidejűleg hirtelen megugró kihasználtság, és az egyes riasztások, és ha az ilyen riasztások együtt történt bármikor múltbeli időpont, ezek a riasztások valószínűleg csoportosítja a rendszer egyetlen intelligens csoportba, amely arra utal, például egy lehetséges leggyakoribb okát. Ez azt jelenti, hogy valaki hibaelhárítási figyelmeztetések, intelligens csoportok nem csak lehetővé teszi őket a zaj csökkentésére, mivel kezeli az kapcsolódó riasztások összesített egyetlen egységként, azt is segítséget nyújt számukra az felé gyakori kiváltó okok felderítése érdekében, a riasztások esetén lehetséges.
+Az intelligens csoportok automatikusan létrejönnek a gépi tanulási algoritmusok használatával, amelyek egyetlen problémát jelképező kapcsolódó riasztásokat egyesítenek.  Riasztás létrehozásakor az algoritmus hozzáadja azt egy új intelligens csoporthoz vagy egy meglévő intelligens csoporthoz olyan információk alapján, mint például a korábbi minták, a hasonló tulajdonságok és a hasonló struktúra. Ha például egy előfizetésben egyszerre több virtuális gépen található% CPU több különböző riasztáshoz vezet, és ha az ilyen riasztások a múltban bármikor bekövetkeztek, akkor ezek a riasztások valószínűleg egyetlen intelligens csoportba vannak csoportosítva, ami arra utal, hogy a lehetséges gyakori kiváltó ok. Ez azt jelenti, hogy ha valaki hibaelhárítási riasztást használ, az intelligens csoportok nem csak a zaj csökkentését teszik lehetővé a kapcsolódó riasztások egyetlen aggregált egységként való kezelésével, a riasztások lehetséges gyakori kiváltó okaival is.
 
-Az algoritmus jelenleg csak egy előfizetésen belül ugyanaz a figyelő a szolgáltatás riasztásai figyelembe veszi. Intelligens csoportok akár 99 %-a-összevonás keresztül riasztási zaj csökkentéséhez. Az oka, hogy a riasztás egy csoportot az intelligens csoport részleteit megjelenítő oldalon a Rendszeríró tekintheti meg.
+Az algoritmus jelenleg csak ugyanazon figyelő szolgáltatásból származó riasztásokat tekinti át egy előfizetésen belül. Az intelligens csoportok a riasztási zaj 99%-át csökkenthetik a konszolidáción keresztül. Megtekintheti annak okát, hogy a riasztások a csoportba tartoznak az intelligens csoport részletei lapon.
 
-Intelligens csoportok adatait tekintheti meg, és az állapot beállítása hasonlóan történik, hogyan zajlik a riasztások. Minden riasztás pontosan egy intelligens csoport tagja. 
+Megtekintheti az intelligens csoportok részleteit, és a riasztásokhoz hasonlóan állíthatja be az állapotot is. Mindegyik riasztás egy és csak egy intelligens csoport tagja. 
 
-## <a name="smart-group-state"></a>Az intelligens csoport állapota
-Az intelligens csoport állapota a riasztás állapotát, amely lehetővé teszi, hogy az intelligens csoport szintjén a feloldási folyamat kezeléséhez egy hasonló fogalma. Hasonlóan a riasztás állapota, ha egy intelligens csoport jön létre, azt a **új** állapotát, amely egyaránt módosítható **Visszaigazolva** vagy **lezárva**.
+## <a name="smart-group-state"></a>Intelligens csoport állapota
+Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amely lehetővé teszi a megoldási folyamat kezelését egy intelligens csoport szintjén. Hasonlóan a riasztási állapothoz, amikor egy intelligens csoportot hoznak létre, az **új** állapottal rendelkezik, amely módosítható a nyugtázott vagy a **lezárt**értékre is.
 
-A következő intelligens csoport állapotok támogatottak.
+A következő intelligens csoportos állapotok támogatottak.
 
-| Állapot | Leírás |
+| State | Leírás |
 |:---|:---|
-| Új | A probléma csak észlelt, és még nem lett felülvizsgálva. |
-| Visszaigazolva | A rendszergazda tekintse át az intelligens csoport és a munka megkezdése. |
-| Lezárva | A probléma megoldódott. Egy intelligens csoport lezárása után nyissa meg újra egy másik állapotának módosításával. |
+| Új | A probléma nemrég észlelhető, és még nem lett ellenőrizve. |
+| Arra vonatkozik | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
+| Lezárva | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 [Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](https://aka.ms/managing-alert-smart-group-states)
 
 > [!NOTE]
->  Az intelligens csoport állapotának módosítása nem módosítja a tagokhoz riasztások állapotát.
+>  Az intelligens csoportok állapotának módosítása nem változtatja meg az egyes tagokra vonatkozó riasztások állapotát.
 
-## <a name="smart-group-details-page"></a>Az intelligens csoport adatai lap
+## <a name="smart-group-details-page"></a>Intelligens csoport részletei lap
 
-Az intelligens Részletek lapján jelenik meg, válasszon ki egy intelligens csoportot. Az intelligens csoport, beleértve az indoklást, amely a csoport létrehozásához használt, és lehetővé teszi, hogy az állapotváltozáshoz. részleteket biztosít.
+Ha intelligens csoportot választ, az intelligens csoport részletei lap jelenik meg. Részletes információkat nyújt az intelligens csoportról, beleértve a csoport létrehozásához használt indoklást is, és lehetővé teszi az állapotának módosítását.
  
-![Az intelligens csoport részletei](media/alerts-smartgroups-overview/smart-group-detail.png)
+![Intelligens csoport részletei](media/alerts-smartgroups-overview/smart-group-detail.png)
 
 
-Az intelligens Részletek lapján az alábbi szakaszokat tartalmazza.
+Az intelligens csoport részleteit tartalmazó oldal a következő részekből áll.
 
-| Section | Leírás |
+| `Section` | Leírás |
 |:---|:---|
-| Riasztások | Az intelligens csoportban levő egyes riasztások listája. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
-| Előzmények | Felsorolja az egyes műveletet, amelyet az intelligens csoport és a hozzá végrehajtott módosításokat. Ez az állapot és riasztási tagsági változás jelenleg korlátozott. |
+| Riasztások | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
+| Előzmények | Felsorolja az intelligens csoport által végrehajtott összes műveletet, valamint a rajta végrehajtott módosításokat. Ez jelenleg csak az állapot változásaira és a riasztások tagságának változásaira korlátozódik. |
 
-## <a name="smart-group-taxonomy"></a>Az intelligens csoport besorolás
+## <a name="smart-group-taxonomy"></a>Intelligens csoport besorolása
 
-Egy intelligens csoport nevét az első riasztás neve. Nem hozható létre, vagy intelligens csoport átnevezése.
+Az intelligens csoport neve az első riasztás neve. Intelligens csoportok nem hozhatók létre és nem nevezhetők át.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
-- [A riasztási és intelligens állapot módosítása](https://aka.ms/managing-alert-smart-group-states)
+- [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
+- [A riasztás és az intelligens csoport állapotának módosítása](https://aka.ms/managing-alert-smart-group-states)
 
 

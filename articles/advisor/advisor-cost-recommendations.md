@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326581"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703034"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -21,7 +21,7 @@ Az Advisor az inaktív és a kihasználatlan erőforrások azonosításával seg
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>A virtuális gépek a kihasználatlan példányok átméretezésével vagy leállításával optimalizálható 
 
-Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor 7 napig figyeli a virtuális gépek használatát, majd azonosítja az alacsony kihasználtságú virtuális gépeket.  A virtuális gépek alacsony kihasználtságnak számítanak, ha a CPU-kihasználtsága 5%-os vagy annál kisebb, és a hálózati kihasználtsága kevesebb, mint 2%, és nem rendelkezik a küszöbértékek számával, vagy ha az aktuális munkaterhelés kisebb méretű virtuálisgép-mérettel is rendelkezhet.
+Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredményezhetnek a tervezéssel, gyakran pénzt takaríthat meg a virtuális gépek méretének és számának kezelésével. Az Advisor Advanced értékelési modelljei olyan virtuális gépeket tekintenek meg, amelyek a CPU-kihasználtság maximális értékének maximális értéke P95th kevesebb mint 3%-ot, a hálózati kihasználtság pedig kevesebb, mint 2% a 7 napos időszakban. A virtuális gépek megfelelő méretűek, ha az aktuális terhelést egy kisebb SKU-ban (ugyanabban az SKU-családban) vagy egy kisebb számú példányban szeretné megtekinteni, hogy az aktuális terhelés ne haladja meg a 80%-os kihasználtságot, ha nem a felhasználó felé irányuló munkaterhelések, és nem a felhasználó felé irányuló munkaterhelésnél 40%-kal nagyobb. Itt a számítási feladatok típusát a számítási feladatok CPU-kihasználtsági jellemzőinek elemzésével határozzuk meg.
 
 Az ajánlott műveletek leállnak, és a rendszer a számára ajánlott erőforrásra vonatkozik. Az Advisor a javasolt műveletek becsült költségmegtakarítását jeleníti meg – átméretezheti vagy leállíthatja. Emellett a javasolt művelet átméretezéséhez az Advisor az aktuális és a célként megadott SKU-információkat is biztosítja. 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240974"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693413"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok létrehozása Windows-eszközökhöz
 
@@ -134,7 +134,7 @@ A Azure IoT Edge Tools bővítmény a Visual Studióban az összes támogatott I
    | ----- | ----- |
    | Visual Studio-sablon | Válassza ki  **C# a modult**. | 
    | Modulnév | Fogadja el az alapértelmezett **IotEdgeModule1**. | 
-   | Tárház URL-címe | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/iotedgemodule1. |
+   | Tárház URL-címe | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A **bejelentkezési kiszolgáló** értékét a Azure Portal tároló-beállításjegyzékének **Áttekintés** lapjáról kérheti le. <br><br> A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/iotedgemodule1. |
 
       ![A projekt konfigurálása a céleszköz, a modul típusa és a tároló-beállításjegyzék számára](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -143,33 +143,38 @@ A Azure IoT Edge Tools bővítmény a Visual Studióban az összes támogatott I
 Ha az új projekt betöltődik a Visual Studio ablakába, szánjon egy kis időt a létrehozott fájlok megismerésére: 
 
 * Egy **CSharpTutorialApp**nevű IoT Edge-projekt.
-    * A **modulok** mappa mutatókat tartalmaz a projektben szereplő modulokhoz. Ebben az esetben csak IotEdgeModule1 kell lennie. 
-    * A **Deployment. template. JSON** fájl egy olyan sablon, amely segítséget nyújt az üzembe helyezési jegyzék létrehozásában. Az *üzembe helyezési jegyzék* egy olyan fájl, amely pontosan meghatározza, hogy mely modulokat kívánja telepíteni az eszközön, hogyan legyenek konfigurálva, és hogyan kommunikálnak egymással és a felhővel. 
+  * A **modulok** mappa mutatókat tartalmaz a projektben szereplő modulokhoz. Ebben az esetben csak IotEdgeModule1 kell lennie. 
+  * A Hidden **. env** fájl tárolja a tároló beállításjegyzékének hitelesítő adatait. Ezeket a hitelesítő adatokat a rendszer megosztja a IoT Edge eszközzel, hogy hozzáférhessen a tároló lemezképének lekéréséhez.
+  * A **Deployment. template. JSON** fájl egy olyan sablon, amely segítséget nyújt az üzembe helyezési jegyzék létrehozásában. Az *üzembe helyezési jegyzék* egy olyan fájl, amely pontosan meghatározza, hogy mely modulokat kívánja telepíteni az eszközön, hogyan legyenek konfigurálva, és hogyan kommunikálnak egymással és a felhővel.
+    > [!TIP]
+    > A beállításjegyzékbeli hitelesítő adatok szakaszban a rendszer a megoldás létrehozásakor megadott információk alapján tölti ki a címeket. A Felhasználónév és a jelszó hivatkozási változói azonban a. env fájlban tárolódnak. Ez a biztonság érdekében, mivel az. env fájlt a git figyelmen kívül hagyja, de a telepítési sablon nem.
 * Egy IoT Edge **IotEdgeModule1**nevű modul-projekt.
-    * A **program.cs** fájl tartalmazza a Project C# sablonhoz tartozó alapértelmezett modul kódját. Az alapértelmezett modul beírja a forrásból a bemenetet, és átadja a IoT Hubnak. 
-    * A **Module. JSON** fájl tartalmazza a modul részleteit, beleértve a teljes rendszerkép tárházát, a képváltozatot, valamint azt, hogy melyik Docker kell használni az egyes támogatott platformokhoz.
+  * A **program.cs** fájl tartalmazza a Project C# sablonhoz tartozó alapértelmezett modul kódját. Az alapértelmezett modul beírja a forrásból a bemenetet, és átadja a IoT Hubnak. 
+  * A **Module. JSON** fájl tartalmazza a modul részleteit, beleértve a teljes rendszerkép tárházát, a képváltozatot, valamint azt, hogy melyik Docker kell használni az egyes támogatott platformokhoz.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Adja meg a beállításjegyzékbeli hitelesítő adatait a IoT Edge-ügynöknek
 
-A IoT Edge futtatókörnyezetnek szüksége van a beállításjegyzékbeli hitelesítő adataira, hogy a tároló lemezképeit a IoT Edge eszközre húzza. Adja hozzá ezeket a hitelesítő adatokat a központi telepítési sablonhoz. 
+A IoT Edge futtatókörnyezetnek szüksége van a beállításjegyzékbeli hitelesítő adataira, hogy a tároló lemezképeit a IoT Edge eszközre húzza. A IoT Edge bővítmény megpróbálja lekérni a tároló beállításjegyzék-információit az Azure-ból, és feltölti azt a telepítési sablonban.
 
-1. Nyissa meg a **Deployment. template. JSON** fájlt.
+1. Nyissa meg a **Deployment. template. JSON** fájlt a modul-megoldásban.
 
-2. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. 
-
-3. Frissítse a tulajdonságot a hitelesítő adataival, a következő formátumban: 
+1. Keresse meg a **registryCredentials** tulajdonságot a kívánt $edgeAgent tulajdonságok között, és ellenőrizze, hogy a megfelelő információkat tartalmazza-e.
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
    ```
 
-4. Mentse a Deployment. template. JSON fájlt. 
+1. Nyissa meg a **. env** fájlt a modul-megoldásban. (Alapértelmezés szerint rejtett a Megoldáskezelőban, ezért előfordulhat, hogy az **összes fájl megjelenítése** gombra kell kattintania a megjelenítéséhez.)
+
+1. Adja meg az Azure Container registryből másolt **felhasználónevet** és a **jelszó** értékeit.
+
+1. Mentse a módosításokat a. env fájlba.
 
 ### <a name="review-the-sample-code"></a>Tekintse át a mintakódot
 

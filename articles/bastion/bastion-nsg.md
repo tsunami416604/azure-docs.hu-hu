@@ -1,22 +1,22 @@
 ---
-title: A virtuális gépek és NSG-k az Azure megerősített |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogy miként építheti be az NSG-hozzáférés az Azure megerősített
+title: Virtuális gépek és NSG használata az Azure Bastion-ben | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan építhet be NSG-hozzáférést az Azure Bastion használatával
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4f99b24435998fc4d0c7ab724c66a318586a80d4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594192"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694946"
 ---
-# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Az NSG-hozzáférés és az Azure megerősített (előzetes verzió)
+# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>A NSG-hozzáférés és az Azure Bastion (előzetes verzió) használata
 
-Az Azure megerősített használatakor a hálózati biztonsági csoportok (NSG-k) is használhatja. További információkért lásd: [biztonsági csoportok](../virtual-network/security-overview.md). 
+Az Azure Bastion használatakor hálózati biztonsági csoportokat (NSG) is használhat. További információ: [biztonsági csoportok](../virtual-network/security-overview.md). 
 
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -24,30 +24,30 @@ Az Azure megerősített használatakor a hálózati biztonsági csoportok (NSG-k
 
 ![Architektúra](./media/bastion-nsg/nsg_architecture.png)
 
-Az alábbi ábrán látható:
+Ebben a diagramban:
 
-* A virtuális hálózatban van üzembe helyezve a bástyagazdagép.
-* A felhasználó csatlakozik az Azure Portalon HTML5 böngészőkben használatával.
-* A felhasználó kijelöli a virtuális gép csatlakozni.
-* Egyetlen kattintással az RDP/SSH-munkamenetet a böngészőben nyílik meg.
-* Az Azure virtuális gépen nincs nyilvános IP-cím szükséges.
+* A megerősített gazdagép üzembe helyezése a virtuális hálózaton történik.
+* A felhasználó bármely HTML5 böngésző használatával csatlakozik a Azure Portalhoz.
+* A felhasználó kiválasztja azt a virtuális gépet, amelyhez csatlakozni szeretne.
+* Egyetlen kattintással megnyílik az RDP/SSH-munkamenet a böngészőben.
+* Nem szükséges nyilvános IP-cím az Azure-beli virtuális gépen.
 
 ## <a name="nsg"></a>Hálózati biztonsági csoportok
 
-* **AzureBastionSubnet:** Az Azure megerősített az adott AzureBastionSubnet van üzembe helyezve.  
-    * **A nyilvános internetről bejövő forgalmat:** Az Azure megerősített létrehoz egy nyilvános IP-cím, amelyet engedélyezve van a nyilvános IP-cím a bejövő forgalom a 443-as porton. Port: 3389/22 nem szükségesek a AzureBastionSubnet megnyitni.
-    * **Cél virtuális gépek felé irányuló kimenő adatforgalmat:** Az Azure megerősített fogják tudni elérni a cél virtuális gépek magánhálózati IP. Az NSG-k más céloldali Virtuálisgép-alhálózatok felé irányuló kimenő adatforgalmat engedélyezni kell.
-* **Céloldali Virtuálisgép-alhálózat:** Ez az az alhálózatot, amelyet a cél virtuális gépen, amelyet szeretne az RDP/ssh-KAPCSOLATOT tartalmaz.
-    * **Azure megerősített érkező bejövő forgalmat:** Az Azure megerősített el fog érni a cél virtuális gép magánhálózati IP. RDP/SSH-port (3389-es port és a 22-es, illetve) kell a cél virtuális gép oldalán kell megnyitni a magánhálózati IP.
+* **AzureBastionSubnet:** Az Azure Bastion üzembe helyezése az adott AzureBastionSubnet történik.  
+    * **Bejövő forgalom a nyilvános internetről:** Az Azure Bastion létrehoz egy nyilvános IP-címet, amelyhez a 443-es port szükséges a nyilvános IP-címen a bejövő forgalom számára. A AzureBastionSubnet nem szükséges megnyitni a 3389/22-es portot.
+    * **Kimenő forgalom a cél virtuális gépek felé:** Az Azure Bastion a cél virtuális gépeket magánhálózati IP-címekre fogja elérni. A NSG engedélyeznie kell a kimenő forgalmat más cél virtuálisgép-alhálózatokra.
+* **Cél virtuálisgép-alhálózat:** Ez az az alhálózat, amely az RDP/SSH-t tartalmazó cél virtuális gépet tartalmazza.
+    * **Bejövő forgalom az Azure Bastion-ből:** Az Azure Bastion privát IP-címen éri el a cél virtuális gépet. Az RDP-/SSH-portokat (a 3389-es és a 22-es portot) a cél virtuális gépen kell megnyitni a privát IP-címeken.
 
-## <a name="apply"></a>NSG-ket alkalmaz az AzureBastionSubnet
+## <a name="apply"></a>NSG alkalmazása a AzureBastionSubnet
 
-Ha NSG-ket alkalmaz az **AzureBastionSubnet**, Azure vezérlősík és az infrastruktúra a következő két szolgáltatáscímkék engedélyezése:
+Ha a NSG alkalmazza a **AzureBastionSubnet**, engedélyezze a következő két szolgáltatási címkét az Azure Control Plane és az infrastruktúra számára:
 
-* **(Csak Resource Manager) GatewayManager**: Ez a címke az Azure-átjáró Manager szolgáltatás címelőtagjait. Ha GatewayManager értéket ad meg, engedélyezett vagy tiltott forgalmat GatewayManager való.  Az NSG-ket a AzureBastionSubnet létrehozásakor, engedélyezze a bejövő forgalom GatewayManager címke.
+* **GatewayManager (csak Resource Manager esetén)** : Ez a címke az Azure Gateway Manager szolgáltatáshoz tartozó címek előtagjait jelöli. Ha az értékhez GatewayManager ad meg, a forgalom a GatewayManager számára engedélyezett vagy megtagadható.  Ha NSG hoz létre a AzureBastionSubnet, engedélyezze a GatewayManager címkét a bejövő forgalom számára.
 
-* **(Csak Resource Manager) AzureCloud**: Ez a címke azt jelzi, hogy az IP-címtér az Azure-ban minden adatközpont nyilvános IP-címek többek között. Az érték az AzureCloud ad meg, ha engedélyezett vagy tiltott forgalmat az Azure nyilvános IP-címeket. Ha csak egy adott régióban AzureCloud hozzáférést, a régió is megadhat. Ha például csak az USA keleti régiójában Azure AzureCloud hozzáférést szeretne, megadhatja AzureCloud.EastUS szolgáltatáscímkét. Az NSG-ket a AzureBastionSubnet létrehozásakor, engedélyezze a kimenő forgalom AzureCloud címke.
+* **AzureCloud (csak Resource Manager esetén)** : Ez a címke az Azure IP-címtartományt jelöli, beleértve az összes adatközpont nyilvános IP-címét. Ha az értékhez AzureCloud ad meg, a forgalom engedélyezett vagy megtagadható az Azure nyilvános IP-címei számára. Ha csak egy adott régió AzureCloud szeretné engedélyezni a hozzáférést, megadhatja a régiót. Ha például az USA keleti régiójában csak az Azure AzureCloud szeretné engedélyezni a hozzáférést, megadhatja a AzureCloud. EastUS szolgáltatást. Ha NSG hoz létre a AzureBastionSubnet, engedélyezze a AzureCloud címkét a kimenő forgalom számára. Ha a 443-es portot az internetre nyitja meg, akkor nem kell engedélyeznie a AzureCloud címkét a bejövő forgalom számára.
 
 ## <a name="next-steps"></a>További lépések
 
-Azure megerősített kapcsolatos további információkért lásd: a [– gyakori kérdések](bastion-faq.md)
+További információ az Azure Bastion-ről: [Gyakori kérdések](bastion-faq.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326817"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695444"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>VHD feltöltése az Azure-ba az Azure CLI használatával
 
@@ -32,7 +32,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
 
-A virtuális merevlemez Azure-ba való feltöltéséhez létre kell hoznia egy üres felügyelt lemezt, amely kifejezetten ehhez a feltöltési folyamathoz van konfigurálva. Mielőtt létrehoz egyet, néhány további információra van szüksége a lemezekről.
+A virtuális merevlemez Azure-ba való feltöltéséhez létre kell hoznia egy üres felügyelt lemezt, amely ehhez a feltöltési folyamathoz van konfigurálva. Mielőtt létrehoz egyet, néhány további információra van szüksége a lemezekről.
 
 Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 
@@ -43,7 +43,7 @@ Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjs
 
 Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, bájtban kell megadnia a feltölteni kívánt vhd-fájl méretét. Ehhez használja a `wc -c <yourFileName>.vhd` vagy a `ls -al <yourFileName>.vhd` értéket. Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
 
-Hozzon létre egy üres szabványos HDD-t a feltöltéshez a [lemezes létrehozási](/cli/azure/disk#az-disk-create) parancsmagban a **-– for-upload** paraméter és a **--upload-size-byte** paraméter megadásával:
+Hozzon létre egy üres szabványos HDD-t a feltöltéshez a **-– for-upload** paraméter és a **--upload-size-Bytes** paraméter megadásával a [lemez létrehozása](/cli/azure/disk#az-disk-create) parancsmagban:
 
 ```azurecli-interactive
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs

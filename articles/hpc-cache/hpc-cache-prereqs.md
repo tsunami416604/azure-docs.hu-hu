@@ -4,14 +4,14 @@ description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299920"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709959"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Az Azure HPC cache használatának előfeltételei (előzetes verzió)
 
@@ -57,15 +57,14 @@ További információ az Azure Virtual Networks és a DNS-kiszolgáló konfigur�
 A gyorsítótár létrehozásának megkezdése előtt olvassa el ezeket az engedélyeket érintő előfeltételeket.
 
 * A gyorsítótár-példánynak képesnek kell lennie virtuális hálózati adapterek (NIC-EK) létrehozására. A gyorsítótárat létrehozó felhasználónak elegendő jogosultsággal kell rendelkeznie az előfizetésben a hálózati adapterek létrehozásához.
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
 * Ha blob Storage-t használ, az Azure HPC cache-nek engedélyre van szüksége a Storage-fiók eléréséhez. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosíthatja a gyorsítótár elérését a blob-tárolóhoz. Két szerepkörre van szükség: Storage-fiók közreműködői és tárolási blob adatközreműködői. A szerepkörök hozzáadásához kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című témakör utasításait.
 
 ## <a name="storage-infrastructure"></a>Tárolási infrastruktúra
 
-A gyorsítótár támogatja az Azure Blob-tárolókat vagy az NFS hardveres tárolók exportálását. A tárolási célokat a gyorsítótár létrehozásakor is meghatározhatja, de később is hozzáadhat tárhelyet.
+A gyorsítótár támogatja az Azure Blob-tárolókat vagy az NFS hardveres tárolók exportálását. Adja hozzá a tárolási célokat a gyorsítótár létrehozása után.
 
-Mindegyik tárolási típushoz konkrét előfeltételek vonatkoznak. 
+Mindegyik tárolási típushoz konkrét előfeltételek vonatkoznak.
 
 ### <a name="nfs-storage-requirements"></a>NFS-tárolási követelmények
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002538"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710063"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
 
@@ -31,7 +31,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
  - Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
     - Fejezze be [az oktatóanyagot: Az SDK-val](tutorial-1st-experiment-sdk-setup.md) és a minta adattárral előre betöltött dedikált jegyzetfüzet-kiszolgáló létrehozásához beállíthatja a környezetet és a munkaterületet.
-    - A notebook-kiszolgálón a Samples Training mappában keresse meg a kitöltött és kibontott jegyzetfüzetet, ehhez a következő könyvtárra navigálva: **How-to-use-azureml > training > Train-hiperparaméter-Tune-Deploy-sklearn** mappa.
+    - A notebook-kiszolgáló minták betanítási mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **How-to-use-azureml > ml-keretrendszerek > scikit-learn > training > Train-hiperparaméter-Tune-Deploy-with-sklearn** mappa.
 
  - Saját Jupyter Notebook-kiszolgáló
 
@@ -40,7 +40,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
     - Az adatkészlet és a minta parancsfájl letöltése 
         - [Írisz-adatkészlet](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz egy kibővített szakaszt, amely az intelligens hiperparaméter hangolását és a legjobb modell elsődleges metrikák általi beolvasását ismerteti.
+    - Az útmutató egy befejezett [Jupyter notebook verzióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) is megtalálhatja a GitHub-minták lapon. A jegyzetfüzet tartalmaz egy kibővített szakaszt, amely az intelligens hiperparaméter hangolását és a legjobb modell elsődleges metrikák általi beolvasását ismerteti.
 
 ## <a name="set-up-the-experiment"></a>A kísérlet beállítása
 
@@ -84,28 +84,20 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Adatkészlet és parancsfájlok feltöltése
+### <a name="prepare-training-script"></a>Betanítási szkript előkészítése
 
-Az [adattár](how-to-access-data.md) olyan hely, ahol az adatok tárolása és elérése az adatoknak a számítási célra való csatlakoztatásával vagy másolásával történik. Mindegyik munkaterület alapértelmezett adattárt biztosít. Töltse fel az adatok és a betanítási szkripteket az adattárba, hogy azok könnyen elérhetők legyenek a betanítás során.
+Ebben az oktatóanyagban már meg van biztosítva a **train_iris.** a betanítási szkript. A gyakorlatban a kód módosítása nélkül is elvégezheti az egyéni betanítási szkriptek futtatását, és futtathatja azt az Azure ML-ben.
 
-1. Hozza létre az adataihoz tartozó könyvtárat.
+Az Azure ML követési és metrikái képességeinek használatához vegyen fel egy kis mennyiségű Azure ML-kódot a betanítási szkriptbe.  A **train_iris.** a betanítási szkript bemutatja, hogyan naplózhat néhány mérőszámot az Azure ml-re az `Run` objektum használatával a parancsfájlon belül.
 
-    ```Python
-    os.makedirs('./data/iris', exist_ok=True)
-    ```
+A megadott betanítási parancsfájl a `iris = datasets.load_iris()` függvényből származó példákat használ.  A saját adatok esetében előfordulhat, hogy olyan lépéseket kell használnia, mint például az [adatkészlet és a parancsfájlok feltöltése](how-to-train-keras.md#data-upload) , hogy az adatok elérhetők legyenek a képzés során.
 
-1. Töltse fel az írisz-adatkészletet az alapértelmezett adattárba.
+Másolja a **train_iris.** a betanítási szkriptet a projekt könyvtárába.
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/iris', target_path='iris', overwrite=True, show_progress=True)
-    ```
-
-1. Töltse fel a scikit-Learn tanítási `train_iris.py`szkriptet.
-
-    ```Python
-    shutil.copy('./train_iris.py', project_folder)
-    ```
+```
+import shutil
+shutil.copy('./train_iris.py', project_folder)
+```
 
 ## <a name="create-or-get-a-compute-target"></a>Számítási cél létrehozása vagy beszerzése
 

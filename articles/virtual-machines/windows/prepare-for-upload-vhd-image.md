@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: d2922f79c0b2ef7098e0f51e0c3bf6ab18a1b0e3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200291"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695384"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -440,7 +440,8 @@ A következő beállítások nem érintik a VHD feltöltését. Javasoljuk azonb
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
   Ha egy adatlemez csatlakozik a virtuális géphez, az ideiglenes meghajtó kötetének betűjele általában *D*. Ez a megjelölés eltérő lehet a beállításaitól és a rendelkezésre álló meghajtók számától függően.
-
+  * Javasoljuk, hogy tiltsa le a víruskereső szoftverek által biztosított parancsfájl-blokkolók letiltását. Előfordulhat, hogy az új virtuális gép lemezképből való üzembe helyezése során a Windows kiépítési ügynök parancsfájljait nem lehet megakadályozni és letiltani.
+  
 ## <a name="next-steps"></a>További lépések
 * [Windowsos virtuálisgép-rendszerkép feltöltése az Azure-ba Resource Manager-alapú üzembe helyezésekhez](upload-generalized-managed.md)
 * [Az Azure Windows VM aktiválási problémáinak elhárítása](troubleshoot-activation-problems.md)

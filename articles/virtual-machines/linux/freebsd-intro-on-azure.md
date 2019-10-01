@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: cce66ff5d5270596ef9d9911764b7eb2a6460fd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c1ac7a0310eda032b45fb57cea95ba38b753ef1d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083251"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695350"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>A FreeBSD bemutatása az Azure-ban
 Ez a cikk áttekintést nyújt a FreeBSD rendszerű virtuális gépek Azure-ban való futtatásáról.
@@ -29,19 +29,13 @@ A FreeBSD for Microsoft Azure a modern kiszolgálók, asztali számítógépek �
 
 A Microsoft Corporation az Azure-ban elérhető FreeBSD-lemezképeket készít az Azure-beli [virtuális gép vendég ügynökével](https://github.com/Azure/WALinuxAgent/) előre konfigurálva. A Microsoft jelenleg a következő FreeBSD-verziókat kínálja lemezképként:
 
-- FreeBSD 10,3 – kiadás
-- FreeBSD 10,4 – kiadás
-- FreeBSD 11,1 – kiadás
+- [A FreeBSD 10,4 Az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+- [A FreeBSD 11,2 Az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
+- [A FreeBSD 12,0 az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
 
 Az ügynök feladata a FreeBSD virtuális gép és az Azure-háló közötti kommunikáció, például a virtuális gép üzembe helyezése az első használatnál (Felhasználónév, jelszó vagy SSH-kulcs, állomásnév stb.), valamint a szelektív virtuálisgép-bővítmények funkcióinak engedélyezése.
 
 A FreeBSD jövőbeli verzióihoz hasonlóan a stratégia is naprakész marad, és hamarosan elérhetővé teszi a legújabb kiadásokat a FreeBSD Release Engineering csapatának közzétételekor.
-
-## <a name="deploying-a-freebsd-virtual-machine"></a>FreeBSD rendszerű virtuális gép üzembe helyezése
-A FreeBSD rendszerű virtuális gépek üzembe helyezése egy egyszerű folyamat, amely az Azure Marketplace-ről származó rendszerképet használ a Azure Portal:
-
-- [A FreeBSD 10,4 Az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [A FreeBSD 11,2 Az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD-alapú virtuális gép létrehozása az Azure CLI-vel a FreeBSD-n
 Először telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t, de a következő parancsot egy FreeBSD-gépen.
@@ -65,9 +59,9 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-A telepítés során a rendszer megkérdezi `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Ha megválaszolja `y` és `/etc/rc.conf` beírja a as-t `a path to an rc file to update`, `ERROR: [Errno 13] Permission denied`akkor előfordulhat, hogy a probléma teljesül. A probléma megoldásához az írási jogot az aktuális felhasználónak kell megadnia a fájlhoz `etc/rc.conf`.
+A telepítés során a rendszer megkérdezi `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Ha a `y` értéket választja, és a `/etc/rc.conf` értéket `a path to an rc file to update` értékre adja meg, akkor a `ERROR: [Errno 13] Permission denied`. A probléma megoldásához meg kell adnia az írási jogot az aktuális felhasználónak a `etc/rc.conf` fájlon.
 
-Most már bejelentkezhet az Azure-ba, és létrehozhatja a FreeBSD rendszerű virtuális gépet. Az alábbi példa egy FreeBSD 11,0 virtuális gép létrehozását mutatja be. A paramétert `--public-ip-address-dns-name` globálisan egyedi DNS-névvel is hozzáadhatja egy újonnan létrehozott nyilvános IP-címhez. 
+Most már bejelentkezhet az Azure-ba, és létrehozhatja a FreeBSD rendszerű virtuális gépet. Az alábbi példa egy FreeBSD 11,0 virtuális gép létrehozását mutatja be. A `--public-ip-address-dns-name` paramétert is hozzáadhatja egy globálisan egyedi DNS-névvel az újonnan létrehozott nyilvános IP-címekhez. 
 
 ```azurecli
 az login 
@@ -116,7 +110,7 @@ A [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/Cus
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Hitelesítés: felhasználónevek, jelszavak és SSH-kulcsok
 Ha a Azure Portal használatával hoz létre egy FreeBSD rendszerű virtuális gépet, meg kell adnia a felhasználónevet, a jelszót vagy az SSH nyilvános kulcsát.
 A FreeBSD rendszerű virtuális gépek Azure-beli üzembe helyezéséhez használt felhasználónevek nem egyeznek meg a virtuális gépen (például "root") már meglévő rendszerfiókok (UID < 100) neveivel.
-Jelenleg csak az RSA SSH-kulcs támogatott. A többsoros SSH-kulcsnak `---- BEGIN SSH2 PUBLIC KEY ----` a és a `---- END SSH2 PUBLIC KEY ----`végződéssel kell kezdődnie.
+Jelenleg csak az RSA SSH-kulcs támogatott. A többsoros SSH-kulcsnak a `---- BEGIN SSH2 PUBLIC KEY ----` értékkel kell kezdődnie, és a `---- END SSH2 PUBLIC KEY ----` végződéssel kell végződnie.
 
 ## <a name="obtaining-superuser-privileges"></a>Rendszergazdai jogosultságok beszerzése
 Az Azure-beli virtuálisgép-példány üzembe helyezése során megadott felhasználói fiók egy kiemelt fiók. A sudo csomag a közzétett FreeBSD-rendszerképbe lett telepítve.
@@ -126,7 +120,7 @@ Miután bejelentkezett ezzel a felhasználói fiókkal, a parancs szintaxisa seg
 $ sudo <COMMAND>
 ```
 
-Igény szerint megszerezheti a legfelső szintű rendszerhéjt `sudo -s`is.
+@No__t-0 használatával beszerezheti a legfelső szintű rendszerhéjt is.
 
 ## <a name="known-issues"></a>Ismert problémák
 Az [Azure VM-vendég ügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2-es verziója [ismert hibát](https://github.com/Azure/WALinuxAgent/pull/517) tartalmaz, amely az Azure-beli FreeBSD rendszerű virtuális gépek üzembe helyezési hibáját okozza. A javítást az [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) 2.2.3-es és újabb kiadásaiban rögzítettük. 
