@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: Gazdagépcsoport létrehozása a PowerShell-lel
       href: create-host-pools-powershell.md
+    - name: Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
+      href: deploy-windows-7-virtual-machine.md
     - name: Windows-licenc alkalmazása Windows Virtual Desktop munkamenetgazdákra
       href: apply-windows-license.md
     - name: Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: Munkamenetgazda virtuális gép konfigurációja
       href: troubleshoot-vm-configuration.md
+    - name: Windows 7 rendszerű virtuális gép hibaelhárítása a Windows Virtual Desktopban
+      href: troubleshoot-windows-7-vm.md
     - name: Távoli asztali ügyfélkapcsolatok
       href: troubleshoot-client-connection.md
     - name: Windows Virtual Desktop – PowerShell

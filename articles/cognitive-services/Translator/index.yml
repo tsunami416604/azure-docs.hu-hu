@@ -1,113 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: A Translator Text dokumentációja
+summary: A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a Microsoft Speech Services használatával fordíthat le szövegeket.
 metadata:
-  title: 'A Translator Text dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
-  description: 'Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text használatával.'
+  title: A Translator Text dokumentációja – gyorsútmutatók, oktatóanyagok, API-referencia
+  titleSuffix: Azure Cognitive Services
+  description: A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a Microsoft Speech Services használatával fordíthat le szövegeket.
   services: cognitive-services
-  author: swmachan
+  author: erhopf
   manager: nitinme
+  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
-  ms.date: 06/04/2019
-  ms.author: swmachan
-abstract:
-  description: 'A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/"> Microsoft Speech Services</a> használatával fordíthat le szövegeket. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listájáért lásd: <a href="languages.md">Támogatott nyelvek</a>.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/translator/translator-info-overview
-            html: <p>A Translator Text API ismertetése</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi a Translator Text API?
-          - href: /azure/cognitive-services/translator/custom-translator/overview
-            html: <p>A Custom Translator ismertetése</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Mi a Custom Translator?
-          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-            html: <p>Bevezetés a Custom Translator használatába</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: A Custom Translator rövid útmutatója
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerkedés a Translator Text API-val:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo_java.svg
-            title: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            title: Node.js
-          - image:
-              src: media/index/logo_python.svg
-            title: Python
-          - image:
-              src: media/index/logo_go.svg
-            title: Indítás
-        rows:
-          - title: Szöveg lefordítása
-            values:
-              - href: quickstart-translate?pivots=programming-language-csharp
-              - href: quickstart-translate?pivots=programming-language-java
-              - href: quickstart-translate?pivots=programming-language-nodejs
-              - href: quickstart-translate?pivots=programming-language-python
-              - href: quickstart-translate?pivots=programming-language-go
-          - title: Szövegek konvertálása egyik szkriptből a másikba
-            values:
-              - href: quickstart-transliterate?pivots=programming-language-csharp
-              - href: quickstart-transliterate?pivots=programming-language-java
-              - href: quickstart-transliterate?pivots=programming-language-nodejs
-              - href: quickstart-transliterate?pivots=programming-language-python
-              - href: quickstart-transliterate?pivots=programming-language-go
-          - title: Szöveg nyelvének felismerése
-            values:
-              - href: quickstart-detect?pivots=programming-language-csharp
-              - href: quickstart-detect?pivots=programming-language-java
-              - href: quickstart-detect?pivots=programming-language-nodejs
-              - href: quickstart-detect?pivots=programming-language-python
-              - href: quickstart-detect?pivots=programming-language-go
-          - title: Alternatív fordítások és használat lekérése
-            values:
-              - href: quickstart-dictionary?pivots=programming-language-csharp
-              - href: quickstart-dictionary?pivots=programming-language-java
-              - href: quickstart-dictionary?pivots=programming-language-nodejs
-              - href: quickstart-dictionary?pivots=programming-language-python
-              - href: quickstart-dictionary?pivots=programming-language-go
-          - title: Mondat hosszának meghatározása
-            values:
-              - href: quickstart-sentences?pivots=programming-language-csharp
-              - href: quickstart-sentences?pivots=programming-language-java
-              - href: quickstart-sentences?pivots=programming-language-nodejs
-              - href: quickstart-sentences?pivots=programming-language-python
-              - href: quickstart-sentences?pivots=programming-language-go
-          - title: A támogatott nyelvek teljes listájának beolvasása
-            values:
-              - href: quickstart-languages?pivots=programming-language-csharp
-              - href: quickstart-languages?pivots=programming-language-java
-              - href: quickstart-languages?pivots=programming-language-nodejs
-              - href: quickstart-languages?pivots=programming-language-python
-              - href: quickstart-languages?pivots=programming-language-go
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'További információ a Translator Text API-t használó alkalmazások fejlesztéséről:'
-      - type: paragraph
-        text: '<li><a href="tutorial-wpf-translation-csharp.md">Translator Textet használó WPF-alkalmazás létrehozása (C#)</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Flask-fordítóalkalmazás létrehozása (Python)</a></li>'
-  - title: Referencia
-    items:
-      - type: paragraph
-        text: <p><a href="reference/v3-0-reference.md">API-referencia</a></p>
+  ms.date: 09/05/2019
+  ms.author: erhopf
+  ms.openlocfilehash: 7bbe487ff6ed545f40cccc5abb041f54ea5f319d
+  ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/29/2019
+  ms.locfileid: "71672558"
+landingContent:
+- title: Fordító
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Translator Text API
+      url: translator-info-overview.md
+    - text: Custom Translator
+      url: translator-info-overview.md
+    - text: Díjszabás
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - text: Megfelelőség
+      url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
+    - text: Előfizetés létrehozása
+      url: translator-text-how-to-signup.md
+    - text: GYIK
+      url: https://www.microsoft.com/translator/faq.aspx
+- title: Translator Text API
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Szöveg lefordítása
+      url: quickstart-translate.md
+    - text: Szöveg átírása
+      url: quickstart-transliterate.md
+    - text: Nyelvfelismerés
+      url: quickstart-detect.md
+    - text: Keresés a szótárban
+      url: quickstart-dictionary.md
+    - text: Mondat hosszának meghatározása
+      url: quickstart-sentences.md
+    - text: Támogatott nyelvek listája
+      url: quickstart-languages.md
+  - linkListType: tutorial
+    links:
+    - text: WPF-fordítóalkalmazás létrehozása (C#)
+      url: tutorial-wpf-translation-csharp.md
+    - text: Flask-fordítóalkalmazás létrehozása (REST)
+      url: tutorial-build-flask-app-translation-synthesis.md
+  - linkListType: reference
+    links:
+    - text: Translator Text API-referencia (v3)
+      url: reference/v3-0-reference.md
+    - text: Kérelmekre vonatkozó korlátok
+      url: request-limits.md
+    - text: Nyelvi és régiós támogatás
+      url: language-support.md
+- title: Custom Translator
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Egyéni modell létrehozása és üzembe helyezése
+      url: custom-translator/quickstart-build-deploy-custom-model.md
+  - linkListType: get-started
+    links:
+    - text: Projekt létrehozása
+      url: custom-translator/how-to-create-project.md
+    - text: Projektek kezelése
+      url: custom-translator/how-to-search-edit-delete-projects.md
+    - text: Dokumentumok feltöltése
+      url: custom-translator/how-to-upload-document.md
+    - text: A modell betanítása
+      url: custom-translator/how-to-train-model.md
+  - linkListType: learn
+    links:
+    - text: Munkaterületek és projektek
+      url: custom-translator/workspace-and-project.md
+    - text: Párhuzamos dokumentumok
+      url: custom-translator/what-are-parallel-documents.md
+    - text: Szótár
+      url: custom-translator/what-is-dictionary.md
+    - text: Támogatott dokumentumformátumok
+      url: custom-translator/document-formats-naming-convention.md
+  - linkListType: reference
+    links:
+    - text: Nyelvi támogatás
+      url: language-support.md
+    - text: Szószedet
+      url: custom-translator/glossary.md
+- title: További források
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Példák a GitHubon
+      url: https://aka.ms/TranslatorGitHub
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-translator

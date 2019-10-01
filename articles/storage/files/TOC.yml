@@ -183,6 +183,8 @@
       items:
         - name: 'Blobok, üzenetsorok és fájlok (12.x verzió – előzetes)'
           href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+        - name: 'Blobok, üzenetsorok és fájlok (8-as verzió)'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
         - name: Storage Resource Provider
           href: /java/api/overview/azure/storage/management
     - name: Node.js
@@ -284,6 +286,8 @@
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
         - name: Azure Storage adatátviteli könyvtár
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Storage Resource Provider-kódtár
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: Forráskód
       items:
         - name: .NET
@@ -297,7 +301,7 @@
             - name: Adatátviteli kódtár
               href: 'https://github.com/Azure/azure-storage-net-data-movement'
             - name: Storage Resource Provider-kódtár
-              href: /dotnet/api/overview/azure/storage/management
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
           items:
             - name: Azure Storage-ügyfélkódtár 12.x verzió (előzetes)

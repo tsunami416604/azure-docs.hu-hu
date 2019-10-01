@@ -36,13 +36,15 @@
     - name: 10 – Virtuális gépek szabályozása
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
-    - name: 11 – Virtuális gépek monitorozása és frissítése
-      href: tutorial-monitoring.md
-    - name: 12 – Virtuális gépek biztonságának kezelése
+    - name: 11 – Virtuális gépek nyomon követése és frissítése
+      href: tutorial-config-management.md
+    - name: 12 – Virtuális gépek monitorozása
+      href: tutorial-monitor.md
+    - name: 13 – Virtuális gépek biztonságának kezelése
       href: tutorial-azure-security.md
-    - name: 13 - SQL\IIS\.NET-verem telepítése
+    - name: 14 - SQL-\IIS-\.NET-verem telepítése
       href: tutorial-iis-sql.md
-    - name: 14 – Webkiszolgáló védelme SSL-lel
+    - name: 15 – Webkiszolgáló védelme SSL-lel
       href: tutorial-secure-web-server.md
 - name: Példák
   items:
