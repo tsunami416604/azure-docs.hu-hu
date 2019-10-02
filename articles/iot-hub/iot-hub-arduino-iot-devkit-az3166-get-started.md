@@ -293,7 +293,7 @@ Az Azure IoT Hub és az eszköznek a Azure Portalból való kiépítése helyett
 
     ![Válassza ki a táblát és a COM-t](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. Kattintson `F1` a parancs paletta megnyitásához, írja be a **parancsot, majd válassza az Azure IoT Device Workbench: Eszközbeállítások konfigurálása... , majd válassza a **konfigurációs eszköz kapcsolatainak karakterlánca lehetőséget > Válassza ki IoT hub eszköz csatlakoztatási karakterláncát.****
+1. Kattintson `F1` a parancs paletta megnyitásához, írja be a **parancsot, majd válassza az Azure IoT Device Workbench: Eszközbeállítások konfigurálása...** , majd válassza a **konfigurációs eszköz kapcsolatainak karakterlánca lehetőséget > Válassza ki IoT hub eszköz csatlakoztatási karakterláncát.**
 
 1. A fejlesztői készlet-on tartsa lenyomva az **a gombot**, leküldheti és felszabadíthatja az **Alaphelyzetbe állítás** gombot, majd **a "a" gombot**. A fejlesztői készlet konfigurációs módba lép, és menti a kapcsolatok karakterláncát.
 

@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: Útmutatók
   items:
+    - name: Osztályterem-tesztkörnyezetek – osztálytípusok
+      items:
+        - name: Osztálytípusok
+          href: classroom-labs/class-types.md
+        - name: Mélytanulás a természetes feldolgozásban
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Héjszkriptek használata Linuxon
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: Osztályterem-tesztkörnyezetek
       items:
         - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása (tesztkörnyezeti fiók tulajdonosa)

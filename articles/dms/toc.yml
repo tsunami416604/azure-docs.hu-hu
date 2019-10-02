@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a Database Migration Service (DMS)?
+    - name: Mi az Azure Database Migration Service?
       href: dms-overview.md
 - name: Gyors útmutatók
   items:
@@ -10,41 +10,41 @@
       href: quickstart-create-data-migration-service-portal.md
 - name: Oktatóanyagok
   items:
-    - name: Az SQL Server offline migrálása az Azure SQL DB-be
+    - name: SQL Server offline migrálása önálló Azure SQL DB-adatbázisba
       href: tutorial-sql-server-to-azure-sql.md
-    - name: Az SQL Server online migrálása az Azure SQL DB-be
+    - name: SQL Server online migrálása önálló Azure SQL DB-adatbázisba
       href: tutorial-sql-server-azure-sql-online.md
-    - name: SQL Server offline migrálása az Azure SQL DB felügyelt példányába
+    - name: SQL Server offline migrálása felügyelt Azure SQL DB-példányba
       href: tutorial-sql-server-to-managed-instance.md
-    - name: SQL Server online migrálása az Azure SQL DB felügyelt példányába
+    - name: SQL Server online migrálása felügyelt Azure SQL DB-példányba
       href: tutorial-sql-server-managed-instance-online.md
-    - name: RDS SQL Server online migrálása az Azure SQL DB-be vagy az Azure SQL DB felügyelt példányába
+    - name: RDS SQL Server online migrálása önálló Azure SQL DB-adatbázisba vagy felügyelt Azure SQL DB-példányba
       href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: MySQL online migrálása a MySQL-hez készült Azure DB-be
       href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL online migrálása az Azure DB for MySQL-be
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: PostgreSQL online migrálása a PostgreSQL-hez készült Azure DB-be
+    - name: PostgreSQL online migrálása önálló Azure DB for PostgreSQL-kiszolgálóra
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: RDS PostgreSQL online migrálása az Azure DB for PostgreSQL-be
+    - name: RDS PostgreSQL online migrálása önálló Azure DB for PostgreSQL-kiszolgálóra
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: MongoDB offline migrálása az Azure Cosmos DB Mongo API-ba
       href: tutorial-mongodb-cosmos-db.md
     - name: MongoDB online migrálása az Azure Cosmos DB Mongo API-ba
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Oracle online migrálása Azure Database for PostgreSQL-re
+    - name: Oracle online migrálása önálló Azure Database for PostgreSQL-kiszolgálóra
       href: tutorial-oracle-azure-postgresql-online.md
 - name: Útmutatók
   items:
-    - name: A PowerShell használata SQL Server migrálásához az Azure SQL DB-be
+    - name: A PowerShell használata SQL Server migrálásához önálló Azure SQL DB-adatbázisba
       href: howto-sql-server-to-azure-sql-powershell.md
-    - name: A PowerShell használata SQL Server migrálásához az Azure SQL DB MI-be
+    - name: A PowerShell használata SQL Server migrálásához felügyelt Azure SQL DB-példányba
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: A migrálási tevékenységek monitorozása
       href: how-to-monitor-migration-activity.md
-    - name: SSIS-csomagok migrálása az Azure SQL Database-be
+    - name: SSIS-csomagok ismételt üzembe helyezése önálló Azure SQL Database-adatbázisban
       href: how-to-migrate-ssis-packages.md
-    - name: SSIS-csomagok migrálása az Azure SQL Database felügyelt példányára
+    - name: SSIS-csomagok ismételt üzembe helyezése felügyelt Azure SQL Database-példányban
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: További források
   expanded: true
@@ -53,7 +53,7 @@
       href: resource-scenario-status.md
     - name: Előfeltételek áttekintése
       href: pre-reqs.md
-    - name: Hálózati topológiák az Azure SQL DB felügyelt példányainak migrálásához
+    - name: Hálózati topológiák felügyelt Azure SQL DB-példányok migrálásához
       href: resource-network-topologies.md
     - name: Hibaelhárítás és ismert problémák
       items:
@@ -61,11 +61,11 @@
           href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: Gyakori hibák elhárítása
           href: known-issues-troubleshooting-dms.md
-        - name: Ismert problémák – Online migrálás az Azure SQL DB-be
+        - name: Ismert problémák – Online migrálás önálló Azure SQL DB-adatbázisba
           href: known-issues-azure-sql-online.md
         - name: Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be
           href: known-issues-azure-mysql-online.md
-        - name: Ismert problémák – Online migrálás a PostgreSQL-hez készült Azure DB-be
+        - name: Ismert problémák – Online migrálás önálló Azure DB for PostgreSQL-kiszolgálóra
           href: known-issues-azure-postgresql-online.md
     - name: Videók
       items:
@@ -89,7 +89,7 @@
       items:
         - name: Az adatmigrálási forgatókönyvekhez elérhető szolgáltatások és eszközök
           href: dms-tools-matrix.md
-        - name: Adatbázis-migrálási útmutató
+        - name: Azure Database-migrálási útmutató
           href: 'https://aka.ms/datamigration'
         - name: Data Migration Assistant
           href: 'https://aka.ms/dma'
@@ -97,6 +97,8 @@
           href: 'https://aka.ms/ssma'
         - name: Database Experimentation Assistant
           href: 'https://aka.ms/dea-docs'
+        - name: Adathozzáférés migrálási eszközkészlete
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: Gyakori kérdések
       href: faq.md
     - name: Felhasználói visszajelzések

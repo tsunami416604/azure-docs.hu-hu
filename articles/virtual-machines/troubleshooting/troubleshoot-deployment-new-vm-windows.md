@@ -75,7 +75,7 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
 * Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 * Ha a kért virtuális gép mérete nem módosítható:
   * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
-    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai***a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
+    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** *a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
   * Az összes virtuális gép leállítása után hozza létre az új virtuális gépet a kívánt méretben.
   * Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az **Indítás**gombra.
 

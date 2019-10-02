@@ -21,17 +21,17 @@
       items:
         - name: Vázlat használata
           href: kubernetes-draft.md
-        - name: A Java használata (VS Code és CLI)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: A .NET Core használata (VS Code és CLI)
+        - name: A Visual Studio Code és az Azure Dev Spaces használata
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: A .NET Core használata (Visual Studio 2017)
+        - name: A Visual Studio és az Azure Dev Spaces használata
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: A Node.js használata (VS Code és CLI)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: A parancssori felület és az Azure Dev Spaces használata
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Az Azure Dev Spaces használata csoportos fejlesztéshez
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Oktatóanyagok
   items:

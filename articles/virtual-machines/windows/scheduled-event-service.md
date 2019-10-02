@@ -164,7 +164,7 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
 1. A **műveletek**területen válassza a **műveleti csoport létrehozása**lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
 1. A **műveleti csoport neve**mezőbe írja be a következőt: *myActionGroup*.
 1. A **rövid név**mezőbe írja be a következőt: **myActionGroup**.
-1. Az **erőforráscsoport**területen válassza a * myResourceGroupAvailability * * elemet.
+1. Az **erőforráscsoport**területen válassza a *myResourceGroupAvailability* * elemet.
 1. A műveletek területen a **művelet neve** mezőbe írja be az **e-mail**nevet, majd válassza az **E-mail/SMS/leküldés/hang**lehetőséget. Ekkor megnyílik az **e-mail/SMS/push/Voice** oldal.
 1. Válassza az **e-mail**lehetőséget, írja be az e-mail címét, majd kattintson **az OK gombra**.
 1. A **műveleti csoport hozzáadása** lapon kattintson az **OK gombra**. 

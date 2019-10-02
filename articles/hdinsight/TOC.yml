@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight-fürtök kezelése – PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: ETL-folyamat létrehozása
+          href: ./hdinsight-sales-insights-etl.md
     - name: Példák
       items:
         - name: Azure CLI-minták

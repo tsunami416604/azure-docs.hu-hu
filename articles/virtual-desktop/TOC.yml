@@ -66,6 +66,8 @@
   items:
     - name: A Windows Virtual Desktop környezete
       href: environment-setup.md
+    - name: Sávszélességgel kapcsolatos javaslatok távoli munkamenetekhez
+      href: bandwidth-recommendations.md
     - name: Delegált hozzáférés a Windows Virtual Desktopon
       href: delegated-access-virtual-desktop.md
     - name: Gazdagépcsoport terheléselosztási módszerei

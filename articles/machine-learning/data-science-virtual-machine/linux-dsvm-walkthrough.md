@@ -58,8 +58,8 @@ Ezután fűzze össze a két fájlt:
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint a **Word\_freq\_* Word*** az e-mailben *szereplő szavak százalékos*arányát jelölik. Ha például a **Word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
-* Oszlopok, például a **char\_freq\_* karakter*** az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
+* Az olyan oszlopok, mint a **Word\_freq\_*Word*** az e-mailben *szereplő szavak százalékos*arányát jelölik. Ha például a **Word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
+* Oszlopok, például a **char\_freq\_*karakter*** az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
 * **tőke\_futtatása\_hossza\_leghosszabb** a leghosszabb hosszúsága nagybetűk sorozata.
 * **tőke\_futtatása\_hossza\_átlagos** átlagos hosszúsága nagybetűk összes sorrendje.
 * **tőke\_futtatása\_hossza\_teljes** teljes hosszúsága nagybetűk összes sorrendje.
