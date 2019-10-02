@@ -8,18 +8,18 @@ manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/02/2019
 ms.author: glenga
-ms.openlocfilehash: 0388c712d6f44755e768e491944df1a9451653b7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085239"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815981"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
-Ez a cikk bemutatja, hogyan használható a Azure Functions egy Azure SQL Database-példányhoz csatlakozó ütemezett feladatok létrehozásához. A függvény kódja megtisztítja a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre definiált időzítő-trigger sablon alapján jön létre a Visual Studio 2019-ben. Ennek a forgatókönyvnek a támogatásához egy adatbázis-kapcsolódási karakterláncot kell beállítania egy alkalmazás-beállításként a Function alkalmazásban. Ez a forgatókönyv egy tömeges műveletet használ az adatbázison. 
+Ez a cikk bemutatja, hogyan használható a Azure Functions egy Azure SQL Database vagy Azure SQL felügyelt példányhoz csatlakozó ütemezett feladatok létrehozásához. A függvény kódja megtisztítja a sorokat egy táblában az adatbázisban. Az új C# függvény egy előre definiált időzítő-trigger sablon alapján jön létre a Visual Studio 2019-ben. Ennek a forgatókönyvnek a támogatásához egy adatbázis-kapcsolódási karakterláncot kell beállítania egy alkalmazás-beállításként a Function alkalmazásban. Az Azure SQL felügyelt példányához engedélyeznie kell a [nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , hogy csatlakozni tudjon a Azure functions. Ez a forgatókönyv egy tömeges műveletet használ az adatbázison. 
 
 Ha első alkalommal dolgozik a functions szolgáltatással C# , olvassa el a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md).
 
@@ -39,7 +39,7 @@ Az [Azure SQL Database-adatbázis létrehozásakor](../sql-database/sql-database
 
 1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, és válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
-1. Válassza a **kapcsolatok karakterláncok** lehetőséget a **Beállítások** területen, és másolja a teljes **ADO.net** -kapcsolatok karakterláncát.
+1. Válassza a **kapcsolatok karakterláncok** lehetőséget a **Beállítások** területen, és másolja a teljes **ADO.net** -kapcsolatok karakterláncát. Az Azure SQL felügyelt példánya esetében a nyilvános végponthoz tartozó kapcsolatok karakterláncának másolása.
 
     ![Másolja a ADO.NET-kapcsolatok karakterláncát.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -53,7 +53,7 @@ Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette m
 
     ![A Function alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. Az új **sqldb_connection** -beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, majd a valós értékekkel `{your_username}` lecserélt és `{your_password}` helyőrzőket tartalmazó hálózati karakterláncot. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
+1. Az új **sqldb_connection** -beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, majd a `{your_username}` és `{your_password}` helyőrzőket valós értékekkel cserélje le. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
 
     ![Adja meg az SQL-kapcsolatok karakterláncának beállítását.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -69,7 +69,7 @@ Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az ada
 
 1. A **Tallózás** fülön keresse meg a(z) ```System.Data.SqlClient``` elemet, majd válassza ki.
 
-1. A **System. SqlClient** lapon válassza a verzió `4.5.1` lehetőséget, majd kattintson a **telepítés**gombra.
+1. A **System. SqlClient** lapon válassza ki az `4.5.1` verziót, majd kattintson a **telepítés**gombra.
 
 1. A telepítés befejezése után tekintse át a módosításokat, majd kattintson az **OK** gombra az **Előnézet** ablak bezárásához.
 
@@ -79,9 +79,9 @@ Most hozzáadhatja a C# SQL Databasehoz csatlakozó függvény kódját is.
 
 ## <a name="add-a-timer-triggered-function"></a>Időzítő által aktivált hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza az**új Azure-függvény** **hozzáadása** > lehetőséget.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza az **Add** > **új Azure-függvény**lehetőséget.
 
-1. A kiválasztott **Azure functions** sablonnal adja meg az új elemet `DatabaseCleanup.cs` , majd válassza a **Hozzáadás**lehetőséget.
+1. A kiválasztott **Azure functions** sablonnal adja meg az új elemet, például `DatabaseCleanup.cs`, majd válassza a **Hozzáadás**lehetőséget.
 
 1. Az **új Azure-függvény** párbeszédpanelen válassza az **időzítő trigger** lehetőséget, majd **az OK gombot**. Ez a párbeszédablak létrehoz egy programkódot az időzítő által aktivált függvényhez.
 
@@ -92,7 +92,7 @@ Most hozzáadhatja a C# SQL Databasehoz csatlakozó függvény kódját is.
     using System.Threading.Tasks;
     ```
 
-1. Cserélje le a `Run` meglévő függvényt a következő kódra:
+1. Cserélje le a meglévő `Run` függvényt a következő kódra:
 
     ```cs
     [FunctionName("DatabaseCleanup")]
@@ -116,7 +116,7 @@ Most hozzáadhatja a C# SQL Databasehoz csatlakozó függvény kódját is.
     }
     ```
 
-    Ez a függvény 15 másodpercenként fut az `Status` oszlopnak a szállítási dátum alapján történő frissítéséhez. További információ az időzítő triggerről: [időzítő trigger Azure Functionshoz](functions-bindings-timer.md).
+    Ez a függvény 15 másodpercenként fut a `Status` oszlopnak a szállítási dátum alapján történő frissítéséhez. További információ az időzítő triggerről: [időzítő trigger Azure Functionshoz](functions-bindings-timer.md).
 
 1. Nyomja le az **F5** billentyűt a Function alkalmazás elindításához. Megnyílik a [Azure functions Core Tools](functions-develop-local.md) végrehajtási ablak a Visual Studio mögött.
 
@@ -124,9 +124,9 @@ Most hozzáadhatja a C# SQL Databasehoz csatlakozó függvény kódját is.
 
     ![Tekintse meg a függvények naplóit.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
 
-    Az első végrehajtáskor frissítenie kell az 32-es adatsorokat. A következő futtatások nem frissítik az adatsorokat, hacsak nem módosítja a SalesOrderHeader, hogy az `UPDATE` utasításban több sort is kiválasszanak.
+    Az első végrehajtáskor frissítenie kell az 32-es adatsorokat. A következő futtatások nem frissítik az adatsorokat, hacsak nem módosítja a SalesOrderHeader, hogy a `UPDATE` utasítás több sort is kiválasszan.
 
-Ha azt tervezi, hogy [közzéteszi ezt](functions-develop-vs.md#publish-to-azure)a függvényt, `TimerTrigger` ne felejtse el módosítani az attribútumot egy ésszerű [cron](functions-bindings-timer.md#ncrontab-expressions) -ütemtervre, mint 15 másodpercenként.
+Ha azt tervezi, hogy [közzéteszi ezt a függvényt](functions-develop-vs.md#publish-to-azure), ne felejtse el módosítani a `TimerTrigger` attribútumot egy ésszerű [cron-ütemtervre](functions-bindings-timer.md#ncrontab-expressions) , mint 15 másodpercenként.
 
 ## <a name="next-steps"></a>További lépések
 

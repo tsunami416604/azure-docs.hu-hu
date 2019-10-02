@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9244dfabef8b13105ef830f9f4543da9cb2cca9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3696ebc216062a6d52fd187819f07dfb0078057
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842647"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812573"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
 
 Megadhatja Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát. A szervezeten belüli összes alkalmazáshoz, több-bérlős (többszervezetes) alkalmazáshoz vagy a szervezet egy adott egyszerű szolgáltatásához is beállíthat jogkivonat-élettartamot.
 
 > [!IMPORTANT]
-> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. November 1-től 2019-én nem használhatja a konfigurálható jogkivonat élettartam-szabályzatát a frissítési tokenek konfigurálására, de továbbra is használhatja a hozzáférési tokenek konfigurálására.
+> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. November 1-től 2019-én nem használhatja a konfigurálható jogkivonat élettartam-szabályzatát a munkamenet-és frissítési tokenek konfigurálásához. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
 
 Az Azure AD-ben a házirend-objektum az egyes alkalmazásokra vagy a szervezet összes alkalmazására kikényszerített szabályok halmazát jelöli. Minden egyes házirend-típushoz egyedi struktúra tartozik, amely a hozzájuk rendelt objektumokra érvényes tulajdonságokkal rendelkezik.
 
@@ -369,7 +369,7 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
     Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
-## <a name="cmdlet-reference"></a>A parancsmagok leírása
+## <a name="cmdlet-reference"></a>Parancsmag-referencia
 
 ### <a name="manage-policies"></a>Házirendek kezelése
 
@@ -389,7 +389,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |A szabályzat nevének karakterlánca |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
+| @no__t – 0 [opcionális] |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -402,7 +402,7 @@ Get-AzureADPolicy
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code>Választható |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
+| @no__t – 0 [opcionális] |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -430,10 +430,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |A szabályzat nevének karakterlánca |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code>Választható |A szabályzat összes szabályát tartalmazó sztringesített JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code>Választható |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code>Választható |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code>Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
+| @no__t – 0 [opcionális] |A szabályzat összes szabályát tartalmazó sztringesített JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| @no__t – 0 [opcionális] |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
+| @no__t – 0 [opcionális] |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. |`-Type "TokenLifetimePolicy"` |
+| @no__t – 0 [opcionális] |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -494,7 +494,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 </br></br>
 
-### <a name="service-principal-policies"></a>Szolgáltatásnév-házirendek
+### <a name="service-principal-policies"></a>Egyszerű szolgáltatásnév házirendek
 A következő parancsmagokat használhatja az egyszerű szolgáltatásnév házirendjeihez.
 
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy

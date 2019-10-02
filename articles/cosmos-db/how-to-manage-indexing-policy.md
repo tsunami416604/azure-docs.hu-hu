@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat Azure 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: b80a4b8697544a0f7fe7cee99b666a513f53a0d6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f7d364eb5db5c6d6304944d490468edf8b5ebe2e
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104849"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811663"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
@@ -334,6 +334,7 @@ Azure Cosmos DB az indexelési házirend az alábbi módszerek bármelyikével f
 
 - a Azure Portal
 - Az Azure CLI használata
+- A PowerShell használata
 - Az SDK-k egyikének használata
 
 Az [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-policy) elindítja az index átalakítását. Az átalakítás előrehaladása az SDK-k által is nyomon követhető.
@@ -361,21 +362,15 @@ Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tár
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Az Azure CLI-ről származó [cosmosdb Collection Update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) parancs használatával lecserélheti egy tároló indexelési házirendjének JSON-definícióját:
+Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [tároló létrehozása egyéni index-házirenddel a parancssori felület használatával](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
-```azurecli-interactive
-az cosmosdb collection update \
-    --resource-group-name $resourceGroupName \
-    --name $accountName \
-    --db-name $databaseName \
-    --collection-name $containerName \
-    --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
-```
+## <a name="use-powershell"></a>A PowerShell használata
+
+Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [tároló létrehozása egyéni index-házirenddel a PowerShell használatával](manage-with-powershell.md#create-container-custom-index)
 
 ## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
 
 A `DocumentCollection` [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `IndexingPolicy` objektuma egy olyan tulajdonságot tesz elérhetővé, amely lehetővé `IndexingMode` teszi a `ExcludedPaths`módosítását `IncludedPaths` , illetve a hozzáadását és eltávolítását.
-
 
 ```csharp
 // Retrieve the container's details
@@ -406,7 +401,6 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 ## <a name="use-the-net-sdk-v3"></a>A .NET SDK v3 használata
 
 A `ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) objektuma [(lásd a](create-sql-api-dotnet.md) használatról szóló rövid útmutatót) egy olyan `IndexingPolicy` tulajdonságot tesz elérhetővé, amely `IndexingMode` `ExcludedPaths`lehetővé teszi a módosítását, illetve a hozzáadását és eltávolítását `IncludedPaths` .
-
 
 ```csharp
 // Retrieve the container's details
@@ -508,7 +502,7 @@ Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
 SpatialSpec spec = new SpatialSpec();
 spec.setPath("/locations/*");
-collectionOfSpatialTypes.add(SpatialType.Point);          
+collectionOfSpatialTypes.add(SpatialType.Point);
 spec.setSpatialTypes(collectionOfSpatialTypes);
 spatialIndexes.add(spec);
 

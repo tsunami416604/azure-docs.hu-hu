@@ -1,17 +1,17 @@
 ---
 title: Tároló átviteli sebességének kiosztása Azure Cosmos DB-ben
 description: Megtudhatja, hogyan oszthatja ki az átviteli sebességet tárolói szinten az Azure Cosmos DB-ben
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: rimman
-ms.openlocfilehash: 0975fe5135bbe9f5e1dc65ee0444cc3aab986a2e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: 8da27773cc74324c1dde5a95de1abef3256c1f1c
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093058"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811679"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Átviteli sebesség kiépítése Azure Cosmos-tárolón
 
@@ -27,52 +27,21 @@ Ez a cikk azt ismerteti, hogyan lehet átviteli sebességet kiépíteni egy tár
 
    * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
    * Adja meg a tároló (vagy a tábla vagy a gráf) AZONOSÍTÓját.
-   * Adja meg a partíciós kulcs értékét (például `/userid`:).
+   * Adja meg a partíciós kulcs értékét (például `/userid`).
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Adatkezelőről, új gyűjtemény kiemelve](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    ![Képernyőkép a Adatkezelőről, új gyűjtemény kiemelve](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli"></a>Átviteli sebesség kiosztása az Azure CLI használatával
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Átviteli sebesség kiépítése az Azure CLI vagy a PowerShell használatával
 
-```azurecli-interactive
-# Create a container with a partition key and provision throughput of 400 RU/s
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $containerName \
-    --name $accountName \
-    --db-name $databaseName \
-    --partition-key-path /myPartitionKey \
-    --throughput 400
-```
+Tároló létrehozása dedikált átviteli sebességgel:
 
-## <a name="provision-throughput-using-powershell"></a>Átviteli sebesség kiépítése a PowerShell használatával
+* [Tároló létrehozása az Azure CLI-vel](manage-with-cli.md#create-a-container)
+* [Tároló létrehozása a PowerShell használatával](manage-with-powershell.md#create-container)
 
-```azurepowershell-interactive
-# Create a container with a partition key and provision throughput of 400 RU/s
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$containerName = "container1"
-$resourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
-
-$ContainerProperties = @{
-    "resource"=@{
-        "id"=$containerName;
-        "partitionKey"=@{
-            "paths"=@("/myPartitionKey");
-            "kind"="Hash"
-        }
-    };
-    "options"=@{ "Throughput"= 400 }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $resourceName -PropertyObject $ContainerProperties
-```
-
-Ha a MongoDB Azure Cosmos db API-val konfigurált Azure Cosmos-fiókban lévő tárolón való kiépítési átviteli sebességre van konfigurálva `/myShardKey` , használja a (z) partíciót a partíciós kulcs elérési útjára. Ha az átviteli sebességet egy Cassandra API konfigurált Azure Cosmos-fiókban lévő tárolóban szeretné kiépíteni, `/myPrimaryKey` használja a partíciós kulcs elérési útját.
+> [!Note]
+> Ha a MongoDB Azure Cosmos DB API-val konfigurált Azure Cosmos-fiókban lévő tárolón való kiépítési átviteli sebességre van konfigurálva, használja a `/myShardKey` értéket a partíciós kulcs elérési útjához. Ha az átviteli sebességet egy Cassandra API konfigurált Azure Cosmos-fiókban lévő tárolóban szeretné kiépíteni, használja a `/myPrimaryKey` értéket a partíciós kulcs elérési útjához.
 
 ## <a name="provision-throughput-by-using-net-sdk"></a>Átviteli sebesség kiépítése a .NET SDK használatával
 

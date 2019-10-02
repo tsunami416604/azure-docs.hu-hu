@@ -17,12 +17,12 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290966"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812601"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -57,6 +57,9 @@ A Azure AD Connect futtatásához használt három fiókon kívül a Azure AD Co
 > A dedikált felügyeleti erdők lehetővé teszik a szervezetek számára a rendszergazdai fiókok, munkaállomások és csoportok üzemeltetését olyan környezetben, amely erősebb biztonsági szabályozással rendelkezik, mint az éles környezet.
 > A dedikált adminisztratív erdőkkel kapcsolatos további tudnivalókért tekintse meg a [ESAE felügyeleti erdő kialakítási megközelítését](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
 >>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> A kezdeti beállítás után a globális rendszergazdai szerepkör nem szükséges, és az egyetlen szükséges fiók lesz a **címtár-szinkronizálási fiókok** szerepkör fiókja. Ez nem jelenti azt, hogy csak a globális rendszergazdai szerepkörrel rendelkező fiókot szeretné eltávolítani a necssarily. Jobb megoldás, ha a szerepkört egy kevésbé hatékony szerepkörre módosítja, mivel a fiók teljes eltávolításával problémák léphetnek fel, ha újra futtatni kell a varázslót. A szerepkör jogosultságának csökkentésével bármikor újra megemelheti a jogosultságokkal, ha újra kell használnia a Azure AD Connect varázslót. 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect telepítése
 A Azure AD Connect telepítővarázsló két különböző elérési utat biztosít:

@@ -4,14 +4,14 @@ description: Tudnivalók a tárolók Azure Cosmos DB-ben történő létrehozás
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 876e35e320e37081cf6e6f89fda4f31af8713571
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 9805ff9aa4932c262db13c47fd2e442b3d3d676f
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240744"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811729"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
@@ -33,7 +33,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Adatkezelő panelről, új tároló kiemelve](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    ![Képernyőkép a Adatkezelő panelről, új tároló kiemelve](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>MongoDB Azure Cosmos DB API
 
@@ -49,7 +49,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a MongoDB Azure Cosmos DB API-ról, tároló hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    ![Képernyőkép a MongoDB Azure Cosmos DB API-ról, tároló hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra API
 
@@ -65,7 +65,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Cassandra APIről, tábla hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+    ![Képernyőkép a Cassandra APIről, tábla hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
 
 > [!NOTE]
 > A Cassandra API esetében a rendszer az elsődleges kulcsot használja partíciókulcsként.
@@ -85,7 +85,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Gremlin API-ról, gráf hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+    ![Képernyőkép a Gremlin API-ról, gráf hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
 ### <a id="portal-table"></a>Table API
 
@@ -99,379 +99,34 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
    * Kattintson az **OK** gombra.
 
-![Képernyőkép a Table APIről, tábla hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-table.png)
+    ![Képernyőkép a Table APIről, tábla hozzáadása párbeszédpanel](./media/how-to-create-container/partitioned-collection-create-table.png)
 
 > [!Note]
 > A Table API esetében a rendszer minden új sor hozzáadásakor megad egy partíciókulcsot.
 
-## <a name="create-a-container-using-azure-cli"></a>Tároló létrehozása az Azure CLI használatával
+## Tároló létrehozása az Azure CLI-vel<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
 
-### <a id="cli-sql"></a>SQL API
+Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB tároló-erőforrásokat az Azure CLI használatával.
 
-```azurecli-interactive
-# Create a container with a partition key and provision 400 RU/s throughput.
+Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [SQL API](cli-samples.md), [CASSANDRA API](cli-samples-cassandra.md), [MongoDB api](cli-samples-mongodb.md), [Gremlin API](cli-samples-gremlin.md)és [Table API](cli-samples-table.md)
 
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $containerName \
-    --name $accountName \
-    --db-name $databaseName \
-    --partition-key-path /myPartitionKey \
-    --throughput 400
-```
+* [Tároló létrehozása az Azure CLI-vel](manage-with-cli.md#create-a-container)
+* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz az Azure CLI-vel](/scripts/cli/mongodb/create.md)
+* [Cassandra-tábla létrehozása az Azure CLI-vel](/scripts/cli/cassandra/create.md)
+* [Gremlin gráf létrehozása az Azure CLI-vel](/scripts/cli/gremlin/create.md)
+* [Table API tábla létrehozása az Azure CLI-vel](/scripts/cli/table/create.md)
 
-### <a id="cli-mongodb"></a>MongoDB Azure Cosmos DB API
+## Tároló létrehozása a PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"> használatával<a id="ps-table"></a>
 
-```azurecli-interactive
-# Create a collection with a shard key and provision 400 RU/s throughput.
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $collectionName \
-    --name $accountName \
-    --db-name $databaseName \
-    --partition-key-path /myShardKey \
-    --throughput 400
-```
+Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB tároló-erőforrásokat a PowerShell használatával.
 
-### <a id="cli-cassandra"></a>Cassandra API
+Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [SQL API](powershell-samples-sql.md), [CASSANDRA API](powershell-samples-cassandra.md), [MongoDB api](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)és [Table API](powershell-samples-table.md)
 
-```azurecli-interactive
-# Create a table with a partition/primary key and provision 400 RU/s throughput.
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $tableName \
-    --name $accountName \
-    --db-name $keyspaceName \
-    --partition-key-path /myPrimaryKey \
-    --throughput 400
-```
-
-### <a id="cli-gremlin"></a>Gremlin API
-
-```azurecli-interactive
-# Create a graph with a partition key and provision 400 RU/s throughput.
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $graphName \
-    --name $accountName \
-    --db-name $databaseName \
-    --partition-key-path /myPartitionKey \
-    --throughput 400
-```
-
-### <a id="cli-table"></a>Table API
-
-```azurecli-interactive
-# Create a table with 400 RU/s
-# Note: you don't need to specify partition key in the following command because the partition key is set on each row.
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $tableName \
-    --name $accountName \
-    --db-name $databaseName \
-    --throughput 400
-```
-
-## <a name="create-a-container-using-powershell"></a>Tároló létrehozása a PowerShell használatával
-
-Az alábbi minták az összes olyan támogatási erőforrás létrehozását mutatják be, amely a tároló szintű erőforrások kiépítéséhez szükséges a Azure Cosmos DB
-
-### <a id="ps-sql"></a>SQL API
-
-```azurepowershell-interactive
-# Create an Azure Cosmos Account for Core (SQL) API
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/sql/" + $databaseName
-$containerName = "container1"
-$containerResourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
-
-# Create account
-$locations = @(
-    @{ "locationName"="West US"; "failoverPriority"=0 },
-    @{ "locationName"="East US"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-
-$accountProperties = @{
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Kind "GlobalDocumentDB" -Name $accountName -PropertyObject $accountProperties
-
-
-# Create database with shared throughput
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"="400" }
-}
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-
-# Create a container with default policies
-$containerProperties = @{
-    "resource"=@{
-        "id"=$containerName; 
-        "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
-            "kind"="Hash"
-        }
-    }; 
-    "options"=@{}
-} 
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $containerResourceName -PropertyObject $containerProperties 
-```
-
-### <a id="ps-cassandra"></a>Cassandra API
-
-```azurepowershell-interactive
-# Create an Azure Cosmos Account for Cassandra API
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
-$keyspaceName = "keyspace1"
-$keyspaceResourceName = $accountName + "/cassandra/" + $keyspaceName
-$tableName = "table1"
-$tableResourceName = $accountName + "/cassandra/" + $keyspaceName + "/" + $tableName
-
-# Create account
-$locations = @(
-    @{ "locationName"="West US"; "failoverPriority"=0 },
-    @{ "locationName"="East US"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{
-    "defaultConsistencyLevel"="BoundedStaleness";
-    "maxIntervalInSeconds"=300;
-    "maxStalenessPrefix"=100000
-}
-
-$accountProperties = @{
-    "capabilities"= @( @{ "name"="EnableCassandra" } );
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Kind "GlobalDocumentDB" -Name $accountName -PropertyObject $accountProperties
-
-# Create keyspace with shared throughput
-$keyspaceProperties = @{
-    "resource"=@{ "id"=$keyspaceName };
-    "options"=@{ "Throughput"="400" }
-}
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $keyspaceResourceName -PropertyObject $keyspaceProperties
-
-# Create a table
-$tableProperties = @{
-    "resource"=@{
-        "id"=$tableName; 
-        "schema"= @{
-            "columns"= @(
-                @{ "name"= "loadid"; "type"= "uuid" };
-                @{ "name"= "machine"; "type"= "uuid" };
-                @{ "name"= "cpu"; "type"= "int" };
-                @{ "name"= "mtime"; "type"= "int" };
-                @{ "name"= "load"; "type"= "float" };
-            );
-            "partitionKeys"= @(
-                @{ "name"= "machine" };
-                @{ "name"= "cpu" };
-                @{ "name"= "mtime" }; 
-            );
-            "clusterKeys"= @( 
-                @{ "name"= "loadid"; "orderBy"= "asc" }
-            )
-        }
-    }; 
-    "options"=@{}
-} 
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces/tables" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $tableResourceName -PropertyObject $tableProperties 
-
-```
-
-### <a id="ps-mongodb"></a>MongoDB API
-
-```azurepowershell-interactive
-# Create a collection for an Azure Cosmos Account for MongoDB API
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/mongodb/" + $databaseName
-$collectionName = "collection1"
-$collectionResourceName = $accountName + "/mongodb/" + $databaseName + "/" + $collectionName
-
-# Create account
-$locations = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="North Central US"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-
-$accountProperties = @{
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Kind "MongoDB" -Name $accountName -PropertyObject $accountProperties
-
-
-# Create database with shared throughput
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"="400" }
-} 
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-
-
-# Create Collection
-$collectionProperties = @{
-    "resource"=@{
-        "id"=$collectionName; 
-        "shardKey"= @{ "user_id"="Hash" };
-        "indexes"= @(
-            @{
-                "key"= @{ "keys"=@("user_id", "user_address") };
-                "options"= @{ "unique"= "true" }
-            };
-            @{
-                "key"= @{ "keys"=@("_ts") };
-                "options"= @{ "expireAfterSeconds"= "1000" }
-            }
-        )
-    }; 
-    "options"=@{}
-} 
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/collections" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $collectionResourceName -PropertyObject $collectionProperties 
-```
-
-### <a id="ps-gremlin"></a>Gremlin API
-
-```azurepowershell-interactive
-# Create an Azure Cosmos Account for Gremlin API
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/gremlin/" + $databaseName
-$graphName = "graph1"
-$graphResourceName = $accountName + "/gremlin/" + $databaseName + "/" + $graphName
-
-# Create account
-$locations = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="North Central US"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-
-$accountProperties = @{
-    "capabilities"= @( @{ "name"="EnableGremlin" } );
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Kind "GlobalDocumentDB" -Name $accountName -PropertyObject $accountProperties
-
-
-# Create database with shared throughput
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"="400" }
-}
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-
-
-# Create a graph with defaults
-$graphProperties = @{
-    "resource"=@{
-        "id"=$graphName; 
-        "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
-            "kind"="Hash"
-        }
-    }; 
-    "options"=@{}
-} 
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/graphs" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $graphResourceName -PropertyObject $graphProperties 
-```
-
-### <a id="ps-table"></a>Table API
-
-```azurepowershell-interactive
-# Create an Azure Cosmos account for Table API
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
-$tableName = "table1"
-$tableResourceName = $accountName + "/table/" + $tableName
-
-# Create account
-$locations = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="North Central US"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-
-$accountProperties = @{
-    "capabilities"= @( @{ "name"="EnableTable" } );
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Kind "GlobalDocumentDB" -Name $accountName -PropertyObject $accountProperties
-
-
-# Create table
-$tableProperties = @{
-    "resource"=@{ "id"=$tableName };
-    "options"=@{ "Throughput"="400" }
-}
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/tables" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $tableResourceName -PropertyObject $tableProperties
-```
+* [Tároló létrehozása a PowerShell-lel](manage-with-powershell.md#create-container)
+* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz a PowerShell-lel](/scripts/powershell/mongodb/ps-mongodb-create.md)
+* [Cassandra-tábla létrehozása a PowerShell-lel](/scripts/powershell/cassandra/ps-cassandra-create.md)
+* [Gremlin gráf létrehozása a PowerShell-lel](/scripts/powershell/gremlin/ps-gremlin-create.md)
+* [Table API tábla létrehozása a PowerShell-lel](/scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Tároló létrehozása .NET SDK használatával
 
@@ -511,7 +166,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 ## <a name="next-steps"></a>További lépések
 
-- [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
-- [Az Azure Cosmos DB kérelemegységei](request-units.md)
-- [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
-- [Azure Cosmos-fiók használata](account-overview.md)
+* [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
+* [Az Azure Cosmos DB kérelemegységei](request-units.md)
+* [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
+* [Azure Cosmos-fiók használata](account-overview.md)

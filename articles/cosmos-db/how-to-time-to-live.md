@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhatja és kezelheti az élettartamot
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104871"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815915"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
@@ -36,10 +36,16 @@ A következő lépésekkel engedélyezheti, hogy a lejárati idő nélkül egy t
 
    ![Állítsa be az élettartamot Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
+* Ha a DefaultTimeToLive értéke null, akkor az élettartama ki van kapcsolva
+* Ha a DefaultTimeToLive értéke-1, akkor az élettartam beállítás értéke (nincs alapértelmezett)
+* Ha a DefaultTimeToLive bármely más int értékkel rendelkezik (kivéve a 0 értéket), az élettartam beállítás értéke
 
-- Ha a DefaultTimeToLive értéke null, akkor az élettartama ki van kapcsolva
-- Ha a DefaultTimeToLive értéke-1, akkor az élettartam beállítás értéke (nincs alapértelmezett)
-- Ha a DefaultTimeToLive bármely más int értékkel rendelkezik (kivéve a 0 értéket), az élettartam beállítás értéke
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Az Azure CLI vagy a PowerShell használatával engedélyezheti az időt egy tárolón való működésre
+
+TTL létrehozása vagy engedélyezése tárolóban lásd:
+
+* [TTL-tároló létrehozása az Azure CLI használatával](manage-with-cli.md#create-a-container-with-ttl)
+* [Hozzon létre egy tárolót az ÉLETTARTAMmal a PowerShell használatával](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Az SDK-t használó tárolón való élő idő engedélyezése
 
@@ -185,11 +191,10 @@ SalesOrder salesOrder = new SalesOrder
 const itemDefinition = {
           id: "doc",
           name: "sample Item",
-          key: "value", 
+          key: "value",
           ttl: 2
         };
 ```
-
 
 ## <a name="reset-time-to-live"></a>Élettartam visszaállítása
 

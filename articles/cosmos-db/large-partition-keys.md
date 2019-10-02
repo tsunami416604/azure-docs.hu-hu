@@ -4,20 +4,32 @@ description: Megtudhatja, hogyan hozhat létre tárolót Azure Cosmos DB nagymé
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: a1216daade2df832b606fceb648fca998c3fdec8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5b0d182e09a4978a4d9c1184f085e140e5c698bc
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300139"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811718"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Nagyméretű partíciós kulccsal rendelkező tárolók létrehozása
 
 A Azure Cosmos DB kivonat-alapú particionálási sémát használ az adathorizontális skálázás eléréséhez. Az 3 2019. május előtt létrehozott összes Azure Cosmos-tároló kivonatoló függvényt használ, amely a partíciós kulcs első 100 bájtja alapján számítja ki a kivonatot. Ha az első 100 bájtnál több partíciós kulcs is van, akkor ezek a logikai partíciók a szolgáltatással azonos logikai partíciónak tekintendők. Ez olyan problémákhoz vezethet, mint például a partíciók méretére vonatkozó kvóta helytelen, és a partíciós kulcsok között egyedi indexeket kell alkalmazni. A probléma megoldásához nagy méretű partíciós kulcsok vannak bevezetve. A Azure Cosmos DB mostantól legfeljebb 2 KB-os értékkel támogatja a nagyméretű partíciós kulcsokat.
 
-A nagyméretű partíciós kulcsokat a kivonatoló függvény továbbfejlesztett verziójának funkciói támogatják, amelyek egyedi kivonatot hozhatnak létre a nagyméretű partíciós kulcsokból akár 2 KB-ra. Ezt a kivonatoló verziót ajánlott olyan forgatókönyvek esetén is használni, amelyek a partíciós kulcs méretétől függetlenül nagy méretűek. A particionálási kulcs számos egyedi logikai partícióként van definiálva, például egy tárolóban lévő ~ 30000 logikai partíciók sorrendjében. Ez a cikk azt ismerteti, hogyan hozhat létre nagyméretű partíciós kulccsal rendelkező tárolót a Azure Portal és a különböző SDK-k használatával. 
+A nagyméretű partíciós kulcsokat a kivonatoló függvény továbbfejlesztett verziójának funkciói támogatják, amelyek egyedi kivonatot hozhatnak létre a nagyméretű partíciós kulcsokból akár 2 KB-ra. Ezt a kivonatoló verziót ajánlott olyan forgatókönyvek esetén is használni, amelyek a partíciós kulcs méretétől függetlenül nagy méretűek. A particionálási kulcs számos egyedi logikai partícióként van definiálva, például egy tárolóban lévő ~ 30000 logikai partíciók sorrendjében. Ez a cikk azt ismerteti, hogyan hozhat létre nagyméretű partíciós kulccsal rendelkező tárolót a Azure Portal és a különböző SDK-k használatával.
+
+## <a name="create-a-large-partition-key-azure-portal"></a>Nagy partíciós kulcs létrehozása (Azure Portal)
+
+Ha nagy méretű partíciót szeretne létrehozni, miközben a Azure Portal használatával hoz létre egy új tárolót, akkor a **saját partíciós kulcs mérete meghaladja a 100 bájtos** beállítást. Alapértelmezés szerint a rendszer az összes új tárolót a nagyméretű partíciós kulcsok használatával választotta. Törölje a jelölőnégyzet jelölését, ha nincs szüksége nagyméretű partíciós kulcsokra, vagy ha olyan alkalmazásokkal rendelkezik, amelyek 1,18-nál régebbi SDK-verzión futnak.
+
+![Nagyméretű partíciós kulcsok létrehozása Azure Portal használatával](./media/large-partition-keys/large-partition-key-with-portal.png)
+
+## <a name="create-a-large-partition-key-powershell"></a>Nagy partíciós kulcs létrehozása (PowerShell)
+
+Nagyméretű partíciós kulcsot támogató tároló létrehozásához lásd:
+
+* [Azure Cosmos-tároló létrehozása nagyméretű partíciós kulcs méretével](manage-with-powershell.md##create-container-big-pk)
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>Nagyméretű partíciós kulcs (.net SDK) létrehozása
 
@@ -29,7 +41,7 @@ Ha nagyméretű partíciós kulccsal rendelkező tárolót szeretne létrehozni 
 await database.CreateContainerAsync(
     new ContainerProperties(collectionName, $"/longpartitionkey")
     {
-        PartitionKeyDefinitionVersion = PartitionKeyDefinitionVersion.V2, 
+        PartitionKeyDefinitionVersion = PartitionKeyDefinitionVersion.V2,
     })
 ```
 
@@ -48,47 +60,6 @@ database,
            }
          },
       new RequestOptions { OfferThroughput = 400 });
-```
-
-## <a name="create-a-large-partition-key-azure-portal"></a>Nagy partíciós kulcs létrehozása (Azure Portal) 
-
-Ha nagy méretű partíciót szeretne létrehozni, miközben a Azure Portal használatával hoz létre egy új tárolót, akkor a **saját partíciós kulcs mérete meghaladja a 100 bájtos** beállítást. Alapértelmezés szerint a rendszer az összes új tárolót a nagyméretű partíciós kulcsok használatával választotta. Törölje a jelölőnégyzet jelölését, ha nincs szüksége nagyméretű partíciós kulcsokra, vagy ha olyan alkalmazásokkal rendelkezik, amelyek 1,18-nál régebbi SDK-verzión futnak.
-
-![Nagyméretű partíciós kulcsok létrehozása Azure Portal használatával](./media/large-partition-keys/large-partition-key-with-portal.png)
-
-## <a name="create-a-large-partition-key-powershell"></a>Nagy partíciós kulcs létrehozása (PowerShell)
-
-Ha nagyméretű partíciós kulccsal rendelkező tárolót szeretne létrehozni a PowerShell használatával `"version" = 2` , adja `partitionKey` meg az objektumot.
-
-```azurepowershell-interactive
-# Create a Cosmos SQL API container with large partition key support (version 2)
-$resourceGroupName = "myResourceGroup"
-$containerName = "mycosmosaccount" + "/sql/" + "myDatabase" + "/" + "myContainer"
-
-# Container with large partition key support (version = 2)
-$containerProperties = @{
-  "resource"=@{
-    "id"=$containerName;
-    "partitionKey"=@{
-        "paths"=@("/myPartitionKey");
-        "kind"="Hash";
-        "version" = 2
-    };
-    "indexingPolicy"=@{
-        "indexingMode"="Consistent";
-        "includedPaths"= @(@{
-            "path"="/*"
-        });
-        "excludedPaths"= @(@{
-            "path"="/myPathToNotIndex/*"
-        })
-    }
-  }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $containerName -PropertyObject $containerProperties
 ```
 
 ## <a name="supported-sdk-versions"></a>Támogatott SDK-verziók
@@ -110,5 +81,3 @@ Jelenleg nem használhat nagyméretű partíciós kulccsal rendelkező tárolók
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)
 * [Adatforgalom kiépítése a tárolók és adatbázisok számára](set-throughput.md)
 * [Azure Cosmos-fiók használata](account-overview.md)
-
-

@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845494"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816128"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre CloudSimple saját felhővel, és hogyan állíthatja be a saját felhőalapú környezetét.
+
+## <a name="before-you-begin"></a>Előkészületek
+
+Tekintse át a [hálózati előfeltételeket](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -43,7 +47,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 
     ![Privát felhő létrehozása – alapszintű információ](media/create-private-cloud-basic-info.png)
 
-9. Kattintson **a Tovább gombra: Speciális beállítások**.
+9. Kattintson a **Tovább: Speciális beállítások**.
 10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.
 
     **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. A/24 CIDR-tartomány legfeljebb 26 csomópontot támogat, a/23 CIDR-tartomány akár 58 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig 64-csomópontokat (a privát felhőben található csomópontok maximális számát) támogatja.  További információ és VLAN-ok és alhálózatok: a [VLAN-ok és az alhálózatok áttekintése](cloudsimple-vlans-subnets.md).
@@ -51,7 +55,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
       > [!IMPORTANT]
       > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
 
-11. Kattintson **a Tovább gombra: Tekintse át**és hozza létre.
+11. Kattintson a **Tovább: Tekintse át**és hozza létre.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
 13. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -151,7 +155,7 @@ Most már bejelentkezhet a vCenter-be a virtuális gépek és házirendek beáll
 
 1. A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általános feladatok**területén kattintson az **vSphere-ügyfél indítása**lehetőségre.  Válassza ki a privát felhőt, majd kattintson a **vSphere-ügyfél indítása** lehetőségre a privát felhőben.
 
-    ![VSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
+    ![vSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Válassza ki a kívánt vSphere-ügyfelet a vCenter eléréséhez, és jelentkezzen be a felhasználónevével és jelszavával.  Az alapértelmezett értékek a következők:
     * Felhasználónév: **CloudOwner@cloudsimple.local**

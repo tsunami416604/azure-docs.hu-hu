@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1d8379d0ee54332ae4971cd9abaa8b153d52084a
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162282"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816066"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkciók
 
@@ -35,7 +35,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | **SQL-szolgáltatás** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen [– lásd a](sql-database-always-encrypted.md) tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) | Igen [– lásd a](sql-database-always-encrypted.md) tanúsítványtárolót és a [Key vaultot](sql-database-always-encrypted-azure-key-vault.md) |
-| [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | A [magas rendelkezésre állás](sql-database-high-availability.md) minden adatbázishoz tartozik. A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) | A [magas rendelkezésre állást](sql-database-high-availability.md) minden adatbázis tartalmazza, és a [felhasználók nem kezelhetik](sql-database-managed-instance-transact-sql-information.md#always-on-availability). A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) |
+| [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | a [99,99 – 99.995%-os rendelkezésre állás](sql-database-high-availability.md) minden adatbázis esetében garantált. A vész-helyreállítást az [üzletmenet folytonosságának áttekintése Azure SQL Database](sql-database-business-continuity.md) | [99,99. a rendelkezésre állás](sql-database-high-availability.md) minden adatbázis esetében garantált, és a [felhasználó nem kezelhető](sql-database-managed-instance-transact-sql-information.md#always-on-availability). A vész-helyreállítást a [Azure SQL Database üzleti folytonosságának áttekintésében](sql-database-business-continuity.md)tárgyaljuk. [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) használatával konfigurálja a másodlagos always on felügyelt példányt egy másik régióban. Más SQL Server példányok és önálló adatbázisok nem használhatók felügyelt példány formátumú másodlagos zónák. |
 | [Adatbázis csatolása](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nem | Nem |
 | [Naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Igen](sql-database-auditing.md)| [Igen](sql-database-managed-instance-auditing.md), néhány [különbséggel](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [Azure Active Directory (HRE) hitelesítés](sql-database-aad-authentication.md) | Igen. Csak HRE felhasználók. | Igen. Beleértve a kiszolgálói szintű HRE-bejelentkezéseket is. |
@@ -57,7 +57,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [DDL-utasítások](https://docs.microsoft.com/sql/t-sql/statements/statements) | A legtöbb esetben – lásd az egyes utasításokat | Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [DDL-eseményindítók](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | Csak adatbázis |  Igen |
 | [Elosztott partíciók nézetei](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nem | Igen |
-| [Elosztott tranzakciók – MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nem – lásd a [rugalmas tranzakciókat](sql-database-elastic-transactions-overview.md) |  Nem – lásd a [csatolt kiszolgálók közötti különbségeket](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
+| [Elosztott tranzakciók – MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nem – lásd a [rugalmas tranzakciókat](sql-database-elastic-transactions-overview.md) |  Nem – lásd a [csatolt kiszolgálók közötti különbségeket](sql-database-managed-instance-transact-sql-information.md#linked-servers). Az áttelepítés során próbáljon összevonni több elosztott SQL Server-példány adatbázisait egy felügyelt példányba. |
 | [DML-triggerek](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | A legtöbb esetben – lásd az egyes utasításokat |  Igen |
 | [DMV-k](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | A legtöbb esetben – lásd az egyes DMV |  Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Esemény-értesítések](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nem – a [riasztások](sql-database-insights-alerts-portal.md) megtekintése | Nem |
@@ -90,7 +90,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [Adatbázis visszaállítása biztonsági másolatból](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Csak automatizált biztonsági másolatokból – lásd: [SQL Database Recovery](sql-database-recovery-using-backups.md) | Automatizált biztonsági másolatokból – tekintse meg a [SQL Database helyreállítást](sql-database-recovery-using-backups.md) és az Azure Blob Storageba helyezett teljes biztonsági mentést – lásd a [biztonsági másolatok közötti különbségeket](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Adatbázis visszaállítása SQL Serverre](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nem. Natív visszaállítás helyett használja a BACPAC vagy a BCP-t. | Nem, mert SQL Server felügyelt példányban használt adatbázismotor magasabb verziójú, mint a helyszínen használt SQL Server RTM verziója. Használja helyette a BACPAC, a BCP vagy a tranzakciós replikálást. |
 | [Szemantikai keresés](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | Nem | Nem |
-| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nem | Igen, de csak a példányon belül. Lásd: [Service Broker különbségek](sql-database-managed-instance-transact-sql-information.md#service-broker) |
+| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nem | Igen, de csak a példányon belül. Ha távoli Service Broker útvonalakat használ, próbálja meg összevonni több elosztott SQL Server példány adatbázisait egy felügyelt példányba az áttelepítés során, és csak helyi útvonalakat használjon. Lásd: [Service Broker különbségek](sql-database-managed-instance-transact-sql-information.md#service-broker) |
 | [Kiszolgáló konfigurációs beállításai](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | Nem | Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Utasítások beállítása](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | A legtöbb esetben – lásd az egyes utasításokat | Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md)|
 | [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nem – lásd a [rugalmas feladatokat](elastic-jobs-overview.md) | Igen – lásd [SQL Server Agent különbségek](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
@@ -133,7 +133,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | [Időponthoz tartozó adatbázis-visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) | Igen – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Igen. Egyetlen felügyelt példány több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. Emellett több felügyelt példányt is telepíthet olyan példány- [készletekbe (előzetes verzió)](sql-database-instance-pools.md) , amelyek megoszthatják az erőforrásokat. |
 | Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. |
-| SQL-alias | Igen, lásd: [DNS-alias](dns-alias-overview.md) | Nem |
+| [SQL-alias](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nem, használjon [DNS-aliast](dns-alias-overview.md) | Nem, a [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) használatával állítson be aliast az ügyfélgépeken. |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. |
@@ -142,6 +142,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | [Teljesítménytesztek lekérdezése (QPI)](sql-database-query-performance.md) | Igen | Nem. SQL Server Management Studio és Azure Data Studio beépített jelentéseinek használata. |
 | [Virtuális hálózat](../virtual-network/virtual-networks-overview.md) | Részleges, lehetővé teszi a korlátozott hozzáférést a [VNet](sql-database-vnet-service-endpoint-rule-overview.md) -végpontok használatával | Igen, a felügyelt példány az ügyfél VNet van befecskendezve. Lásd: [alhálózat](sql-database-managed-instance-transact-sql-information.md#subnet) és [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |
 | VNet szolgáltatás végpontja | [Igen](sql-database-vnet-service-endpoint-rule-overview.md) | Nem |
+| Globális VNet | Igen, [magánhálózati IP-címek és szolgáltatási végpontok](sql-database-vnet-service-endpoint-rule-overview.md) használata | Nem, a [felügyelt példányok nem támogatottak](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) , mert a [terheléselosztási kényszer a VNet globális](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)társításban van.
 
 ## <a name="tools"></a>Eszközök
 Az Azure SQL Database különféle adateszközöket támogat, amelyek segítségével kezelheti adatait.
@@ -161,7 +162,7 @@ Az Azure SQL Database különféle adateszközöket támogat, amelyek segítség
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen [, 18,0-es és újabb verzió](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd a [kiterjesztett eseményeket](sql-database-xevent-db-diff-from-svr.md) | Igen |
-| [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Igen](https://www.microsoft.com/download/details.aspx?id=38829) | Igen, [előzetes](https://www.microsoft.com/download/details.aspx?id=100306) verzióban |
+| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Igen](https://www.microsoft.com/download/details.aspx?id=38829) | Igen, [előzetes](https://www.microsoft.com/download/details.aspx?id=100306) verzióban |
 
 ## <a name="migration-methods"></a>Áttelepítési módszerek
 

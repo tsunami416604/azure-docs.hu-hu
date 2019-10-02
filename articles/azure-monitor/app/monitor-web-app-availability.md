@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8e9cc93a74c299be6fb4898b4af143a43fc079f5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067039"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812211"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -31,7 +31,7 @@ A rendelkezésre állási tesztek három típusa létezik:
 
 * [URL-ping teszt](#create-a-url-ping-test): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
 * [Többlépéses webes teszt](availability-multistep.md): Webes kérések sorozatából álló rekord, amely az összetettebb forgatókönyvek tesztelésére is visszajátszható. A többlépéses webes tesztek a Visual Studio Enterprise-ban jönnek létre, és a portálra lesznek feltöltve a végrehajtáshoz.
-* [Egyéni nyomkövetési rendelkezésre állási tesztek](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): A `TrackAvailability()` metódus használatával saját egyéni rendelkezésre állási teszteket hozhat létre.
+* [Egyéni nyomkövetési rendelkezésre állási tesztek](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, akkor a `TrackAvailability()` metódus használható az eredmények Application Insights való elküldéséhez.
 
 **Application Insights erőforráson akár 100 rendelkezésre állási tesztet is létrehozhat.**
 
