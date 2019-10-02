@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701892"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802061"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
 
@@ -49,19 +49,11 @@ Ha az Azure AD Graph APIt a B2C-Bérlővel szeretné használni, regisztrálnia 
 
 ### <a name="assign-api-access-permissions"></a>API-hozzáférési engedélyek kiosztása
 
-1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
-1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.
-1. Válassza a **Windows Azure Active Directory**lehetőséget.
-1. Az **alkalmazás engedélyei**területen válassza a **Címtáradatok olvasása és írása**lehetőséget.
-1. Kattintson a **Mentés** gombra.
-1. Válassza ki **engedélyeket**, majd válassza ki **Igen**. Az engedélyek teljes propagálása eltarthat néhány percig.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
 
-1. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget.
-1. A kulcs **leírása** mezőben adja meg a kulcs leírását. Például: *felügyeleti kulcs*.
-1. Válasszon ki egy érvényességi **időtartamot** , majd kattintson a **Mentés**gombra.
-1. Jegyezze fel a kulcs **értékét**. Ezt az értéket egy későbbi lépésben kell használni a konfigurációhoz.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Most már rendelkezik egy olyan alkalmazással, amely jogosult a Azure AD B2C-bérlőben lévő felhasználók *létrehozására*, *olvasására*és *frissítésére* . Folytassa a következő szakasszal a felhasználói *törlési* és *jelszó-frissítési* engedélyek hozzáadásához.
 

@@ -1,62 +1,122 @@
 ---
 title: Deep learning & AI-keretrendszerek
 titleSuffix: Azure Data Science Virtual Machine
-description: Az Azure Data Science Virtual Machine-ban elérhető mély tanulási keretrendszerek és eszközök, beleértve a TensorFlow, a PyTorch, a kerasz, a Cafe, a MXNet, a Horovod, a theano, a Chainer és más eszközöket.
+description: Elérhető mély tanulási keretrendszerek és eszközök az Azure Data Science Virtual Machineon.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 08/11/2019
-ms.openlocfilehash: d8d351659bcfdcdddcc09831b5f95f580bf38f1e
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/1/2019
+ms.openlocfilehash: fd38bf1f7741c4d610ef43a12d90533d4ac7b703
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170864"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802412"
 ---
-# <a name="deep-learning-and-ai-frameworks-for-azure-data-science-vm"></a>Deep learning-és AI-keretrendszerek az Azure Data Science VM
-A [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) számos mélyreható tanulási keretrendszert támogat, amelyek segítségével mesterséges intelligencia (AI) alkalmazásokat hozhat létre prediktív elemzési és kognitív képességekkel, például a képekkel és a nyelvekkel kapcsolatos ismeretekkel.
+# <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Mély tanulási és AI-keretrendszerek az Azure Data Science VM
+Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
-A DSVM-en keresztül elérhető mély tanulási keretrendszerek többek között a következők:
+## <a name="caffehttpsgithubcombvlccaffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
-+ TensorFlow
-+ PyTorch
-+ Keras
-+ Caffe
-+ Caffe2
-+ Torch
-+ MXNet Model Server
-+ MXNet
-+ Horovod
-+ Theano
-+ Chainer
-+ Mély víz
-+ NVIDIA SZÁMJEGY
-+ NVIDIA-smi
-+ TensorFlow-kiszolgáló
-+ TensorRT
-+ Microsoft Cognitive Toolkit
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | |
+| Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Caffe telepítve van a `/opt/caffe`.   A minták a `/opt/caffe/examples`következők:.|
+| Futtatás      | a X2Go használatával jelentkezzen be a virtuális gépre, majd indítson el egy új terminált, és adja meg a következőt:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Mintafüzetek megnyílik egy új böngészőablakban. Bináris fájljai vannak telepítve a /opt/caffe/build/install/bin.<br/><br/>A Cafe telepített verziójának a Python 2,7-es verziójára van szüksége, és a Python 3,5 nem működik, amely alapértelmezés szerint aktiválva van. A Python 2,7-re való váltáshoz futtassa a parancsot `source activate root` az anaconda-környezetre való váltáshoz.|    
 
-|A&nbsp;&nbsp;DSVMmélyrehatótanulási&nbsp;eszközei|Windows|Linux|Használati&nbsp;megjegyzések|
-|---------|-------------------|------------------|-----|
-|[TensorFlow](https://www.tensorflow.org/) | Igen (Windows 2016) | Igen |A Python 3,5-es verzióra van telepítve a [Linux és a windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) , valamint a Python 3,6 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition)rendszeren. A DSVM-ben a minta Jupyter jegyzetfüzetek is elérhetők.<br/><br/>**Futtatás**:<br/>Terminál Aktiválja a megfelelő környezetet, majd futtassa a Pythont. <br/> Jupyter Kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a TensorFlow könyvtárat a mintákhoz.  |
-|[PyTorch](https://pytorch.org/)| Nem | Igen |A [Python 3,5](dsvm-languages.md#python-linux-and-windows-server-2012-edition)-es verzióra van telepítve. A minta Jupyter jegyzetfüzeteket tartalmaz, és a minták a/dsvm/Samples/pytorch.    <br/><br/>**Futtatás**:<br/>Terminál Aktiválja a megfelelő környezetet, majd futtassa a Pythont.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Kapcsolódjon, majd nyissa meg a PyTorch könyvtárat a mintákhoz.  |
-|[Kerasz](https://keras.io/)| Igen | Igen |Az API a Python 3,5-es verzióra van telepítve a [Linux és a windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) rendszeren, valamint a Python 3,6-ben [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition)rendszeren. [Lásd: minták](https://github.com/fchollet/keras/tree/master/examples).<br/><br/>**Futtatás**:<br/>Terminál Aktiválja a megfelelő környezetet, majd futtassa a Pythont. <br/> Jupyter Töltse le a mintákat a GitHub-helyről, kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a minta könyvtárat. |
-|[Caffe](https://github.com/caffe2/caffe2) | Nem |Igen (Ubuntu)|Caffe telepítve van a `/opt/caffe`.   A minták a `/opt/caffe/examples`következők:. <br/><br/>A **futtatásához**a X2Go használatával jelentkezzen be a virtuális gépre, majd indítson el egy új terminált, és adja meg a következőt:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Mintafüzetek megnyílik egy új böngészőablakban. Bináris fájljai vannak telepítve a /opt/caffe/build/install/bin.<br/><br/>A Cafe telepített verziójának a Python 2,7-es verziójára van szüksége, és a Python 3,5 nem működik, amely alapértelmezés szerint aktiválva van. A Python 2,7-re való váltáshoz futtassa a parancsot `source activate root` az anaconda-környezetre való váltáshoz.|
-|[Caffe2](https://github.com/caffe2/caffe2) | Nem |Igen (Ubuntu)|Caffe2 telepítve van a [környezet a Python 2.7-es (root) conda](dsvm-languages.md#python-linux-and-windows-server-2012-edition). A forrás, a `/opt/caffe2`.<br/>Mintafüzetek JupyterHub szerepelnek.<br/><br/>**Futtatás**:<br/>Terminál Aktiválja a [legfelső szintű Python-környezetet](dsvm-languages.md#python-linux-and-windows-server-2012-edition), indítsa el a Pythont, és importálja a Caffe2. <br/> * JupyterHub: [Kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)-hez, majd nyissa meg a Caffe2 könyvtárat a minta jegyzetfüzetek kereséséhez. Néhány notebookok megkövetelése a Caffe2 legfelső szintű kell beállítani, a Python-kódban; Adja meg a /opt/caffe2. |
-|[Fáklya](http://torch.ch/) | Nem |Igen (Ubuntu)|Torch telepítve van a `/dsvm/tools/torch`. PyTorch telepítve van a Python 2.7-es (_legfelső szintű_), valamint a Python 3.5-ös (_py35_) környezetben. A Torch-minták `/dsvm/samples/torch` a-ben és a `/dsvm/samples/pytorch`PyTorch-mintákban találhatók. |
-|[MXNet](https://mxnet.io/) | Igen (Windows 2016) | Igen|MXNet telepítve van a `C:\dsvm\tools\mxnet` a Windows és `/dsvm/tools/mxnet` Linux rendszeren. Python-kötések vannak telepítve a Python 3.5 [Linux és Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) és a Python 3.6-os [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). R-kötések az ubuntu rendszeren is telepítve lesz.<br/><br/>Mintául szolgáló Jupyter notebookok szerepelnek. <br/><br/>**Futtatás**:<br/>Terminál Aktiválja a megfelelő környezetet, majd futtassa a Pythont. <br/> Jupyter Kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a mxnet könyvtárat a mintákhoz.|
-|[MXNet-modell kiszolgálója](https://github.com/awslabs/mxnet-model-server) | Nem | Igen |Egy kiszolgáló, amely HTTP-végpontokat hoz létre a MXNet és a ONNX modellekhez. A _Mxnet-Model-Server_ elérhető a terminálon. Minták a [MXNet Model Server oldalon](https://github.com/awslabs/mxnet-model-server).|
-|[Horovod](https://github.com/uber/horovod) | Nem | Igen (Ubuntu) |Elosztott TensorFlow-keretrendszer. Horovod Python 3.5 települ az [Ubuntu](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  [Lásd: minták](https://github.com/uber/horovod/tree/master/examples).<br/><br/>A **futtatásához**aktiválja a megfelelő környezetet a terminálon, majd futtassa a Pythont. |
-|[Theano](https://github.com/Theano/Theano) | Nem | Igen (Ubuntu) |A theano a Python 2,7 (_root_) és a Python 3,5 (_py35_) környezetben van telepítve.<br/><br/>**Futtatás**: <br/>Terminál Aktiválja a kívánt Python-verziót (root vagy py35), futtassa a Pythont, majd importálja a theano.<br/>Jupyter Válassza ki a Python 2,7 vagy a 3,5 kernelt, majd importálja a theano.  <br/>A legújabb matematikai kernel-függvénytári (MKL-) hibák megkerüléséhez először a következőképpen kell beállítania a MKL-szálat:<br/><br/>`export MKL_THREADING_LAYER=GNU`|
-|[Chainert](https://chainer.org/) |Nem | Igen |Az telepítve van a chainer [Python 3.5-ös](dsvm-languages.md#python-linux-and-windows-server-2012-edition). ChainerRL és ChainerCV is telepítve lesz. <br/><br/>Mintafüzetek JupyterHub szerepelnek.<br/><br/>**Futtatás**: <br/>Terminál Aktiválja a [python 3,5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) környezetet, futtassa a _Pythont_, majd importálja a láncot. <br/> * JupyterHub: [Kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a láncolt könyvtárat a minta jegyzetfüzetek kereséséhez.|
-|[NVidia-számjegyek](https://github.com/NVIDIA/DIGITS) | Nem | Igen (Ubuntu) |Mélyreható tanulási rendszer az NVIDIA-tól a mélyreható tanulási modellek gyors betanításához. A (z) `/dsvm/tools/DIGITS` és a (z) számjegyek a ( _z)_ rendszerbe vannak telepítve, és elérhetők  <br/><br/>**Futtatás**: <br/>Jelentkezzen be a virtuális gépre a X2Go használatával. A terminálon indítsa el a szolgáltatást a futtatásával ```sudo systemctl start digits```. <br/><br/>A szolgáltatás indítása körülbelül egy percig tart. Nyisson meg egy webböngészőt, `http://localhost:5000`és lépjen a következőre:. Vegye figyelembe, hogy számjegyek nem biztosít egy biztonságos bejelentkezés előtt nem szerencsés felfedni a virtuális gép kívül.|
-|[CUDA, cuDNN, NVIDIA-illesztőprogram](https://developer.nvidia.com/cuda-toolkit) |Igen | Igen | |
-|NVIDIA-smi|Igen | Igen |NVIDIA-eszköz a GPU-tevékenységek lekérdezéséhez; az _NVIDIA-SMI_ a rendszer elérési útján érhető el. <br/><br/>Nyisson meg egy parancssort (Windows rendszeren) vagy egy terminált (Linuxon), majd futtassa az _NVIDIA-SMI_parancsot.|
-|[TensorFlow-kiszolgáló](https://www.tensorflow.org/serving/) | Nem | Igen |Egy TensorFlow-modellen következtetni kívánt kiszolgáló; a tensorflow_model_server a terminálon érhető el. A minták elérhetők [online](https://www.tensorflow.org/serving/).|
-|[TensorRT](https://developer.nvidia.com/tensorrt) |  Nem | Igen (Ubuntu) |Mély tanulási következtetési kiszolgáló az NVIDIA-ból. TensorRT van telepítve egy _apt_ csomagot. A minták elérhetők [online](https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html#samples).|
-|[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)|Igen | Igen | A Python 3,5-es verzióra van telepítve a [Linux és a windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) , valamint a Python 3,6 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition)rendszeren. A DSVM-ben a minta Jupyter jegyzetfüzetek is elérhetők. <br/><br/>**Futtatás**: <br/>Terminál Aktiválja a megfelelő környezetet, és futtassa a Pythont. <br/>Jupyter Kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a CNTK könyvtárat a mintákhoz. |
-|Mély víz|Nem | Igen (Ubuntu) |Mély tanulási keretrendszer a H2O-hez, a Deep Water a [Python 3,5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) -es verzióban érhető `/dsvm/tools/deep_water`el, és a-ben is elérhető. Mintafüzetek JupyterHub szerepelnek. Mély víz CUDA 8 cuDNN 5.1-a van szükség. Alapértelmezés szerint ez nem a könyvtár elérési útjában van, mert más mély tanulási keretrendszerek a CUDA 9 és a cuDNN 7 használatát használják. A használatához telepítse a CUDA 8 + cuDNN 5,1-et a Deep Water számára:<br/><br/>```export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:${LD_LIBRARY_PATH}```<br/>```export CUDA_ROOT=/usr/local/cuda-8.0```<br/><br/>Mély víz használata:<br/>Terminál Aktiválja a [python 3,5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) környezetet, majd futtassa a _Pythont_. <br/>* JupyterHub: [Kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)-hez, majd nyissa meg a deep_water könyvtárat a minta jegyzetfüzetek kereséséhez.|
+## <a name="caffe2httpsgithubcomcaffe2caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | |
+| Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A Caffe2 a [Python 2,7 (root) Conda-környezetben van telepítve. |
+| Futtatás      | Terminál Indítsa el a Pythont, és importálja a Caffe2. <br/> * JupyterHub: [Kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)-hez, majd nyissa meg a Caffe2 könyvtárat a minta jegyzetfüzetek kereséséhez. Néhány notebookok megkövetelése a Caffe2 legfelső szintű kell beállítani, a Python-kódban; Adja meg a /opt/caffe2. |
+
+## <a name="chainerhttpschainerorg"></a>[Chainert](https://chainer.org/)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 5.2 |
+| Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A chainer a Python 3,5-es verzióra van telepítve. |
+| Futtatás      | Terminál Aktiválja a Python 3,5 környezetet, futtassa `python`, majd `import chainer`. <br/> * JupyterHub: [Kapcsolódjon a JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a láncolt könyvtárat a minta jegyzetfüzetek kereséséhez.| 
+
+## <a name="cuda-cudnn-nvidia-driverhttpsdevelopernvidiacomcuda-toolkit"></a>[CUDA, cuDNN, NVIDIA-illesztőprogram](https://developer.nvidia.com/cuda-toolkit)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 10.0.130|
+| Támogatott DSVM-kiadások      | Windows és Linux   |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  |_NVIDIA-smi_ érhető el a rendszerbeli elérési úton.  |
+| Futtatás      | Nyisson meg egy parancssort (Windows rendszeren) vagy egy terminált (Linuxon), majd futtassa az _NVIDIA-SMI_parancsot. |
+
+
+## <a name="horovodhttpsgithubcomuberhorovod"></a>[Horovod](https://github.com/uber/horovod)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 0.16.1|
+| Támogatott DSVM-kiadások      | Linux (Ubuntu)   |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A Horovod a Python 3,5-es verziójában van telepítve |
+| Futtatás      | Aktiválja a megfelelő környezetet a terminálon, majd futtassa a Pythont. |
+
+## <a name="kerashttpskerasio"></a>[Kerasz](https://keras.io/)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 2.2.4 |
+| Támogatott DSVM-kiadások      | Windows és Linux   |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A kerasz a Windows Python 3,6-es verziójában, Linuxon pedig Python 3,5-ben van telepítve |
+| Futtatás      | Aktiválja a megfelelő környezetet a terminálon, majd futtassa a Pythont. |
+
+## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 2.5.1 |
+| Támogatott DSVM-kiadások      | Windows és Linux   |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A CNTK a Python 3,6-es verzióban van telepítve a [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) -ben és a Python 3,5-on [Linux](./dsvm-languages.md#python-linux-edition)rendszeren) |
+| Futtatás      | Terminál Aktiválja a megfelelő környezetet, és futtassa a Pythont. <br/>Jupyter Kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a CNTK könyvtárat a mintákhoz. |
+
+## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 1.2.0 |
+| Támogatott DSVM-kiadások      | Linux |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | A [Python 3,5](dsvm-languages.md#python-linux-edition)-es verzióra van telepítve. A minta Jupyter jegyzetfüzeteket tartalmaz, és a minták a/dsvm/Samples/pytorch. |
+| Futtatás      | Terminál Aktiválja a megfelelő környezetet, majd futtassa a Pythont.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Kapcsolódjon, majd nyissa meg a PyTorch könyvtárat a mintákhoz.  |
+
+## <a name="tensorflowhttpswwwtensorfloworg"></a>[TensorFlow](https://www.tensorflow.org/)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 1,13 |
+| Támogatott DSVM-kiadások      | Windows, Linux |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Telepítve a Python 3,5-es verziójában [Linux](dsvm-languages.md#python-linux-edition) és Python 3,6 rendszeren [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) |
+| Futtatás      | Terminál Aktiválja a megfelelő környezetet, majd futtassa a Pythont. <br/> Jupyter Kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), majd nyissa meg a TensorFlow könyvtárat a mintákhoz.   |
+
+## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow-kiszolgáló](https://www.tensorflow.org/serving/)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 1,12 |
+| Támogatott DSVM-kiadások      | Linux |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | a tensorflow_model_server a terminálon érhető el. |
+| Futtatás      |  A minták elérhetők [online](https://www.tensorflow.org/serving/).   |
+
+
+## <a name="theanohttpsgithubcomtheanotheano"></a>[Theano](https://github.com/Theano/Theano)
+
+|    |           |
+| ------------- | ------------- |
+| Támogatott verzió (k) | 1.0.3 |
+| Támogatott DSVM-kiadások      | Linux |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  |A theano a Python 2,7 (_root_) és a Python 3,5 (_py35_) környezetben van telepítve. |
+| Futtatás      |  Terminál Aktiválja a kívánt Python-verziót (root vagy py35), futtassa a Pythont, majd importálja a theano.<br/>Jupyter Válassza ki a Python 2,7 vagy a 3,5 kernelt, majd importálja a theano.  <br/>A legújabb matematikai kernel-függvénytári (MKL-) hibák megkerüléséhez először a következőképpen kell beállítania a MKL-szálat:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

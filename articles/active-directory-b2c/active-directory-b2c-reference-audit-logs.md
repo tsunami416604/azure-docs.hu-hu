@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702809"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802113"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -112,10 +112,7 @@ Kövesse az alábbi lépéseket egy alkalmazás regisztrálásához, adja meg a 
 
 ### <a name="create-client-secret"></a>Ügyfél titkos kulcsának létrehozása
 
-1. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget.
-1. A kulcs **leírása** mezőben adja meg a kulcs leírását. Például a *naplózási napló kulcsa*.
-1. Válasszon ki egy érvényességi **időtartamot**, majd kattintson a **Mentés**gombra.
-1. Jegyezze fel a kulcs **értékét**. Ezt az értéket kell megadnia a hitelesítéshez az Automation-parancsfájlokban, például az egy későbbi szakaszban látható PowerShell-szkripttel.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Most már rendelkezik egy alkalmazással a szükséges API-hozzáféréssel, egy alkalmazás-AZONOSÍTÓval és egy, az Automation-parancsfájlokban használható kulccsal. A cikk későbbi részében a PowerShell-szkript című szakaszban talál példát arra, hogyan kérhető le a tevékenység eseményei egy parancsfájl használatával.
 

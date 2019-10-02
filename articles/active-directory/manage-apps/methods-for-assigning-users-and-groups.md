@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bd66df381e11582b30ded5e3b529070357f35ad2
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967300"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720290"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
 Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:
@@ -50,7 +50,7 @@ Felhasználók és csoportok alkalmazásokhoz való hozzárendelés előtt meg k
 
 Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként vagy nem rendszergazdai alkalmazás tulajdonosaként.**
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
@@ -88,7 +88,7 @@ Rövid idő elteltével a kiválasztott felhasználók el tudják indítani ezek
 
 Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy nem rendszergazdai alkalmazásként egy hozzárendelt prémium szintű Azure ad-licenccel.
 
 2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
@@ -112,7 +112,7 @@ Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövess
 
 11. A kurzort a **csoport** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a csoport profilfénykép, vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
 
-12. **Választható** Ha egynél **több csoportot**szeretne felvenni, írjon be egy másik **teljes nevet** a **Keresés név vagy e-mail-cím** keresőmezőbe, majd a jelölőnégyzetre kattintva vegye fel a csoportot a **kiválasztott** listára.
+12. **Választható** Ha egynél **több csoportot szeretne felvenni**, írjon be egy másik **teljes nevet** a **Keresés név vagy e-mail-cím** keresőmezőbe, majd a jelölőnégyzetre kattintva vegye fel a csoportot a **kiválasztott** listára.
 
 13. Ha befejezte a csoportok kiválasztásával, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
 
@@ -148,9 +148,9 @@ Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, ha
 
 9. Ezután, amelyekhez a felhasználók, akik kérése az alkalmazáshoz való hozzáférést kell adni a csoport kijelöléséhez kattintson a választó a felirat melletti **melyik csoporthoz lesz hozzáadva a hozzárendelt felhasználók?** , és válasszon ki egy csoportot.
 
-10. **Választható** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek-e az üzleti jóváhagyáshoz, akkor az **alkalmazáshoz való hozzáférés engedélyezése előtt** állítsa be a jóváhagyás megkövetelése beállítást. az **Igen**értékre vált.
+10. **Választható** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek-e az üzleti jóváhagyáshoz, akkor az **alkalmazáshoz való hozzáférés engedélyezése előtt állítsa be a jóváhagyás megkövetelése** beállítást. az **Igen**értékre vált.
 
-11. **Választható Csak jelszó egyszeri bejelentkezést használó alkalmazások esetén,** ha engedélyezni szeretné, hogy ezek az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, állítsa be a jóváhagyók engedélyezése a **felhasználó jelszavának beállításához alkalmazás?** Váltás az **Igen**értékre.
+11. **Választható Csak jelszó egyszeri bejelentkezést használó alkalmazások esetén** , ha engedélyezni szeretné, hogy ezek az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, állítsa be a **jóváhagyók engedélyezése a felhasználó jelszavának beállításához az alkalmazáshoz?** Váltás az **Igen**értékre.
 
 12. **Választható** Azon üzleti jóváhagyók megadásához, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, kattintson az **alkalmazáshoz való hozzáférés jóváhagyására jogosult** címke melletti választóra? a legfeljebb 10 egyéni üzleti jóváhagyó kiválasztásához.
 
@@ -159,7 +159,7 @@ Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, ha
     >
     >
 
-13. **Választható** A szerepköröket közzétevő **alkalmazások esetében**, ha az önkiszolgáló jóváhagyott felhasználókat szeretné hozzárendelni egy szerepkörhöz, kattintson arra a választóra, amelynek a szerepkörét el szeretné rendelni az **alkalmazásban?** lehetőségre kattintva válassza ki azt a szerepkört, amelyhez hozzá szeretné rendelni ezeket a felhasználókat.
+13. **Választható** A **szerepköröket közzétevő alkalmazások esetében**, ha az önkiszolgáló jóváhagyott felhasználókat szeretné hozzárendelni egy szerepkörhöz, kattintson arra a választóra, amelynek a szerepkörét el szeretné rendelni az **alkalmazásban?** lehetőségre kattintva válassza ki azt a szerepkört, amelyhez hozzá szeretné rendelni ezeket a felhasználókat.
 
 14. Kattintson a **mentése** gombra a Befejezés gombra a panel tetején.
 

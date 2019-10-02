@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269215"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720162"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -66,9 +66,6 @@ A gépi tanulási feladatok beolvassák és/vagy leírják a munkaterületet.
 + Megtekintheti a gépi tanulási összetevőket, például a kísérleteket, a folyamatokat, a modelleket, a központi telepítéseket.
 + Modellek nyomon követése és figyelése.
 
-
-
-
 ## <a name="workspace-management"></a>Munkaterület-kezelés
 
 A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
@@ -80,7 +77,7 @@ A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 | Munkaterület-hozzáférés kezelése    | **&check;**   | |  **&check;**    |
 | Jegyzetfüzet-alapú virtuális gép létrehozása | **&check;**   | |     |
 
-### <a name='create-workspace'></a>Munkaterület létrehozása
+## <a name='create-workspace'></a>Munkaterület létrehozása
 
 Több módon is létrehozhat egy munkaterületet.
 

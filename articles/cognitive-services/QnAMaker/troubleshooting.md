@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300240"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802153"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
 A QnA Maker szolgáltatással kapcsolatos leggyakrabban felmerülő kérdések válogatott listája segít a szolgáltatás gyorsabb és jobb eredményekkel való elfogadásában.
 
+<a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-hostname"></a>A QnAMaker szolgáltatás gazdagépneve beszerzése
+## <a name="how-to-get-the-qnamaker-service-endpoint"></a>A QnAMaker szolgáltatás végpontjának beszerzése
 
-QnAMaker szolgáltatás gazdagépneve hasznos hibakeresés céljából forduljon a támogatási QnAMaker vagy a uservoice-on. Az állomásnév a következő formátumú URL-cím: https:// *{hostname}* . azurewebsites.net.
+A QnAMaker szolgáltatás végpontja hibakeresési célokra használható, amikor kapcsolatba lép a QnAMaker támogatási szolgálatával vagy a UserVoice. A végpont egy URL-cím ebben az űrlapban: https://your-resource-name.azurewebsites.net.
     
 1. Keresse meg a QnAMaker szolgáltatást (erőforráscsoport) a [Azure Portalon](https://portal.azure.com)
 
@@ -35,9 +36,9 @@ QnAMaker szolgáltatás gazdagépneve hasznos hibakeresés céljából forduljon
 
      ![Válassza ki a QnAMaker App Service-ben](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. Az állomásnév URL-cím áll rendelkezésre az Áttekintés szakaszban
+1. A végpont URL-címe az Áttekintés szakaszban érhető el
 
-    ![QnAMaker állomásnév](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    ![QnAMaker végpont](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
     
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>A QnA Maker portál Súgó robotjának használata
@@ -173,7 +174,7 @@ Kövesse a [ez](./Tutorials/create-qna-bot.md) Robotjait létrehozása az Azure 
 Az alábbi információkra van szüksége a Tudásbázisról:
 
 * Tudásbázis-azonosító.
-* Tudásbázis közzétett végpontjának állomásneve – a közzététel után a **Beállítások** lapon található.
+* A Tudásbázis közzétett végpontjának egyéni altartományának neve, a közzététel után a **Beállítások** lapon található `host` néven.
 * A Tudásbázis közzétett végponti kulcsa – a **Beállítások** lapon, a közzététel után. 
 
 Ezekkel az információkkal a Azure Portal a robot app Service-t. A **Beállítások – > konfiguráció – > Alkalmazásbeállítások**területen módosítsa ezeket az értékeket.  

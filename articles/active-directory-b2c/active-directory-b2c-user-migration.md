@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20c8fbd1626adaf67b790d500d8bfdeff6f27841
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702171"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802098"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Felhasználói áttelepítés
 
@@ -59,22 +59,13 @@ Először regisztráljon egy olyan alkalmazást, amelyet olyan felügyeleti fela
 
 Ezután adja meg az alkalmazásnak, hogy az Azure AD Graph API a címtárba való íráshoz szükséges engedélyeket.
 
-1. A **Beállítások** menüben válassza a **szükséges engedélyek**lehetőséget.
-1. Válassza a **Windows Azure Active Directory**lehetőséget.
-1. A **hozzáférés engedélyezése** ablaktábla **alkalmazás engedélyei**területén válassza a **Címtáradatok olvasása és írása**lehetőséget, majd kattintson a **Mentés**gombra.
-1. A **szükséges engedélyek** ablaktáblán válassza az **engedélyek megadása**lehetőséget, majd válassza az **Igen**lehetőséget.
-
-   ![Olvasási/írási címtár jelölőnégyzet, mentés és engedélyek kiemelve](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="step-13-create-the-application-secret"></a>1,3. lépés: Az alkalmazás titkos kódjának létrehozása
 
 Hozzon létre egy ügyfél titkos kulcsot (kulcs) a felhasználói áttelepítési alkalmazás számára, amelyet egy későbbi lépésben konfigurál.
 
-1. A **regisztrált alkalmazás** lapon válassza a **Beállítások**lehetőséget.
-1. Válassza a **Kulcsok** elemet.
-1. A **jelszavak**alatt adjon hozzá egy új kulcsot (más néven *MyClientSecret* ), vagy válasszon másik nevet, válassza ki a lejárati időszakot, válassza a **Mentés**lehetőséget, majd másolja a kulcs értékét későbbi használatra.
-
-    ![Az alkalmazás-azonosító érték és a kulcsok menüelem kijelölve Azure Portal](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Most már rendelkezik egy olyan alkalmazással, amely jogosult a Azure AD B2C-bérlőben lévő felhasználók létrehozására, olvasására és frissítésére.
 

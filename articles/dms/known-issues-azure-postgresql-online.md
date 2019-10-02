@@ -1,6 +1,6 @@
 ---
-title: A Azure Database for MySQL online áttelepítéssel kapcsolatos ismert problémákkal/áttelepítési korlátozásokkal foglalkozó cikk | Microsoft Docs
-description: Ismerje meg a Azure Database for MySQL online áttelepítésével kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
+title: Az ismert problémákkal/áttelepítési korlátozásokkal kapcsolatos cikk a PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra történő online áttelepítéssel | Microsoft Docs
+description: Ismerje meg a PostgreSQL-ről a Azure Database for PostgreSQLra való online áttelepítéssel kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,17 +10,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/03/2019
+ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743543"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802588"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ismert problémák/migrációs korlátozások online áttelepítéssel az Azure DB for PostgreSQL-hez
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online Migrálás és az Azure DB for PostgreSQL – egyetlen kiszolgáló között
 
-A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
+A PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra történő online áttelepítéssel kapcsolatos ismert problémák és korlátozások a következő szakaszokban olvashatók.
 
 ## <a name="online-migration-configuration"></a>Online áttelepítési konfiguráció
 
@@ -32,7 +32,7 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
 - A logikai replikáció engedélyezéséhez a **forrás PostgreSQL PostgreSQL. conf** fájlban adja meg a következő paramétereket:
   - **wal_level** = logikai
-  - **max_replication_slots** = [az adatbázisok maximális száma az áttelepítéshez]; Ha 4 adatbázist szeretne áttelepíteni, állítsa az értéket 4 értékre.
+  - **max_replication_slots** = [az adatbázisok maximális száma az áttelepítéshez]; Ha négy adatbázist szeretne áttelepíteni, állítsa az értéket 4 értékre.
   - **max_wal_senders** = [egyidejűleg futó adatbázisok száma]; a javasolt érték 10
 - A DMS-ügynök IP-címének hozzáadása a forrás PostgreSQL pg_hba. conf fájlhoz
   1. Jegyezze fel a DMS IP-címét, miután befejezte a DMS-példány üzembe helyezését.
@@ -42,7 +42,7 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
 - A felhasználónak rendelkeznie kell a felügyelői engedélyekkel a forrás-adatbázist üzemeltető kiszolgálón.
 - A forrás-adatbázis sémáján kívül a forrás-és a célként megadott adatbázis sémáinak egyezniük kell.
-- A cél Azure Database for PostgreSQL sémája nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
+- A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet idegen kulcsokkal. A külső kulcsok eldobásához használja az alábbi lekérdezést:
 
     ```
                                 SELECT Queries.tablename
@@ -73,7 +73,7 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
     Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
 
-- A cél Azure Database for PostgreSQL sémájában nem lehetnek eseményindítók. A következő paranccsal tilthatja le az eseményindítókat a célként megadott adatbázisban:
+- A cél Azure Database for PostgreSQL sémája – az egyetlen kiszolgáló nem rendelkezhet eseményindítókkal. A következő paranccsal tilthatja le az eseményindítókat a célként megadott adatbázisban:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

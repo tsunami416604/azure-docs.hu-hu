@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Beszédfelismerés felismerése, Java (Windows, Linux) – Speech Service'
+title: 'Gyors útmutató: Beszédfelismerés, Java (Windows, Linux, macOS) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy egyszerű Java-alkalmazást, amely a számítógép mikrofonjának felhasználói beszédét rögzíti és átírja.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554109"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802461"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszéd felismerése a Javához készült Speech SDK-val
 
-A gyors üzembe helyezési útmutató [](quickstart-translate-speech-java-jre.md) a beszédfelismeréshez, a fordításhoz és a [hang-első virtuális asszisztenshez](quickstart-virtual-assistant-java-jre.md)is elérhető.
+A gyors üzembe helyezési útmutató a beszéd- [beszéd fordításhoz](quickstart-translate-speech-java-jre.md), a [hangvezérelt virtuális asszisztenshez](quickstart-virtual-assistant-java-jre.md)és a [beszédfelismeréshez](quickstart-text-to-speech-java-jre.md)is elérhető.
 
 Ha szükséges, válasszon másik programozási nyelvet és/vagy környezetet:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -95,6 +95,7 @@ A GitHubon további minták is elérhetők, például a hangfájlok beszédének
 
 ## <a name="see-also"></a>Lásd még
 
-- [Rövid útmutató: Translate speech, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rövid útmutató: Beszéd fordítása, Java (Windows, Linux, macOS) ](quickstart-translate-speech-java-jre.md)
+- [Rövid útmutató: Beszédfelismerési beszéd, Java (Windows, Linux, macOS) ](quickstart-text-to-speech-java-jre.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

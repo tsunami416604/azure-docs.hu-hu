@@ -6,14 +6,14 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703577"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719942"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Azure Search Knowledge Store létrehozása REST használatával
 
@@ -29,7 +29,7 @@ Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el ezt a Knowle
 
 + [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok és a Tudásbázis tárolására. A Storage-fióknak ugyanazt a helyet kell használnia (például az USA nyugati régióját) a Azure Search szolgáltatáshoz. A *fiók típusának* StorageV2 kell lennie *(általános célú v2)* (alapértelmezett) vagy *Storage (általános célú v1)* .
 
-+ Ajánlott: [Poster Desktop-alkalmazás](https://www.getpostman.com/) , amely a kérelmek küldését Azure Search. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására, és ebben a cikkben fogjuk használni. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) továbbá a kérelmek Poster-gyűjteményét is tartalmazza. 
++ Ajánlott: [Poster Desktop-alkalmazás](https://www.getpostman.com/) , amely a kérelmek küldését Azure Search. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására, és ebben a cikkben fogjuk használni. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) továbbá a kérelmek Poster-gyűjteményét is tartalmazza. 
 
 ## <a name="2---store-the-data"></a>2 – az adatgyűjtés tárolása
 
@@ -53,7 +53,7 @@ Töltse be a Hotel a CSV-fájlt az Azure Blob Storage-ba, hogy az egy Azure Sear
 
 ## <a name="3---configure-postman"></a>3 – Poster konfigurálása
 
-Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) , és importálja a Poster-ba a **fájl, importálás..** . használatával. Váltson a **gyűjtemények** lapra, és kattintson a **...** gombra, és válassza a **Szerkesztés**lehetőséget. 
+Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) , és importálja a Poster-ba a **fájl, importálás..** . használatával. Váltson a **gyűjtemények** lapra, és kattintson a **...** gombra, és válassza a **Szerkesztés**lehetőséget. 
 
 ![Poster-alkalmazás, amely a navigációs](media/knowledge-store-create-rest/postman-edit-menu.png "menüben navigáljon a Poster szerkesztési menüjébe")
 
@@ -88,7 +88,7 @@ A Tudásbázis létrehozásához négy HTTP-kérelem kibocsátására van szüks
 1. Egy PUT kérelem a készségkészlet létrehozásához. A készségkészlet meghatározza az adataira alkalmazott dúsításokat és a Tudásbázis struktúráját.
 1. Egy PUT-kérelem az indexelő létrehozásához. Az Indexer futtatása beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
 
-A [forráskód](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) a következő négy kérelemmel rendelkező Poster-gyűjteményt tartalmaz. A kérések kiküldéséhez váltson a Poster-kérelem fülére, és vegye fel `api-key` és `Content-Type` kérelmek fejlécét. Állítsa a `api-key` értéket `{{admin-key}}` értékre. Állítsa a `Content-type` értéket `application/json` értékre. 
+A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) a következő négy kérelemmel rendelkező Poster-gyűjteményt tartalmaz. A kérések kiküldéséhez váltson a Poster-kérelem fülére, és vegye fel `api-key` és `Content-Type` kérelmek fejlécét. Állítsa a `api-key` értéket `{{admin-key}}` értékre. Állítsa a `Content-type` értéket `application/json` értékre. 
 
 > [!div class="mx-imgBorder"]
 > @no__t – 0Screenshot megjelenítve a Poster felületét a következő fejlécekhez: @ no__t-1

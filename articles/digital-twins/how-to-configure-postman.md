@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904299"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803419"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -25,9 +25,9 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a Poster REST-ügyfelet az Azure di
 
 ## <a name="postman-summary"></a>Poster – összefoglalás
 
-Ismerkedjen meg az Azure Digital Twins szolgáltatással egy REST-ügyfél eszközzel [](https://www.getpostman.com/) , például a Poster használatával, és készítse elő a helyi tesztelési környezetet. A Poster-ügyfél segít az összetett HTTP-kérések gyors létrehozásában. A Poster-ügyfél asztali verziójának letöltéséhez nyissa meg a [www.getpostman.com/apps](https://www.getpostman.com/apps).
+Ismerkedjen meg az Azure Digital Twins szolgáltatással egy REST-ügyfél eszközzel, például a [Poster](https://www.getpostman.com/) használatával, és készítse elő a helyi tesztelési környezetet. A Poster-ügyfél segít az összetett HTTP-kérések gyors létrehozásában. A Poster-ügyfél asztali verziójának letöltéséhez nyissa meg a [www.getpostman.com/apps](https://www.getpostman.com/apps).
 
-[](https://www.getpostman.com/) A Poster egy Rest-tesztelési eszköz, amely a kulcsfontosságú HTTP-kérések funkcióit egy hasznos asztali és beépülő modul-alapú grafikus felhasználói felületre helyezi.
+A [Poster](https://www.getpostman.com/) egy Rest-tesztelési eszköz, amely a kulcsfontosságú HTTP-kérések funkcióit egy hasznos asztali és beépülő modul-alapú grafikus felhasználói felületre helyezi.
 
 A Poster-ügyfélen keresztül a megoldások fejlesztői megadhatják a HTTP-kérelem típusát (*post*, *Get*, *Update*, *patch*és *delete*), az API-végpontot a híváshoz és az SSL használatát. A Poster a HTTP-kérelmek fejlécének, paramétereinek, űrlap-és testületeinek hozzáadását is támogatja.
 
@@ -35,21 +35,42 @@ A Poster-ügyfélen keresztül a megoldások fejlesztői megadhatják a HTTP-ké
 
 Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit engedélyezési folyamat használatára.
 
-1. Kövesse a rövid útmutató [](./quickstart-view-occupancy-dotnet.md) lépéseit egy Azure ad-alkalmazás létrehozásához. Vagy hozzon létre egy [natív alkalmazást a régi HRE panel használatával](./how-to-use-legacy-aad.md).
+1. Nyissa meg az **API-engedélyek** panelt az alkalmazás regisztrálásához. Válassza **az engedély hozzáadása** gombot. A **kérelem API-engedélyek** ablaktáblán válassza a **saját szervezet által használt API** -k fület, majd keresse meg a következőt:
+    
+    1. `Azure Digital Twins`. Válassza ki az **Azure Digital Twins** API-t.
 
-1. Az **API-engedélyek**területen válassza **az engedély hozzáadása**elemet. Ezt követően az **Azure Digital ikrek** a **szervezet által használt API**-k alatt vannak. Ha a keresés nem találja meg az API-t, keressen inkább az **Azure Smart Spaces** kifejezésre. Ezután válassza a **delegált engedélyek**, **olvasás** >  **. írás**és **Hozzáadás engedélyt**.
+        [![Keresés az API-ban vagy az Azure Digital Twins-ban](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    [![Azure Active Directory alkalmazás-regisztráció API hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    1. Vagy keressen rá a `Azure Smart Spaces Service` kifejezésre. Válassza ki az **Azure Smart Spaces szolgáltatás** API-ját.
 
-1. Válassza a **jegyzékfájl** lehetőséget az alkalmazáshoz tartozó alkalmazási jegyzékfájl megnyitásához. *Oauth2AllowImplicitFlow* beállítása a `true`következőre:.
+        [![Azure intelligens Spaces-API keresése](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
-    [![Azure Active Directory implicit folyamat](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
+    > [!IMPORTANT]
+    > A megjelenő Azure AD API-név és-azonosító a bérlőtől függ:
+    > * A bérlői és az ügyfél-fiókok teszteléséhez `Azure Digital Twins` értéket kell keresni.
+    > * Más Microsoft-fiókoknak a `Azure Smart Spaces Service` kifejezésre kell keresniük.
 
-1. Adja meg a **Válasz URL-címét** a `https://www.getpostman.com/oauth2/callback`következőre:.
+1. A kiválasztott API az **Azure Digital Twins** néven jelenik meg ugyanabban a **kérelem API-engedélyek** ablaktáblán. Válassza az **olvasás (1)** legördülő listát, majd válassza az **olvasás. írás** jelölőnégyzetet. Kattintson az **engedélyek hozzáadása** gombra.
 
-    [![Azure Active Directory válasz URL-címe](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [![API-engedélyek hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. Másolja és őrizze meg Azure Active Directory ALKALMAZÁSának azonosítóját. Ezt az alábbi lépések használják.
+1. A szervezet beállításaitól függően előfordulhat, hogy további lépéseket kell tennie ahhoz, hogy rendszergazdai hozzáférést biztosítson ehhez az API-hoz. További információért forduljon a rendszergazdához. A rendszergazdai hozzáférés jóváhagyása után az **API-engedélyek** ablaktáblán a **rendszergazdai jóváhagyás szükséges** oszlop az API-khoz hasonlóan fog megjelenni:
+
+    [![API-engedélyek hozzáadása](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+
+
+1. Válassza a **jegyzékfájl** lehetőséget az alkalmazáshoz tartozó alkalmazási jegyzékfájl megnyitásához. *Oauth2AllowImplicitFlow* beállítása a következőre: `true`.
+
+    [@no__t – 1Azure Active Directory implicit folyamat](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
+
+1. Adja meg a **Válasz URL-címét** `https://www.getpostman.com/oauth2/callback` értékre.
+
+    [@no__t – 1Azure Active Directory válasz URL-címe](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+
+1. Másolja és őrizze meg Azure Active Directory **alkalmazásának azonosítóját** . Ezt az alábbi lépések használják.
+
+   [![Azure Active Directory alkalmazás azonosítója](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2,0 token beszerzése
 
@@ -68,13 +89,13 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | A bérlő vagy szervezet neve | `microsoft` |
 
-1. Válassza az **Engedélyezés** lapot, válassza a **OAuth 2,0**, majd az **új hozzáférési jogkivonat**beolvasása elemet.
+1. Válassza az **Engedélyezés** lapot, válassza a **OAuth 2,0**, majd az **új hozzáférési jogkivonat beolvasása**elemet.
 
     | Mező  | Value |
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
     | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
-    | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a 2. lépésből |
+    | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a **2. lépésből** |
     | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy újrafelhasznált Azure Active Directory **alkalmazás azonosítójának** használata |
     | Scope | Hagyja üresen |
     | State | Hagyja üresen |
@@ -82,7 +103,7 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
 
 1. Az ügyfélnek ekkor a következőképpen kell megjelennie:
 
-    [![Példa a Poster-ügyfélre](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [@no__t – 1Postman-ügyfél – példa](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Válassza a **kérelem tokenje**elemet.
 
@@ -92,26 +113,24 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
   
 1. Görgessen le, és válassza a **token használata**lehetőséget.
 
-<div id="multi"></div>
-
 ## <a name="make-a-multipart-post-request"></a>Többrészes POST-kérelem létrehozása
 
 Az előző lépések elvégzése után konfigurálja a Poster-t egy hitelesített HTTP többrészes POST-kérelem létrehozásához:
 
-1. A **fejléc** lapon adja hozzá a HTTP-kérelem fejlécének kulcsához tartozó **Content-Type** értéket `multipart/mixed`.
+1. A **fejléc** lapon adjon hozzá egy HTTP-kérelem fejlécének kulcsához tartozó **Content-Type** értéket a `multipart/mixed` értékkel.
 
-   [![Tartalom típusa többrészes/vegyes](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [@no__t – 1Content típus többrészes/kevert](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Nem szöveges adatfájlok szerializálása fájlokba. A JSON-fájlok JSON-fájlként lesznek mentve.
-1. A **törzs** lapon adja hozzá az egyes fájlokat egy **Kulcsnév** hozzárendelésével, vagy válassza a `file` vagy `text`a elemet.
+1. A **törzs** lapon adja hozzá az egyes fájlokat a **kulcs** nevének hozzárendelésével, `file` vagy `text` elem kiválasztásával.
 1. Ezután válassza ki az egyes fájlokat a **Fájl választása** gombbal.
 
-   [![Példa a Poster-ügyfélre](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [@no__t – 1Postman-ügyfél – példa](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * A Poster-ügyfélnek nincs szüksége arra, hogy a többrészes adattömbökhöz manuálisan hozzárendelt **tartalom-típus** vagy **tartalom-törlés**legyen.
    > * Az egyes részekhez nem kell megadnia ezeket a fejléceket.
-   > * Ki kell választania `multipart/mixed` vagy egy másik megfelelő **Content-Type értéket** a teljes kérelemhez.
+   > * A teljes kérelemhez ki kell választania `multipart/mixed` vagy más megfelelő **Content-Type értéket** .
 
 1. Végül válassza a **Küldés** lehetőséget a többrészes http post-kérelem elküldéséhez.
 

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12abb7fb6d5e93e226ae539f8161566e3c30bd65
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554119"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803334"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerés felismerése C++ MacOS rendszeren a Speech SDK használatával
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben egy C++ , a MacOS 10,13-es vagy újabb verzióhoz készült Console-alkalmazást hoz létre. A Cognitive Services [SPEECH SDK](speech-sdk.md) segítségével valós időben átmásolhatja a beszédet a Mac mikrofonja által használt szövegbe. Az alkalmazás a [MacOS-hez készült SPEECH SDK](https://aka.ms/csspeech/macosbinary) -val és a Mac alapértelmezett C++ fordítóprogramával (például `g++`:) lett létrehozva.
+Ebben a cikkben egy C++ , a MacOS 10,13-es vagy újabb verzióhoz készült Console-alkalmazást hoz létre. A Cognitive Services [SPEECH SDK](speech-sdk.md) segítségével valós időben átmásolhatja a beszédet a Mac mikrofonja által használt szövegbe. Az alkalmazás a [MacOS-hez készült SPEECH SDK](https://aka.ms/csspeech/macosbinary) -val és a Mac alapértelmezett C++ fordítóprogramával (például `g++`) lett létrehozva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,9 +31,7 @@ A rövid útmutató elvégzéséhez szüksége lesz egy Speech Services-előfize
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.6.0`.
-
-A macOS rendszerhez készült Speech SDK letölthető a alkalmazásból https://aka.ms/csspeech/macosbinary tömörített keretrendszer csomagként.
+A macOS-hez készült Speech SDK letölthető a https://aka.ms/csspeech/macosbinary csomagból tömörített keretrendszerként.
 
 Az SDK letöltése és telepítése a következőképpen történik:
 
@@ -49,7 +47,7 @@ Az SDK letöltése és telepítése a következőképpen történik:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Töltse le és csomagolja `.zip` ki a Speech SDK-keretrendszert tartalmazó archívumot:
+1. Töltse le és csomagolja ki a Speech SDK-keretrendszert tartalmazó `.zip` archívumot:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -62,7 +60,7 @@ Az SDK letöltése és telepítése a következőképpen történik:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   A címtár listaelemének tartalmaznia kell a harmadik féltől származó, valamint a licencek fájljait, `MicrosoftCognitiveServicesSpeech.framework` valamint a könyvtárat is.
+   A címtár listaelemének tartalmaznia kell a harmadik féltől származó, valamint a licencek fájljait, valamint a `MicrosoftCognitiveServicesSpeech.framework` könyvtárat.
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -70,7 +68,7 @@ Az SDK letöltése és telepítése a következőképpen történik:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-macos/helloworld.cpp#code)]
 
-1. Ebben az új fájlban cserélje le a karakterláncot `YourSubscriptionKey` a Speech Services előfizetési kulcsára.
+1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` karakterláncot a Speech Services előfizetési kulcsával.
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 

@@ -235,8 +235,6 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
-        - name: Azure-szolgáltatások vizsgálati hatókör szerint
-          href: ../compliance/azure-services-in-fedramp-auditscope.md
         - name: Adatelemzés
           href: ../blueprints/fedramp-analytics-overview.md
         - name: Adattárház
@@ -283,16 +281,6 @@
           href: ../blueprints/pcidss-iaaswa-overview.md
         - name: PaaS webalkalmazás
           href: ../blueprints/pcidss-paaswa-overview.md
-    - name: SCCA
-      displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Az Azure számítástechnikai architektúrájának védelme
-          href: ../compliance/secure-azure-computing-architecture.md
-    - name: TIC
-      displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Trusted Internet Connection az Azure-ral
-          href: ../compliance/compliance-tic.md
     - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
       displayName: 'blueprint, privacy, certifications'
       items:

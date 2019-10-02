@@ -1,5 +1,5 @@
 ---
-title: App Service alkalmazáshoz rendelt felügyelt identitás használata a Azure Key Vault eléréséhez
+title: Rendszerhez rendelt felügyelt identitás használata a Azure Key Vault eléréséhez
 description: Ismerje meg, hogyan hozhat létre felügyelt identitást App Service-alkalmazásokhoz, és hogyan használhatja azt a Azure Key Vault eléréséhez
 services: key-vault
 author: msmbaldwin
@@ -9,18 +9,19 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ac6f9be80d31804089ae2589998079dc7df66b3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004305"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720251"
 ---
-# <a name="use-an-app-service-managed-identity-to-access-azure-key-vault"></a>App Service felügyelt identitás használata a Azure Key Vault eléréséhez 
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Felügyelt identitással rendelkező Key Vault hitelesítés megadása
 
-Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást App Service alkalmazásokhoz, és hogyan használhatja azt a Azure Key Vault eléréséhez. Az Azure-beli virtuális gépeken üzemeltetett alkalmazások esetében tekintse [meg a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata a Azure Key Vault eléréséhez](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)című témakört 
+A Azure Active Directory felügyelt identitása lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md). 
 
-A Azure Active Directory felügyelt identitása lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ az Azure AD-beli felügyelt identitásokról: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md). 
+Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást egy App Service alkalmazáshoz, és hogyan használhatja azt a Azure Key Vault eléréséhez. Az Azure-beli virtuális gépeken üzemeltetett alkalmazások esetében tekintse [meg a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata a Azure Key Vault eléréséhez](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)című témakört
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +33,8 @@ Az útmutató végrehajtásához a következő erőforrásokkal kell rendelkezni
    - [Kulcstartó létrehozása az Azure CLI-vel](quick-create-cli.md)
    - [Key Vault létrehozása Azure PowerShell](quick-create-powershell.md)
    - [Hozzon létre egy Key vaultot a Azure Portal](quick-create-portal.md).
-- Meglévő App Service alkalmazás, amelyhez kulcstartó-hozzáférést kíván biztosítani. Gyorsan létrehozhat egyet a [app Service dokumentációjának](../app-service/overview.md) lépéseit követve./
+- Meglévő App Service alkalmazás, amelyhez kulcstartó-hozzáférést kíván biztosítani. A [app Service dokumentáció](../app-service/overview.md)lépéseinek követésével gyorsan létrehozhat egyet.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview). Azt is megteheti, hogy a [Azure Portal](http://portal.azure.com)is használja.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása 
@@ -101,7 +103,7 @@ Jegyezze fel a `PrincipalId`-t, amelyre a következő szakaszban lesz szükség.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ahhoz, hogy hozzáférést biztosítson az alkalmazáshoz a kulcstartóhoz, használja az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot, és adja meg a **ObjectId** paramétert a fentebb említett **principalId* .
+Ahhoz, hogy hozzáférést biztosítson az alkalmazáshoz a kulcstartóhoz, használja az Azure CLI az kulcstároló [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsot, és adja meg a **ObjectId** paramétert a fent említett **principalId** .
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
@@ -109,7 +111,9 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Azure Key Vault áttekintése](key-vault-overview.md)
-- Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md)
-- Tudnivalók a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
+- @no__t – 0Azure Key Vault biztonság: Identitás-és hozzáférés-kezelés @ no__t-0
+- [Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása](key-vault-group-permissions-for-apps.md)
+- [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
+- [A kulcstartó védelme](key-vault-secure-your-key-vault.md).
+- [Azure Key Vault fejlesztői útmutató](key-vault-developers-guide.md)
 - [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: 440a36d00334840688f66d0027152d7581b7158c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309902"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802553"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>A Visual studióhoz készült Azure Data Lake Tools segítségével megoldhatja az adatsérülési problémákat
 
@@ -165,7 +165,7 @@ Az alábbi példa egy elkülönített bal oldali sort mutat be. Az egyes kimenet
 
 A Combiner mód attribútumai:
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner (Mode = CombinerMode. Full): Minden kimeneti sor a bal és a jobb oldali bemeneti soroktól függ, ugyanazzal a kulccsal.
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left): Minden kimeneti sor a bal oldali (és a jobb oldali és az azonos kulccsal rendelkező) egy bemeneti sorból függ.
 

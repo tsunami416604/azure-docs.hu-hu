@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129714"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720115"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása a Azure App Serviceban
 <a name="Overview"></a>
@@ -38,7 +38,7 @@ Ha az alkalmazást egy másik szinten szeretné méretezni, győződjön meg arr
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Tárhely felvétele
+## <a name="add-a-slot"></a>Tárolóhely hozzáadása
 Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten kell futnia, hogy több üzembe helyezési tárolóhelyet engedélyezzen.
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg az alkalmazás [erőforrás-lapját](../azure-resource-manager/manage-resources-portal.md#manage-resources).
@@ -106,7 +106,7 @@ A swap művelet bármely pontján a felcserélt alkalmazások inicializálásán
 
 Ha egy adott tárolóhelyre vagy kapcsolódási sztringre kíván beállítani egy adott tárolóhelyet (nem cseréli le), lépjen az adott tárolóhely **konfiguráció** lapjára. Adjon hozzá vagy szerkesszen egy beállítást, majd válassza a **telepítési tárolóhely beállítása**lehetőséget. Ha bejelöli ezt a jelölőnégyzetet, App Service, hogy a beállítás nem cserélhető. 
 
-![Tárhelybeállítás](./media/web-sites-staged-publishing/SlotSetting.png)
+![Tárolóhely beállítása](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
@@ -128,7 +128,7 @@ Az üzembe helyezési pontok cseréje:
 
 2. Válassza ki a kívánt **forrás** -és **cél** tárolóhelyeket. A cél általában az üzemi tárolóhely. Emellett válassza ki a **forrás módosításait** és a **cél módosítása** lapokat, és ellenőrizze, hogy a konfigurációs változások várhatóak-e. Ha elkészült, azonnal lecserélheti a tárolóhelyeket a **swap**lehetőség kiválasztásával.
 
-    ![Felcserélés befejezése](./media/web-sites-staged-publishing/SwapImmediately.png)
+    ![Csere befejezése](./media/web-sites-staged-publishing/SwapImmediately.png)
 
     Ha szeretné megtekinteni, hogy a cél tárolóhelye Mikor fusson az új beállításokkal, mielőtt a swap ténylegesen megtörténne, ne válassza a **swap**lehetőséget, de kövesse a [swap with Preview (előzetes](#Multi-Phase)verzió) című témakör
 
@@ -140,9 +140,6 @@ Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubl
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>Felcserélés előzetes verzióval (többfázisú swap)
 
-> [!NOTE]
-> Az előzetes verzióra való felcserélés nem támogatott a Linuxon futó Web Apps alkalmazásokban.
-
 Az éles környezetbe való váltás előtt ellenőrizze, hogy az alkalmazás a megcserélt beállításokkal fut-e. A forrásként szolgáló tárolóhely a swap befejeződése előtt is felmelegszik, ami a kritikus fontosságú alkalmazások számára is kívánatos.
 
 Ha az előzetes verzióra cserél, App Service végrehajtja ugyanazt a [swap-műveletet](#AboutConfiguration) , de az első lépés után szünetel. Ezután ellenőrizheti az eredményét az átmeneti tárolóhelyen a csere befejezése előtt. 
@@ -153,7 +150,7 @@ Az előzetes verzióra való váltáshoz:
 
 1. Kövesse az [üzembe helyezési pontok cseréje](#Swap) szakasz lépéseit, de válassza a **csere elvégzése előzetes**verzióval lehetőséget.
 
-    ![Felcserélés előnézettel](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Felcserélés előzetes verzióval](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
     A párbeszédpanelen megtekintheti, hogy a forrás tárolóhelye hogyan változik az 1. fázisban, és hogyan változik a forrás és a cél tárolóhelye a 2. fázisban.
 
@@ -204,7 +201,8 @@ Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubl
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Egyéni bemelegítő beállítása
-Az [automatikus felcserélés](#Auto-Swap)használatakor előfordulhat, hogy egyes alkalmazásokban a swap előtt egyedi, bemelegítő műveletek szükségesek. A `applicationInitialization` web. config konfigurációs eleme lehetővé teszi egyéni inicializálási műveletek megadását. A [swap művelet](#AboutConfiguration) megvárja, amíg ez az egyéni bemelegítő befejeződik a cél tárolóhelyre való váltás előtt. Íme egy minta web. config töredék.
+
+Egyes alkalmazások esetében előfordulhat, hogy a swap előtt egyéni Warm-up műveletekre van szükség. A `applicationInitialization` web. config konfigurációs eleme lehetővé teszi egyéni inicializálási műveletek megadását. A [swap művelet](#AboutConfiguration) megvárja, amíg ez az egyéni bemelegítő befejeződik a cél tárolóhelyre való váltás előtt. Íme egy minta web. config töredék.
 
     <system.webServer>
         <applicationInitialization>
@@ -317,7 +315,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Üzembe helyezési pontok cseréje
+### <a name="swap-deployment-slots"></a>Üzembe helyezési pontok felcserélése
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -334,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>Automatizálás ARM-sablonokkal
+
+Az [ARM-sablonok](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) deklaratív JSON-fájlok, amelyek az Azure-erőforrások üzembe helyezésének és konfigurálásának automatizálására szolgálnak. A tárolóhelyek ARM-sablonokkal való kicseréléséhez két tulajdonságot fog beállítani a *Microsoft. Web/Sites/Slots* és a *Microsoft. Web/Sites* erőforrásokon:
+
+- `buildVersion`: ez egy karakterlánc-tulajdonság, amely a tárolóhelyen üzembe helyezett alkalmazás aktuális verzióját jelöli. Például: "v1", "1.0.0.1" vagy "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: ez egy karakterlánc-tulajdonság, amely megadja, hogy a tárolóhelynek milyen `buildVersion` értékűnek kell lennie. Ha a targetBuildVersion nem egyezik a jelenlegi `buildVersion` értékkel, akkor ez a swap műveletet a megadott `buildVersion` hely megkeresésével aktiválja.
+
+### <a name="example-arm-template"></a>Példa ARM-sablonra
+
+A következő ARM-sablon frissíti az átmeneti tárolóhely @no__t – 0 értéket, és beállítja a `targetBuildVersion` értéket az üzemi tárolóhelyen. Ez a két tárolóhelyet fogja cserélni. A sablon feltételezi, hogy már van egy "előkészítés" nevű tárolóhelytel létrehozott WebApp.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Ez az ARM-sablon idempotens, ami azt jelenti, hogy többször is végrehajtható, és a tárolóhelyek azonos állapotba hozhatók. Az első végrehajtás után a `targetBuildVersion` megegyezik a jelenlegi `buildVersion` értékkel, így a swap nem lesz aktiválva.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>

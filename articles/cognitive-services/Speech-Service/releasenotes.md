@@ -8,17 +8,45 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: jhakulin
+ms.date: 09/20/2019
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 12eecc4998153cbeedeb907ecad33c56141a50e6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0e4d0eb19da2485b689b1c5d5192e344153aef0b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559127"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799972"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: 2019 – szeptember kiadás
+
+**Új funkciók**
+*   Bétaverziós támogatás hozzáadva a Xamarin Univerzális Windows-platform (UWP), Android és iOS rendszerhez
+*   IOS-támogatás hozzáadva az Unity-hoz
+*   Tömörített bemeneti támogatás hozzáadva a atörvény, a mulaw, a FLAC és az Android, az iOS és a Linux rendszerekhez
+*   SendMessageAsync hozzáadva a szolgáltatáshoz üzenet küldéséhez a kapcsolódási osztályban
+*   SetMessageProperty hozzáadva a kapcsolási osztályban az üzenet beállítása tulajdonságához
+*   A Java (JRE és Android), a Python, a Swift és a Objective-C kötések hozzáadva
+*   A macOS, iOS és Android rendszerekhez készült lejátszási támogatás hozzáadva.
+*   "Word határ" információ hozzáadva a TTS-hez.
+
+**Hibajavítások**
+*   Rögzített IL2CPP-Build probléma az 2019-es Unity Android rendszerhez
+*   Helytelenül formázott fejléceket tartalmazó hiba kijavítva a WAV-fájlban megadott bemeneten
+*   Az UUID-mel kapcsolatos kijavított probléma bizonyos kapcsolatok tulajdonságaiban nem egyedi.
+*   Néhány figyelmeztetés a Swift-kötésekben a nullák megadásával kapcsolatban (kis kód megváltoztatására lehet szükség)
+*   Kijavítva egy olyan hibát, amely miatt a WebSocket-kapcsolatok nem megfelelően vannak lezárva a hálózati terhelés alatt
+*   iOS: eldobott támogatás a arm7s architektúra számára
+*   Kijavított egy problémát az Androidon, amely időnként a DialogServiceConnector által használt duplikált benyomási azonosítókat eredményez
+*   A kapcsolatok stabilitásának fejlesztése több fordulatos interakciók és a hibák jelentése (a megszakított események használatával), amikor a DialogServiceConnector
+*   A DialogServiceConnector-munkamenet megkezdése mostantól megfelelően biztosítja az eseményeket, beleértve a ListenOnceAsync () hívásakor az aktív StartKeywordRecognitionAsync ()
+*   A kapott DialogServiceConnector-tevékenységekhez kapcsolódó összeomlást kezelte 
+
+**Példák**
+*   Gyors útmutató a Xamarin
+*   Frissített CPP-gyors útmutató Linux ARM64-információkkal
+*   Frissített Unity rövid útmutató iOS-adatokkal
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019 – júniusi kiadás
 

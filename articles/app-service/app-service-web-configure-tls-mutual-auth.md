@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088175"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811631"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
 
@@ -31,19 +31,28 @@ A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú
 
 ## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, be kell állítania az `clientCertEnabled` `true`alkalmazás beállítását a következőre:. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
+Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, akkor az alkalmazáshoz a `clientCertEnabled` beállítást kell beállítania `true` értékre. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
+## <a name="exclude-paths-from-requiring-authentication"></a>Elérési utak kizárása a hitelesítés megkövetelése
+
+Ha engedélyezi a kölcsönös hitelesítést az alkalmazáshoz, az alkalmazás gyökerében lévő összes elérési útnak szüksége lesz az ügyféltanúsítvány elérésére. Annak engedélyezéséhez, hogy bizonyos elérési utak nyitva maradjanak a névtelen hozzáféréshez, a kizárási útvonalakat az alkalmazás konfigurációjának részeként is meghatározhatja.
+
+A kizárási útvonalakat a **Configuration** > **általános beállítások** lehetőség kiválasztásával és a kizárási útvonal definiálásával konfigurálhatja. Ebben a példában az alkalmazás `/public` útvonala alatt bármit nem igényelhet ügyféltanúsítványt.
+
+![Tanúsítvány kizárási elérési útjai][exclusion-paths]
+
+
 ## <a name="access-client-certificate"></a>Hozzáférési ügyféltanúsítvány
 
-App Service a kérelem SSL-megszakítása a frontend Load balancerben történik. Ha [engedélyezve van az Ügyféltanúsítványok](#enable-client-certificates)számára az alkalmazás kódjára való továbbítás, app Service beinjektál egy `X-ARR-ClientCert` kérelem fejlécét az ügyféltanúsítvány használatával. A App Service nem végez semmit ezzel az ügyféltanúsítvány-val, mint az alkalmazásra való továbbítása. Az alkalmazás kódjának feladata az ügyféltanúsítvány ellenőrzése.
+App Service a kérelem SSL-megszakítása a frontend Load balancerben történik. Ha [engedélyezve van az Ügyféltanúsítványok](#enable-client-certificates)számára az alkalmazás kódjára való továbbítás, app Service beinjektál egy `X-ARR-ClientCert` kérelem fejlécét az ügyféltanúsítványt. A App Service nem végez semmit ezzel az ügyféltanúsítvány-val, mint az alkalmazásra való továbbítása. Az alkalmazás kódjának feladata az ügyféltanúsítvány ellenőrzése.
 
 A ASP.NET esetében az ügyféltanúsítvány a **HttpRequest. ClientCertificate** tulajdonságon keresztül érhető el.
 
-Más alkalmazások (node. js, php stb.) esetén az ügyfél-tanúsítvány az alkalmazásban a `X-ARR-ClientCert` kérelem fejlécében Base64 kódolású értékkel érhető el.
+Más alkalmazások (node. js, PHP stb.) esetén az ügyfél-tanúsítvány az alkalmazásban az `X-ARR-ClientCert` kérelem fejlécében Base64 kódolású értékkel érhető el.
 
 ## <a name="aspnet-sample"></a>ASP.NET minta
 
@@ -213,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/13/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ad7986a0c4b0d59322ccebcaa6b1c70776164c48
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 4393609bf426c6ae99c48a5d84162526aeff6fb7
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015708"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803520"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k a Node. js-hez
 
@@ -30,12 +30,15 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 * Tudásbázis letöltése
 * Művelet állapotának beolvasása
 
-[](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | A dokumentációs[Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api) ismertetése
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)@no__t – 1[Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [Node. js](https://nodejs.org)jelenlegi verziója.
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -43,7 +46,7 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. 
 
-Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) változókat `QNAMAKER_RESOURCE_KEY` a `QNAMAKER_AUTHORING_ENDPOINT`(z) és nevű erőforráshoz. Használja az erőforrás rövid útmutató lapján található kulcs-és gazdagép -értékeket a Azure Portal.
+Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `QNAMAKER_AUTHORING_ENDPOINT`(z) és nevű `QNAMAKER_RESOURCE_KEY` erőforráshoz. Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -53,13 +56,13 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init -y` parancsot a Node `package.json` -fájl létrehozásához. 
+Futtassa a `npm init -y` parancsot egy csomópont `package.json` fájl létrehozásához. 
 
 ```console
 npm init -y
 ```
 
-Adja hozzá `reqeuestretry` a `request` és a NPM csomagokat:
+Adja hozzá a `reqeuestretry` és a `request` NPM-csomagokat:
 
 ```console
 npm install requestretry request --save
@@ -80,7 +83,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 
 
-Hozzon létre egy `rest-apis.js` nevű fájlt, és adja hozzá a következő _szükséges_ utasítást a HTTP-kérések elvégzéséhez. 
+Hozzon létre egy `rest-apis.js` nevű fájlt, és adja hozzá a következő _szükséges_ UTASÍTÁST a HTTP-kérések létrehozásához. 
 
 ```javascript
 const request = require("requestretry");
@@ -100,7 +103,7 @@ A Tudásbázis a következő JSON-objektumból létrehozott kérdés-válasz pá
 * **Fájlok** – nem szükséges engedélyekkel rendelkező helyi fájlok. 
 * **URL-címek** – nyilvánosan elérhető URL-címek.
 
-Hozzon [létre egy tudásbázist a REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával. 
+[Hozzon létre egy tudásbázist a REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával. 
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
 
@@ -137,7 +140,7 @@ A [Tudásbázis törléséhez](https://docs.microsoft.com/rest/api/cognitiveserv
 
 A hosszú ideig futó folyamatok, például a létrehozási folyamat visszaad egy műveleti azonosítót, amelyet külön REST API hívással kell ellenőrizni. Ez a függvény a létrehozási válasz törzsét veszi át. A fontos kulcs a `operationState`, amely meghatározza, hogy folytatni kell-e a lekérdezést.
 
-A REST API használatával figyelheti a [műveleteket](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)a Tudásbázisban.
+A [REST API használatával figyelheti a műveleteket a Tudásbázisban](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]

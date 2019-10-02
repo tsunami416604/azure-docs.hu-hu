@@ -8,18 +8,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/14/2019
 ms.author: danlep
-ms.openlocfilehash: 3e65718a51f80d9c90a5579a2b1dd5be3bd9239a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c4c09a78f9bad1af1f7a904914ad6ad066ec0e40
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543101"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718425"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Lemezképek automatikus törlése az Azure Container registryből
 
-Ha egy fejlesztési munkafolyamat részeként Azure Container registryt használ, a beállításjegyzék gyorsan kitöltheti azokat a képeket vagy egyéb összetevőket, amelyek rövid idő után nem szükségesek. Előfordulhat, hogy törölni kívánja az összes olyan címkét, amely egy adott időtartamnál régebbi, vagy megfelel a megadott szűrőnek. Ha több összetevőt szeretne gyorsan törölni, ez a `acr purge` cikk bemutatja azt a parancsot, amelyet igény szerinti vagy [ütemezett](container-registry-tasks-scheduled.md) ACR-feladatként is futtathat. 
+Ha egy fejlesztési munkafolyamat részeként Azure Container registryt használ, a beállításjegyzék gyorsan kitöltheti azokat a képeket vagy egyéb összetevőket, amelyek rövid idő után nem szükségesek. Előfordulhat, hogy törölni kívánja az összes olyan címkét, amely egy adott időtartamnál régebbi, vagy megfelel a megadott szűrőnek. Ha több összetevőt szeretne gyorsan törölni, ez a cikk bemutatja a `acr purge` parancsot, amelyet igény szerinti vagy [ütemezett](container-registry-tasks-scheduled.md) ACR-feladatként futtathat. 
 
-A `acr purge` parancs jelenleg a Microsoft Container Registry által elérhető nyilvános tároló-rendszerképben van elterjesztve.
+A `acr purge` parancs jelenleg egy nyilvános tároló-rendszerképben (`mcr.microsoft.com/acr/acr-cli:0.1`) van elosztva, amely forráskód alapján készült az [ACR-CLI-](https://github.com/Azure/acr-cli) tárházban a githubban.
 
 Ebben a cikkben a Azure Cloud Shell vagy az Azure CLI helyi telepítését használhatja az ACR-feladat példáinak futtatásához. Ha helyileg szeretné használni, a 2.0.69 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install]. 
 
@@ -27,37 +27,37 @@ Ebben a cikkben a Azure Cloud Shell vagy az Azure CLI helyi telepítését haszn
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 > [!WARNING]
-> A parancsot `acr purge` körültekintően kell használni – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne törölje a címkézetlen lemezképek törlését. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
+> A `acr purge` parancs használata körültekintően – a törölt képadatok nem állíthatók helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne törölje a címkézetlen lemezképek törlését. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
 
 Ha egyetlen képcímkét vagy jegyzékfájlokat szeretne törölni az Azure CLI-parancsokkal, tekintse meg [a tároló lemezképek törlése a Azure Container Registryban](container-registry-delete.md)című témakört.
 
 ## <a name="use-the-purge-command"></a>A kiürítési parancs használata
 
-A `acr purge` Container parancs a képeket címkével törli egy olyan adattárban, amely megfelel egy szűrőnek, és a megadott időtartamnál régebbi. Alapértelmezés szerint a rendszer csak a címkékre mutató hivatkozásokat törli [](container-registry-concepts.md#manifest) , nem pedig az alapul szolgáló jegyzékfájlokat és adatrétegeket. A parancshoz lehetőség van a jegyzékfájlok törlésére is. 
+A `acr purge` Container parancs a képeket címkével törli egy olyan adattárban, amely megfelel egy szűrőnek, és a megadott időtartamnál régebbi. Alapértelmezés szerint a rendszer csak a címkékre mutató hivatkozásokat törli, nem pedig az alapul szolgáló [jegyzékfájlokat](container-registry-concepts.md#manifest) és adatrétegeket. A parancshoz lehetőség van a jegyzékfájlok törlésére is. 
 
 > [!NOTE]
-> `acr purge`nem töröl egy képcímkét vagy-tárat `write-enabled` , `false`amelyben az attribútum be van állítva. További információ: [Container-rendszerkép zárolása egy Azure Container registryben](container-registry-image-lock.md).
+> a `acr purge` nem töröl egy képcímkét vagy-tárat, ahol a `write-enabled` attribútum értéke `false`. További információ: [Container-rendszerkép zárolása egy Azure Container registryben](container-registry-image-lock.md).
 
-`acr purge`a úgy lett kialakítva, hogy Container parancsként fusson egy [ACR](container-registry-tasks-overview.md)-feladatban, hogy automatikusan hitelesítse azt a beállításjegyzéket, amelyben a feladat fut. 
+a `acr purge` egy [ACR-feladatban](container-registry-tasks-overview.md)tároló parancsként való futtatásra van kialakítva, hogy automatikusan hitelesítse azt a beállításjegyzéket, amelyben a feladat fut. 
 
-Legalább a következő futtatásakor `acr purge`adja meg a következőket:
+A `acr purge` futtatásakor legalább a következőket kell megadnia:
 
-* `--registry`– Az Azure Container Registry, amelyen futtatja a parancsot. 
-* `--filter`– Egy adattár és egy *reguláris kifejezés* , amely alapján szűrheti a címkéket a tárházban. Példák: `--filter "hello-world:.*"` `hello-world` a tárház összes címkéje megegyezik, `1`és `--filter "hello-world:^1.*"` a (z) kezdetű címkékre illeszkedik. `--filter` Több paramétert is továbbíthat több tárház kiürítéséhez.
-* `--ago`– A go-Style [időtartamának karakterlánca](https://golang.org/pkg/time/) , amely azt jelzi, hogy milyen időtartam után törlődnek a képek. Az időtartam egy vagy több decimális számokból áll, amelyek mindegyike egység utótaggal rendelkezik. Az érvényes időegységek a "d" napok, a "h" órák, az "m" pedig percek közé tartoznak. Például `--ago 2d3h6m` kijelöli az összes szűrt képet, amely az utolsó módosításnál több mint 2 nap, 3 óra és `--ago 1.5h` 6 perccel ezelőtt történt, és a képfájlokat az utolsó módosításnál több mint 1,5 órával ezelõtt kijelöli.
+* @no__t – 0 – az Azure Container Registry, ahol a parancsot futtatja. 
+* @no__t – 0 – egy adattár és egy *reguláris kifejezés* , amellyel a rendszer kiszűri a címkéket a tárházban. Példák: a `--filter "hello-world:.*"` a `hello-world` tárház összes címkéjét egyezteti, és a `--filter "hello-world:^1.*"` a `1` karakterrel kezdődő címkéket is tartalmaz. Több `--filter` paramétert adjon meg több tárház kiürítéséhez.
+* @no__t – 0 – A Go-Style [időtartam karakterlánca](https://golang.org/pkg/time/) , amely azt jelzi, hogy mennyi ideig maradnak a képek. Az időtartam egy vagy több decimális számokból áll, amelyek mindegyike egység utótaggal rendelkezik. Az érvényes időegységek a "d" napok, a "h" órák, az "m" pedig percek közé tartoznak. Például a `--ago 2d3h6m` kijelöli az összes szűrt képet, amely az utolsó módosításnál több, mint 2 nap, 3 óra és 6 perccel ezelőtt történt, és a `--ago 1.5h` a legutóbb módosított 1,5 órával korábbi képeket jelöli.
 
-`acr purge`több választható paramétert is támogat. Ebben a cikkben a következő két példát használjuk:
+a `acr purge` több választható paramétert is támogat. Ebben a cikkben a következő két példát használjuk:
 
-* `--untagged`– Megadja, hogy a rendszer törli a társított címkékkel nemrendelkező jegyzékfájlokat (címkézetlen jegyzékfájlokat).
-* `--dry-run`-Megadja, hogy a rendszer nem törli az adatokat, de a kimenet ugyanaz, mint ha a parancsot ezen jelző nélkül futtatja. Ez a paraméter a kiürítési parancsok teszteléséhez hasznos, így meggyőződhet róla, hogy nem törli a megőrizni kívánt információkat.
+* `--untagged` – megadja, hogy a rendszer törli a társított címkékkel nem rendelkező jegyzékfájlokat (*címkézetlen jegyzékfájlokat*).
+* `--dry-run` – megadja, hogy a rendszer nem törli az adatokat, de a kimenet ugyanaz, mint ha a parancsot ezen jelző nélkül futtatja. Ez a paraméter a kiürítési parancsok teszteléséhez hasznos, így meggyőződhet róla, hogy nem törli a megőrizni kívánt információkat.
 
-További paraméterekért futtassa a `acr purge --help`parancsot. 
+További paraméterek: `acr purge --help` futtatása. 
 
-`acr purge`az ACR-feladatok egyéb funkcióit támogatja [](container-registry-tasks-reference-yaml.md#run-variables) , beleértve a futtatási változókat és a [tevékenységek futtatására](container-registry-tasks-overview.md#view-task-logs) szolgáló naplókat, amelyeket a rendszer a későbbi lekéréshez is ment.
+a `acr purge` az ACR-feladatok egyéb funkcióit is támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatásához továbbított naplókat](container-registry-tasks-overview.md#view-task-logs) , amelyeket később is elmenthet.
 
 ### <a name="run-in-an-on-demand-task"></a>Futtatás igény szerinti feladatban
 
-Az alábbi példa az az [ACR Run][az-acr-run] paranccsal futtatja az `purge` parancsot igény szerint. Ez a példa törli az összes olyan képcímkét és `hello-world` jegyzékfájlt a *myregistry* , amely több mint 1 nappal ezelőtt módosult. A Container parancs egy környezeti változó használatával lett átadva. A feladat forrás környezet nélkül fut.
+Az alábbi példa az az [ACR Run][az-acr-run] paranccsal futtatja az `purge` parancsot igény szerint. Ez a példa törli az összes képcímkét és jegyzékfájlt a *myregistry* található `hello-world` tárházban, amely több mint 1 nappal ezelőtt módosult. A Container parancs egy környezeti változó használatával lett átadva. A feladat forrás környezet nélkül fut.
 
 ```azurecli
 # Environment variable for container command line
@@ -90,7 +90,7 @@ Az az [ACR Task show][az-acr-task-show] parancs futtatásával ellenőrizze, hog
 
 ### <a name="purge-large-numbers-of-tags-and-manifests"></a>Nagy számú címke és jegyzék kiürítése
 
-Számos címke és jegyzékfájl kiürítése több percet is igénybe vehet. Több ezer címke és jegyzékfájl törléséhez előfordulhat, hogy a parancsnak hosszabb ideig kell futnia, mint az alapértelmezett időkorlát 600 másodpercnél egy igény szerinti feladathoz, vagy 3600 másodperc az ütemezett feladathoz. Ha túllépi az időtúllépési időt, a rendszer csak a címkék és a jegyzékfájlok egy részhalmazát törli. Ha biztosítani szeretné, hogy a nagyméretű kiürítés sikeres legyen, adja át `--timeout` a paramétert az érték növeléséhez. 
+Számos címke és jegyzékfájl kiürítése több percet is igénybe vehet. Több ezer címke és jegyzékfájl törléséhez előfordulhat, hogy a parancsnak hosszabb ideig kell futnia, mint az alapértelmezett időkorlát 600 másodpercnél egy igény szerinti feladathoz, vagy 3600 másodperc az ütemezett feladathoz. Ha túllépi az időtúllépési időt, a rendszer csak a címkék és a jegyzékfájlok egy részhalmazát törli. Ha biztosítani szeretné, hogy a nagyméretű kiürítés sikeres legyen, adja át a `--timeout` paramétert az érték növeléséhez. 
 
 Az alábbi igény szerinti feladat például 3600 másodperc (1 óra) időtartamot állít be:
 
@@ -108,13 +108,13 @@ az acr run \
 
 ## <a name="example-scheduled-purge-of-multiple-repositories-in-a-registry"></a>Példa: Több tárház ütemezett törlése egy beállításjegyzékben
 
-Ez a példa végigvezeti a `acr purge` használatával, hogy rendszeres időközönként törölje a több tárházat a beállításjegyzékben. Előfordulhat például, hogy rendelkezik egy fejlesztési folyamattal, amely leküldi a `samples/devimage1` képeket `samples/devimage2` a és a tárházba. A fejlesztői lemezképeket rendszeresen importálhatja üzemi adattárba az üzemelő példányok számára, így már nincs szüksége a fejlesztői lemezképekre. Heti rendszerességgel törli a és `samples/devimage1` `samples/devimage2` a tárházat a jövő heti munkájának előkészítéséhez.
+Ez a példa végigvezeti a `acr purge` használatával, hogy rendszeresen törölje a több tárházat a beállításjegyzékben. Előfordulhat például, hogy rendelkezik egy fejlesztési folyamattal, amely leküldi a képeket a `samples/devimage1` és a `samples/devimage2` tárházba. A fejlesztői lemezképeket rendszeresen importálhatja üzemi adattárba az üzemelő példányok számára, így már nincs szüksége a fejlesztői lemezképekre. Heti rendszerességgel kiüríti a `samples/devimage1` és a `samples/devimage2` tárházat a következő heti munka előkészítéséhez.
 
 ### <a name="preview-the-purge"></a>A kiürítés előzetes verziója
 
-Az adatok törlése előtt javasolt az igény szerinti kiürítési feladat futtatása a `--dry-run` paraméter használatával. Ez a beállítás lehetővé teszi, hogy megtekintse azokat a címkéket és jegyzékfájlokat, amelyeket a parancs töröl, és nem távolítja el az összes információt. 
+Az adatok törlése előtt javasoljuk, hogy igény szerinti kiürítési feladatot futtasson a `--dry-run` paraméter használatával. Ez a beállítás lehetővé teszi, hogy megtekintse azokat a címkéket és jegyzékfájlokat, amelyeket a parancs töröl, és nem távolítja el az összes információt. 
 
-A következő példában az egyes Tárházak szűrői az összes címkét kijelölik. A `--ago 0d` paraméter megfelel a szűrőknek megfelelő adattárakban lévő összes korszak képeinek. Módosítsa a kiválasztási feltételeket a forgatókönyvhöz szükséges módon. A `--untagged` paraméter azt jelzi, hogy a címkék mellett törölni kell a jegyzékfájlokat is. A Container parancsot egy környezeti változó használatával adja át az az [ACR Run][az-acr-run] parancsnak.
+A következő példában az egyes Tárházak szűrői az összes címkét kijelölik. A `--ago 0d` paraméter a szűrőknek megfelelő adattárakban lévő összes korszak képeire illeszkedik. Módosítsa a kiválasztási feltételeket a forgatókönyvhöz szükséges módon. A `--untagged` paraméter azt jelzi, hogy a címkék mellett törölni kell a jegyzékfájlokat is. A Container parancsot egy környezeti változó használatával adja át az az [ACR Run][az-acr-run] parancsnak.
 
 ```azurecli
 # Environment variable for container command line
@@ -129,7 +129,7 @@ az acr run \
   /dev/null
 ```
 
-Tekintse át a parancs kimenetét a kiválasztási paramétereknek megfelelő címkék és jegyzékfájlok megtekintéséhez. Mivel a parancs a szolgáltatással `--dry-run`fut, a rendszer nem törli az adatvesztést.
+Tekintse át a parancs kimenetét a kiválasztási paramétereknek megfelelő címkék és jegyzékfájlok megtekintéséhez. Mivel a parancs `--dry-run` értékkel fut, a rendszer nem törli az adatvesztést.
 
 Példa a kimenetre:
 
@@ -175,9 +175,9 @@ Az az [ACR Task show][az-acr-task-show] parancs futtatásával ellenőrizze, hog
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a képadatok [](container-registry-delete.md) Azure Container Registryban való törlésének egyéb lehetőségeiről.
+További információ a képadatok Azure Container Registryban való [törlésének](container-registry-delete.md) egyéb lehetőségeiről.
 
-További információ a képtárolásról: [tároló](container-registry-storage.md)képtárolója Azure Container Registryban.
+További információ a képtárolásról: [tároló képtárolója Azure Container Registryban](container-registry-storage.md).
 
 <!-- LINKS - External -->
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aa144c76fb0a8e479658efdb5d43361fbbc085c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8fd66dcd6e3845aad79ebffb3cad656d0a14c1a6
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860622"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720224"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás – jogkivonat beszerzése az alkalmazáshoz
 
@@ -29,7 +29,7 @@ Most, hogy létrehozta az ügyfélalkalmazás-objektumot, felhasználhatja egy, 
 - Jogkivonat-gyorsítótár beszerzése a webes API-hoz. A jogkivonat beszerzéséhez hívja `AcquireTokenSilent`a következőt:.
 - A védett API meghívása a hozzáférési jogkivonattal.
 
-## <a name="aspnet-core"></a>ASP.NET-mag
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 A vezérlő módszereit olyan `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. Itt látható a Microsoft Graph meghívására szolgáló kód.
 
@@ -37,35 +37,34 @@ A vezérlő módszereit olyan `[Authorize]` attribútum védi, amely arra kénys
 [Authorize]
 public class HomeController : Controller
 {
- ...
+ readonly ITokenAcquisition tokenAcquisition;
+
+ public HomeController(ITokenAcquisition tokenAcquisition)
+ {
+  this.tokenAcquisition = tokenAcquisition;
+ }
+
+ // Code for the controller actions(see code below)
+
 }
 ```
+
+A `ITokenAcquisition` szolgáltatást a ASP.NET a függőségek befecskendezésével fecskendezi be.
+
 
 Itt látható a HomeController műveletének egyszerűsített kódja, amely lekéri a tokent a Microsoft Graph meghívásához.
 
 ```CSharp
 public async Task<IActionResult> Profile()
 {
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
+ // Acquire the access token
+ string[] scopes = new string[]{"user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
 
- // Get the account
- IAccount account = await application.GetAccountAsync(accountIdentifier);
-
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
- if (account == null)
- {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
- }
-
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
- ...
- // use the access token to call a web API
+// use the access token to call a protected web API
+HttpClient client = new HttpClient();
+client.DefaultRequestHeaders.Add("Authorization", result.CreateAuthorizationHeader());
+string json = await client.GetStringAsync(url);
 }
 ```
 
@@ -73,19 +72,82 @@ A forgatókönyvhöz szükséges kód alaposabb megismeréséhez tekintse meg a 
 
 Számos további bonyolultság van, például:
 
-- Jogkivonat-gyorsítótár implementálása a webalkalmazáshoz (az oktatóanyag számos implementációt mutat be)
-- A fiók eltávolítása a gyorsítótárból, ha a felhasználó kijelentkezik
-- Több API meghívása, beleértve a növekményes hozzájárulást is
+- Több API meghívása,
+- növekményes beleegyezett és feltételes hozzáférés feldolgozása.
 
-## <a name="aspnet"></a>ASP.NET
+Ezeket a speciális lépéseket az oktatóanyag [3 – WebApp-multi-API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) -k 3. fejezete dolgozza fel
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 A ASP.NET hasonló dolgok:
 
-- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői azonosítóját és felhasználói azonosítóját. (A ASP.NET `HttpContext.User`használja.)
+- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját. (A ASP.NET `HttpContext.User`használja.)
 - Ettől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication`.
 - Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
 
 A kód hasonló a ASP.NET Corehoz megjelenített kódhoz.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A Java-mintában az API-t meghívó kód a [AuthPageController. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)getUsersFromGraph metódusban található.
+
+Megkísérli a `getAuthResultBySilentFlow` hívását. Ha a felhasználónak több hatókörhöz kell hozzájárulnia, a kód feldolgozza a `MsalInteractionRequiredException` értéket a felhasználó megvitatásához.
+
+```java
+@RequestMapping("/msal4jsample/graph/users")
+    public ModelAndView getUsersFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+            throws Throwable {
+
+        IAuthenticationResult result;
+        ModelAndView mav;
+        try {
+            result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+        } catch (ExecutionException e) {
+            if (e.getCause() instanceof MsalInteractionRequiredException) {
+
+                // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
+                // so user can consent to new scopes
+                String state = UUID.randomUUID().toString();
+                String nonce = UUID.randomUUID().toString();
+
+                SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+
+                String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                        httpRequest.getParameter("claims"),
+                        "User.ReadBasic.all",
+                        authHelper.getRedirectUriGraphUsers(),
+                        state,
+                        nonce);
+
+                return new ModelAndView("redirect:" + authorizationCodeUrl);
+            } else {
+
+                mav = new ModelAndView("error");
+                mav.addObject("error", e);
+                return mav;
+            }
+        }
+    // Code omitted here.
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python-mintában a Microsoft Graphot hívó kód az [app. a # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
+
+Kísérletet tesz a jogkivonat-gyorsítótárból való lekérésre, majd az engedélyezési fejléc beállítása után meghívja az EB API-t. Ha nem, akkor újra aláírja a felhasználót.
+
+```python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
 
 ## <a name="next-steps"></a>További lépések
 

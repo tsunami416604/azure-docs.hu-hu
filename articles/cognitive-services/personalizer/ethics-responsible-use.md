@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662787"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720237"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Útmutatás a személyre szabáshoz
 
@@ -56,14 +56,15 @@ Többek között a negatív mellékhatások vagy az átláthatóság hiánya ese
 * **Pénzügy**: Személyre szabott ajánlatok a hitelek, pénzügyi és biztosítási termékek esetében, ahol a kockázati tényezők azon adatokon alapulnak, amelyeket a magánszemélyek nem tudnak, nem szerezhetnek be vagy nem vitatnak. 
 * **Oktatás**: Személyre szabás az iskolai tanfolyamok és oktatási intézmények számára, ahol a javaslatok átadhatják a torzításokat, és csökkenthetik a felhasználók figyelmét a többi lehetőségre.
 * **Demokrácia és állampolgári részvétel**: A tartalom személyre szabása olyan felhasználók számára, akik a vélemények befolyásolására irányulnak.
-* **Harmadik féltől származó jutalom**kiértékelése: Olyan elemek személyre szabása, amelyekben a jutalom a felhasználó egy későbbi, harmadik féltől származó kiértékelésén alapul, és nem a felhasználó saját viselkedése alapján generált jutalmat.
-* **A feltárás**intolerancia: Minden olyan helyzet, amelyben a személyre szabott feltárási viselkedés ártalmas lehet.
+* **Harmadik féltől származó jutalom kiértékelése**: Olyan elemek személyre szabása, amelyekben a jutalom a felhasználó egy későbbi, harmadik féltől származó kiértékelésén alapul, és nem a felhasználó saját viselkedése alapján generált jutalmat.
+* **A feltárás intolerancia**: Minden olyan helyzet, amelyben a személyre szabott feltárási viselkedés ártalmas lehet.
 
 A személyre szabott használati esetek kiválasztásakor:
 
 * Indítsa el a tervezési folyamatot, és mérlegelje, hogy a személyre szabás hogyan segíti a felhasználókat.
 * Ha egyes elemek személyre szabási mintázatok vagy feltárás miatt nem vannak rangsorolva a felhasználók számára, vegye figyelembe a negatív következményeket a valós világban.
-* Érdemes lehet önmagát betartani a próféciai hurkokat. Ez akkor fordulhat elő, ha a személyre szabási jutalom egy modellt vezet be, így később további kizárhatók a demográfiai csoportok a kapcsolódó tartalmakhoz való hozzáféréstől. Az alacsony jövedelmű környék legtöbb embere például nem kap prémium szintű biztosítási ajánlatot, és lassan senki sem jelenik meg a környéken, így az ajánlat egyáltalán nem látható.
+* Gondolja át, hogy a használati eset olyan automatizált feldolgozást jelent-e, amely jelentősen befolyásolja az olyan érintett személyeket, akiket a 22. és más törvények értelmében [GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) .
+* Érdemes lehet önmagát betartani a próféciai hurkokat. Ez akkor fordulhat elő, ha a személyre szabási jutalom egy modellt vezet be, így később további kizárhatók a demográfiai csoportok a kapcsolódó tartalmakhoz való hozzáféréstől. Az alacsony jövedelmű környék legtöbb embere például nem kap prémium szintű biztosítási ajánlatot, és lassan senki sem jelenik meg a környéken, ha nincs elég felderítés.
 * Mentse a modelleket és a tanulási szabályzatokat, ha a jövőben újra létre kell majd állítani a személyre szabást. Ezt időszakonként vagy minden modell-frissítési időszakban megteheti.
 * Vegye figyelembe a terület számára megfelelő feltárási szintet, valamint azt, hogy miként használható az "Echo Chamber" effektusok enyhítésére szolgáló eszközként.
 
@@ -121,7 +122,7 @@ A következőkben az AI-k felelős megvalósításának kialakítási területei
 ![A jövőben kiszámított AI-értékek](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
 ### <a name="accountability"></a>Felelősségre vonhatóság
-*Az AI-rendszereket megtervező és telepítő személyeknek a rendszereik működéséhez*kell tartoznia. 
+*Az AI-rendszereket megtervező és telepítő személyeknek a rendszereik működéséhez kell tartoznia*. 
 
 * Hozzon létre belső útmutatást a személyre szabás, a dokumentum és a csoport, a vezetők és a szállítók kommunikációjának megvalósításához.
 * Rendszeres felülvizsgálatok elvégzése a jutalmazási pontszámok kiszámításához, az offline értékelések elvégzése, amelyekkel megtekintheti, hogy milyen funkciók érintik a személyre szabott funkciókat, és az eredmények használatával kizárja a szükségtelen és szükségtelen funkciókat
@@ -129,9 +130,9 @@ A következőkben az AI-k felelős megvalósításának kialakítási területei
 * Archiválja az adatokat és az eszközöket – például a modelleket, a tanulási szabályzatokat és más adatokat –, amelyeket a személyre szabott funkció használ, hogy képes legyen reprodukálni az eredményeket.
 
 ### <a name="transparency"></a>Átláthatóság
-*Az AI*-rendszereknek érthetőnek kell lenniük. Személyre szabott:
+*Az AI-rendszereknek érthetőnek kell lenniük*. Személyre szabott:
 
-* *Adja meg a felhasználóknak a tartalom személyre szabásával kapcsolatos információkat.* Megjelenítheti például a felhasználók számára egy olyan gombot `Why These Suggestions?` , amely megmutatja, hogy a felhasználó és a műveletek mely fő funkciói játszottak szerepkört a személyre szabás eredményében.
+* *Adja meg a felhasználóknak a tartalom személyre szabásával kapcsolatos információkat.* Megadhatja például, hogy a felhasználók egy `Why These Suggestions?` nevű gombot jelenítenek meg, amely megmutatja, hogy a felhasználó és a műveletek melyik fő funkciója játszott szerepet a személyre szabási eredményekben.
 * Győződjön meg arról, hogy a használati feltételek megemlítik, hogy a felhasználói élmény személyre szabásával és viselkedésével kapcsolatos információkat fog használni.
 
 ### <a name="fairness"></a>Igazságos
@@ -151,9 +152,9 @@ A következőkben az AI-k felelős megvalósításának kialakítási területei
 * *Hozzon létre egy folyamatot a kártékony manipuláció észleléséhez és kezeléséhez*. A gépi tanulás és a mesterséges intelligenciát használó rendszerek képesek a környezetből tanulni, hogy az eredményeket a céljaik irányába váltsanak. Ha a személyre szabott személyt a fontos döntések befolyásolására szeretné használni, ügyeljen arra, hogy megfelelő módon azonosítsa és csökkentse a támadási osztályokat, beleértve a megfelelő körülmények között az emberi felülvizsgálatot is.
 
 ### <a name="security-and-privacy"></a>Biztonság és adatvédelem
-*Az AI-rendszereknek biztonságosnak és tiszteletben kell tartaniuk az*adatvédelmet. Személyre szabás használata esetén:
+*Az AI-rendszereknek biztonságosnak és tiszteletben kell tartaniuk az adatvédelmet*. Személyre szabás használata esetén:
 
-* *Tájékoztassa a felhasználókat a gyűjtött adatokról, valamint arról, hogy hogyan használják fel*őket, és előzetesen, a helyi és iparági előírásokat követve kapják meg a hozzájárulásukat.
+* *Tájékoztassa a felhasználókat a gyűjtött adatokról, valamint arról, hogy hogyan használják fel őket, és előzetesen*, a helyi és iparági előírásokat követve kapják meg a hozzájárulásukat.
 * *Adatvédelem biztosítása felhasználói vezérlők védelméhez.* A személyes adatokat tároló alkalmazások esetében érdemes lehet egy könnyen megkereshető gombot biztosítani a következő függvényekhez, mint például: 
    * `Show me all you know about me`    
    * `Forget my last interaction` 
@@ -191,7 +192,7 @@ A Microsoft folyamatosan olyan eszközöket és dokumentumokat tesz elérhetőv�
 
 ## <a name="recommended-reading"></a>Ajánlott olvasás
 
-* Tekintse meg a Microsoft hat alapelvét a januári 2018-as könyvben közzétett AI-k felelős fejlesztéséhez, [a jövő](https://news.microsoft.com/futurecomputed/) kiszámításához
+* Tekintse meg a Microsoft hat alapelvét a januári 2018-as könyvben közzétett AI-k felelős fejlesztéséhez, [a jövő kiszámításához](https://news.microsoft.com/futurecomputed/)
 * [Ki a jövő tulajdonosa?](https://www.goodreads.com/book/show/15802693-who-owns-the-future) Jaron Lanier.
 * [A Math Destruction](https://www.goodreads.com/book/show/28186015-weapons-of-math-destruction) by-Cathy O'Neil
 * [Etika és adatelemzés](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/) DJ Pati, Hilary Mason, Mike Loukides.

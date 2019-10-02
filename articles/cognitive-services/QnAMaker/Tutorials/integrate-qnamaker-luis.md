@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272414"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802798"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>A robot a QnA Maker és a LUIS használatával terjesztheti a tudásbázist
 A QnA Maker Tudásbázis növekedésével nagy válik nehezen fenntartható, monolitikus egységes és a egy kell a Tudásbázis ossza fel kisebb logikai adattömböket.
@@ -37,13 +37,13 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
 1. [Hozzon létre egy alkalmazást](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
 1. [Adja hozzá a megjelölésű](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) az egyes QnA Maker Tudásbázis. Példa megcímkézzen meg kell egyeznie a QnA Maker tudásbázisok szereplő kérdéseket.
 1. [A LUIS alkalmazás betanításához](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [a LUIS alkalmazás közzététele](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) a LUIS-alkalmazás.
-1. Az a **kezelés** részen jegyezze fel a LUIS alkalmazás azonosítója, LUIS végponti kulcs, és régió üzemeltetéséhez. Később szüksége lesz ezekre az értékekre. 
+1. A **kezelés** szakaszban jegyezze fel a Luis-alkalmazás azonosítóját, a Luis-végpont kulcsát és az [Egyéni tartománynevet](../../cognitive-services-custom-subdomains.md). Később szüksége lesz ezekre az értékekre. 
 
 ## <a name="create-qna-maker-knowledge-bases"></a>A QnA Maker tudásbázisok létrehozása
 
 1. Jelentkezzen be a [a QnA Maker](https://qnamaker.ai).
 1. [Hozzon létre](https://www.qnamaker.ai/Create) egy tudásbázisok egyes leképezés a LUIS alkalmazás számára.
-1. Tesztelje, és tegye közzé a tudásbázisok. Ha közzé minden KB, jegyezze fel a Tudásbázis Azonosítóját, a gazdagép (előtt altartomány _.azurewebsites.net/qnamaker_), és az engedélyezési végpont kulcs. Később szüksége lesz ezekre az értékekre. 
+1. Tesztelje, és tegye közzé a tudásbázisok. Amikor közzéteszi az egyes TUDÁSBÁZISokat, jegyezze fel a KB azonosítót, az erőforrás nevét (az egyéni altartomány előtt _. azurewebsites.net/qnamaker_), valamint az engedélyezési végpont kulcsát. Később szüksége lesz ezekre az értékekre. 
 
     Ez a cikk feltételezi, hogy a Tudásbázis összes jönnek létre az Azure QnA Maker ugyanabban az előfizetésben.
 
@@ -109,13 +109,13 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
     [Serializable]
     public class QnAMakerService
     {
-        private string qnaServiceHostName;
+        private string qnaServiceResourceName;
         private string knowledgeBaseId;
         private string endpointKey;
 
-        public QnAMakerService(string hostName, string kbId, string endpointkey)
+        public QnAMakerService(string resourceName, string kbId, string endpointkey)
         {
-            qnaServiceHostName = hostName;
+            qnaServiceResourceName = resourceName;
             knowledgeBaseId = kbId;
             endpointKey = endpointkey;
 
@@ -136,7 +136,7 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
         }
         public async Task<string> GetAnswer(string question)
         {
-            string uri = qnaServiceHostName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
+            string uri = qnaServiceResourceName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
             string questionJSON = "{\"question\": \"" + question.Replace("\"","'") +  "\"}";
 
             var response = await Post(uri, questionJSON);
@@ -169,7 +169,7 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
         // QnA Maker global settings
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
-        static string qnamaker_endpointDomain = "my-qnamaker-s0-s";
+        static string qnamaker_resourceName = "my-qnamaker-s0-s";
         
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
@@ -178,8 +178,8 @@ Ebben az esetben QnA Maker először a bejövő kérdés szándéka olvas be egy
         static string Finance_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
         // Instantiate the knowledge bases
-        public QnAMakerService hrQnAService = new QnAMakerService("https://" + qnamaker_endpointDomain + ".azurewebsites.net", HR_kbID, qnamaker_endpointKey);
-        public QnAMakerService financeQnAService = new QnAMakerService("https://" + qnamaker_endpointDomain + ".azurewebsites.net", Finance_kbID, qnamaker_endpointKey);
+        public QnAMakerService hrQnAService = new QnAMakerService("https://" + qnamaker_resourceName + ".azurewebsites.net", HR_kbID, qnamaker_endpointKey);
+        public QnAMakerService financeQnAService = new QnAMakerService("https://" + qnamaker_resourceName + ".azurewebsites.net", Finance_kbID, qnamaker_endpointKey);
 
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
             LUIS_appId,

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 402bf198981641db74a86bbc420fab83124f0b47
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553397"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802021"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java fordítása
 
-A gyors útmutató a [beszéd-szöveg](quickstart-java-jre.md) és a [hang-első virtuális asszisztens](quickstart-virtual-assistant-java-jre.md)számára is elérhető.
+A gyors üzembe helyezési lehetőség a [beszéd-szöveg](quickstart-java-jre.md), a [szöveg-beszéd](quickstart-text-to-speech-java-jre.md)és a [hang-első virtuális asszisztens](quickstart-virtual-assistant-java-jre.md)számára is elérhető.
 
 Ebben a rövid útmutatóban egy egyszerű Java-alkalmazást fog létrehozni, amely a felhasználó beszédét rögzíti a számítógép mikrofonjában, lefordítja a beszédet, és valós időben írja át a lefordított szöveget a parancssorba. Az alkalmazás úgy lett kialakítva, hogy 64 bites Windows vagy 64 bites Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) vagy macOS 10,13 vagy újabb rendszeren fusson. A szolgáltatás a Speech SDK Maven-csomaggal és az Eclipse Java IDE készült.
 
@@ -92,6 +92,6 @@ További minták, mint például a hangfájlok beszédének beolvasása és a le
 
 ## <a name="see-also"></a>Lásd még
 
-- [Rövid útmutató: Beszédfelismerés felismerése, Java (Windows, Linux)](quickstart-java-jre.md)
+- [Rövid útmutató: Beszédfelismerés felismerése, Java (Windows, Linux) ](quickstart-java-jre.md)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

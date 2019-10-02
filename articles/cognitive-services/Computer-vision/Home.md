@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967062"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719539"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
-Az Azure Computer Vision szolgáltatása lehetővé teszi a fejlesztőknek, hogy a képeket feldolgozó és a visszaadott adatokat használó fejlett algoritmusokhoz hozzáférjenek. A kép elemzéséhez feltöltheti a képet, vagy megadhatja a kép URL-címét. A képfeldolgozó algoritmusok számos különböző módon elemezheti a tartalmakat, attól függően, hogy milyen vizuális funkciók érdeklik. A Computer Vision például megállapíthatja, hogy egy adott rendszerkép felnőtt vagy zamatos tartalmat tartalmaz-e, vagy megkeresi az összes emberi arcot a képen.
+Az Azure Computer Vision szolgáltatása lehetővé teszi a fejlesztőknek, hogy a képeket feldolgozó és a visszaadott adatokat használó fejlett algoritmusokhoz hozzáférjenek. A kép elemzéséhez feltöltheti a képet, vagy megadhatja a kép URL-címét. A képfeldolgozó algoritmusok számos különböző módon elemezheti a tartalmakat, attól függően, hogy milyen vizuális funkciók érdeklik. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, vagy megtalálhatja a képen látható összes emberi arcot.
 
 A Computer Vision az alkalmazásban natív SDK használatával vagy közvetlenül a REST API meghívásával használhatja. Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
 
@@ -52,13 +52,13 @@ Az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md#ocr-optical-
 
 ## <a name="moderate-content-in-images"></a>Mérsékelt tartalom a képekben
 
-A Computer Vision használatával felderítheti a [felnőtt és](concept-detecting-adult-content.md) a zamatos tartalmakat egy képben, és a megbízhatósági pontokat is visszaküldheti. Megadhatja a felnőtt és a zamatos tartalom észlelésére szolgáló szűrőt egy csúszó skálán, hogy megfeleljen a beállításainak.
+A Computer Vision használatával [felderítheti a felnőtt tartalmakat](concept-detecting-adult-content.md) egy rendszerképben, és a különböző besorolások megbízhatósági pontszámait is visszaküldheti. A tartalom megjelölésére vonatkozó küszöbérték beállítható egy csúszó skálán, hogy megfeleljenek a beállításoknak.
 
 ## <a name="use-containers"></a>Tárolók használata
 
 [Computer Vision tárolók használatával](computer-vision-how-to-install-containers.md) helyileg ismeri fel a nyomtatott és a kézírásos szövegeket, ha a szabványos Docker-tárolót az adataihoz közelebb telepíti.
 
-## <a name="image-requirements"></a>A lemezképre vonatkozó követelmények
+## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
 A Computer Vision a következő követelményeknek megfelelő képeket képes elemezni:
 

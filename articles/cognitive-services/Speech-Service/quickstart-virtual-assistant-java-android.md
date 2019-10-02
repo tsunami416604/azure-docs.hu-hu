@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f5b8623c835b4188d098ab2acf842abef30138e9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559210"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800055"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: A Speech SDK használatával hozzon létre egy hang-első virtuális asszisztenst Java-on Android rendszeren
 
-Egy rövid útmutató is elérhető a [beszéd és a szöveg](quickstart-java-android.md)között.
+Egy rövid útmutató is elérhető a [beszéd szöveg](quickstart-java-android.md) és a [beszéd](quickstart-text-to-speech-java-android.md)szövegéhez.
 
 Ebben a cikkben a [SPEECH SDK](speech-sdk.md)használatával létrehoz egy, a Java for androidt használó hang-első virtuális asszisztenst. Ez az alkalmazás egy már létrehozott és a [közvetlen vonalas beszédfelismerési csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)konfigurált robothoz fog csatlakozni. Ezután elküld egy hangkérést a robotnak, és egy hangvezérelt reagálási tevékenységet fog bemutatni.
 
@@ -43,9 +43,9 @@ Ez az alkalmazás a Speech SDK Maven-csomaggal és Android Studio 3,3-mel kész�
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Ebben a szakaszban egy alapszintű felhasználói felületet (UI) hozunk létre az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapszintű sablon tartalmaz egy címsort az alkalmazás nevével, és `TextView` a "Hello World!" üzenettel.
+Ebben a szakaszban egy alapszintű felhasználói felületet (UI) hozunk létre az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapszintű sablon tartalmaz egy címsort az alkalmazás nevével, valamint egy `TextView` értéket a "Helló világ!" üzenettel.
 
-Ezután cserélje le a tartalmát `activity_main.xml` a következő kódra:
+Ezután cserélje le a `activity_main.xml` tartalmát a következő kódra:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -96,9 +96,9 @@ Ezután cserélje le a tartalmát `activity_main.xml` a következő kódra:
 
 Ez az XML egy egyszerű felhasználói felületet határoz meg a robottal való interakcióhoz.
 
-* Az `button` elem interakciót kezdeményez, és rákattintáskor meghívja a `onBotButtonClicked` metódust.
-* Az `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal való kommunikáció során.
-* Az `activityText` elem megjeleníti a robothoz tartozó legújabb bot Framework-tevékenység JSON-adattartalmát.
+* A `button` elem interakciót kezdeményez, és rákattintáskor meghívja a `onBotButtonClicked` metódust.
+* A `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal folytatott kommunikáció során.
+* A `activityText` elem a robot legújabb robot-keretrendszer tevékenységének JSON-adattartalmát jeleníti meg.
 
 A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
 
@@ -106,7 +106,7 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg `MainActivity.java`a (z) programot, és cserélje le a tartalmát a következő kódra:
+1. Nyissa meg `MainActivity.java` értéket, és cserélje le a tartalmát a következő kódra:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -254,15 +254,15 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
    * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gomb megnyomásával egyetlen interakciót ("turn") indít a robottal.
 
-   * A `registerEventListeners` metódus a bejövő tevékenységek és az `DialogServiceConnector` alapszintű kezelési műveletek által használt eseményeket mutatja be.
+   * A `registerEventListeners` módszer a `DialogServiceConnector` és a bejövő tevékenységek alapszintű kezelésére használt eseményeket mutatja be.
 
 1. Ugyanebben a fájlban cserélje le a konfigurációs karakterláncokat a megfelelő erőforrásokra:
 
-    * Cserélje `YourChannelSecret` le a szöveget a robot Direct line Speech Channel-titkára.
+    * Cserélje le a `YourChannelSecret` értéket a robot Direct line Speech Channel-titkára.
 
     * A `YourSpeechSubscriptionKey` helyére írja be az előfizetési kulcsot.
 
-    * Cserélje `YourServiceRegion` le az [](regions.md) előfizetéshez tartozó régiót, és csak a Speech Services-régiók egy részhalmazát támogatja a közvetlen vonalas beszéd. További információ: [régiók](regions.md#voice-first-virtual-assistants).
+    * Cserélje le a `YourServiceRegion` értéket az előfizetéshez társított [régióval](regions.md) , és a Speech Services-régiók egy részhalmaza jelenleg támogatott a közvetlen vonalas beszédben. További információ: [régiók](regions.md#voice-first-virtual-assistants).
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 

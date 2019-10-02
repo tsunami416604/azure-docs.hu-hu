@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: b1be09a2af712277ccaad827b8e84e24ed9f5c5c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553252"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800037"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Gyors útmutató: Hozzon létre egy hang-első virtuális asszisztenst a Speech SDK, a Java használatával
 
-A gyors útmutatókat a [szöveg](quickstart-java-jre.md) és a [beszéd fordítása](quickstart-translate-speech-java-jre.md)is elérhetővé teszi.
+A gyors üzembe helyezési lehetőség a [beszéd-szöveg](quickstart-java-jre.md), a [szöveg és a beszéd](quickstart-text-to-speech-java-jre.md) [fordítására](quickstart-translate-speech-java-jre.md)is használható.
 
 Ebben a cikkben egy Java-konzol alkalmazást hoz létre a [Cognitive Services SPEECH SDK](speech-sdk.md)használatával. Az alkalmazás csatlakozni fog egy korábban létrehozott robothoz, amely a közvetlen vonal beszédfelismerési csatornájának használatára, hangkérés küldésére és hangválasztó tevékenység visszaküldésére van konfigurálva (ha be van állítva). Az alkalmazás a Speech SDK Maven-csomaggal és az Eclipse Java IDE Windows, Ubuntu Linux vagy macOS rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
@@ -48,7 +48,7 @@ Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítet
 
 ## <a name="optional-get-started-fast"></a>Nem kötelező: Gyors első lépések
 
-Ez a rövid útmutató részletesen leírja, hogyan lehet egy egyszerű ügyfélalkalmazás számára csatlakozni a beszédfelismerést támogató robothoz. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, a fordításra kész forráskód a `quickstart` mappában található [Speech SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
+Ez a rövid útmutató részletesen leírja, hogyan lehet egy egyszerű ügyfélalkalmazás számára csatlakozni a beszédfelismerést támogató robothoz. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, előkészített forráskód a `quickstart` mappában található [SPEECH SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 
@@ -72,7 +72,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
 
    ![A New Java Class varázsló képernyőképe](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Nyissa meg az újonnan létrehozott **fő** osztályt, és cserélje `Main.java` le a fájl tartalmát a következő kiindulási kódra.
+1. Nyissa meg az **újonnan létrehozott** főosztályt, és cserélje le a `Main.java` fájl tartalmát a következő kiindulási kóddal.
 
     ```java
     package speechsdk.quickstart;
@@ -139,11 +139,11 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
     }
     ```
 
-1. A **Main** metódusban először konfigurálja a `DialogServiceConfig` -t, és használja egy `DialogServiceConnector` példány létrehozásához. Ezzel csatlakozni fog a közvetlen vonalas beszéd csatornához a robottal való interakcióhoz. A `AudioConfig` rendszer egy példányt is használ a hangbemenet forrásának megadására. Ebben a példában az alapértelmezett mikrofon van használatban `AudioConfig.fromDefaultMicrophoneInput()`.
+1. A **Main** metódusban először konfigurálja a `DialogServiceConfig`-et, és használja egy `DialogServiceConnector` példány létrehozásához. Ezzel csatlakozni fog a közvetlen vonalas beszéd csatornához a robottal való interakcióhoz. A hangbemenet forrásának megadásához egy `AudioConfig` példány is használható. Ebben a példában az alapértelmezett mikrofon a `AudioConfig.fromDefaultMicrophoneInput()` értékkel van használatban.
 
     * Cserélje le a `YourSubscriptionKey` karakterláncot az előfizetési kulcsra, amelyet [itt](get-started.md)érhet el.
-    * Cserélje le a `YourServiceRegion` karakterláncot [](regions.md) az előfizetéséhez társított régióra.
-    * Cserélje le a `YourChannelSecret` karakterláncot a Direct line Speech Channel Secret kifejezésre.
+    * Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](regions.md) .
+    * Cserélje le a `YourChannelSecret` karakterláncot a Direct line Speech Channel titkos kódjára.
 
     > [!NOTE]
     > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#voice-first-virtual-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
@@ -161,7 +161,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector`számos eseményre támaszkodik, hogy a robot tevékenységeit, beszédfelismerési eredményeit és egyéb információit tájékoztassa. Adja hozzá ezeket az esemény-figyelőket a következőhöz.
+1. a `DialogServiceConnector` számos eseményre támaszkodik, hogy a robot tevékenységeit, beszédfelismerési eredményeit és egyéb információkat kommunikáljanak. Adja hozzá ezeket az esemény-figyelőket a következőhöz.
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
@@ -200,7 +200,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
         });
     ```
 
-1. A `connectAsync()` metódus `DialogServiceConnector` meghívásával kapcsolja össze az-t a közvetlen vonallal. A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett az metódus használatával is elküldheti az `sendActivityAsync` egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a robot által a beszélgetés során használt adatait is megadhatják.
+1. A `connectAsync()` metódus meghívásával kapcsolódjon a `DialogServiceConnector` és a közvetlen vonal beszédéhez. A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett a `sendActivityAsync` metódussal is elküldheti az egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a robot által a beszélgetés során használt adatait is megadhatják.
 
     ```java
     connector.connectAsync();

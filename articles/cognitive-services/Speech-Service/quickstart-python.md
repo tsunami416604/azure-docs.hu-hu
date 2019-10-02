@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3f473e8ad15d3df053cca100580574b1b115f492
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559290"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803255"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Gyors útmutató: Beszéd felismerése a Pythonhoz készült Speech SDK-val
+
+A gyors útmutatók is elérhetők a [Speech-szintézishez](quickstart-text-to-speech-python.md)
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -47,7 +49,7 @@ Ez a cikk bemutatja, hogyan használható a Speech Services a Pythonhoz készül
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
 
-* Windows rendszeren a platformhoz a [Visual Studio C++ 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez készült Microsoft vizualizációs terjeszthető csomag szükséges.
+* Windows rendszeren a platformhoz a [Visual Studio C++ 2019-hez készült Microsoft vizualizációs terjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomag szükséges.
 
 ## <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
@@ -62,8 +64,8 @@ pip install azure-cognitiveservices-speech
 ## <a name="support-and-updates"></a>Támogatás és frissítések
 
 A Speech SDK Python-csomag frissítései a PyPI-on keresztül oszlanak meg, és a [kibocsátási megjegyzésekben](./releasenotes.md)jelent meg.
-Ha új verzió érhető el, a paranccsal `pip install --upgrade azure-cognitiveservices-speech`frissítheti azt.
-A `azure.cognitiveservices.speech.__version__` változó ellenőrzésével ellenőrizze, hogy jelenleg melyik verziót telepítette.
+Ha új verzió érhető el, a `pip install --upgrade azure-cognitiveservices-speech` paranccsal frissítheti azt.
+A `azure.cognitiveservices.speech.__version__` változó vizsgálatával ellenőrizze, hogy jelenleg melyik verziót telepítette.
 
 Ha problémája van, vagy hiányzik egy szolgáltatás, tekintse meg a [támogatási és súgó beállításait](./support.md).
 
@@ -71,7 +73,7 @@ Ha problémája van, vagy hiányzik egy szolgáltatás, tekintse meg a [támogat
 
 ### <a name="run-the-sample"></a>Minta futtatása
 
-Ebből a rövid útmutatóból átmásolhatja a [mintakód](#sample-code) egy forrásfájlban `quickstart.py` , és futtathatja azt az ide vagy a konzolon:
+Ebből a rövid útmutatóból másolhatja a [mintakód](#sample-code) `quickstart.py` forrásfájlban, és futtathatja az ide vagy a konzolon:
 
 ```sh
 python quickstart.py
@@ -87,7 +89,7 @@ Vagy letöltheti ezt a rövid útmutatót [Jupyter](https://jupyter.org) jegyzet
 
 1. Töltse le és telepítse a [Python](https://www.python.org/downloads/), 3,5 vagy újabb 64 bites verzióját a számítógépre.
 1. Töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
-1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza a menüből a **file** > **Preferences** > **bővítmények** lehetőséget. Keressen rá a **Python**kifejezésre.
+1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza a **fájl** > **Beállítások** > **bővítmények** lehetőséget a menüből. Keressen rá a **Python**kifejezésre.
 
    ![A Python-bővítmény telepítése](media/sdk/qs-python-vscode-python-extension.png)
 
@@ -96,16 +98,16 @@ Vagy letöltheti ezt a rövid útmutatót [Jupyter](https://jupyter.org) jegyzet
 
    ![Mappa megnyitása](media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Hozzon létre egy új Python- `speechsdk.py`forrásfájlt az új fájl ikon kiválasztásával.
+1. Hozzon létre egy új, `speechsdk.py` Python-forrásfájlt az új fájl ikon kiválasztásával.
 
    ![Fájl létrehozása](media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Másolja, illessze be és mentse a [Python-kódot](#sample-code) az újonnan létrehozott fájlba.
 1. Szúrja be a Speech Services-előfizetés adatait.
 1. Ha be van jelölve, a Python-tolmács az ablak alján az állapotsor bal oldalán jelenik meg.
-   Ellenkező esetben hozza létre az elérhető Python-tolmácsok listáját. Nyissa meg a parancssort (CTRL + SHIFT + P) **, és írja be a Pythont: Válassza a tolmács**lehetőséget. Válasszon ki egy megfelelőt.
+   Ellenkező esetben hozza létre az elérhető Python-tolmácsok listáját. Nyissa meg a parancssort (CTRL + SHIFT + P), és írja be a **Python: Válassza a tolmács**lehetőséget. Válasszon ki egy megfelelőt.
 1. A Speech SDK Python-csomagot a Visual Studio Code-ból is telepítheti. Tegye meg, hogy ha még nincs telepítve a kiválasztott Python-tolmácshoz.
-   A Speech SDK csomag telepítéséhez nyisson meg egy terminált. Hozza létre újra a parancs-palettát (CTRL + SHIFT + P) **, és adja meg a terminált: Hozzon létre új**integrált terminált.
+   A Speech SDK csomag telepítéséhez nyisson meg egy terminált. Hozza létre újra a parancs-palettát (CTRL + SHIFT + P), és írja be a **Terminal: Hozzon létre egy új, integrált Terminal @ no__t-0.
    A megnyíló terminálon írja be a `python -m pip install azure-cognitiveservices-speech` parancsot vagy a megfelelő parancsot a rendszer számára.
 1. A mintakód futtatásához kattintson a jobb gombbal a szerkesztőben lévő valahova. Válassza **a Python-fájl futtatása a terminálon**lehetőséget.
    Ha a rendszer kéri, beszéljen néhány szót. Az átmásolt szöveg nem sokkal később jelenik meg.

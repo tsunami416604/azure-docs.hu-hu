@@ -9,34 +9,35 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 02/22/2019
-ms.openlocfilehash: f40ad01d74df26e5a6d90c348a706e8a3c666f2f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675079"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802198"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi a Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine?
 
-A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerkép az Azure Cloud platformon, amely kifejezetten az adatelemzéshez készült. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását. 
-
-Az eszközök konfigurációit a Microsoft és a szélesebb körű adatelemzési Közösség által készített adatszakértők és fejlesztők szigorúan tesztelték. Ez a teszt segít a stabilitás és az általános életképesség biztosításában.
+A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerkép az Azure Cloud platformon, amely kifejezetten az adatelemzéshez készült. Számos népszerű adatelemzési eszköz előre telepítve van és előre konfigurálva van az intelligens alkalmazások speciális elemzésekhez való kialakításához. 
 
 A DSVM a következő címen érhető el:
-+ Windows Server 2016, Windows Server 2012
++ Windows Server 2016
 + Ubuntu 16,04 LTS és CentOS 7,4
 
 > [!NOTE]
 > A Deep learninghez készült összes virtuálisgép-eszköz be lett hajtva a Data Science Virtual Machineba. 
 
 
-## <a name="what-can-i-do-with-the-dsvm"></a>Mire használhatom a DSVM?
-A Data Science Virtual Machine célja, hogy az szakembereket az összes képzettségi szint és az egész iparág számára biztosítson, amely súrlódás nélküli, előre konfigurált és teljes mértékben integrált adatelemzési környezettel rendelkezik. Ahelyett, hogy saját maga is kiépít egy hasonló munkaterületet, létrehozhat egy DSVM. Ez a választás a telepítés, a konfiguráció és a csomag felügyeleti folyamatainál akár napokat, akár _heteket_ is megtakaríthat. A DSVM üzembe helyezése után azonnal munkához láthat adatelemzési projektjén.
+## <a name="why-choose-the-dsvm"></a>Miért érdemes kiválasztani a DSVM?
+A Data Science Virtual Machine célja, hogy minden képzettségi szinten és az iparágon keresztül biztosítson szakembereket egy súrlódás nélküli, előre konfigurált adatelemzési környezettel. Ahelyett, hogy saját maga is kiépít egy hasonló munkaterületet, létrehozhat egy DSVM. Ez a választás a telepítés, a konfiguráció és a csomag felügyeleti folyamatainál akár napokat, akár _heteket_ is megtakaríthat. A DSVM üzembe helyezése után azonnal munkához láthat adatelemzési projektjén.
 
-A DSVM úgy van kialakítva és konfigurálva, hogy a használati forgatókönyvek széles körének megfelelően működjön. A környezet követelményeinek megváltozása mellett akár le is méretezheti a környezetet. Az adatelemzési feladatok elvégzéséhez használhatja az előnyben részesített nyelvet is, és más eszközöket is telepíthet a rendszer igényei szerinti testreszabásához.
+## <a name="sample-use-cases"></a>Példa használati esetekre
 
-### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Előre konfigurált felhőbeli elemzési kezelőfelület
-A DSVM olyan adatelemző csapatok számára biztosít alapkonfigurációt, amelyek a helyi asztalait egy felügyelt felhőalapú asztallal szeretnék helyettesíteni. Ez az alapszint biztosítja, hogy egy csapat valamennyi adatszakértője egységes beállításokkal ellenőrizhesse a kísérleti eredményeket, és elősegíti az együttműködést. A rendszergazdai terhek csökkentésével csökkenti a költségeket is. Ez a terhek csökkentése a speciális analitikai szoftvercsomagok kiértékeléséhez, telepítéséhez és karbantartásához szükséges időt takarít meg.
+Alább bemutatjuk néhány gyakori használati esetet a DSVM-ügyfelek számára.
+
+### <a name="moving-data-science-workloads-to-the-cloud"></a>Adatelemzési számítási feladatok áthelyezése a felhőbe
+
+A DSVM olyan adatelemző csapatok számára biztosít alapkonfigurációt, amelyek a helyi asztalait egy felügyelt Felhőbeli asztallal szeretnék helyettesíteni, így biztosítva, hogy egy adott csapat összes adatszakértője konzisztens módon legyen beállítva a kísérletek ellenőrzéséhez és az együttműködés előmozdításához. A rendszergazdai terhek csökkentésével csökkenti a költségeket is. Ez a terhek csökkentése a speciális analitikai szoftvercsomagok kiértékeléséhez, telepítéséhez és karbantartásához szükséges időt takarít meg.
 
 ### <a name="data-science-training-and-education"></a>Adatelemzési képzés és oktatás
 Az adatelemzési osztályokat tanító vállalati oktatók és oktatók általában virtuálisgép-rendszerképet biztosítanak. A rendszerkép biztosítja, hogy a tanulók konzisztens beállításokkal rendelkezzenek, és hogy a minták kiszámíthatóan működjenek. 
@@ -52,16 +53,8 @@ Az adatelemzési ötletbörzékhez/versenyeken, illetve a nagyméretű adatmodel
 Az összes korlát felszabadításához csatolhat jegyzetfüzet-projektet egy DSVM vagy bármely más, a Jupyter-kiszolgálón futó virtuális géphez. Ha Azure Active Directory (például vállalati) fiókkal jelentkezik be a Azure Notebooksba, a jegyzetfüzetek automatikusan megjeleníti a fiókhoz társított előfizetések Dsvm. A rendelkezésre álló számítási teljesítmény kibontásához [DSVM csatolhat Azure Notebookshoz](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Rövidtávú kísérletezés és kiértékelés
-A DSVM segítségével kiértékelheti vagy megszerezheti az eszközökhöz hasonló eszközöket, minimális beállítási erőfeszítéssel:
+A DSVM segítségével kiértékelheti vagy megismerheti az új adatelemzési [eszközöket](./tools-included.md), különösen a közzétett [minták és](./dsvm-samples-and-walkthroughs.md)útmutatók egyes részein.
 
-- Microsoft Machine Learning-kiszolgáló
-- SQL Server
-- Visual Studio-eszközök
-- Jupyter
-- Mély tanulási és gépi tanulási segédanyagok
-- A Közösségben népszerű új eszközök 
-
-Mivel a DSVM gyorsan beállíthatja, azt más rövid távú használati helyzetekben is alkalmazhatja. Ezek közé tartozik például a közzétett kísérletek replikálása, a bemutatók végrehajtása, valamint az online munkamenetek és a konferencia-oktatóanyagok.
 
 ### <a name="deep-learning-with-gpus"></a>Mély tanulás a GPU-k révén
 A DSVM a képzési modellek mély tanulási algoritmusokat használhatnak a grafikus feldolgozási egységeken (GPU-k) alapuló hardveren. Az Azure platform virtuálisgép-méretezési képességeinek kihasználásával a DSVM a Felhőbeli GPU-alapú hardverek igény szerinti használatát teszi lehetővé. Ha nagyméretű modelleket szeretne betanítani, váltson GPU-alapú virtuális gépre, vagy ha nagy sebességű számításokra van szüksége, miközben az operációs rendszer lemezét is megtartja. Az N sorozatú GPU-t használó virtuális gépek SKU-DSVM is kiválaszthatja. Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t használó virtuális gépekhez tartozó SKU-ket.
@@ -75,94 +68,8 @@ A DSVM Ubuntu, CentOS vagy Windows 2016 kiadását egy olyan Azure-beli virtuál
 <a name="included"></a>
 
 ## <a name="whats-included-on-the-dsvm"></a>Mit tartalmaz a DSVM?
-Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning eszköz már telepítve és konfigurálva van. Olyan eszközöket is tartalmaz, amelyek megkönnyítik a különböző Azure-beli adatkezelő és adatelemző eszközökkel végzett munkát. Ezen termékek közé tartoznak a Microsoft Machine Learning Server (R, Python) a prediktív modellek létrehozásához, valamint a 2017-es SQL Server az adathalmazok nagy léptékű feltárásához. A DSVM a nyílt forráskódú Közösségtől és a Microsofttól származó egyéb eszközöket, valamint a [mintakód és a jegyzetfüzetek](dsvm-samples-and-walkthroughs.md)szolgáltatásait is tartalmazza. 
 
-Az alábbi lista az eszközöket és platformokat tartalmazza:
-+ [Támogatott programozási nyelvek](dsvm-languages.md)
-
-+ [Támogatott adatplatformok](dsvm-data-platforms.md)
-
-+ [Fejlesztői eszközök és ide-](dsvm-tools-development.md)
-
-+ [Mély tanulási és AI-keretrendszerek](dsvm-deep-learning-ai-frameworks.md)
-
-+ [Gépi tanulási és adatelemzési eszközök](dsvm-ml-data-science-tools.md)
-
-+ [Adatfeldolgozási eszközök](dsvm-tools-ingestion.md)
-
-+ [Adatfelderítési és vizualizációs eszközök](dsvm-tools-explore-and-visualize.md)
-
-Az alábbi táblázat elemenként mutatja be és hasonlítja össze az adatelemző virtuális gép windowsos és linuxos kiadásainak fő összetevőit.
-
-| **Eszköz**                                                           | **Windows-kiadás** | **Linux-kiadás** |
-| :------------------------------------------------------------------ |:-------------------:|:------------------:|
-| [Microsoft R Open](https://mran.microsoft.com/open/) előre telepített népszerű csomagokkal   |I                      | I             |
-| [Microsoft Machine learning Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) A fejlesztői kiadás tartalma: <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RevoScaleR/revoscalepy csomagjai](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) párhuzamos és elosztott nagy teljesítményű keretrendszer (R és Python)<br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), új legkorszerűbb gépi tanulási algoritmusok a Microsofttól <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [R és Python operacionalizálási](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |I                      | I |
-| [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) ProPlus megosztott aktiválással: Excel, Word és PowerPoint   |I                      |N              |
-| [Anaconda Python](https://www.continuum.io/) 2,7 és 3,5 az előre telepített népszerű csomagokkal    |I                      |I              |
-| [JuliaPro](https://juliacomputing.com/products/juliapro.html) előre telepített népszerű csomagokkal a Julia nyelvhez                         |I                      |I              |
-| Relációs adatbázisok                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
-| Adatbáziseszközök                                                       |  SQL Server Management Studio <br/> SQL Server integrációs szolgáltatás<br/> [BCP, Sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  ODBC/JDBC-illesztőprogramok|  [Mókus SQL](http://squirrel-sql.sourceforge.net/) (lekérdezési eszköz), <br />  BCP, Sqlcmd <br />  ODBC/JDBC-illesztőprogramok|
-| Méretezhető adatbázis-elemzés SQL Server Machine learning-szolgáltatásokkal (R, Python) | I     |N              |
-| [Jupyter notebook-kiszolgáló](https://jupyter.org/) a következő kernelekkel:                                  | I     | I |
-|     &nbsp; @ NO__T-1 @ NO__T-2 @ NO__T-3 R | I | I |
-|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Python | I | I |
-|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Julia | I | I |
-|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 PySpark | I | I |
-|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | I (csak Ubuntu) |
-|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Sparker     | N | I |
-| JupyterHub (többfelhasználós notebook-kiszolgáló)| N | I |
-| JupyterLab (többfelhasználós notebook-kiszolgáló) | N | I (csak Ubuntu) |
-| Fejlesztői eszközök, ide-kódok és kód-szerkesztők:| | |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2019 (Community Edition)](https://www.visualstudio.com/community/) git beépülő modullal, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data Tools, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)és [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) | I | N |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio-kiszolgáló](https://www.rstudio.com/products/rstudio/#Server) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Notebookshoz Community Edition](https://www.jetbrains.com/pycharm/) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Atom](https://atom.io/) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Juno (Julia ide)](https://junolab.org/)| I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Vim és Emacs | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 git és git bash | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 OpenJDK | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET-keretrendszer | I | N |
-| Power BI Desktop | I | N |
-| SDK-k az Azure és a Cortana Intelligence szolgáltatáscsomag eléréséhez | I | I |
-| Adatáthelyezési és-felügyeleti eszközök: | | |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Azure Storage Explorer | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure CLI](https://docs.microsoft.com/cli/azure) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Azure PowerShell | I | N |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | I | N |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [blob Fuse illesztőprogram](https://github.com/Azure/azure-storage-fuse) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Adlcopy (Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | I | N |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Cosmos db áttelepítési eszköz](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | I | N |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoft adatkezelés Gateway](https://msdn.microsoft.com/library/dn879362.aspx): az adatáthelyezés a helyszíni és a felhő között | I | N |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 UNIX/Linux parancssori eszköz | I | I |
-| Az [Apache-részletezés](https://drill.apache.org) az adatfeltáráshoz | I | I |
-| Gépi tanulási eszközök: |||
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 integráció a következővel: [Azure Machine learning](https://azure.microsoft.com/services/machine-learning/) (R, Python) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [XGBoost](https://github.com/dmlc/xgboost) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [WEKA](https://www.cs.waikato.ac.nz/ml/weka/) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [csörgő](https://togaware.com/rattle/) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [LightGBM](https://github.com/Microsoft/LightGBM) | N | I (csak Ubuntu) |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [CatBoost](https://tech.yandex.com/catboost/) | N | I (csak Ubuntu) |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [H2O](https://www.h2o.ai/h2o/), [szénsavas víz](https://www.h2o.ai/sparkling-water/) | N | I (csak Ubuntu) |
-| A GPU vagy a CPU-t használó Deep learning-eszközök: |  |  |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | I | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow](https://www.tensorflow.org/) | I (Windows 2016) | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Horovod](https://github.com/uber/horovod) | N | I (Ubuntu) |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet](https://mxnet.io/) | I (Windows 2016) | I|
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Cafe és Caffe2](https://github.com/caffe2/caffe2) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [lánc](https://chainer.org/) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [zseblámpa](http://torch.ch/) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [theano](https://github.com/Theano/Theano) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [kerasz](https://keras.io/)| N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [PyTorch](https://pytorch.org/)| N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [NVIDIA számjegy](https://github.com/NVIDIA/DIGITS) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet Model Server](https://github.com/awslabs/mxnet-model-server) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow kiszolgáló](https://www.tensorflow.org/serving/) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorRT](https://developer.nvidia.com/tensorrt) | N | I |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [CUDA, cuDNN, NVIDIA illesztőprogram](https://developer.nvidia.com/cuda-toolkit) | I | I |
+Tekintse meg a Windows és a Linux DSVM található eszközök teljes listáját [itt](tools-included.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647679"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719866"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Szolgáltatás-felügyeleti Azure Search a Azure Portal
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ A Azure Search a portálon vagy a programozott felületen keresztül nem teszi e
 A szolgáltatással kapcsolatos általános információk tekintetében a következő módokon szerezhet be információkat:
 
 * A portálon, a szolgáltatás irányítópultján, az értesítések, a tulajdonságok és az állapotüzenetek használatával.
-* A [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/) használatával lekérheti a [szolgáltatás tulajdonságait](https://docs.microsoft.com/rest/api/searchmanagement/services), vagy megtekintheti az indexelés erőforrás-használat állapotát.
+* A [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/) használatával [lekérheti a szolgáltatás tulajdonságait](https://docs.microsoft.com/rest/api/searchmanagement/services), vagy megtekintheti az indexelés erőforrás-használat állapotát.
 * A [Search Traffic Analytics szolgáltatáson](search-traffic-analytics.md)keresztül, a korábban feljegyzett módon.
 
 <a id="sub-5"></a>
@@ -71,7 +71,7 @@ A Search Service REST API használatával a dokumentumok és indexek száma prog
 
 Bár az adatai megmaradnak, Azure Search nem biztosítja a szolgáltatás azonnali feladatátvételét, ha a fürt vagy az adatközpont szintjén leáll a leállás. Ha egy fürt meghibásodik az adatközpontban, az operatív csapat felismeri és a szolgáltatás visszaállítását végzi. A szolgáltatás visszaállítása során állásidőt tapasztalhat, de a szolgáltatási kreditek igénylésével kompenzálhatja a szolgáltatás nem rendelkezésre állását a [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Ha a Microsoft általi ellenőrzésen kívüli katasztrofális hibák esetén folyamatos szolgáltatásra van szükség, egy másik régióban is kiépítheti a [további szolgáltatásokat](search-create-service-portal.md) , és egy geo-replikációs stratégiát valósíthat meg annak biztosításához, hogy az indexek teljesen redundánsak legyenek. az összes szolgáltatáson keresztül.
+Ha a Microsoft általi ellenőrzésen kívüli katasztrofális hibák esetén folyamatos szolgáltatásra van szükség, egy másik régióban is [kiépítheti a további szolgáltatásokat](search-create-service-portal.md) , és egy geo-replikációs stratégiát valósíthat meg annak biztosításához, hogy az indexek teljesen redundánsak legyenek. az összes szolgáltatáson keresztül.
 
 Azok az ügyfelek [](search-indexer-overview.md) , akik indexelő adatokat használnak az indexek feltöltéséhez és frissítéséhez, az azonos adatforrást használó geo-specifikus indexelő segítségével kezelhetik a vész-helyreállítást. A különböző régiókban található két szolgáltatás, amelyek mindegyike indexelt, indexelheti ugyanazt az adatforrást a Geo-redundancia eléréséhez. Ha olyan adatforrásokból származó indexelést is, amelyek földrajzilag redundánsak, vegye figyelembe, hogy Azure Search indexelő csak az elsődleges replikák növekményes indexelését tudja végrehajtani. Feladatátvételi esemény esetén ügyeljen arra, hogy az indexelő újra az új elsődleges replikára irányítsa. 
 
@@ -79,10 +79,9 @@ Ha nem használ indexelő funkciót, az alkalmazás kódjával párhuzamosan kü
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-Mivel Azure Search nem elsődleges adattárolási megoldás, nem biztosítunk formális mechanizmust az önkiszolgáló biztonsági mentéshez és visszaállításhoz. Az index létrehozásához és feltöltéséhez használt alkalmazás kódja a de facto Visszaállítási lehetőség, ha tévedésből töröl egy indexet. 
+Mivel Azure Search nem elsődleges adattárolási megoldás, nem biztosítunk formális mechanizmust az önkiszolgáló biztonsági mentéshez és visszaállításhoz. A [Azure Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples) -tárházban található **index-Backup-Restore** mintakód használatával azonban az index definícióját és a pillanatképet egy sor JSON-fájlra is felhasználhatja, majd ezekkel a fájlokkal visszaállíthatja az indexet, ha szükséges. Ez az eszköz az indexeket is át tudja helyezni a szolgáltatási szintek között.
 
-Az indexek újraépítéséhez törölnie kell azt (feltéve, hogy létezik), újra létre kell hoznia az indexet a szolgáltatásban, majd újra kell töltenie az adatok elsődleges adattárból való beolvasásával.
-
+Ellenkező esetben az index létrehozásához és feltöltéséhez használt alkalmazás kódja a de facto Visszaállítási lehetőség, ha tévedésből töröl egy indexet. Az indexek újraépítéséhez törölnie kell azt (feltéve, hogy létezik), újra létre kell hoznia az indexet a szolgáltatásban, majd újra kell töltenie az adatok elsődleges adattárból való beolvasásával.
 
 <a id="scale"></a>
 
@@ -94,7 +93,7 @@ Ha erőforráson keresztül ad hozzá kapacitást, a szolgáltatás automatikusa
  ![][10]
 
 ### <a name="add-replicas"></a>Replikák hozzáadása
-A lekérdezések másodpercenkénti száma (QPS) vagy a magas rendelkezésre állás elérése a replikák hozzáadásával történik. Minden replika egyetlen másolattal rendelkezik egy indexből, így a szolgáltatás lekérdezési kéréseinek kiszolgálásához még egy replika hozzáadására van lehetőség. A magas rendelkezésre álláshoz legalább 3 replika szükséges (lásd a [kapacitás](search-capacity-planning.md) megtervezését a részletekért).
+A lekérdezések másodpercenkénti száma (QPS) vagy a magas rendelkezésre állás elérése a replikák hozzáadásával történik. Minden replika egyetlen másolattal rendelkezik egy indexből, így a szolgáltatás lekérdezési kéréseinek kiszolgálásához még egy replika hozzáadására van lehetőség. A magas rendelkezésre álláshoz legalább 3 replika szükséges (lásd a [kapacitás megtervezését](search-capacity-planning.md) a részletekért).
 
 A több replikát tartalmazó keresési szolgáltatás a lekérdezési kérelmeket nagyobb számú indexnél tudja betölteni. A lekérdezési mennyiség szintje miatt a lekérdezési átviteli sebesség gyorsabb lesz, ha a kérés kiszolgálásához több példány is rendelkezésre áll az indexben. Ha a lekérdezés késését tapasztalja, pozitív hatással lehet a teljesítményre, ha a további replikák online állapotban vannak.
 
@@ -113,7 +112,7 @@ A replikák eltávolításával szemben, amelyhez nincs szükség további erőf
 
 Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolva egy adott partíción. Az egyes partíciók körülbelül 25 GB tárhelyet biztosítanak, ezért a tárterületet a szükséges partíciók számával kell csökkenteni. Ha egy partícióra kíván visszaállítani, akkor mind a 12 szegmensnek el kell férnie.
 
-Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)lekérése használatával), hogy megtekintse, mennyit használt 
+Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
 
 <a id="advanced-deployment"></a>
 

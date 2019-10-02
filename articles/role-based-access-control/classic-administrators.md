@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2096b6c5ddb72c8ab5c5d3203a05c94db51f6c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444337"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802317"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -34,7 +34,7 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként.
 
-1. Nyisson [](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) meg előfizetéseket, és válasszon ki egy előfizetést
+1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
     A társ-rendszergazdák csak az előfizetés hatókörében rendelhetők hozzá.
 
@@ -44,7 +44,7 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
     ![A klasszikus rendszergazdákat megnyitó képernyőkép](./media/classic-administrators/classic-administrators.png)
 
-1. Kattintson a **Hozzáadás** > a**társ-rendszergazda** hozzáadásához elemre a közös rendszergazdák hozzáadása panel megnyitásához.
+1. Kattintson a **hozzáadás**@no__t – 1 Hozzáadás a**társ-rendszergazda** hozzáadása elemre a közös rendszergazdák hozzáadása panel megnyitásához.
 
     Ha a társ-rendszergazda hozzáadása lehetőség le van tiltva, akkor nem rendelkezik a megfelelő engedélyekkel.
 
@@ -56,12 +56,14 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
 A társ-rendszergazda szerepkörrel rendelkező [vendég felhasználók](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Vegye figyelembe a következő helyzetet:
 
-- Az A felhasználó Azure AD munkahelyi vagy iskolai fiókkal az Azure-előfizetések szolgáltatás-rendszergazdája.
+- Az A felhasználó Azure AD-fiókkal (munkahelyi vagy iskolai fiókkal) az Azure-előfizetések szolgáltatás-rendszergazdája.
 - A B felhasználó Microsoft-fiók rendelkezik.
 - Az A felhasználó hozzárendeli a társ-rendszergazda szerepkört a B felhasználóhoz.
 - A B felhasználó szinte mindent megtehet, de nem tudja regisztrálni az alkalmazásokat, vagy megkeresni a felhasználókat az Azure AD-címtárban.
 
-Azt várná, hogy a B felhasználó mindent tud kezelni. Ennek a különbségnek az az oka, hogy a Microsoft-fiók a tag felhasználója helyett vendég felhasználóként adja hozzá az előfizetéshez. A vendég felhasználók a felhasználókhoz képest eltérő alapértelmezett engedélyekkel rendelkeznek az Azure AD-ben. Például a felhasználók más felhasználókat is olvashatnak az Azure AD-ben, és a vendég felhasználói nem. A tagok felhasználói regisztrálhatnak új egyszerű szolgáltatásokat az Azure AD-ben, és a vendég felhasználói nem rendelkezhetnek. Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás az adott Azure AD-rendszergazdai szerepkörök hozzárendelésére a vendég felhasználói igényeinek megfelelően. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)
+Azt várná, hogy a B felhasználó mindent tud kezelni. Ennek a különbségnek az az oka, hogy a Microsoft-fiók a tag felhasználója helyett vendég felhasználóként adja hozzá az előfizetéshez. A vendég felhasználók a felhasználókhoz képest eltérő alapértelmezett engedélyekkel rendelkeznek az Azure AD-ben. Például a felhasználók más felhasználókat is olvashatnak az Azure AD-ben, és a vendég felhasználói nem. A tagok felhasználói regisztrálhatnak új egyszerű szolgáltatásokat az Azure AD-ben, és a vendég felhasználói nem rendelkezhetnek.
+
+Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás az adott Azure AD-rendszergazdai szerepkörök hozzárendelésére a vendég felhasználói igényeinek megfelelően. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)
 
 Vegye figyelembe, hogy az [Azure-erőforrások beépített szerepkörei](../role-based-access-control/built-in-roles.md) eltérnek az [Azure ad rendszergazdai szerepköreitől](../active-directory/users-groups-roles/directory-assign-admin-roles.md). A beépített szerepkörök nem biztosítanak hozzáférést az Azure AD-hoz. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -69,7 +71,7 @@ Vegye figyelembe, hogy az [Azure-erőforrások beépített szerepkörei](../role
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként.
 
-1. Nyisson [](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) meg előfizetéseket, és válasszon ki egy előfizetést
+1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
 1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
@@ -93,9 +95,9 @@ A szolgáltatásadminisztrátort kétféleképpen módosíthatja. A **Azure Port
 
 1. Győződjön meg arról, hogy a forgatókönyvek támogatottak, ha ellenőrzi a szolgáltatás-rendszergazdák módosításának korlátozásait.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) a fiók rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 
-1. Nyisson [](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) meg előfizetéseket, és válasszon ki egy előfizetést
+1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
 1. Kattintson a **Tulajdonságok** elemre.
 
@@ -127,14 +129,16 @@ A szolgáltatásadminisztrátort kétféleképpen módosíthatja. A **Azure Port
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>A szolgáltatás-rendszergazda módosításának korlátai
 
-Minden előfizetés egy Azure AD-címtárhoz van társítva. Az előfizetés társított könyvtárának megkereséséhez nyissa meg  az előfizetéseket a Azure Portal, majd válasszon egy előfizetést a könyvtár megtekintéséhez.
+Azure-előfizetések esetében csak egy szolgáltatás-rendszergazda lehet. A szolgáltatás-rendszergazda módosítása attól függően eltérő lesz, hogy a fiók rendszergazdája Microsoft-fiók-e, vagy az Azure AD-fiók (munkahelyi vagy iskolai fiók).
 
-Ha munkahelyi vagy iskolai fiókkal jelentkezik be, a szervezetében más fiókokat is hozzáadhat a szolgáltatás-rendszergazdaként. Hozzáadhat abby@contoso.com john@notcontoso.com john@notcontoso.com például szolgáltatás-rendszergazdaként, de nem lehet hozzáadni, ha a contoso.com-címtárban szerepel a jelenléte. bob@contoso.com A munkahelyi vagy iskolai fiókkal bejelentkezett felhasználók továbbra is hozzáadhatnak Microsoft-fiók felhasználókat a szolgáltatás-rendszergazdaként. Azure-előfizetések esetében csak egy szolgáltatás-rendszergazda lehet.
+| Fiók-rendszergazdai fiók | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik Microsoft-fiók? | Megváltoztathatja a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra, amely ugyanabban a címtárban van? | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik címtárban lévő Azure AD-fiókra? |
+| --- | --- | --- | --- |
+| Microsoft-fiók | Igen | Nem | Nem |
+| Azure AD-fiók | Igen | Igen | Nem |
 
-  | Bejelentkezési módszer | Hozzá Microsoft-fiók felhasználót szolgáltatás-rendszergazdaként? | A munkahelyi vagy iskolai fiókokat ugyanabban a szervezetben adja hozzá, mint a szolgáltatás-rendszergazda? | A munkahelyi vagy iskolai fiókokat más szervezetekben is hozzáadhatja szolgáltatás-rendszergazdaként? |
-  | --- | --- | --- | --- |
-  |  Microsoft-fiók |Igen |Nem |Nem |
-  |  Munkahelyi vagy iskolai fiók |Igen |Igen |Nem |
+Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. A abby@contoso.com például megváltoztathatja a szolgáltatás-rendszergazdát bob@contoso.com értékre, de a szolgáltatás-rendszergazda nem módosítható a john@notcontoso.com értékre, kivéve, ha a john@notcontoso.com tartalmaz jelenlétet a contoso.com könyvtárban.
+
+A Microsoft-fiókokkal és az Azure AD-fiókokkal kapcsolatos további információkért lásd: [Mi az Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md)
 
 ## <a name="view-the-account-administrator"></a>A fiók rendszergazdájának megtekintése
 
@@ -144,7 +148,7 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Nyisson [](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) meg előfizetéseket, és válasszon ki egy előfizetést
+1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
 1. Kattintson a **Tulajdonságok** elemre.
 

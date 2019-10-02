@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d2c3e2bf693f763db13d90961a31e871aa25235
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d12b952d298b41c8d06f0fcac141a45749de9051
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558874"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799957"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szöveg – beszéd?
 
@@ -38,7 +38,7 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és virtuális assziszt
 
 A neurális hangok különböző stílusokat támogatnak, mint például a semleges és a vidám. Például a Jessa (en-US) hangja vidáman tud beszélni, ami meleg, boldog beszélgetésre van optimalizálva. A hangkimenetek, például a hang, a szurok és a sebesség a [beszédfelismerési leíró nyelv](speech-synthesis-markup.md)használatával állíthatók be. Az elérhető hangok teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-Ha többet szeretne megtudni a neurális hangok előnyeiről, tekintse meg a [Microsoft új neurális szöveg-beszéd szolgáltatását](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/), amellyel a gépek hasonló személyeket beszélnek.
+Ha többet szeretne megtudni a neurális hangok előnyeiről, tekintse meg a [Microsoft új neurális szöveg-beszéd szolgáltatását, amellyel a gépek hasonló személyeket beszélnek](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
 
 ### <a name="custom-voices"></a>Egyéni hangok
 
@@ -55,11 +55,11 @@ A szöveg-beszéd szolgáltatásnak eljuttatott összes szöveges bemenetet SSML
 A szöveg-beszéd típusú szolgáltatás használatakor a rendszer minden, a beszédre konvertált karakter után számláz, beleértve a központozást is. Míg maga a SSML-dokumentum nem számlázható, a szöveg átalakításának módjára, például a fonémák és a Pitch formátumára szolgáló opcionális elemek számlázandó karakternek számítanak. Az alábbi lista tartalmazza a számlázható tartalmakat:
 
 * A kérelem SSML törzsében a szöveg-beszéd szolgáltatásnak átadott szöveg
-* A kérelem törzsének összes jelölése a SSML formátumban, a `<speak>` és `<voice>` a címkék kivételével
+* A kérelem törzsének összes jelölése a SSML formátumban, kivéve a `<speak>` és `<voice>` címkéket
 * Betűk, írásjelek, szóközök, tabulátorok, jelölések és minden fehér szóköz
 * Minden Unicode-ban definiált kód pont
 
-Részletes információkat a díjszabásban [](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)talál.
+Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)talál.
 
 > [!IMPORTANT]
 > Minden kínai, Japán és koreai nyelvi karakter két karakternek számít a számlázáshoz.
@@ -71,13 +71,13 @@ Ez a táblázat a szöveg és a beszéd alapvető funkcióit sorolja fel:
 | Használati eset | SDK | REST |
 |----------|-----|------|
 | Szöveg konvertálása beszédre | Igen | Igen |
-| Adatkészletek feltöltése a hangalapú átalakításhoz. | Nem | igen\* |
-| Hang betűkészlet-modelljeinek létrehozása és kezelése. | Nem | igen\* |
-| Hangbetűkészletek központi telepítésének létrehozása és kezelése. | Nem | igen\* |
-| Hangos betűkészlet-tesztek létrehozása és kezelése. | Nem | igen\* |
-| Előfizetések kezelése. | Nem | igen\* |
+| Adatkészletek feltöltése a hangalapú átalakításhoz. | Nem | Igen @ no__t – 0 |
+| Hang betűkészlet-modelljeinek létrehozása és kezelése. | Nem | Igen @ no__t – 0 |
+| Hangbetűkészletek központi telepítésének létrehozása és kezelése. | Nem | Igen @ no__t – 0 |
+| Hangos betűkészlet-tesztek létrehozása és kezelése. | Nem | Igen @ no__t – 0 |
+| Előfizetések kezelése. | Nem | Igen @ no__t – 0 |
 
-\**Ezek a szolgáltatások az Cris.ai-végpont használatával érhetők el. Lásd [](https://westus.cris.ai/swagger/ui/index)a hencegés referenciáját. Ezek az egyéni hangképzési és felügyeleti API-k olyan szabályozást valósítanak meg, amely 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket, míg a Speech szintézis API maga valósítja meg a szabályozást, amely lehetővé teszi a maximális 200-kérelmek másodpercenkénti számát. A szabályozás során a rendszer értesítést küld az üzenetek fejlécén keresztül.*
+\* @no__t – a 1These-szolgáltatások az cris.ai végpont használatával érhetők el. Lásd a [hencegés referenciáját](https://westus.cris.ai/swagger/ui/index). Ezek az egyéni hangképzési és felügyeleti API-k olyan szabályozást valósítanak meg, amely 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket, míg a Speech szintézis API maga valósítja meg a szabályozást, amely lehetővé teszi a maximális 200-kérelmek másodpercenkénti számát. A szabályozás során a rendszer értesítést küld az üzenetek fejlécén keresztül. *
 
 ## <a name="get-started-with-text-to-speech"></a>Ismerkedés a szöveg és a beszéd között
 
@@ -93,6 +93,13 @@ Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt fu
 | [C#, Egység](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/cppref) |
 | [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Tallózás](https://aka.ms/csspeech/cppref) |
+| [Java](quickstart-text-to-speech-java-jre.md) | Windows, Linux, macOS | [Tallózás](https://aka.ms/csspeech/javaref) |
+| [Java](quickstart-text-to-speech-java-android.md) | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-macos.md) | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-ios.md) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
+| [Swift](quickstart-text-to-speech-swift-macos.md) | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
+| [Swift](quickstart-text-to-speech-swift-ios.md) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
+| [Python](quickstart-text-to-speech-python.md) | Ablak, Linux, macOS | [Tallózás](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST-útmutató
 

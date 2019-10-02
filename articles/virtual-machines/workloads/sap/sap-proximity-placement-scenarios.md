@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c56bfda2b4f74bf31ce847f1fdb42f77f43eb372
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677981"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720000"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.
@@ -34,7 +34,7 @@ Ezen problémák elkerülése érdekében az Azure [közelségi csoportokat](htt
 ## <a name="what-are-proximity-placement-groups"></a>Mik azok a közelségi elhelyezési csoportok? 
 Az Azure Proximity-elhelyezési csoport egy logikai szerkezet. Ha meg van adva, az egy Azure-régióhoz és egy Azure-erőforráscsoporthoz van kötve. Virtuális gépek telepítésekor a rendszer a következőkre hivatkozik:
 
-- Az adatközpontban üzembe helyezett első Azure-beli virtuális gép. Azt is megteheti, hogy az első virtuális gépet egy olyan Azure-beli kiosztási algoritmusok alapján üzembe helyezett "anchor VM"-ként telepíti, amelyek végül egy adott rendelkezésre állási zónához tartozó felhasználói definíciókkal együtt települnek.
+- Az adatközpontban üzembe helyezett első Azure-beli virtuális gép. Azt is megteheti, hogy az első virtuális gépet egy olyan Azure kiosztási algoritmusok alapján központilag telepített "hatókörű virtuális gép"ként telepíti, amely egy adott rendelkezésre állási zónához tartozó felhasználói definíciókkal együtt.
 - A közelségi elhelyezési csoportra hivatkozó összes további virtuális gép, amely a későbbiekben üzembe helyezett Azure-beli virtuális gépeket helyezi el ugyanabban az adatközpontban, mint az első virtuális gép.
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Egyetlen [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resou
 
 Az elhelyezési csoportok használatakor vegye figyelembe az alábbi szempontokat:
 
-- Ha az SAP-rendszer optimális teljesítményére törekszik, és a közelségi csoportok használatával korlátozza a rendszer egyetlen Azure-adatközpontját, előfordulhat, hogy nem fogja tudni egyesíteni az elhelyezési csoporton belül az összes virtuálisgép-családot. Ezek a korlátozások azért fordulnak elő, mert előfordulhat, hogy az adott virtuálisgép-típus futtatásához szükséges gazdagép-hardver nem szerepel az adatközpontban, amelybe az elhelyezési csoport horgony virtuális gépe telepítve lett.
+- Ha az SAP-rendszer optimális teljesítményére törekszik, és a közelségi csoportok használatával korlátozza a rendszer egyetlen Azure-adatközpontját, előfordulhat, hogy nem fogja tudni egyesíteni az elhelyezési csoporton belül az összes virtuálisgép-családot. Ezek a korlátozások azért fordulnak elő, mert előfordulhat, hogy az adott virtuálisgép-típus futtatásához szükséges gazdagép-hardver nem szerepel az adatközpontban, amelyhez az elhelyezési csoport "hatókörben lévő virtuális gép" lett telepítve.
 - Egy ilyen SAP-rendszer életciklusa során kénytelen lehet áthelyezni a rendszert egy másik adatközpontba. Erre a lépésre akkor lehet szükség, ha úgy dönt, hogy a kibővíthető HANA adatbázis-kezelő rétege például négy csomópontról 16 csomópontra van áthelyezve, és nincs elegendő kapacitás ahhoz, hogy az adatközpontban használt típushoz további 12 virtuális gépet kapjon.
 - A hardver leszerelése miatt a Microsoft létrehozhat egy másik adatközpontban használt virtuálisgép-típust, nem pedig azt, amelyet eredetileg használt. Ebben az esetben előfordulhat, hogy át kell helyeznie az összes közelségi elhelyezési csoport virtuális gépe egy másik adatközpontba.
 
@@ -55,7 +55,7 @@ A legtöbb ügyfél-telepítésben az ügyfeleknek egyetlen [Azure-erőforráscs
 
 Ne adjon meg több SAP-éles vagy nem éles rendszert egyetlen közelségi elhelyezési csoportban. Ha kis számú SAP-rendszerre vagy egy SAP-rendszerre van szükség, és néhány alkalmazásnak alacsony késésű hálózati kommunikációra van szüksége, érdemes lehet áthelyezni ezeket a rendszereket egy közelségi elhelyezési csoportba. Érdemes elkerülni a rendszerek kötegeit, mert annál több rendszer van csoportosítva a közelségi elhelyezési csoportban, annál nagyobb eséllyel:
 
-- Ehhez olyan virtuálisgép-típusra van szükség, amely nem futtatható az adott adatközpontban, amelybe a közelségi elhelyezési csoportot rögzítette.
+- Ehhez olyan virtuálisgép-típusra van szükség, amely nem futtatható abban a konkrét adatközpontban, amelybe a közelségi elhelyezési Csoport hatóköre volt.
 - A nem mainstream virtuális gépek, például az M-sorozatú virtuális gépek erőforrásai végül nem teljesíthetők, ha többre van szükség, mert az idő múlásával szoftvereket vesznek fel egy közeli elhelyezési csoportba.
 
 A következőképpen néz ki az ideális konfiguráció:

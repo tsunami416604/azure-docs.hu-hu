@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647693"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719847"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Azure Search index újraépítése
 
 Ez a cikk azt ismerteti, hogyan lehet újraépíteni egy Azure Search indexet, a szükséges körülményeket, valamint a folyamatban lévő lekérdezési kérelmek újraépítésének következményeit enyhítő javaslatokat.
 
-Az Újraépítés az indexhez társított fizikai adatstruktúrák eldobására és újbóli létrehozására utal, beleértve az összes mező alapú fordított indexet. A Azure Searchban nem lehet eldobni és újból létrehozni az egyes mezőket. Az indexek újraépítéséhez az összes mezőt törölni kell, újból létre kell hozni egy meglévő vagy módosított index-séma alapján, majd újra fel kell tölteni az indexbe küldött adatokkal, vagy külső forrásokból kell kihúzni őket. Gyakori, hogy a fejlesztés során újraépíti az indexeket, de előfordulhat, hogy újra kell építenie egy éles szintű indexet a szerkezeti módosítások elvégzéséhez, például összetett típusok hozzáadásához vagy mezők hozzáadásához a javaslatokhoz.
+Az *Újraépítés* az indexhez társított fizikai adatstruktúrák eldobására és újbóli létrehozására utal, beleértve az összes mező alapú fordított indexet. A Azure Searchban nem lehet eldobni és újból létrehozni az egyes mezőket. Az indexek újraépítéséhez az összes mezőt törölni kell, újból létre kell hozni egy meglévő vagy módosított index-séma alapján, majd újra fel kell tölteni az indexbe küldött adatokkal, vagy külső forrásokból kell kihúzni őket. Gyakori, hogy a fejlesztés során újraépíti az indexeket, de előfordulhat, hogy újra kell építenie egy éles szintű indexet a szerkezeti módosítások elvégzéséhez, például összetett típusok hozzáadásához vagy mezők hozzáadásához a javaslatokhoz.
 
 Az indexet offline állapotú újraépítéssel ellentétben az *Adatfrissítés* háttérbeli feladatként fut. Hozzáadhat, eltávolíthat és lecserélheti a dokumentumokat a számítási feladatok minimális megszakításával, bár a lekérdezések általában hosszabb időt vesznek igénybe. Az index tartalmának frissítésével kapcsolatos további információkért lásd: [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
@@ -29,16 +29,16 @@ Az indexet offline állapotú újraépítéssel ellentétben az *Adatfrissítés
 | Állapot | Leírás |
 |-----------|-------------|
 | Mező definíciójának módosítása | Egy mezőnév, adattípus vagy adott [index-attribútum](https://docs.microsoft.com/rest/api/searchservice/create-index) (kereshető, szűrhető, rendezhető) módosítása teljes újraépítést igényel. |
-| Analizátor kiosztása egy mezőhöz | [](search-analyzers.md) Az elemzők definiálva vannak egy indexben, majd a mezőkhöz vannak rendelve. Bármikor hozzáadhat egy új Analyzer-definíciót egy indexhez, de a mező létrehozásakor csak az analizátort lehet hozzárendelni. Ez az **elemző** és a **indexAnalyzer** tulajdonság esetében is igaz. A **searchAnalyzer** tulajdonság kivétel (ezt a tulajdonságot egy meglévő mezőhöz rendelheti hozzá). |
+| Analizátor kiosztása egy mezőhöz | Az [elemzők](search-analyzers.md) definiálva vannak egy indexben, majd a mezőkhöz vannak rendelve. Bármikor hozzáadhat egy új Analyzer-definíciót egy indexhez, de a mező létrehozásakor csak az analizátort lehet *hozzárendelni* . Ez az **elemző** és a **indexAnalyzer** tulajdonság esetében is igaz. A **searchAnalyzer** tulajdonság kivétel (ezt a tulajdonságot egy meglévő mezőhöz rendelheti hozzá). |
 | Elemző definíciójának frissítése vagy törlése egy indexben | Az indexben nem lehet törölni vagy módosítani egy meglévő Analyzer-konfigurációt (analizátor, tokenizer, token Filter vagy char Filter), kivéve, ha újra létrehozza a teljes indexet. |
 | Mező hozzáadása egy javaslathoz | Ha már létezik egy mező, és hozzá kívánja adni egy [javaslat](index-add-suggesters.md) létrehozásához, újra kell építenie az indexet. |
 | Mező törlése | Egy mező összes nyomának fizikai eltávolításához újra kell építenie az indexet. Ha egy azonnali Újraépítés nem praktikus, módosíthatja az alkalmazás kódját a "törölt" mező elérésének letiltásához. Fizikailag a mező meghatározása és tartalma a következő Újraépítés marad az indexben, amikor olyan sémát alkalmaz, amely kihagyja a szóban forgó mezőt. |
-| Rétegek váltása | Ha nagyobb kapacitásra van szüksége, nincs helyben történő frissítés. Új szolgáltatás jön létre az új kapacitási ponton, és az indexeket az új szolgáltatáson belülről kell felépíteni. |
+| Rétegek váltása | Ha nagyobb kapacitásra van szüksége, nincs helyben történő frissítés a Azure Portalban. Létre kell hozni egy új szolgáltatást, és az indexeket teljesen fel kell építeni az új szolgáltatásból. Ennek a folyamatnak az automatizálásához használhatja a [Azure Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples)-tárházban található **index-Backup-Restore** mintakód kódot. Ez az alkalmazás biztonsági másolatot készít az indexről egy sor JSON-fájlra, majd újból létrehozza az indexet egy Ön által megadott keresési szolgáltatásban.|
 
 Bármely más módosítás a meglévő fizikai szerkezetek befolyásolása nélkül végezhető el. A következő módosítások *nem* igénylik az index újraépítését:
 
 + Új mező hozzáadása
-+ Lekérhető attribútum beállítása meglévő mezőben
++ Lekérhető **attribútum beállítása** meglévő mezőben
 + Meglévő mező **searchAnalyzer** beállítása
 + Új elemző definíció hozzáadása egy indexhez
 + Pontozási profilok hozzáadása, frissítése vagy törlése
@@ -55,11 +55,11 @@ Az is könnyen elvégezhető, ha azonban *frissíti a dokumentumokat* egy indexb
 
 ## <a name="partial-indexing-with-indexers"></a>Részleges indexelés az Indexelő
 
-[](search-indexer-overview.md) Az indexelő leegyszerűsíti az adatfrissítési feladatot. Az indexelő csak egy táblát vagy nézetet tud indexelni a külső adatforrásban. Több tábla indexeléséhez a legegyszerűbb módszer egy olyan nézet létrehozása, amely összekapcsolja a táblákat és a projekteket az indexelni kívánt oszlopokkal. 
+Az [Indexelő](search-indexer-overview.md) leegyszerűsíti az adatfrissítési feladatot. Az indexelő csak egy táblát vagy nézetet tud indexelni a külső adatforrásban. Több tábla indexeléséhez a legegyszerűbb módszer egy olyan nézet létrehozása, amely összekapcsolja a táblákat és a projekteket az indexelni kívánt oszlopokkal. 
 
-Ha külső adatforrásokat feltérképező indexelő használ, keressen rá a forrásadatok "magas vízjelek" oszlopára. Ha van ilyen, használhatja a növekményes változások észlelését úgy, hogy csak azokat a sorokat vette fel, amelyek új vagy módosított tartalmat tartalmaznak. Az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)esetében a `lastModified` rendszer egy mezőt használ. Az [Azure Table Storage](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection) `timestamp` szolgáltatás ugyanazt a célt szolgálja. Hasonlóképpen, [Azure SQL Database indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) és [Azure Cosmos db indexelő](search-howto-index-cosmosdb.md#indexing-changed-documents) is tartalmaz mezőket a sorok frissítéseinek megjelöléséhez. 
+Ha külső adatforrásokat feltérképező indexelő használ, keressen rá a forrásadatok "magas vízjelek" oszlopára. Ha van ilyen, használhatja a növekményes változások észlelését úgy, hogy csak azokat a sorokat vette fel, amelyek új vagy módosított tartalmat tartalmaznak. Az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)esetében `lastModified` mezőt használ a rendszer. Az [Azure Table Storage](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)-ban a `timestamp` ugyanazt a célt szolgálja. Hasonlóképpen, [Azure SQL Database indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) és [Azure Cosmos db indexelő](search-howto-index-cosmosdb.md#indexing-changed-documents) is tartalmaz mezőket a sorok frissítéseinek megjelöléséhez. 
 
-Az indexelő szolgáltatással kapcsolatos további információkért lásd: az [Indexelő áttekintése](search-indexer-overview.md) és az [Indexelő REST API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)alaphelyzetbe állítása.
+Az indexelő szolgáltatással kapcsolatos további információkért lásd: az [Indexelő áttekintése](search-indexer-overview.md) és az [Indexelő REST API alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
 
 ## <a name="how-to-rebuild-an-index"></a>Index újraépítése
 

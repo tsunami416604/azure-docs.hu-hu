@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390870"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802821"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: A C#, Tudásbázis létrehozása, majd a kérdés megválaszolása
 
@@ -41,7 +41,7 @@ Ez a rövid útmutató meghívja a QnA Maker REST API-kat:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Legújabb [**Visual Studio Community kiadás**](https://www.visualstudio.com/downloads/).
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza az irányítópulton az **Erőforrás-kezelés** területen lévő **Kulcsok** lehetőséget. 
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és az erőforrás nevének lekéréséhez **válassza a** gyors üzembe helyezés lehetőséget a QnA Maker erőforrásának Azure Portal. 
 
 > [!NOTE] 
 > A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)érhetők el.
@@ -146,13 +146,13 @@ Az API-hívás egy 204-es állapotot küld vissza a sikeres közzététel nyugt�
 Bármely egyéb válasz esetében a rendszer a választ változtatás nélkül adja vissza.
 
 ## <a name="generating-an-answer"></a>Válasz létrehozása
-Ahhoz, hogy egy kérdés elküldése és a legjobb válasz lekérése céljából hozzáférhessen a tudásbázishoz, a programnak egy, a tudásbázis részletei API-ból származó _végpont gazdagépre_, és a végpontok API-ból származó _elsődleges végpont kulcsra_ van szüksége. Ezek a metódusok a válasz összeállításához szükséges metódussal együtt a következő szakaszokban találhatók. 
+Ahhoz, hogy a KB-hoz hozzáférjen egy kérdés elküldéséhez, és megkapja a legjobb választ, a programnak szüksége van az _erőforrás nevére_ a kb részletek API-ból és az _elsődleges Endpoint kulcsból_ a végpontok API-ból. Ezek a metódusok a válasz összeállításához szükséges metódussal együtt a következő szakaszokban találhatók. 
 
 Az alábbi táblázat bemutatja, hogyan használja a rendszer az adatokat az URI létrehozására:
 
 |Válasz URI-sablon létrehozása|
 |--|
-|https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
+|https:// **-Erőforrás-név**. Azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
 Az _elsődleges végpont_ fejlécként továbbítódik a válasz létrehozására vonatkozó kérelem hitelesítéséhez:
 
@@ -169,7 +169,7 @@ A kérelem törzsének a megfelelő JSON-t kell továbbítania:
 ```
 
 ## <a name="get-kb-details"></a>Tudásbázis részleteinek lekérése
-Adja hozzá a következő metódust a tudásbázis részleteinek lekéréséhez. Ezek a részletek tartalmazzák a tudásbázis gazdagépnevét. A gazdagépnév a QnA Maker azon Azure-beli webszolgáltatásának neve, amelyet a QnA Maker-erőforrás létrehozásakor megadott. 
+Adja hozzá a következő metódust a tudásbázis részleteinek lekéréséhez. Ezek az adatok tartalmazzák a KB-ban található, az alábbi JSON-ban `hostName` néven ismert erőforrás nevét. Az erőforrás neve annak a QnA Maker erőforrásnak a neve, amelyet a QnA Maker erőforrás létrehozásakor megadott. 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 

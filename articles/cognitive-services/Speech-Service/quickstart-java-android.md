@@ -10,19 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559493"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803314"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Az Androidon futó beszédfelismerés felismerése a Speech SDK használatával
+
+A rövid útmutatók a [beszédfelismeréshez](quickstart-text-to-speech-java-android.md) és a [hang-első virtuális asszisztenshez](quickstart-virtual-assistant-java-android.md)is elérhetők.
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből megtudhatja, hogyan fejleszthet Java-alkalmazásokat az Androidhoz a Cognitive Services Speech SDK-val a beszéd szövegbe való átírásához.
-Az alkalmazás a Speech SDK Maven-csomagon, a 1.6.0 és a Android Studio 3,3-as verzión alapul.
+Az alkalmazás a Speech SDK Maven-csomagon alapul, és Android Studio 3,3.
 A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
 
 > [!NOTE]

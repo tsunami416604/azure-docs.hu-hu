@@ -10,18 +10,22 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195673"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802453"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Minták az Azure adatelemzési Virtual Machines
 
 Az Azure adatelemzési Virtual Machines (Dsvm) tartalmaz egy átfogó mintakód-készletet. Ezek közé tartoznak a Jupyter notebookok és parancsfájlok, például a Python és az R.
 > [!NOTE]
 > A Jupyter-jegyzetfüzetek adatelemzési virtuális gépeken való futtatásával kapcsolatos további információkért tekintse meg a [hozzáférés Jupyter](#access-jupyter) című szakaszt.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A minták futtatásához Data Science Virtual Machine kell kiépíteni. Tekintse meg a [Windows](./provision-vm.md) és az [Ubuntu](./dsvm-ubuntu-intro.md)gyors útmutatóit.
 
 ## <a name="available-samples"></a>Elérhető minták
 | A minták kategória | Leírás | Helyek |
@@ -42,7 +46,7 @@ Az Azure adatelemzési Virtual Machines (Dsvm) tartalmaz egy átfogó mintakód-
 
 ## <a name="access-jupyter"></a>Hozzáférés a Jupyter 
 
-A Jupyter eléréséhez válassza a **Jupyter** ikont az asztal vagy az alkalmazás menüjében. A Jupyter-t egy DSVM linuxos kiadásán is elérheti. Ha távolról szeretne hozzáférni egy webböngészőből, `https://<Full Domain Name or IP Address of the DSVM>:8000` lépjen az Ubuntu webhelyre.
+A Jupyter eléréséhez válassza a **Jupyter** ikont az asztal vagy az alkalmazás menüjében. A Jupyter-t egy DSVM linuxos kiadásán is elérheti. Ha távolról szeretne hozzáférni egy webböngészőből, lépjen a `https://<Full Domain Name or IP Address of the DSVM>:8000` Ubuntura.
 
 A következő útmutatást követve adhat hozzá kivételeket, és elérhetővé teheti a Jupyter-hozzáférést böngészőn keresztül:
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087464"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720071"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>A Cloud Partner Portal fiókok kezelésének előfeltételei 
 
@@ -28,8 +28,7 @@ Gondosan válassza ki a fiók nevét.  A szervezetet képviseli, így nem tartal
 
 ## <a name="registration-steps"></a>Regisztrációs lépések
 
-A következő táblázat felsorolja a Microsoft Cloud publisherként való teljes regisztrációhoz szükséges lépéseket.  A teljes körű utasításokért [lásd: a Cloud Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher
-)Publisher váltása. 
+A következő táblázat felsorolja a Microsoft Cloud publisherként való teljes regisztrációhoz szükséges lépéseket.  A teljes körű utasításokért lásd: [a Cloud Marketplace Publisher váltása](https://docs.microsoft.com/azure/marketplace/become-publisher). 
 
 
 |                   Lépés                   |  Eredményül kapott regisztráció vagy erőforrás                     |

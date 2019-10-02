@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875383"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802291"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Gyakori kérdések
 
@@ -59,7 +59,7 @@ A nagyvállalati csomag minden nap esetében díjat számít fel, amelyet minden
 
 [Olvassa el a díjszabási tervet](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="how-much-is-it-costing"></a>Mennyibe kerül?
+## <a name="how-much-does-it-cost"></a>Mennyibe kerül?
 
 * Nyissa meg a **használati és becsült költségek lapot** egy Application Insights erőforrásban. Van egy diagram a közelmúltbeli használatról. Ha kívánja, beállíthatja az adatmennyiség korlátját.
 * Nyissa meg az [Azure számlázási](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) paneljét, és tekintse meg a számlákat az összes erőforráson.
@@ -139,6 +139,8 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 
 * Böngésző telemetria: Begyűjtjük a küldő IP-címét.
 * Kiszolgáló telemetria: A Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` be van állítva, a rendszer nem gyűjti.
+* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
+
 
 Beállíthatja, hogy `ClientIpHeaderTelemetryInitializer` az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN `X-Originating-IP`helyezi át őket. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
@@ -197,7 +199,7 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 | Verem nyomkövetésének lekérése kivételekről |[TrackException-hívások beszúrása a kódban](asp-net-exceptions.md) (néhányat azonban automatikusan jelentettek) |Kivételek észlelése és diagnosztizálása |
 | Keresési naplók nyomkövetése |[Naplózási adapter hozzáadása](asp-net-trace-logs.md) |Kivételek diagnosztizálása, Perf-problémák |
 | Az ügyfél használatának alapjai: oldalletöltések, munkamenetek,... |[JavaScript-inicializálás a weblapokon](javascript.md) |Használatelemzés |
-| Ügyfél egyéni metrikái |[Hívások követése a weblapokon](api-custom-events-metrics.md) |Felhasználói élmény fokozása |
+| Ügyfél egyéni metrikái |[Hívások követése a weblapokon](api-custom-events-metrics.md) |A felhasználói élmény fejlesztése |
 | Kiszolgáló egyéni metrikái |[Hívások követése a kiszolgálón](api-custom-events-metrics.md) |Üzleti intelligencia |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Miért nem egyenlő a keresési és a metrikák diagramjai?

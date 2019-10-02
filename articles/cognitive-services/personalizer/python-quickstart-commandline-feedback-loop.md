@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345339"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802530"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Gyors útmutató: Az ügyféloldali kódtár testreszabása a Pythonhoz
 
@@ -68,8 +68,6 @@ Telepítse a Pythonhoz készült személyre szabott ügyféloldali kódtárat a 
 pip install azure-cognitiveservices-personalizer
 ```
 
-Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
-
 ## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriságának módosítása
 
 A Azure Portal a **Beállítások** lapon a személyre szabott erőforrásban módosítsa a **modell frissítésének gyakoriságát** 10 másodpercre. Ez gyorsan betanítja a szolgáltatást, így láthatja, hogy az egyes iterációk legfelső szintű művelete hogyan változik.
@@ -108,7 +106,9 @@ A projekt könyvtárában nyissa meg a **sample.py** fájlt az előnyben részes
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-A **program** osztályban hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz, és a végpontot a `PERSONALIZER_RESOURCE_KEY` named és `PERSONALIZER_RESOURCE_ENDPOINT`a nevű környezeti változóból kihúzta. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_RESOURCE_KEY` ( `PERSONALIZER_RESOURCE_ENDPOINT`z) és a (z) nevű környezeti változók alapján. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+
+Az erőforrás neve a végpont URL-címének része: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
@@ -120,7 +120,7 @@ Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad v
 
 ## <a name="get-content-choices-represented-as-actions"></a>Tevékenységekként jelölt tartalmak beolvasása
 
-A műveletek a személyre szabáshoz használni kívánt tartalmi beállításokat jelölik. Adja hozzá a következő metódusokat a program osztályhoz, hogy beolvassa a felhasználó bemenetét a parancssorból a nap időpontjában és az aktuális élelmiszer-preferencia alapján.
+A műveletek a személyre szabáshoz használni kívánt tartalmi beállításokat jelölik. Adja hozzá a következő metódusokat a felhasználó bemenetének lekéréséhez a parancssorból a nap időpontjában és az aktuális élelmiszer-preferencia alapján.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -132,7 +132,7 @@ A műveletek a személyre szabáshoz használni kívánt tartalmi beállítások
 
 A személyre szabott tanulási hurok a [Range](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
 
-A program `main` metódusában a következő kód hurkot mutat a felhasználó preferenciáinak a parancssorban való megadására, az információknak a személyre szabására való elküldésére, valamint a rangsorolt kijelölés az ügyfélnek való kiválasztására listáról, majd egy jutalom küldésével személyre szabhatja, hogy a szolgáltatás mennyire rangsorolta a kijelölést.
+A következő kód hurkokat mutat be a felhasználónak a parancssorban való megadására, az információknak a személyre szabására való átadására, a rangsorolt kijelölés kiválasztására az ügyfél számára, hogy kiválassza a listában, majd a személyre szabott jutalom küldését annak jelzése, hogy a szolgáltatás mennyire rangsorolta a kijelölést.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 

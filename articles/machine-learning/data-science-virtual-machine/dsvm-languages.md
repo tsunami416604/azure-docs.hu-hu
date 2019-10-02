@@ -6,16 +6,16 @@ keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 0cedc9ede43d18d0b94b8a516170db53e3a27910
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/27/2019
+ms.openlocfilehash: 586cdd6dc06a7685f17c78fa4c4ea2f2ebf52f3d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885629"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802398"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
 
@@ -65,18 +65,17 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
   A DSVM lévő alapértelmezett Python-környezetek az összes felhasználó által olvasható globális környezetek. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a parancsot rendszergazdaként a `activate` root vagy a python2 környezetbe. Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
 
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python (Linux és Windows Server 2012 Edition)
+## <a name="python-linux-edition"></a>Python (Linux kiadás)
 
 |    |           |
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,5 |
-| Támogatott DSVM-kiadások      | Linux, Windows Server 2012    |
+| Támogatott DSVM-kiadások      | Linux   |
 | Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | Két globális `conda` környezet jön létre: <br /> * `root`a-ben `/anaconda/` található környezet a Python 2,7. <br/> * `py35`a-ben `/anaconda/envs/py35`található környezet a Python 3,5.       |
 | A minták mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
 | A DSVM kapcsolódó eszközök      | PySpark, R, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
-**Linux**
 * Futtatás terminálon:
 
   Nyissa meg a terminált, és hajtsa végre az alábbi műveletek egyikét a futtatni kívánt Python-verziótól függően:
@@ -103,34 +102,6 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
   A dsvm-hez a Python alapértelmezett környezet összes felhasználó által olvasható globális környezetben. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a `source activate` parancsot rendszergazdaként, vagy a sudo engedélyekkel rendelkező felhasználóként a root vagy a py35 környezetre. Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
 
-**Windows 2012**
-* Futtassa a parancsot a parancssorban:
-
-  Nyisson meg egy parancssort, és hajtsa végre az alábbi műveletek egyikét a futtatni kívánt Python-verziótól függően:
-
-     ```
-    # To run Python 2.7
-    activate 
-    python --version
-    
-    # To run Python 3.5
-    activate py35
-    python --version
-    
-    ```
-* Használat az IDE-ben:
-
-  Használható Python Tools for Visual Studio (PTVS) a Visual Studio Community Edition telepítve van. A PTVS-ben automatikusan beállított környezet a Python 2,7.
-    > [!NOTE]
-    > Ahhoz, hogy a PTVS a Python 3,5-es verzióra mutasson, létre kell hoznia egy egyéni környezetet a PTVS-ben. A környezeti útvonal a Visual Studio Community kiadásban történő beállításához nyissa meg az **eszközök** -> **Python-eszközök** -> **Python-környezetek** elemet, és válassza a **+ Egyéni**lehetőséget. Ezután állítsa be a helyet `c:\anaconda\envs\py35` a következőre, és válassza az _automatikus észlelés_lehetőséget.
-
-* Használat a Jupyter-ben:
-
-  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Python [Conda root]** -ként állíthatja be a Python 2,7 és a Python **[Conda env: py35]** for Python 3,5 számára. 
-
-* Python-csomagok telepítése:
-
-  A DSVM lévő alapértelmezett Python-környezetek az összes felhasználó által olvasható globális környezetek. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a parancsot rendszergazdaként a `activate` root vagy a py35 környezetbe. Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
 
 ## <a name="r"></a>R
 

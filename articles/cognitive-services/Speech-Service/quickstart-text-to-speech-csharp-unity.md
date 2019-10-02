@@ -1,41 +1,40 @@
 ---
 title: 'Gyors útmutató: Szintetizáló beszéd, Unity-Speech szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval szöveg-beszéd alkalmazást hozhat létre az Unity (Beta) Unity és a Speech SDK használatával. Ha elkészült, valós időben szintetizálhat beszédet a szövegből az eszköz hangszóróján.
+description: Ez az útmutató egy szöveg-beszéd alapú alkalmazás létrehozására használható az Unity és a Speech SDK for Unity használatával. Ha elkészült, valós időben szintetizálhat beszédet a szövegből az eszköz hangszóróján.
 services: cognitive-services
 author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 6/26/2019
+ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 507ab9ef9bb3e482e5a33d2406424dfb9116de54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be5f07b8ea58d0d62c70e0e9dc8ab187ce4a0f63
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553616"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803188"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity-beta"></a>Gyors útmutató: Beszéd szintetizálása a Speech SDK for Unity (Beta) használatával
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity"></a>Gyors útmutató: Beszédfelismerési beszéd az Unity Speech SDK-val
 
-A beszédfelismerési funkció is elérhető [](quickstart-csharp-unity.md).
+A [beszédfelismerés](quickstart-csharp-unity.md)is elérhetővé teszi a gyors útmutatókat.
 
-Ez az útmutató egy szöveg-beszéd alkalmazás létrehozására használható az [Unity](https://unity3d.com/) és a Speech SDK for Unity (Beta) használatával.
+Ez az útmutató egy szöveg-beszéd alkalmazás létrehozására használható az Unity és a Speech SDK [for Unity használatával](https://unity3d.com/) .
 Ha elkészült, valós időben szintetizálhat beszédet a szövegből az eszköz hangszóróján.
 Ha nem ismeri az egységet, javasoljuk, hogy az alkalmazás fejlesztésének megkezdése előtt tanulmányozza az [egység felhasználói kézikönyvét](https://docs.unity3d.com/Manual/UnityManual.html) .
 
 > [!NOTE]
-> Az egységhez készült Speech SDK jelenleg a Beta verzióban érhető el.
-> Támogatja a Windows asztali (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64) és az Android (x86, ARM32/64) használatát.
+> Támogatja a Windows Desktop (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64) használatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A projekt teljesítéséhez a következők szükségesek:
 
 * [2018,3-es vagy újabb egység](https://store.unity.com/) a [UWP-ARM64 támogatása a Unity 2019,1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal) -ben
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * A ARM64 támogatásához telepítse a [ARM64 választható Build-eszközeit, valamint a ARM64 készült Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) -t 
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). A Visual Studio 2017 15,9-es vagy újabb verziója is elfogadható.
+* A Windows ARM64 támogatásához telepítse a [ARM64 választható Build-eszközeit, valamint a ARM64 készült Windows 10 SDK-](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) t 
 * A beszédfelismerési szolgáltatáshoz tartozó előfizetési kulcs. [Szerezze be az egyiket ingyenesen](get-started.md).
 
 ## <a name="create-a-unity-project"></a>Unity-projekt létrehozása
@@ -63,7 +62,7 @@ A projekt teljesítéséhez a következők szükségesek:
 A jelenethez egy minimális felhasználói felületet adunk hozzá, amely egy beviteli mezőből áll, amely beírja a szintézis szövegét, egy gombot a beszédfelismerési szintézis elindításához és egy szövegmezőbe az eredmény megjelenítéséhez.
 
 * A [hierarchia ablakban](https://docs.unity3d.com/Manual/Hierarchy.html) (alapértelmezés szerint a bal oldalon) megjelenik egy minta jelenet, amely az új projekttel létrehozott egységet mutatja.
-* Kattintson a **create (létrehozás** ) gombra a hierarchia ablak tetején, majd válassza **a felhasználói felület** > **beviteli mezőjét**.
+* Kattintson a **create (létrehozás** ) gombra a hierarchia ablak tetején, majd válassza a **felhasználói felület**@no__t – 2**beviteli mezőt**.
 * Ez három játék objektumot hoz létre, amelyek a hierarchia ablakban láthatók: egy **beviteli mező** objektum egy **vászon** objektumba ágyazva, valamint egy **EventSystem** objektum.
 * [Navigáljon a jelenet](https://docs.unity3d.com/Manual/SceneViewNavigation.html) nézetbe, hogy jól látható legyen a vászon és a beviteli mező a [jelenet nézetben](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
 * A hierarchia ablakban a **beviteli mező** objektumra kattintva jelenítheti meg a beállításait a [felügyelő ablakban](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldalon).
@@ -74,7 +73,7 @@ A jelenethez egy minimális felhasználói felületet adunk hozzá, amely egy be
 * Kattintson ismét a **Létrehozás** gombra a hierarchia ablak tetején, majd válassza a **felhasználói felület** > **szövege** lehetőséget a szövegmező létrehozásához.
 * Kattintson a hierarchia ablak **szöveg** objektumára a beállítások megjelenítéséhez a [felügyelő ablakban](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldalon).
 * Állítsa a **POS X** és **a POS Y** tulajdonságokat **0** és **80**értékre, és állítsa a **szélesség** és **magasság** tulajdonságokat **320** és **80** értékre, hogy a szövegmező és a beviteli mező ne legyen átfedésben.
-* Kattintson ismét **a Create (létrehozás** ) gombra a hierarchia ablak tetején, **majd válassza** > a hangforrást a hangforrások létrehozásához.
+* Kattintson ismét a **create (létrehozás** ) gombra a hierarchia ablak tetején, majd válassza **a hang @no__t**– 2**hangforrást** a hangforrások létrehozásához.
 
 Ha elkészült, a felhasználói felületnek a következő képernyőképhez hasonlóan kell kinéznie:
 
@@ -103,7 +102,7 @@ Ha elkészült, a felhasználói felületnek a következő képernyőképhez has
 
    * A hierarchia ablakban kattintson a **vászon** objektumra. Ekkor megnyílik a beállítás a [felügyelő ablakban](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldalon).
    * Kattintson az **összetevő hozzáadása** gombra a felügyelő ablakban, majd keresse meg a fent létrehozott HelloWorld-szkriptet, és adja hozzá.
-   * Vegye figyelembe, hogy a "Helló világ!" alkalmazás összetevő négy nem inicializált tulajdonsággal, **kimeneti szöveggel**, **beviteli mezővel**, **beszéd gombbal** és hangforrással rendelkezik, `HelloWorld` amelyek megfelelnek az osztály nyilvános tulajdonságainak.
+   * Vegye figyelembe, hogy a "Helló világ!" alkalmazás összetevő négy nem inicializált tulajdonsággal, **kimeneti szöveggel**, **beviteli mezővel**, **beszéd gombbal** és **hangforrással**rendelkezik, amelyek megfelelnek a `HelloWorld` osztály nyilvános tulajdonságainak.
      Ha fel kívánja őket csatlakoztatni, kattintson az objektum-választóra (a tulajdonság jobb oldalán lévő kis kör ikonra), és válassza ki a korábban létrehozott szöveg-és gomb-objektumokat.
 
      > [!NOTE]

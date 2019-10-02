@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673074"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720353"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -21,7 +21,7 @@ A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-re
 
 GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a [skálázhatósági célokat](storage-scalability-targets.md) kínálja, mint a LRS, a ZRS, a GRS vagy az ra-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
 
-A Microsoft a GZRS használatát javasolja az olyan alkalmazásokhoz, amelyek következetességet, tartósságot, magas rendelkezésre állást, kiváló teljesítményt és rugalmasságot igényelnek az inaster helyreállításhoz. A regionális katasztrófa esetén a másodlagos régióhoz való olvasási hozzáférés további biztonsága érdekében engedélyezze az RA-GZRS-t a Storage-fiókjához.
+A Microsoft a GZRS használatát javasolja a konzisztencia, a tartósság, a magas rendelkezésre állás, a kiváló teljesítmény és a vész-helyreállítási rugalmasság megköveteléséhez. A regionális katasztrófa esetén a másodlagos régióhoz való olvasási hozzáférés további biztonsága érdekében engedélyezze az RA-GZRS-t a Storage-fiókjához.
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 

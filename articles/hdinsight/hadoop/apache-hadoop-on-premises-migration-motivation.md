@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736113"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718361"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -51,9 +51,9 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 - **Termelékenység** – különböző eszközöket használhat a Hadoop és a sparkhoz az előnyben részesített fejlesztési környezetben.
 
-- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök kiterjeszthetők a telepített összetevőkkel, és a többi Big Data-megoldással is integrálhatók, ha [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzembe helyezést végeznek a Azure Market-hely.
+- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data-megoldással is integrálhatók az Azure-ból származó [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) deployments használatával. Piaci hely.
 
-- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.
+- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure Monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md)@no__t – a 2gombot egyetlen felületet biztosítanak, amellyel az összes fürtöt nyomon követheti.
 
 - **Integráció más Azure-szolgáltatásokkal** – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
 
@@ -137,10 +137,10 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Adatelérési helyek|HDFS, RDBMS, Kafka, MPP ||
 |**Témakör**: **Meta-adatértékek**|||
 |Struktúra-adatbázis típusa|MySQL, postgres||
-|Nem. a kaptár metaadattárak|2||
-|Nem. a kaptárak táblái|100||
-|Nem. a Ranger-szabályzatok|20||
-|Nem. Oozie-munkafolyamatok|100||
+|Struktúra metaadattárak száma|2||
+|Struktúra-táblák száma|100||
+|A Ranger-szabályzatok száma|20||
+|Oozie-munkafolyamatok száma|100||
 |**Témakör**: **Méretezés**|||
 |Adatmennyiség, beleértve a replikálást|100 TB||
 |Napi betöltési mennyiség|50 GB||
@@ -149,14 +149,14 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |**Témakör**: **Fürt kihasználtsága**|||
 |Átlagos CPU-használat (%)|60%||
 |Felhasznált memória átlagos százaléka (%)|75%||
-|Felhasznált lemezterület|75%||
+|Használt lemezterület|75%||
 |Átlagos hálózati használat%-ban|25%
 |**Témakör**: **Személyzet**|||
-|Nem. a rendszergazdák|2||
-|Nem. Fejlesztőknek|10||
-|Nem. a végfelhasználók számára|100||
-|Ismereteit|Hadoop, Spark||
-|Nem. az áttelepítési erőfeszítésekhez rendelkezésre álló erőforrások|2||
+|Rendszergazdák száma|2||
+|Fejlesztők száma|10||
+|Végfelhasználók száma|100||
+|Képességek|Hadoop, Spark||
+|Az áttelepítési erőfeszítésekhez rendelkezésre álló erőforrások száma|2||
 |**Témakör**: **Korlátozások**|||
 |Aktuális korlátozások|A késés magas||
 |Aktuális kihívások|Egyidejűségi probléma||
@@ -180,7 +180,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Magán-és védett adatfolyamatok?|Igen||
 |Tartományhoz csatlakoztatott fürt (ESP)?|     Igen||
 |Helyszíni AD-szinkronizáló a felhőbe?|     Igen||
-|Nem. az AD-felhasználók szinkronizálására?|          100||
+|A szinkronizálni kívánt AD-felhasználók száma?|          100||
 |Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
 |Csak Felhőbeli felhasználók?|                 Igen||
 |MFA needed?|                       Nem|| 

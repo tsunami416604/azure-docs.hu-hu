@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068846"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803345"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
 A Speech Services a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [SDK](speech-sdk-reference.md), a [SPEECH Devices SDK](https://aka.ms/sdsdk-quickstart)vagy a [REST API](rest-apis.md)-k segítségével egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
 
 > [!IMPORTANT]
-> A Speech Services Bing Speech API, Translator Speech és Custom Speech váltotta fel. Tekintse át az áttelepítési utasítások *>* áttelepítési útmutatókat.
+> A Speech Services Bing Speech API, Translator Speech és Custom Speech váltotta fel. Tekintse át az áttelepítési utasítások *> áttelepítési* útmutatókat.
 
 Ezek a funkciók alkotják az Azure Speech Services szolgáltatást. Az ebben a táblázatban található hivatkozásokkal többet tudhat meg az egyes funkciók általános használati eseteiről, vagy böngészhet az API-referenciában.
 
@@ -41,12 +41,14 @@ Ezek a funkciók alkotják az Azure Speech Services szolgáltatást. Az ebben a 
 
 Ismerje meg az Azure Speech Services újdonságait.
 
+* Szeptember 2019
+  * Megjelent a Speech SDK 1.7.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
 * Augusztus 2019
   * **Új oktatóanyag**: [Robot hangvezérlésének engedélyezése a Speech SDK, C# használatával](tutorial-voice-enable-your-bot-speech-sdk.md)
-  * Új beszéd stílus [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)hozzáadva a `en-US-JessaNeural` hanghoz. 
+  * Új, [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)stílusú, a `en-US-JessaNeural` hanghoz hozzáadott beszéd stílusa. 
 * Június 2019
   * Megjelent a Speech SDK 1.6.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
-* Május 2019 – a dokumentáció már elérhető a [beszélgetés](conversation-transcription-service.md)átírásához, a [Call Center](call-center-transcription.md)átírásához és a hangvezérelt [virtuális asszisztensekhez](voice-first-virtual-assistants.md).
+* Május 2019 – a dokumentáció már elérhető a [beszélgetés átírásához](conversation-transcription-service.md), a [Call Center átírásához](call-center-transcription.md)és a [hangvezérelt virtuális asszisztensekhez](voice-first-virtual-assistants.md).
 * 2019. május
   * Megjelent Speech SDK 1.5.1. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
   * Megjelent Speech SDK 1.5.0. A frissítések, fejlesztések és ismert problémák teljes listáját a [kibocsátási megjegyzések](releasenotes.md)című részben tekintheti meg.
@@ -68,8 +70,8 @@ A legnépszerűbb programozási nyelveken gyors útmutatókat ajánlunk, amelyek
 A Speech Services használatának lehetősége után próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech SDK és a LUIS használatával.
 
 * [Oktatóanyag: Beszédfelismerési szándék felismerése a Speech SDK és a LUIS használatávalC#](how-to-recognize-intents-from-speech-csharp.md)
-* [Oktatóanyag: Hang engedélyezése a robotnak a Speech SDK-valC#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Oktatóanyag: Hozzon létre egy lombik-alkalmazást a szöveg fordításához, a hangulat elemzéséhez és a lefordított szöveg kiépítéséhez beszédre, REST-re](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+* [Oktatóanyag: Hang engedélyezése a robotnak a Speech SDK- C#val, ](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Oktatóanyag: Hozzon létre egy lombik-alkalmazást a szöveg fordításához, a hangulat elemzéséhez és a fordítás szövegének lefordításához, REST @ no__t-0
 
 ## <a name="get-sample-code"></a>Mintakód letöltése
 

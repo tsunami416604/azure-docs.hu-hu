@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967337"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802688"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Az Azure-erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával
 
@@ -206,3 +206,4 @@ Ha a vendég felhasználó hozzáférést kapott egy címtárhoz, de nem látja 
 - [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon](../active-directory/b2b/add-users-administrator.md)
 - [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)
 - [A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei](../active-directory/b2b/invitation-email-elements.md)
+- [Vendég felhasználó hozzáadása társ-rendszergazdaként](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)
