@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: pafarley
-ms.openlocfilehash: a9f49eb884de92fb00951a08cc2bc3079ab7b95d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: c0a11c90b59c1c475f80b82073c6b151d57535c3
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695181"
+ms.locfileid: "71709785"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Gyors útmutató: Computer Vision a Pythonhoz készült ügyféloldali kódtár
 
@@ -64,7 +64,7 @@ Ezután hozzon létre változókat az erőforrás Azure-végpontjának és-kulcs
 Az ügyféloldali kódtár a használatával telepíthető:
 
 ```console
-pip install --upgrade azure-cognitiveservices-computervision
+pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
 ## <a name="object-model"></a>Objektummodell
@@ -128,7 +128,7 @@ A következő kód észleli a rendszerképben szereplő általános objektumokat
 
 A következő kód észleli a vállalati márkákat és emblémákat a rendszerképben, és kinyomtatja őket a konzolra. További részletekért lásd a [márka észlelését](../concept-brand-detection.md) ismertető témakört.
 
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>Arcfelismerés
 
