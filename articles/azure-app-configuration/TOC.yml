@@ -25,6 +25,8 @@
       items:
         - name: ASP.NET-mag
           href: quickstart-feature-flag-aspnet-core.md
+        - name: Java Spring
+          href: quickstart-feature-flag-spring-boot.md
 - name: Oktatóanyagok
   items:
     - name: Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban
@@ -33,6 +35,8 @@
       href: enable-dynamic-configuration-dotnet-core.md
     - name: Funkciójelölők használata .NET Core-alkalmazásokban
       href: use-feature-flags-dotnet-core.md
+    - name: Funkciójelölők használata Spring Boot-alkalmazásokban
+      href: use-feature-flags-spring-boot.md
     - name: Funkciójelölők kezelése
       href: manage-feature-flags.md
     - name: Integráció CI-/CD-folyamattal
