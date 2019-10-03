@@ -27,6 +27,8 @@
           href: tutorial-geofence.md
         - name: Térelemzés
           href: tutorial-iot-hub-maps.md
+        - name: EV-útválasztás az Azure Notebooks használatával (Python)
+          href: tutorial-ev-routing.md
 - name: Alapelvek
   items:
     - name: Hitelesítés az Azure Maps használatával

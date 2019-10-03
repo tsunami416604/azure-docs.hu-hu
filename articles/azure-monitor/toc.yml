@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: munkaterület-kifejezés
                   href: log-query/workspace-expression.md
+                - name: erőforrás-kifejezés
+                  href: log-query/resource-expression.md
                 - name: Alkalmazás adatforrásainak egységesítése
                   href: log-query/unify-app-resource-data.md
             - name: Példák és útmutatás

@@ -47,6 +47,8 @@
       href: manage-cli.md
     - name: Konzorcium kezelése a PowerShell-lel
       href: manage-consortium-powershell.md
+    - name: A Logic Apps használata
+      href: ethereum-logic-app.md
 - name: További források
   items:
     - name: Blockchain REST API

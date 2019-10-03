@@ -66,12 +66,12 @@
       items:
         - name: Biztonsági áttekintés
           href: overview-security.md
-        - name: Beépített biztonsági vezérlők
-          href: key-vault-security-controls.md
         - name: Biztonsági világok
           href: key-vault-ovw-security-worlds.md
         - name: Kulcstartó védelme
           href: key-vault-secure-your-key-vault.md
+        - name: Beépített biztonsági vezérlők
+          href: key-vault-security-controls.md
     - name: Helyreállítható törlés
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -98,8 +98,12 @@
       items:
         - name: Javaslatok
           href: security-recommendations.md
-    - name: App Service által felügyelt identitás használata
-      href: managed-identity.md
+    - name: Hitelesítés
+      items:
+        - name: App Service által felügyelt identitás használata
+          href: managed-identity.md
+        - name: Hozzáférés-vezérlési szabályzat használata
+          href: key-vault-group-permissions-for-apps.md
     - name: Az Azure Key Vault naplózása
       href: key-vault-logging.md
     - name: Tűzfal mögötti hozzáférés
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: A Key Vault helyreállítható törlés funkciójának használata Azure PowerShell-lel
       href: key-vault-soft-delete-powershell.md
-    - name: Hozzáférés megadása csoportok használatával
-      href: key-vault-group-permissions-for-apps.md
     - name: Tűzfalak és virtuális hálózatok konfigurálása
       href: key-vault-network-security.md
     - name: Java fejlesztése

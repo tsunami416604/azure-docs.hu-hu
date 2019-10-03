@@ -367,7 +367,7 @@ A fokozott biztonsági információkkal kapcsolatos további információkért t
 
 3. A **felhasználók használhatják az előzetes verziójú funkciókat a biztonsági adatok regisztrálásához és kezeléséhez – bővített** terület, válassza a **kijelölt**lehetőséget, majd válasszon ki egy felhasználói csoportot, vagy válassza az **összes** lehetőséget a szolgáltatás bekapcsolásához a bérlő összes felhasználója számára.
 
-4. A * * felhasználók használhatják az előzetes verziójú funkciókat a Security * * info * * * * terület regisztrálásához és kezeléséhez, válassza a **nincs**lehetőséget.
+4. A **felhasználók használhatják az előzetes verziójú funkciókat a Security** **info** terület regisztrálásához és kezeléséhez, válassza a **nincs**lehetőséget.
 
 5. Mentse a beállításokat.
 

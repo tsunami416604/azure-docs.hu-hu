@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: Nyomtatott és kézzel írt szöveg felismerése
       href: concept-recognizing-text.md
-    - name: Felnőtteknek szóló és kényes tartalom észlelése
+    - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md
 - name: Útmutatók
   items:

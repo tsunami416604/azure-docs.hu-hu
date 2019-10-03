@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/14/2019
+  ms.date: 09/30/2019
   ms.author: terrylan
 abstract:
   description: 'Mintaalkalmazásaink, ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan fejleszthet és helyezhet üzembe biztonságos alkalmazásokat az Azure-ban.'
@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Webalkalmazás egy Linux-tárolóban</a>
+          - html: <a href="/azure/security/develop/secure-aad-app">Webalkalmazás és az Azure Active Directory</a>
           - html: <a href="/azure/security/develop/secure-pci-web-app">Bankkártyaágazat</a>
   - title: Alapelvek
     items:

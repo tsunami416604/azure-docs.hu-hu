@@ -65,8 +65,10 @@
           href: known-issues-azure-sql-online.md
         - name: Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be
           href: known-issues-azure-mysql-online.md
-        - name: Ismert problémák – Online migrálás önálló Azure DB for PostgreSQL-kiszolgálóra
+        - name: Ismert problémák – Online migrálás PostgreSQL-kiszolgálóról önálló Azure DB for PostgreSQL-kiszolgálóra
           href: known-issues-azure-postgresql-online.md
+        - name: Ismert problémák – Online migrálás Oracle-ből önálló Azure DB for PostgreSQL-kiszolgálóra
+          href: known-issues-oracle-azure-postgresql-online.md
     - name: Videók
       items:
         - name: Az adatbázis-migrálási útmutató használata

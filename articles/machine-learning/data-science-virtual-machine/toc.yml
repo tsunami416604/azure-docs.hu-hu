@@ -4,10 +4,12 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az az adatelemzési virtuális gép?
+    - name: Mi az a Data Science Virtual Machine (DSVM)?
       href: overview.md
     - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép (GEO AI DSVM)?
       href: geo-ai-dsvm-overview.md
+    - name: A DSVM-en elérhető eszközök
+      href: tools-included.md
 - name: Gyors útmutatók
   expanded: true
   items:

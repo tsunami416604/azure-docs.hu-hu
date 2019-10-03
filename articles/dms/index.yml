@@ -1,91 +1,167 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Database Migration Service dokumentációja
+summary: Az Azure Database Migration Service az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást tesz lehetővé minimális állásidővel. A szolgáltatás a Data Migration Assistant használatával felmérési jelentéseket biztosít, amelyek a migrálás előtt szükséges módosításokra vonatkozó ajánlásokat tartalmaznak. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést.
 metadata:
-  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
-  title: Az Azure Database Migration Service dokumentációja – oktatóanyagok | Microsoft Docs
-  meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
-  services: functions
+  description: " Megtudhatja, hogyan engedélyezheti az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást minimális állásidővel, az Azure Database Migration Service használatával."
   author: HJToland3
   ms.author: jtoland
-  manager: craigg
-  ms.reviewer: craigg
+  ms.date: 10/02/2019
   ms.service: dms
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 09/22/2019
-abstract:
-  description: 'Az Azure Database Migration Service az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást tesz lehetővé minimális állásidővel. A szolgáltatás a Data Migration Assistant használatával felmérési jelentéseket biztosít, amelyek a migrálás előtt szükséges módosításokra vonatkozó ajánlásokat tartalmaznak. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/video-thumb-intro2dms.png
-      width: 250
-    title: 'Az Azure DMS bemutatása (1:30)'
-    href: 'https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Megismerheti a helyszíni SQL Server az Azure SQL Database-be a Database Migration Service használatával való migrálásának módját:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: /azure/dms/quickstart-create-data-migration-service-portal
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Információ az adatbázisok Azure Database Migration Service-szel való migrálásáról:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">SQL Server offline migrálása Azure SQL Database-re</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">SQL Server online migrálása Azure SQL Database-re</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">SQL Server offline migrálása felügyelt Azure SQL Database-példányra</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">SQL Server online migrálása felügyelt Azure SQL Database-példányra</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">RDS SQL Server online migrálása az Azure SQL Database-re vagy egy felügyelt Azure SQL Database-példányra</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">MySQL online migrálása az Azure Database for MySQL-re</a>
-          - html: <a href="/azure/dms/tutorial-rds-mysql-server-azure-db-for-mysql-online">RDS MySQL online migrálása az Azure Database for MySQL-re</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">PostgreSQL online migrálása az Azure Database for PostgreSQL-re</a>
-          - html: <a href="/azure/dms/tutorial-rds-postgresql-server-azure-db-for-postgresql-online">RDS PostgreSQL online migrálása az Azure Database for PostgreSQL-re</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">MongoDB migrálása az Azure Cosmos DB Mongo API offline verziójára</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">MongoDB migrálása az Azure Cosmos DB Mongo API online verziójára</a>
-          - html: <a href="/azure/dms/tutorial-oracle-azure-postgresql-online">Oracle online migrálása Azure Database for PostgreSQL-re</a>
-  - title: Videók
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/">Az adatbázis-migrálási útmutató használata</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/">A migrálási folyamat és a javasolt eszközök/szolgáltatások</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/">Gondoskodás az előfeltételekről és egy DMS-példány létrehozása</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/">SQL Server 2008 migrálása felügyelt Azure SQL Database-példányra</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/">PostgreSQL migrálása az Azure Database for PostgreSQL-re</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/">Egy online migrálás figyelése és átállás végrehajtása</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/">Oracle migrálása az Azure SQL Database-be</a>'
-          - html: '<a href="https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/">MongoDB migrálása az Azure Cosmos DB-re</a>'
-  - title: Példák
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">Helyszíni SQL Server migrálása az Azure SQL DB-be az Azure PowerShell használatával</a>
-          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">Helyszíni SQL Server migrálása felügyelt Azure SQL DB-példányokra az Azure PowerShell használatával</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dms/resource-scenario-status">Az Azure Database Migration Service által támogatott migrálási forgatókönyvek állapota</a>
-          - html: <a href="/azure/dms/pre-reqs">Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése</a>
-          - html: <a href="/azure/dms/faq">Az Azure Database Migration Service használatára vonatkozó gyakori kérdések</a>
-          - html: <a href="/azure/dms/known-issues-azure-sql-online">Ismert problémák/migrálási korlátok az Azure SQL DB-be irányuló online migrálások során</a>
-          - html: <a href="/azure/dms/dms-tools-matrix">Az adatmigrálási forgatókönyvekhez elérhető szolgáltatások és eszközök</a>
+  ms.openlocfilehash: e3688c4795590fa2b74421055a6cf6f80d2d2d17
+  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71802150"
+landingContent:
+- title: Tudnivalók az Azure Database Migration Service-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Database Migration Service?
+      url: dms-overview.md
+  - linkListType: get-started
+    links:
+    - text: Adatbázis migrációs forgatókönyvének állapota
+      url: resource-scenario-status.md
+    - text: Előfeltételek áttekintése
+      url: pre-reqs.md
+  - linkListType: quickstart
+    links:
+    - text: Szolgáltatás létrehozása – Portál
+      url: quickstart-create-data-migration-service-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: A migrálási tevékenységek monitorozása
+      url: how-to-monitor-migration-activity.md
+    - text: Gyakori hibák elhárítása
+      url: known-issues-troubleshooting-dms.md
+    - text: Forrásadatbázis csatlakozási problémáinak hibaelhárítása
+      url: known-issues-troubleshooting-dms-source-connectivity.md
+  - linkListType: video
+    links:
+    - text: Az Azure Database Migration Service bemutatása
+      url: https://www.microsoft.com/videoplayer/embed/RE2IqVu
+    - text: Az adatbázis-migrálási útmutató használata
+      url: https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/
+    - text: A migrálási folyamat és a javasolt eszközök/szolgáltatások
+      url: https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/
+    - text: Gondoskodás az előfeltételekről és egy DMS-példány létrehozása
+      url: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
+    - text: Egy online migrálás figyelése és átállás végrehajtása
+      url: https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/
+  - linkListType: whats-new
+    links:
+    - text: Tekintse meg blogunkat
+      url: https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/bg-p/MicrosoftDataMigration
+- title: SQL Server migrálása önálló Azure SQL Database-adatbázisba
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SQL Server online migrálása önálló Azure SQL DB-adatbázisba
+      url: tutorial-sql-server-azure-sql-online.md
+    - text: SQL Server offline migrálása önálló Azure SQL DB-adatbázisba
+      url: tutorial-sql-server-to-azure-sql.md
+    - text: RDS SQL Server online migrálása önálló Azure SQL DB-adatbázisba vagy felügyelt Azure SQL DB-példányba
+      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+  - linkListType: how-to-guide
+    links:
+    - text: A PowerShell használata SQL Server migrálásához önálló Azure SQL DB-adatbázisba
+      url: howto-sql-server-to-azure-sql-powershell.md
+    - text: SSIS-csomagok ismételt üzembe helyezése önálló Azure SQL Database-adatbázisban
+      url: how-to-migrate-ssis-packages.md
+  - linkListType: concept
+    links:
+    - text: Ismert problémák – Online migrálás önálló Azure SQL DB-adatbázisba
+      url: known-issues-azure-sql-online.md
+- title: SQL Server migrálása felügyelt Azure SQL Database-példányra
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SQL Server online migrálása felügyelt Azure SQL DB-példányba
+      url: tutorial-sql-server-managed-instance-online.md
+    - text: SQL Server offline migrálása felügyelt Azure SQL DB-példányba
+      url: tutorial-sql-server-to-managed-instance.md
+    - text: RDS SQL Server online migrálása önálló Azure SQL DB-adatbázisba vagy felügyelt Azure SQL DB-példányba
+      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+  - linkListType: how-to-guide
+    links:
+    - text: A PowerShell használata SQL Server migrálásához felügyelt Azure SQL DB-példányba
+      url: howto-sql-server-to-azure-sql-mi-powershell.md
+    - text: SSIS-csomagok ismételt üzembe helyezése felügyelt Azure SQL Database-példányban
+      url: how-to-migrate-ssis-packages-managed-instance.md
+  - linkListType: concept
+    links:
+    - text: Hálózati topológiák felügyelt Azure SQL DB-példányok migrálásához
+      url: resource-network-topologies.md
+  - linkListType: video
+    links:
+    - text: SQL Server 2008 migrálása felügyelt Azure SQL Database-példányra
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
+- title: PostgreSQL migrálása önálló Azure Database for PostgreSQL-kiszolgálóra
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: PostgreSQL online migrálása önálló Azure DB for PostgreSQL-kiszolgálóra
+      url: tutorial-postgresql-azure-postgresql-online.md
+    - text: RDS PostgreSQL online migrálása önálló Azure DB for PostgreSQL-kiszolgálóra
+      url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+  - linkListType: concept
+    links:
+    - text: Ismert problémák – Online migrálás önálló Azure DB for PostgreSQL-kiszolgálóra
+      url: known-issues-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: PostgreSQL migrálása az Azure Database for PostgreSQL-be
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
+- title: MySQL migrálása az Azure Database for MySQL-be
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: MySQL online migrálása a MySQL-hez készült Azure DB-be
+      url: tutorial-mysql-azure-mysql-online.md
+    - text: RDS MySQL online migrálása az Azure DB for MySQL-be
+      url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+  - linkListType: concept
+    links:
+    - text: Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be
+      url: known-issues-azure-mysql-online.md
+- title: MongoDB migrálása az Azure Cosmos DB-be
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: A MongoDB online migrálása az Azure Cosmos DB-be
+      url: tutorial-mongodb-cosmos-db-online.md
+    - text: A MongoDB offline migrálása az Azure Cosmos DB-be
+      url: tutorial-mongodb-cosmos-db.md
+  - linkListType: video
+    links:
+    - text: MongoDB migrálása az Azure Cosmos DB-be
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
+- title: Oracle migrálása az Azure-ba
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Oracle online migrálása önálló Azure DB for PostgreSQL-kiszolgálóra
+      url: tutorial-oracle-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: Oracle migrálása önálló Azure SQL Database-adatbázisba
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
+- title: Eszközök és útmutatás
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Az adatmigrálási forgatókönyvekhez elérhető szolgáltatások és eszközök
+      url: dms-tools-matrix.md
+    - text: Adatbázis-migrálási útmutató
+      url: https://datamigration.microsoft.com/
+    - text: Data Migration Assistant
+      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+    - text: SQL Server Migration Assistant
+      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+    - text: Database Experimentation Assistant
+      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+    - text: Adathozzáférés migrálási eszközkészlete
+      url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit

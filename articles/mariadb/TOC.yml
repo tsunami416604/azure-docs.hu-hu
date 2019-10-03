@@ -4,6 +4,8 @@
   items:
     - name: Mi az Azure Database for MariaDB?
       href: overview.md
+    - name: Melyik MariaDB-beállítást válasszam?
+      href: select-right-deployment-type.md
 - name: Gyors útmutatók
   expanded: true
   items:

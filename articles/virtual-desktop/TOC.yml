@@ -106,6 +106,10 @@
       href: /rest/api/virtual-desktop/
 - name: További források
   items:
+    - name: Élménybecslő
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Tech Community támogatási csoportja
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
     - name: UserVoice-fórum
