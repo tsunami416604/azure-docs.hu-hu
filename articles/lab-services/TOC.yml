@@ -72,7 +72,7 @@
   items:
     - name: Osztályterem-tesztkörnyezetek – osztálytípusok
       items:
-        - name: Osztálytípusok
+        - name: Osztálytípusok áttekintése
           href: classroom-labs/class-types.md
         - name: Mélytanulás a természetes feldolgozásban
           href: classroom-labs/class-type-deep-learning-natural-processing.md

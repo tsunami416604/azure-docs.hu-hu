@@ -14,6 +14,14 @@
           href: tutorial-scale-cluster.md
         - name: 3 – Azure Red Hat OpenShift-fürt törlése
           href: tutorial-delete-cluster.md
+- name: Fürtfelügyelet
+  items:
+    - name: Azure Red Hat OpenShift-fürtfelügyelet
+      items:
+        - name: 1 – Azure Red Hat OpenShift-fürtfelügyeleti szerepkör
+          href: cluster-administration-cluster-admin-role.md
+        - name: 2 – Biztonsági környezet korlátozásainak kezelése
+          href: cluster-administration-security-context-constraints.md
 - name: Útmutatók
   expanded: true
   items:
