@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 0ae2b695a64e55b493453549627860872166ed25
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202490"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822277"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Lemez titkosításának alkalmazása Azure Security Center
 Azure Security Center azt javasolja, hogy a lemez titkosítását akkor alkalmazza, ha olyan Windows vagy Linux rendszerű virtuálisgép-lemezekkel rendelkezik, amelyek nincsenek titkosítva Azure Disk Encryption használatával. A lemezek titkosítása lehetővé teszi a Windows-és Linux-IaaS virtuálisgép-lemezek titkosítását.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.
@@ -43,7 +43,7 @@ A Security Center által azonosított Azure-Virtual Machines titkosításhoz val
 * Szerezze be és futtassa a Azure Disk Encryption előfeltételek Azure PowerShell parancsfájlt.
 * Titkosítsa a virtuális gépeket.
 
-[A Windows IAAS virtuális gépek titkosítása Azure PowerShell](../security/azure-disk-encryption-linux-powershell-quickstart.md) végigvezeti Önt ezen lépések végrehajtásán. Ez a témakör azt feltételezi, hogy olyan Windows-ügyfélszámítógépet használ, amelyről a lemez titkosítását konfigurálja.
+[A Windows IAAS virtuális gépek titkosítása Azure PowerShell](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) végigvezeti Önt ezen lépések végrehajtásán. Ez a témakör azt feltételezi, hogy olyan Windows-ügyfélszámítógépet használ, amelyről a lemez titkosítását konfigurálja.
 
 Számos módszer használható az Azure Virtual Machines. Ha Ön jól ismeri az Azure PowerShell vagy az Azure parancssori felületét, érdemes lehet más megközelítést választani. További információ ezekről az egyéb megközelítésekről: az [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7cbddc4b7af546396a1a5a4c86d349a96054a6f3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4c065e1970a01f7e3737f8bd99672c84f2019bfe
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726279"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822333"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
@@ -104,7 +104,7 @@ A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption
      ```
 
 ### <a name="bkmk_prereq-script"></a> Az Azure Disk Encryption előfeltétel PowerShell-parancsfájl használatával
-Ha már ismeri az Azure Disk Encryption előfeltételeinek, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-parancsfájl egy példát, tekintse meg a [titkosítani a virtuális gépek gyors üzembe helyezés](azure-disk-encryption-linux-powershell-quickstart.md). Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszában sor 211, az összes lemez titkosítása egy meglévő erőforráscsoportot a meglévő virtuális gépek indítása. 
+Ha már ismeri az Azure Disk Encryption előfeltételeinek, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). A PowerShell-parancsfájl egy példát, tekintse meg a [titkosítani a virtuális gépek gyors üzembe helyezés](../virtual-machines/linux/disk-encryption-powershell-quickstart.md). Eltávolíthatja a megjegyzéseket a parancsfájl egy szakaszában sor 211, az összes lemez titkosítása egy meglévő erőforráscsoportot a meglévő virtuális gépek indítása. 
 
 Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerShell-parancsfájlt: 
 
@@ -206,7 +206,7 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosítás előfeltételei
 
-* A virtuális gépnek az operációsrendszer-lemez titkosításával kompatibilis disztribúciót kell használnia a [Azure Disk Encryption támogatott operációs rendszerekben felsoroltak szerint: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
+* A virtuális gépnek az operációsrendszer-lemez titkosításával kompatibilis disztribúciót kell használnia a [Azure Lemezes titkosítás által támogatott operációs rendszerek listájában. Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * A virtuális Gépen a Marketplace-lemezképből az Azure Resource Manager kell létrehozni.
 * Az Azure virtuális gép legalább 4 GB RAM (javasolt a mérete, 7 GB).
 * (Az RHEL és CentOS) Tiltsa le a SELinux. Tiltsa le a SELinux, lásd: "4.4.2. Letiltás SELinux"az a [SELinux felhasználói és rendszergazdai útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális gépen.
