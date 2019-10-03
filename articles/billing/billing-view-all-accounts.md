@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 36430e9b0a4554761d53b537d3c32fa57068eabb
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 6df787dbc06f7ee56ba9a26c8382396bf3b6e74a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490219"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719603"
 ---
 # <a name="view-billing-accounts-in-azure-portal"></a>Számlázási fiókok megtekintése az Azure Portalon  
 
@@ -85,7 +85,7 @@ A hatókör egy csomópont a számlázási fiókon belül. A felhasználók ezt 
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [elemezheti költségeit](../cost-management/quick-acm-cost-analysis.md).

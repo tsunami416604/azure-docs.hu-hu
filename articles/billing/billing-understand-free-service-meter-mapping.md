@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8022c065d73aafc53d3dcb77e79c3e6320e0ce39
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 00f0db0107cee4a7f52dbf4e04a586c5e7920d61
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490409"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709401"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>Az ingyenes szolgáltatásmérő-társítás ismertetése
 
@@ -52,7 +52,7 @@ Az Azure-szolgáltatások általi használat mérése fogyasztásmérőkkel tör
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 - [Váltás magasabb szintű előfizetésre](billing-upgrade-azure-subscription.md)

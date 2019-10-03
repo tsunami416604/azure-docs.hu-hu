@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962519"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827877"
 ---
 # <a name="personalizer-settings"></a>Személyre szabott beállítások
 
@@ -45,9 +45,9 @@ Adja meg a szolgáltatás beállításait a visszajelzési hurokhoz a jutalmak h
 
 |Beállítás|Cél|
 |--|--|
-|Jutalom várakozási ideje|Meghatározza azt az időtartamot, ameddig a személynek a rangsorolási híváshoz tartozó jutalmazási értékeket kell gyűjtenie a rangsor meghívásának pillanatától kezdve. Ezt az értéket a következő kéréssel állíthatja be: "Mennyi ideig legyen a személyre szabott várakozás a jutalmak meghívására?" Az ablak beérkezését követően bekövetkező minden jutalom bekerül, de nem használható a tanuláshoz.|
+|A jutalomra való várakozás ideje|Meghatározza azt az időtartamot, ameddig a személynek a rangsorolási híváshoz tartozó jutalmazási értékeket kell gyűjtenie a rangsor meghívásának pillanatától kezdve. Ezt az értéket a következő kéréssel állíthatja be: "Mennyi ideig legyen a személyre szabott várakozás a jutalmak meghívására?" Az ablak beérkezését követően bekövetkező minden jutalom bekerül, de nem használható a tanuláshoz.|
 |Alapértelmezett jutalom|Ha nem fogadja el a személyre szabott jutalmat a rangsorolási várakozási idő időszaka alatt, a személyre szabási híváshoz rendelt jutalmazási időablakban az alapértelmezett jutalom lesz hozzárendelve. Alapértelmezés szerint a legtöbb esetben az alapértelmezett jutalom nulla.|
-|Jutalom összesítése|Ha ugyanahhoz a Range API-híváshoz több jutalom érkezik, a rendszer ezt az összesítési módszert használja: **Sum** vagy **legkorábbi**. A legkorábbi pontszámot kapott, és elveti a többit. Ez akkor hasznos, ha egyedi jutalmat szeretne használni a lehetséges duplikált hívások között. |
+|Jutalmak összesítése|Ha ugyanahhoz a Range API-híváshoz több jutalom érkezik, a rendszer ezt az összesítési módszert használja: **Sum** vagy **legkorábbi**. A legkorábbi pontszámot kapott, és elveti a többit. Ez akkor hasznos, ha egyedi jutalmat szeretne használni a lehetséges duplikált hívások között. |
 
 A beállítások módosítása után válassza a **Mentés**lehetőséget.
 
@@ -61,7 +61,7 @@ A beállítás módosításai alaphelyzetbe állítja a jelenlegi személyre sza
 
 A beállítás módosítása után válassza a **Mentés**lehetőséget.
 
-### <a name="model-update-frequency"></a>Modell frissítési gyakorisága
+### <a name="model-update-frequency"></a>Modellfrissítés gyakorisága
 
 A minden aktív eseményből származó jutalmazási API-hívásokból betanított legújabb modellt nem használja automatikusan a személyre szabási sorrend hívása. A **modell frissítési gyakorisága** határozza meg, hogy a rangsor milyen gyakran használja a Range. 
 
@@ -87,6 +87,21 @@ A **modell és a házirend**erőforrás-kezelés szakaszában tekintse át a mod
 
 A **modell és a házirend erőforrás-** kezelés szakaszában importáljon egy új képzési szabályzatot, vagy exportálja az aktuális képzési szabályzatot.
 A korábbi exportálásokból lekérheti a tanulási szabályzatok fájljait, vagy letöltheti az offline értékelések során felderített optimalizált szabályzatokat. Ezeknek a fájloknak a manuális módosítása hatással lesz a gépi tanulási teljesítményre és az offline értékelések pontosságára, és a Microsoft nem tudja tanúsítani a gépi tanulás és az értékelések pontosságát, vagy a manuálisan szerkesztett házirendek miatti szolgáltatási kivételeket.
+
+## <a name="clear-data-for-your-learning-loop"></a>Az adatgyűjtési hurokhoz tartozó adattörlés
+
+1. A Azure Portal a személyre szabott erőforráshoz a **modell és házirend** lapon válassza az **adattörlés**lehetőséget.
+1. Az összes érték törléséhez és a tanulási hurok eredeti állapotba való visszaállításához jelölje be a 3 jelölőnégyzetet.
+
+    ![A Azure Portalban törölje a jelet az adatok személyre szabása erőforrásból elemre.](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Beállítás|Cél|
+    |--|--|
+    |Naplózott személyre szabás és jutalmazási érték.|A naplózási adatai kapcsolat nélküli értékelésekben használatosak. Törölje az adatait, ha alaphelyzetbe állítja az erőforrást.|
+    |A személyre szabott modell alaphelyzetbe állítása.|Ez a modell minden átképzésen megváltozik. Ez a képzési gyakoriság a **feltöltési modell gyakorisága** **beállításban** van megadva a beállítások lapon. |
+    |Állítsa be a képzési szabályzatot alapértelmezett értékre.|Ha az offline kiértékelés részeként módosította a képzési szabályzatot, a rendszer visszaállítja az eredeti tanulási szabályzatot.|
+
+1. A törlési folyamat elindításához válassza a **kijelölt adatelemek törlése** lehetőséget. Az állapot az Azure-értesítésekben szerepel, a jobb felső navigációs sávon. 
 
 ## <a name="next-steps"></a>További lépések
 

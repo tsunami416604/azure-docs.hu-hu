@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516376"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827904"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnosztikai naplózás engedélyezése az Azure Cognitive Services
 
@@ -35,12 +35,12 @@ A diagnosztikai naplózás engedélyezéséhez a naplófájlok tárolásához va
 Kezdjük a diagnosztikai naplózás engedélyezésével a Azure Portal használatával.
 
 > [!NOTE]
-> Ha engedélyezni szeretné a szolgáltatást a PowerShell vagy az Azure CLI használatával, kövesse az [Azure-erőforrások adatainak összegyűjtése és felhasználása](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings)című részben található utasításokat.
+> Ha engedélyezni szeretné a szolgáltatást a PowerShell vagy az Azure CLI használatával, kövesse az [Azure-erőforrások adatainak összegyűjtése és felhasználása](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)című részben található utasításokat.
 
 1. Navigáljon a Azure Portal. Ezután keresse meg és válassza ki a Cognitive Services erőforrást. Például a Bing Web Search előfizetése.   
 2. Ezután a bal oldali navigációs menüben keresse meg a **figyelés** elemet, és válassza a **diagnosztikai beállítások**lehetőséget. Ez a képernyő az erőforráshoz korábban létrehozott összes diagnosztikai beállítást tartalmazza.
 3. Ha egy korábban létrehozott erőforrást szeretne használni, kiválaszthatja most. Ellenkező esetben válassza a **+ diagnosztikai beállítás hozzáadása**elemet.
-4. Adja meg a beállítás nevét. Ezután válassza az **archiválás egy Storage** -fiókba lehetőséget, majd **küldje el a log Analyticsnek**.
+4. Adja meg a beállítás nevét. Ezután válassza az **archiválás egy Storage-fiókba** lehetőséget, majd **küldje el a log Analyticsnek**.
 5. Ha a rendszer kéri a konfigurálását, válassza ki azt a Storage-fiókot és OMS-munkaterületet, amelyet a diagnosztikai naplók tárolására kíván használni. **Megjegyzés**: Ha nem rendelkezik Storage-fiókkal vagy OMS-munkaterülettel, kövesse az utasításokat, és hozzon létre egyet.
 6. Válassza a **naplózás**, a **RequestResponse**és a **AllMetrics**lehetőséget. Ezután állítsa be a megőrzési időszakot a diagnosztikai napló adataihoz. Ha egy adatmegőrzési szabály értéke nulla, a rendszer határozatlan ideig tárolja az adott naplóhoz tartozó eseményeket.
 7. Kattintson a **Save** (Mentés) gombra.
@@ -52,8 +52,8 @@ Akár két órát is igénybe vehet, mielőtt a naplózási szolgáltatás elér
 Az Azure Storage egy robusztus objektum-tárolási megoldás, amely nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. Ebben a szakaszban megtudhatja, hogyan kérdezheti le a Storage-fiókját az összes tranzakcióhoz egy 30 napos időkereten belül, és exportálhatja az adatait az Excelbe.
 
 1. A Azure Portal keresse meg a legutóbbi szakaszban létrehozott Azure Storage-erőforrást.
-2. A bal oldali navigációs menüben keresse meg a **figyelés** elemet, és válassza a metrikák lehetőséget.
-3. A lekérdezés konfigurálásához használja a rendelkezésre álló legördülő listát. Ebben a példában beállítjuk az időtartományot az **utolsó 30 napra** , a metrikát pedig a tranzakcióra.
+2. A bal oldali navigációs menüben keresse meg a **figyelés** elemet, és válassza a **metrikák**lehetőséget.
+3. A lekérdezés konfigurálásához használja a rendelkezésre álló legördülő listát. Ebben a példában beállítjuk az időtartományot az **utolsó 30 napra** , a metrikát pedig a **tranzakcióra**.
 4. A lekérdezés befejezésekor a tranzakció vizualizációja jelenik meg az elmúlt 30 napban. Az adatexportáláshoz használja az oldal tetején található **Exportálás az Excel programba** gombot.
 
 További információ az [Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)-ban található diagnosztikai információkról.
@@ -64,7 +64,7 @@ Kövesse ezeket az utasításokat az erőforrás log Analytics-adatainak megisme
 
 1. A Azure Portalban keresse meg és válassza ki a **log Analytics** elemet a bal oldali navigációs menüből.
 2. Keresse meg és válassza ki a diagnosztika engedélyezésekor létrehozott erőforrást.
-3. Az **általános**területen keresse meg és válassza ki a naplókat. Ezen az oldalon futtathat lekérdezéseket a naplókon.
+3. Az **általános**területen keresse meg és válassza ki a **naplókat**. Ezen az oldalon futtathat lekérdezéseket a naplókon.
 
 ### <a name="sample-queries"></a>Mintalekérdezések
 
@@ -113,7 +113,7 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha szeretné megtudni, hogyan engedélyezheti a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, olvassa [](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) el a Microsoft Azure metrikáinak áttekintését, valamint az [Azure diagnosztikai naplók áttekintését ismertető](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) cikket.
+* Ha szeretné megtudni, hogyan engedélyezheti a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, olvassa el a Microsoft Azure [metrikáinak áttekintését](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , valamint az [Azure diagnosztikai naplók áttekintését ismertető](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) cikket.
 * Olvassa el ezeket a cikkeket az event hubs ismertetése:
   * [Mi az Azure Event Hubs?](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
   * [Bevezetés az Event Hubs használatába](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
