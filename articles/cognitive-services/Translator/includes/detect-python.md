@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9207814c921f51b10939c6e9d1747e1e124f9890
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907173"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837497"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -31,7 +31,7 @@ Az első megjegyzés arra utasítja a Python-értelmezőt, hogy UTF-8 kódolást
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Az előfizetési kulcs, a végpont és az elérési út beállítása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot a környezeti `TRANSLATOR_TEXT_KEY` változóktól: és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja `subscription_key` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat.
+Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot a környezeti változóktól: `TRANSLATOR_TEXT_KEY` és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja a `subscription_key` és a `endpoint` karakterláncot, és megjegyzéseket fűzhet a feltételes utasításokhoz.
 
 Másolja a projektbe a következő kódot:
 
@@ -112,7 +112,10 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+A minta futtatása után a következőnek kell megjelennie a terminálon:
+
+> [!NOTE]
+> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

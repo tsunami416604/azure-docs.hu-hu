@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816128"
+ms.locfileid: "71828944"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
@@ -42,7 +42,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 
 5. A CloudSimple-portálon adja meg a saját felhő nevét.
 6. Válassza ki a saját felhő **helyét** .
-7. Válassza ki a **csomópont típusát**, amely megfelel az Azure-beli vásárlásoknak. Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
+7. Válassza ki a **csomópont típusát**, amely megfelel az Azure-beli vásárlásoknak.
 8. **Csomópontok számának**meghatározása  A privát felhő létrehozásához legalább három csomópont szükséges.
 
     ![Privát felhő létrehozása – alapszintű információ](media/create-private-cloud-basic-info.png)

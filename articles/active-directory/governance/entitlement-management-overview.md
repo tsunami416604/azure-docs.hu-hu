@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241696"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827153"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az az Azure AD-jogosultságkezelés? (Előzetes verzió)
 
@@ -80,11 +80,11 @@ A jogosultság-kezeléssel a következő típusú erőforrásokat kezelheti:
 Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
 
 - A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
-- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
+- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure](../../role-based-access-control/role-assignments-portal.md) -beli szerepkör-hozzárendelésének létrehozásával
 
 ## <a name="what-are-access-packages-and-policies"></a>Mik azok a hozzáférési csomagok és szabályzatok?
 
-A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.
+A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a katalógusok nevűtárolókban vannak meghatározva.
 
 A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok határozzák meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. A szabályzat engedélyezése kényszeríti, hogy csak a megfelelő felhasználók férhessenek hozzá a megfelelő erőforrásokhoz, és a megfelelő időtartamra.
 
@@ -122,8 +122,8 @@ A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez te
 | Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | jogosultságok kezelése | Hozzáférési csomagokat hozzárendelő, visszavonó és felügyelő szolgáltatás. |
-| hozzáférési csomag | Engedélyek és szabályzatok gyűjteménye a felhasználók által igényelhető erőforrásokhoz. Egy hozzáférési csomag mindig szerepel a katalógusban. |
-| hozzáférési kérelem | Hozzáférési csomag elérésére irányuló kérelem. A kérések általában egy munkafolyamaton keresztül haladnak át. |
+| Hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. |
+| hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy munkafolyamaton keresztül haladnak át. |
 | policy | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók. Például a szabályzatok az alkalmazottak hozzáférését és a külső hozzáférést is tartalmazzák. |
 | catalog | Kapcsolódó erőforrások és hozzáférési csomagok tárolója. |
 | Általános katalógus | Olyan beépített katalógus, amely mindig elérhető. Ahhoz, hogy erőforrásokat vegyen fel az általános katalógusba, bizonyos engedélyekre van szükség. |

@@ -11,18 +11,18 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 54f9e1eb9614708880c9a45cddcf9d7a282d0305
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 09523bb6c9c8a58f5f7bd102d2ac30ad77f28d1c
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802854"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840191"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Gyors útmutató: Tudásbázis közzététele QnA Maker a Python használatával
 
 A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
-Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+Ez a rövid útmutató meghívja a QnA Maker REST API-kat:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](create-new-kb-nodejs.md).
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](../how-to/create-knowledge-base.md).
 
 > [!NOTE] 
 > A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-Python** GitHub-tárházból](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)érhetők el.

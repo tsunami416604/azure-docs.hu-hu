@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9da5b4c88bab964bfc3ad686377d3c3efd2d4e6a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 6d7beae75e13ef797c9e80a9a012e9f48b69d407
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315175"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827182"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása LinkedIn-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -216,6 +216,8 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 3. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
+
+A Azure AD B2Ckel folytatott kommunikáció egy, a B2C-bérlőben regisztrált alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

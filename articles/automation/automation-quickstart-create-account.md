@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 89f32499d02978294398aae7be21f63b5d6aa028
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 80a175aad3c692a5dfd04c7399211c58134c5164
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919812"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937168"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
@@ -30,16 +30,16 @@ Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
 
 1. Kattintson az Azure bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-1. Válassza a **Felügyeleti eszközök**, majd az **Automation** lehetőséget.
+1. Válassza ki **& felügyeleti eszközöket**, majd válassza az **Automation**elemet.
 
-1. Adja meg a fiókinformációkat. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő összetevők automatikus engedélyezéséhez. Fontos tudni, hogy Automation-fiókok létrehozásakor a választott nevet utólag nem lehet módosítani. *Automation-fióknevek minden régióban és erőforráscsoportban egyedi. Törölt Automation-fiókok nevei nem lehet azonnal elérhetővé válik.* Egy Automation-fiókkal egy adott bérlő több régiójában és előfizetésén is kezelhetők erőforrások. Amikor végzett, kattintson a **Létrehozás** gombra az Automation-fiók üzembe helyezésének megkezdéséhez.
+1. Adja meg a fiókinformációkat. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő összetevők automatikus engedélyezéséhez. Fontos tudni, hogy Automation-fiókok létrehozásakor a választott nevet utólag nem lehet módosítani. *Az Automation-fiókok nevei régiónként és erőforráscsoporthoz egyediek. A törölt Automation-fiókok neve nem lehet azonnal elérhető.* Egy Automation-fiókkal egy adott bérlő több régiójában és előfizetésén is kezelhetők erőforrások. Amikor végzett, kattintson a **Létrehozás** gombra az Automation-fiók üzembe helyezésének megkezdéséhez.
 
     ![Adja meg az Automation-fiók információit az oldalon](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
     > A [régiónként elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all) bemutató szakaszban találja azon helyek frissített listáját, ahol Automation-fiókot helyezhet üzembe.
 
-1. Az üzembe helyezés befejezése után kattintson a **minden szolgáltatás**válassza **Automation-fiókok** , és válassza ki a létrehozott Automation-fiókot.
+1. Ha a telepítés befejeződött, kattintson a **minden szolgáltatás**elemre, válassza az **Automation-fiókok** lehetőséget, és válassza ki a létrehozott Automation-fiókot.
 
     ![Az Automation-fiókok áttekintése](./media/automation-quickstart-create-account/automation-account-overview.png)
 

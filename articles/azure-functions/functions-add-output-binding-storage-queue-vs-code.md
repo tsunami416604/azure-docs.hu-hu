@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: jeconnoc
-ms.openlocfilehash: 63065c918a6f78510b4908c5e2ae80df67665b40
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: dfb4abaf3868b76e17fb35f952c4db6bcdf30634
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672603"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838951"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Függvények összekapcsolhatók az Azure Storage-ba a Visual Studio Code használatával
 
@@ -71,50 +71,7 @@ A functions esetében minden típusú kötéshez `direction`, `type` és egy egy
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-A kötési attribútumok közvetlenül a function. JSON fájlban vannak definiálva. A kötési típustól függően szükség lehet további tulajdonságokra. A [várólista kimeneti konfigurációja](functions-bindings-storage-queue.md#output---configuration) leírja az Azure Storage-várólista kötéséhez szükséges mezőket. A bővítmény megkönnyíti a kötések hozzáadását a function. JSON fájlhoz. 
-
-Kötés létrehozásához kattintson a jobb gombbal (CTRL + kattintás macOS rendszeren) a HttpTrigger mappában található `function.json` fájlra, majd válassza a **kötés hozzáadása...** lehetőséget. Kövesse az utasításokat a következő kötési tulajdonságok definiálásához az új kötéshez:
-
-| Kérdés | Value | Leírás |
-| -------- | ----- | ----------- |
-| **Kötési irány kiválasztása** | `out` | A kötés kimeneti kötés. |
-| **Kötés kijelölése iránysal...** | `Azure Queue Storage` | A kötés egy Azure Storage-várólista kötése. |
-| **A kódban a kötés azonosítására használt név** | `msg` | A kódban hivatkozott kötési paramétert azonosító név. |
-| **Az az üzenetsor, amelybe az üzenet el lesz küldve** | `outqueue` | Annak a sornak a neve, amelyet a kötés ír. Ha a *queueName* nem létezik, a kötés létrehozza az első használatkor. |
-| **Válassza a beállítás a következőből: "local. Setting. JSON"** | `AzureWebJobsStorage` | A Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. A `AzureWebJobsStorage` beállítás a Function alkalmazással létrehozott Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazza. |
-
-A function. JSON fájlban egy kötés kerül a `bindings` tömbbe, amelynek most az alábbi példához hasonlóan kell kinéznie:
-
-```json
-{
-   ...
-
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
@@ -128,37 +85,7 @@ A kötés meghatározása után a kötés `name` értékkel férhet hozzá a fü
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Hozzon létre egy olyan kódot, amely a `msg` kimeneti kötési objektumot használja `context.bindings`-ben üzenetsor-üzenet létrehozásához. Ezt a kódot a `context.res` utasítás elé írja be.
-
-```javascript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + 
-(req.query.name || req.body.name);
-```
-
-Ezen a ponton a függvénynek a következőképpen kell kinéznie:
-
-```javascript
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + 
-        (req.query.name || req.body.name);
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 

@@ -1,19 +1,19 @@
 ---
 title: A Spark-feladatok optimalizálása a teljesítmény érdekében – Azure HDInsight
 description: Az Azure HDInsight Apache Spark-fürtök legjobb teljesítményére vonatkozó általános stratégiák megjelenítése.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/01/2019
+ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181080"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936846"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark feladatok optimalizálása a HDInsight-ben
 
@@ -55,22 +55,23 @@ A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely 
 
 ## <a name="select-default-storage"></a>Alapértelmezett tároló kiválasztása
 
-Új Spark-fürt létrehozásakor lehetősége van az Azure Blob Storage vagy Azure Data Lake Storage kiválasztására a fürt alapértelmezett tárolója. Mindkét lehetőség biztosítja a hosszú távú tárolás előnyeit az átmeneti fürtök esetében, így az adatai nem törlődnek automatikusan a fürt törlésekor. Újra létrehozhat egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
+Új Spark-fürt létrehozásakor kiválaszthatja az Azure Blob Storage vagy Azure Data Lake Storaget a fürt alapértelmezett tárolója. Mindkét lehetőség biztosítja a hosszú távú tárolás előnyeit az átmeneti fürtök esetében, így az adatai nem törlődnek automatikusan a fürt törlésekor. Újra létrehozhat egy átmeneti fürtöt, és továbbra is hozzáférhet az adataihoz.
 
 | Áruház típusa | Fájlrendszer | Sebesség | Átmeneti | Használati példák |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //url/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Blob Storage (biztonságos) | **wasbs:** //URL/ | **Standard** | Igen | Átmeneti fürt |
 | 2\. generációs Azure Data Lake Storage| **abfs:** //URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
 | Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
 | Helyi HDFS | **hdfs:** //url/ | **Leggyorsabb** | Nem | Interaktív 24/7-fürt |
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata
 
-A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, `.persist()`például `.cache()`:, `CACHE TABLE`és. Ez a natív gyorsítótárazás a kis adatkészletek és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. Azonban a Spark natív gyorsítótárazás jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget. Egy általánosabb és megbízható gyorsítótárazási módszer a *tárolási réteg gyorsítótárazása*.
+A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, `.persist()`például `.cache()`:, `CACHE TABLE`és. Ez a natív gyorsítótárazás a kis adatkészletek és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. A Spark natív gyorsítótárazás azonban jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget. Egy általánosabb és megbízható gyorsítótárazási módszer a *tárolási réteg gyorsítótárazása*.
 
 * Natív Spark-gyorsítótárazás (nem ajánlott)
     * Jó kis adatkészletekhez.
-    * A nem működik a particionálással, ami a jövőbeli Spark-kiadásokban változhat.
+    * Nem működik a particionálással, ami megváltozhat a jövőbeli Spark-kiadásokban.
 
 * Tárolási szint gyorsítótárazása (ajánlott)
     * A [Alluxio](https://www.alluxio.org/)használatával valósítható meg.
@@ -127,7 +128,7 @@ Egyszerre használhatja a particionálást és a gyűjtőt.
 
 ## <a name="optimize-joins-and-shuffles"></a>Az illesztések és a shufflek optimalizálása
 
-Ha lassú feladatokkal van összekapcsolva vagy shuffle, az OK valószínűleg az *adatok eldöntése*, ami a feladat adataiban található aszimmetria. A térképes feladatok például 20 másodpercet is igénybe vehetnek, de egy olyan feladatot futtatnak, ahol az adatok csatlakoztatva vannak, vagy a csoszogott órákat vesz igénybe.   Az adatdöntés kijavításához a teljes kulcsot kell megállapítania, vagy egy *elkülönített sót* kell használnia a kulcsok csak néhány részhalmaza számára.  Ha izolált sót használ, további szűréssel különítse el a sós kulcsok részhalmazát a térképi illesztésekben. Egy másik lehetőség egy gyűjtő oszlop bevezetése és a gyűjtők előzetes összesítése.
+Ha lassú feladatokkal van összekapcsolva vagy shuffle, az OK valószínűleg az *adatok eldöntése*, ami a feladat adataiban található aszimmetria. A térképes feladatok például 20 másodpercet is igénybe vehetnek, de egy olyan feladatot futtatnak, ahol az adatok csatlakoztatva vannak, vagy a csoszogott órákat vesz igénybe. Az adatdöntés kijavításához a teljes kulcsot kell megállapítania, vagy egy *elkülönített sót* kell használnia a kulcsok csak néhány részhalmaza számára. Ha izolált sót használ, érdemes tovább szűrnie, hogy elkülönítse a sós kulcsok részhalmazát a térképi illesztésekben. Egy másik lehetőség egy gyűjtő oszlop bevezetése és a gyűjtők előzetes összesítése.
 
 A lassú illesztéseket okozó másik tényező lehet az illesztés típusa. Alapértelmezés szerint a Spark az `SortMerge` illesztés típusát használja. Az ilyen típusú illesztések leginkább nagy adatkészletekhez használhatók, de más számítási szempontból költségesek, mert először a bal és a jobb oldalon kell rendezni az adatok egyesítését.
 
@@ -144,14 +145,15 @@ val df1 = spark.table("FactTableA")
 val df2 = spark.table("dimMP")
 df1.join(broadcast(df2), Seq("PK")).
     createOrReplaceTempView("V_JOIN")
+
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Ha gyűjtő táblákat használ, akkor egy harmadik illesztési típussal rendelkezik, `Merge` amelyhez csatlakozik. Egy megfelelően előre particionált és előre rendezett adatkészlet kihagyja a költséges rendezési szakaszt egy `SortMerge` illesztésből.
+Ha gyűjtő táblákat használ, akkor egy harmadik illesztési típussal rendelkezik, a `Merge` illesztéssel. Egy megfelelően előre particionált és előre rendezett adatkészlet kihagyja a költséges rendezési szakaszt egy `SortMerge` illesztésből.
 
 Az illesztések sorrendje, különösen az összetettebb lekérdezésekben. Kezdje a legszelektívebb illesztésekkel. Emellett olyan illesztéseket is helyezhet át, amelyek a sorok számát a lehetséges összesítések után növelhetik.
 
-A párhuzamosságok kezelése érdekében, különösen a Descartes-féle illesztések esetében, beágyazott struktúrákat, ablakokat adhat hozzá, és lehet, hogy kihagy egy vagy több lépést a Spark-feladatokban.
+A Descartes-féle illesztések párhuzamosságának kezeléséhez beágyazott struktúrákat, ablakokat adhat hozzá, és lehet, hogy kihagy egy vagy több lépést a Spark-feladatokban.
 
 ## <a name="customize-cluster-configuration"></a>Fürtkonfiguráció testreszabása
 
@@ -179,17 +181,17 @@ A végrehajtó konfigurációjának meghatározásakor vegye figyelembe a Java G
     5. Nem kötelező: Növelje a kihasználtságot és a párhuzamosságot a processzor túllépésével.
 
 Általános ökölszabály a végrehajtó méretének kiválasztásakor:
-    
+
 1. Indítson el 30 GB-ot végrehajtóként, és terjesszen rendelkezésre álló gépi magokat.
 2. Növelje a végrehajtó magok számát a nagyobb fürtöknél (> 100 végrehajtók).
-3. A tesztelési futtatások és az előző tényezők, például a GC terhelése alapján növelheti vagy csökkentheti a méreteket.
+3. A méretet a próbaverziós futtatások és az előző tényezők, például a GC terhelése alapján módosíthatja.
 
 Az egyidejű lekérdezések futtatásakor vegye figyelembe a következőket:
 
 1. Indítson el 30 GB-ot végrehajtóként és minden gépi magot.
 2. Több párhuzamos Spark-alkalmazás létrehozása a processzor túllépésével (körülbelül 30%-os késéssel).
 3. Lekérdezések terjesztése párhuzamos alkalmazások között.
-4. A tesztelési futtatások és az előző tényezők, például a GC terhelése alapján növelheti vagy csökkentheti a méreteket.
+4. A méretet a próbaverziós futtatások és az előző tényezők, például a GC terhelése alapján módosíthatja.
 
 A lekérdezés teljesítményének figyelése kiugró vagy egyéb teljesítménnyel kapcsolatos problémák esetén, az Idősor nézet, az SQL Graph, a feladatok statisztikái és így tovább. Előfordulhat, hogy a végrehajtók közül egy vagy több lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb ideig tart. Ez gyakran előfordul a nagyobb fürtökön (> 30 csomópont). Ebben az esetben a munkát nagyobb számú feladatra osztja fel, így az ütemező kompenzálhatja a lassú feladatokat. Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A `conf: spark.speculation = true`feladatokhoz tartozó spekulatív végrehajtást is engedélyezheti.
 

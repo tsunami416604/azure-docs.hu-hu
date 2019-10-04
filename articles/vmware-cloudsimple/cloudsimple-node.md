@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877703"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845548"
 ---
 # <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
 
@@ -36,13 +36,14 @@ A megvásárolt csomópontok utólagos elszámolású kapacitást biztosítanak.
 
 A következő típusú csomópontok vásárolhatók meg vagy foglalhatók le.
 
-| SKU | CS28 – csomópont | CS36 – csomópont |
-|-----|-------------|-------------|
-| CPU | 2x 2.2 GHz, 28 mag (56 HT) | 2x 2.3 GHz, 36 mag (72 HT) |
-| RAM | 256 GB | 512 GB |
-| Lemez gyorsítótára |  1,6 – TB NVMe | 3,2 – TB NVMe |
-| Kapacitás lemez | 5,625 TB nyers | 11,25 TB nyers |
-| Tárolási típus | Minden Flash | Minden Flash |
+| SKU           | CS28 – csomópont                 | CS36 – csomópont                 | CS36m – csomópont                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| Régió        | USA keleti régiója, USA nyugati régiója            | USA keleti régiója, USA nyugati régiója            | Nyugat-Európa                 |
+| CPU           | 2x 2.2 GHz, 28 mag (56 HT) | 2x 2.3 GHz, 36 mag (72 HT) | 2x 2.3 GHz, 36 mag (72 HT) |
+| RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| Gyorsítótárlemez    | 1,6 – TB NVMe                 | 3,2 – TB NVMe                 | 3,2 – TB NVMe                 |
+| Kapacitás lemez | 5,625 TB nyers                | 11,25 TB nyers                | 15,36 TB nyers                |
+| Tárolótípus  | Minden Flash                   | Minden Flash                   | Minden Flash                   |
 
 ## <a name="limits"></a>Korlátok
 

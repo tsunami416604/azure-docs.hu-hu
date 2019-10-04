@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aacdb57c312946a9ec2b17a8d41aa9150efc277d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640974"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828162"
 ---
-# <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple saját felhő létrehozása
+# <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple-magánfelhő létrehozása
 
 A privát felhő egy elkülönített VMware-verem, amely támogatja az ESXi-gazdagépeket, a vCenter, a vSAN és a NSX. A privát felhők kezelése a CloudSimple-portálon keresztül történik. Saját vCenter-kiszolgálóval rendelkeznek a saját felügyeleti tartományában. A verem dedikált csomópontokon és elszigetelt operációs rendszer nélküli hardveres csomópontokon fut.
 
@@ -46,12 +46,12 @@ Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
 
 5. A CloudSimple-portálon adja meg a saját felhő nevét.
 6. Válassza ki a saját felhő **helyét** .
-7. Válassza ki a **csomópont típusát**, amely megfelel az Azure-beli vásárlásoknak.  Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
+7. Válassza ki a **csomópont típusát**, amely megfelel az Azure-beli vásárlásoknak.
 8. **Csomópontok számának**meghatározása  A privát felhő létrehozásához legalább három csomópont szükséges.
 
     ![Privát felhő létrehozása – alapszintű információ](media/create-private-cloud-basic-info.png)
 
-9. Kattintson **a Tovább gombra: Speciális beállítások**.
+9. Kattintson a **Tovább: Speciális beállítások**.
 10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.
 
     **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. Az a/24 CIDR-tartomány legfeljebb kilenc csomópontot támogat, a/23 CIDR-tartomány akár 41 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig legfeljebb 64 csomópontot támogat (a csomópontok maximális száma a privát felhőben).
@@ -59,10 +59,10 @@ Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
     > [!IMPORTANT]
     > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
 
-11. Kattintson **a Tovább gombra: Tekintse át**és hozza létre.
+11. Kattintson a **Tovább: Tekintse át**és hozza létre.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
 13. Kattintson a **Create** (Létrehozás) gombra.
 
 Elindul a felhőalapú kiépítési folyamat. A privát felhő üzembe helyezése akár két óráig is eltarthat.
 
-A meglévő privát felhő kibővítésével kapcsolatos útmutatásért lásd: [privát felhő](expand-private-cloud.md)kibontása.
+A meglévő privát felhő kibővítésével kapcsolatos útmutatásért lásd: [privát felhő kibontása](expand-private-cloud.md).

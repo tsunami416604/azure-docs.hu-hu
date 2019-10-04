@@ -6,14 +6,14 @@ author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241780"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827357"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatással kapcsolatos gyakori kérdések
 
@@ -59,7 +59,9 @@ A Windows Server-csomópontok (jelenleg előzetes verzióban az AK-ban) Windows 
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Miért jött létre két erőforráscsoport az AK-val?
 
-Minden AK-beli üzemelő példány két erőforráscsoportot ölel fel:
+Az AK számos Azure-infrastruktúra-erőforrásra épül, beleértve a virtuálisgép-méretezési csoportokat, a virtuális hálózatokat és a felügyelt lemezeket. Ez lehetővé teszi az Azure platform számos alapvető funkciójának kihasználása az AK által biztosított felügyelt Kubernetes-környezeten belül. Például az Azure-beli virtuálisgép-típusok többsége közvetlenül is használható az AK-val, és a Azure Reservations használatával automatikusan kedvezményeket kaphat ezekről az erőforrásokról.
+
+Az architektúra engedélyezéséhez minden AK-beli telepítés két erőforráscsoportot ölel fel:
 
 1. Hozza létre az első erőforráscsoportot. Ez a csoport csak a Kubernetes szolgáltatás erőforrását tartalmazza. Az AK erőforrás-szolgáltatója automatikusan létrehozza a második erőforráscsoportot az üzembe helyezés során. A második erőforráscsoport példája a *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport nevének megadásával kapcsolatos információkért tekintse meg a következő szakaszt.
 1. A második erőforráscsoport, azaz a csomópont- *erőforráscsoport*a fürthöz társított összes infrastruktúra-erőforrást tartalmazza. Ezek az erőforrások magukban foglalják a Kubernetes csomópontos virtuális gépeket, a virtuális hálózatkezelést és a tárterületet. Alapértelmezés szerint a csomópont-erőforráscsoport neve például *MC_myResourceGroup_myAKSCluster_eastus*. Az AK automatikusan törli a csomópont-erőforrást, amikor a fürt törlődik, ezért csak olyan erőforrásokhoz használható, amelyek osztoznak a fürt életciklusán.
@@ -87,7 +89,7 @@ Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes-beléptetési vezérlőket támogat az AK? Hozzáadhatók vagy eltávolíthatók a beléptetési vezérlők?
 
-Az AK a következő [belépésvezérlés-vezérlőket][admission-controllers]támogatja:
+Az AK a következő [belépésvezérlés][admission-controllers]-vezérlőket támogatja:
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -108,9 +110,9 @@ Az AK jelenleg nincs natív módon integrálva a Azure Key Vaultba. A [Kubernete
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Futtathatok Windows Server-tárolókat az AK-ban?
 
-Igen, a Windows Server-tárolók előzetes verzióban érhetők el. A Windows Server-tárolók az AK-ban való futtatásához létre kell hoznia egy Windows Servert futtató csomópont-készletet a vendég operációs rendszerként. A Windows Server-tárolók csak a Windows Server 2019-es kiszolgálókat használhatják. Első lépésként tekintse meg a következőt: [AK-fürt létrehozása Windows Server Node-készlettel][aks-windows-cli].
+Igen, a Windows Server-tárolók előzetes verzióban érhetők el. A Windows Server-tárolók az AK-ban való futtatásához létre kell hoznia egy Windows Servert futtató csomópont-készletet a vendég operációs rendszerként. A Windows Server-tárolók csak a Windows Server 2019-es kiszolgálókat használhatják. Első lépésként tekintse meg a következőt: [AK-fürt létrehozása Windows Server Node][aks-windows-cli]-készlettel.
 
-A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozásokat tartalmaz, amelyek a felsőbb rétegbeli Windows-kiszolgáló részét képezik a Kubernetes projektben. További információ ezekről a korlátozásokról: a [Windows Server-tárolók AK-beli korlátozásai][aks-windows-limitations].
+A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozásokat tartalmaz, amelyek a felsőbb rétegbeli Windows-kiszolgáló részét képezik a Kubernetes projektben. További információ ezekről a korlátozásokról: a [Windows Server-tárolók AK-][aks-windows-limitations]beli korlátozásai.
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Biztosít-e az AK szolgáltatás szintű szerződést?
 
@@ -133,7 +135,7 @@ A felhasználók nem írhatják `maxPods` felül a minimális érvényesítést.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Alkalmazhatom az Azure-beli foglalási kedvezményeket az AK-ügynökök csomópontjaira?
 
-Az AK-ügynökök csomópontjai standard Azure-beli virtuális gépekként vannak kiszámlázva, így ha az AK-ban használt virtuálisgép-mérethez vásárolt [Azure-foglalást][reservation-discounts] , a rendszer automatikusan alkalmazza ezeket a kedvezményeket.
+Az AK-ügynökök csomópontjai standard Azure-beli virtuális gépekként vannak kiszámlázva, így ha az AK-ban használt virtuálisgép-mérethez vásárolt [Azure][reservation-discounts] -foglalást, a rendszer automatikusan alkalmazza ezeket a kedvezményeket.
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az Azure-bérlők között?
 
@@ -159,7 +161,7 @@ De az AK nem javasolja ezt. A frissítéseket ideális esetben kell végrehajtan
 
 Nem, törölje vagy távolítsa el a meghibásodott állapotú csomópontokat, vagy távolítsa el a fürtöt a frissítés előtt.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg:`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hiba jelenik meg: `[Errno 11001] getaddrinfo failed` 
 
 Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati biztonsági csoporttal (NSG) rendelkeznek még használatban, és a fürthöz vannak társítva.  Távolítsa el őket, és próbálkozzon újra a törléssel.
 
@@ -173,7 +175,7 @@ Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: Az AK-b
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Használhatom a virtuálisgép-méretezési csoport API-jait a manuális méretezéshez?
 
-Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket. Használja az AK API-`az aks scale`kat ().
+Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket. Használja az AK API-kat (`az aks scale`).
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Használhatom a virtuálisgép-méretezési csoportokat a 0 csomópontra való manuális méretezéshez?
 

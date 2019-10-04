@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984938"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828826"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -138,7 +138,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
    > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
    > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob-adatközreműködői** RBAC szerepkört az azure-SQL Server, amely az 1. lépésben az Azure Active DIRECOTORY (HRE) szolgáltatásban regisztrált Azure SQL Data Warehouse.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob-adatközreműködői** RBAC szerepkört az Azure-SQL Server a Azure SQL Data Warehouse, amelyet az 1. lépésben regisztrált Azure Active Directory (HRE).
 
    > [!NOTE] 
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

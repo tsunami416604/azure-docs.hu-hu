@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349011"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937323"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Ajánlott eljárások az Azure Adatkezelő-beli adatlekérdezés és-megjelenítés Power BI használatához
 
@@ -28,13 +28,13 @@ Ha terabájtos friss nyers adatmennyiséggel dolgozik, kövesse az alábbi irán
 
 * **Importálási mód és DirectQuery mód** – az **importálási** mód használata a kisebb adatkészletek interakciója céljából. **DirectQuery** mód használata nagyméretű, gyakran frissített adatkészletekhez. Létrehozhat például olyan dimenziós táblákat, amelyek **importálási** mód használatával kicsik, és nem változnak gyakran. Állítsa be a frissítési időközt az adatfrissítések várható arányának megfelelően. Hozzon létre **DirectQuery** módot használó egyedkapcsolat-táblákat, mivel ezek a táblázatok nagyméretűak, és nyers adatmennyiséget tartalmaznak. Ezekkel a táblázatokkal Power BI [részletezés](https://docs.microsoft.com/power-bi/desktop-drillthrough)használatával lehet bemutatni a szűrt adatvédelmet.
 
-* **Párhuzamosság** – az Azure adatkezelő egy lineárisan skálázható adatplatform, ezért az irányítópultok megjelenítésének teljesítményét növelheti a végpontok közötti folyamat párhuzamosságának növelésével a következőképpen:
+* **Párhuzamosság** – az Azure adatkezelő egy lineárisan skálázható adatplatform, így javíthatja az irányítópultok megjelenítésének teljesítményét azáltal, hogy növeli a végpontok közötti folyamat párhuzamosságát a következőképpen:
 
    * Növelje az [egyidejű kapcsolatok számát a DirectQuery Power BIban](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
    * [A párhuzamosság növeléséhez használjon gyenge konzisztenciát](/azure/kusto/concepts/queryconsistency). Ez hatással lehet az adatfrissítésre.
 
-* **Hatékony szeletelők** – a [szeletelők szinkronizálásával](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) megakadályozhatja, hogy a jelentések az adatok betöltését megelőzően elkészüljön. Az adathalmaz strukturálása után helyezze az összes vizualizációt, és jelölje ki az összes szeletelőt, a szinkronizálási szeletelőt kiválasztva csak a szükséges adatmennyiséget töltheti be.
+* **Hatékony szeletelők** – a [szinkronizálási szeletelők](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) használatával megakadályozhatja, hogy a jelentések készen álljanak az adatok betöltésére. Az adathalmaz strukturálása után helyezze az összes vizualizációt, és jelölje ki az összes szeletelőt, a szinkronizálási szeletelőt kiválasztva csak a szükséges adatmennyiséget töltheti be.
 
 * **Szűrők használata** – a lehető legtöbb Power bi szűrőt használhatja az Azure adatkezelő keresésre a releváns adatszegmenseken.
 
@@ -104,7 +104,7 @@ A **lekérdezések szerkesztése** ablakban a **Home** > **speciális szerkeszt�
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Cserélje le a lekérdezés megfelelő részét a paraméterrel. A lekérdezés felosztása több részre, és a paraméterrel együtt összefűzheti őket a &-aláírás használatával.
+1. Cserélje le a lekérdezés megfelelő részét a paraméterrel. Ossza szét a lekérdezést több részre, és fűzze össze őket egy jel (&) használatával, a paraméterrel együtt.
 
    A fenti lekérdezésben például elvégezjük a `State == 'ALABAMA'` részt, és a következőre kell bontani: `State == '` és `'`, és a `State` paramétert a következők közé helyezjük:
    
@@ -138,7 +138,7 @@ Egy lekérdezési paramétert is használhat bármely olyan lekérdezési lépé
 
 ### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>Ne használja a Power BI adatfrissítési ütemező segítségével Kusto a vezérlési parancsokat
 
-Power BI tartalmaz egy adatfrissítési ütemező, amely rendszeres időközönként lekérdezést tud kiadni egy adatforrásra vonatkozóan. Ezt a mechanizmust nem szabad felhasználni a vezérlési parancsok Kusto való megadására, mivel Power BI feltételezi, hogy az összes lekérdezés írásvédett.
+Power BI tartalmaz egy adatfrissítési ütemező, amely rendszeres időközönként lekérdezést tud kiadni egy adatforrásra vonatkozóan. Ezt a mechanizmust nem szabad felhasználni a Kusto tartozó vezérlési parancsok megadására, mert Power BI feltételezi, hogy az összes lekérdezés írásvédett.
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI csak rövid (&lt;2000 karakteres) lekérdezéseket küldhet a Kusto
 

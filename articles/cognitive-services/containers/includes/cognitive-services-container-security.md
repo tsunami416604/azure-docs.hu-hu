@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 0e9fa9146292bf7dabbbf06d3bb436aa6cd2e6e2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124079"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842564"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services tároló biztonsága
 
@@ -23,7 +23,7 @@ Az alkalmazások fejlesztésekor a biztonságnak elsődleges fókusznak kell len
 > [!IMPORTANT]
 > Alapértelmezés szerint nincs *Biztonság* a Cognitive Services Container API-ban. Ennek az az oka, hogy a tároló a legtöbb esetben egy olyan Pod részeként fut, amely egy hálózati híddal kívülről van védve. Azonban engedélyezhető a hitelesítés, amely azonos módon működik a [felhőalapú Cognitive Serviceshoz][request-authentication]való hozzáféréskor használt hitelesítéssel.
 
-Az alábbi ábra az alapértelmezett és a nem **biztonságos** megközelítést mutatja be:
+Az alábbi ábra az alapértelmezett és **nem biztonságos** megközelítést mutatja be:
 
 ![Tárolóbiztonság](../media/container-security.svg)
 

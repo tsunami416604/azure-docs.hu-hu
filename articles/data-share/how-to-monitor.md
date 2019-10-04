@@ -1,51 +1,55 @@
 ---
-title: Azure fájlmegosztás Adatelőnézet figyelése
-description: Azure fájlmegosztás Adatelőnézet figyelése
+title: Az Azure-beli adatmegosztás előzetes verziójának figyelése
+description: Az Azure-beli adatmegosztás előzetes verziójának figyelése
 author: joannapea
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 869c1ed41d7f78df184461bc1d8cab6c6eb8d426
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fbc6847dd86b7687d477b2bae0deab1389dc8491
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789097"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827068"
 ---
-# <a name="monitor-azure-data-share-preview"></a>A figyelő az Azure Data megosztás előzetes verzió 
+# <a name="monitor-azure-data-share-preview"></a>Az Azure-beli adatmegosztás előzetes verziójának figyelése 
 
-Ez a cikk bemutatja, hogyan figyelheti az Azure Data megosztás előzetes verziójának adatmegosztások. Adatszolgáltató, mint Ön figyelheti az adatmegosztási kapcsolatok üzemeltetés minőségének különböző szempontjait. Például hogy az adatfelhasználók fogadták el a meghívást, az adatok megosztása, valamint hogy rendelkezik egy megosztás az előfizetés létrehozása és használatba az adatok érhetők el az összes figyeléséhez. 
+Ez a cikk azt ismerteti, hogyan figyelhetők meg az adatmegosztások az Azure-beli adatmegosztás előzetes verziójával. Adatszolgáltatóként az adatmegosztási kapcsolatok különböző szempontjait figyelheti. A részleteket, például azt, hogy az adatok fogyasztói elfogadták-e a meghívót az adatmegosztásra, valamint hogy létrehozott-e megosztási előfizetést, és megkezdte-e az adatok használatát a figyeléshez. 
 
-Vásárlói adatok a pillanatképek lett kiváltó figyelheti az Azure-előfizetésben helyezi. 
+Adatfogyasztóként nyomon követheti az Azure-előfizetésében aktivált pillanatképeket. 
 
-## <a name="monitor-invitation-status"></a>A figyelő meghívás állapota
+## <a name="monitor-invitation-status"></a>Meghívási állapot figyelése
 
-Az adatok megosztási meghívókat az elküldött megosztások állapotának megtekintése -> meghívók. 
+Megtekintheti az adatmegosztási meghívások állapotát, ha az elküldött megosztások – > meghívások pontra navigál. 
 
-![Meghívás állapota](./media/invitation-status.png "meghívás állapota") 
+![Meghívás állapotának](./media/invitation-status.png "Meghívási állapota") 
 
-Nincsenek a meghívást, három állapota:
+A meghívónak három állapota lehet:
 
-* Függőben lévő - adatok megosztása címzett van még nem fogadta el a meghívást.
-* Elfogadva – adatok megosztás címzett elfogadta a meghívást.
-* Elutasított - adatok megosztása címzett elutasította a meghívót.
+* Függőben – az adatmegosztási címzett még nem fogadta el a meghívót.
+* Elfogadás – az adatmegosztási címzett elfogadta a meghívót.
+* Elutasítva – az adatmegosztási címzett elutasította a meghívást.
 
 > [!IMPORTANT]
-> Ha már elfogadták után törli egy meghívást arra, azt, nem egyenértékű, visszavonja az elérését. Állítsa le az adatokat a fogyasztók tárfiókba történő másolásának jövőbeli pillanatképeket, szeretné, ha vissza kell vonnia elérés a *előfizetések megosztása* lapon. 
+> Ha töröl egy meghívót a már elfogadását követően, az nem felel meg a hozzáférés visszavonásának. Ha azt szeretné, hogy a jövőbeli Pillanatképek ne legyenek átmásolva az adatfogyasztók tárolási fiókjába, vissza kell vonnia a hozzáférést a *megosztás-előfizetések* lapon. 
 
-## <a name="monitor-share-subscriptions"></a>A figyelő megosztás előfizetések
+## <a name="monitor-share-subscriptions"></a>Megosztási előfizetések figyelése
 
-Az elküldött megosztások megosztás előfizetés állapotának megtekintése -> előfizetések megosztani. Ekkor kap a meghívás elfogadása után az adatfelhasználók által létrehozott aktív előfizetések részleteit. Az adatfogyasztó jövőbeli frissítései a megosztás előfizetés kiválasztásával leállíthatja *visszavonása*. 
+Megtekintheti a megosztási előfizetések állapotát, ha az eljuttatott megosztások – > megosztási előfizetések – gombra kattint. Ezzel a meghívót elfogadva megtekintheti az adatfogyasztók által létrehozott aktív előfizetésekre vonatkozó adatokat. Az adatfogyasztó jövőbeli frissítéseit az előfizetés megosztása és a *Visszavonás*lehetőség kiválasztásával állíthatja le. 
 
 ## <a name="snapshot-history"></a>Pillanatkép-előzmények 
 
-Az Előzmények lapon megtekintheti a pillanatképek erőforrástármegosztásba megtörtént-e a bérlő az adatfogyasztó áll. Ön figyelheti a gyakorisága és időtartama minden pillanatkép-készítési időköz. 
+Az Előzmények lapon megtekintheti azokat a pillanatképeket, amelyeket a rendszer az adatfogyasztó bérlője számára másolt. Nyomon követheti az egyes Pillanatképek intervallumának gyakoriságát és időtartamát. 
 
-![Pillanatkép-előzmények](./media/sent-shares.png "pillanatkép-előzmények") 
+![Pillanatkép-előzmények](./media/sent-shares.png "Pillanatkép-előzményei") 
 
-Megtekintheti, hogy minden egyes futtatásához kattintson a Futtatás kezdő időpontjától pillanatkép kapcsolatos további részletekért. 
+A pillanatképek futtatásával kapcsolatos további részletekért tekintse meg a Futtatás kezdő dátumra kattintva. 
+
+Alapértelmezés szerint a pillanatképek előzményeinek akár 30 napja is megjelenik. Ha több mint 30 nappal korábbi előzményekre van szüksége, navigáljon a figyelés – > diagnosztikai beállítások elemre, és válassza a **diagnosztikai beállítás hozzáadása**lehetőséget. A naplók a-ba való tárolásához ki kell választania egy Storage-fiókot. 
+
+![Pillanatkép-előzmények](./media/diagnostic-settings.png "diagnosztikai beállításai") 
 
 ## <a name="next-steps"></a>További lépések 
 
-Tudjon meg többet [az adatok megosztása az Azure-terminológia](terminology.md)
+További információ az [Azure adatmegosztási terminológiáról](terminology.md)

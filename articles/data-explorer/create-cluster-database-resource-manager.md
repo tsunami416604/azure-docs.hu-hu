@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329434"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936895"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával
 
@@ -110,7 +110,7 @@ A Azure Resource Manager sablont [a Azure Portal vagy a](#use-the-azure-portal-t
 
     ![Üzembe helyezés az Azure-ban](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
+    A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
 
 1. Fejezze be az **alapok** és **Beállítások** szakaszt. Válassza ki az egyedi fürtöt és az adatbázis nevét.
 Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz igénybe.
@@ -142,7 +142,7 @@ Az Azure Adatkezelő-fürt és-adatbázis létrehozása néhány percet vesz ig�
 
 #### <a name="verify-the-deployment-using-powershell"></a>A telepítés ellenőrzése a PowerShell használatával
 
-A központi telepítés ellenőrzéséhez használja a következő Azure PowerShell parancsfájlt.  Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép). Az Azure Adatkezelő-erőforrások PowerShellben való kezelésével kapcsolatos további információkért olvassa el [az az. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). Módosítsa a releváns módosításokat
+A központi telepítés ellenőrzéséhez használja a következő Azure PowerShell parancsfájlt.  Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép). Az Azure Adatkezelő-erőforrások PowerShellben való kezelésével kapcsolatos további információkért olvassa el [az az. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -163,7 +163,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Törölje a Azure Portal található erőforrásokat az [erőforrások tisztítása](create-cluster-database-portal.md#clean-up-resources)című témakör lépéseit követve.
 
-### <a name="clean-up-resources-using-powershell"></a>Erőforrások karbantartása a PowerShell használatával
+### <a name="clean-up-resources-using-powershell"></a>Az erőforrások eltávolítása a PowerShell használatával
 
 Ha a Cloud Shell továbbra is nyitva van, nem kell átmásolnia/futtatnia az első sort (olvasás-gazdagép).
 

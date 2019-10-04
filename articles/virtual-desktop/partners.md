@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673018"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937502"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -33,9 +33,9 @@ A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyválla
 
 ![VMware-embléma](./media/partners/vmware.png)
 
-A VMware Horizon Cloud on Microsoft Azure lehetővé teszi a szervezetek számára, hogy az egyszerű, intuitív horizontú felhő-ellenőrzési síkon összekapcsolják a saját Microsoft Azure a saját példányát, így biztonságos, átfogó, felhőben üzemeltetett megoldást biztosítanak a virtualizált eszközök megvalósításához Windows-alkalmazások és-asztalok. A Windows rendszerű virtuális asztali verzióban a VMware a Microsofttal együttműködve kiterjesztheti a Windows rendszerű virtuális asztal funkcióit az ügyfeleknek a Horizon Cloud on Microsoft Azure használatával.
-
-Jóváhagyott szolgáltatóként a VMware Horizon Cloud on Microsoft Azure ügyfelei a Windows rendszerű virtuális asztalok összes előnyét megkapják, mint például a Windows 10 Enterprise for multi-session, a Windows 7 és az ingyenes kibővített biztonsági frissítéseket legfeljebb három évig, és FSLogix a Horizon Cloud modern, nagyvállalati szintű funkciói, például a széleskörű végpontok támogatása mellett. globális, felhőre optimalizált közvetítés, rugalmas asztali beállítások és konfigurációk, felhasználói környezetek kezelése és hibrid környezetek támogatása. 
+A VMware Horizon Cloud on Microsoft Azure lehetővé teszi a szervezetek számára, hogy az egyszerű, intuitív horizontú felhő-ellenőrzési síkon összekapcsolják a saját Microsoft Azure a saját példányát, így biztonságos, átfogó, felhőben üzemeltetett megoldást biztosítanak a virtualizált eszközök megvalósításához Windows-alkalmazások és-asztalok. A Windows rendszerű virtuális asztali verzióban a VMware a Microsofttal együttműködve kiterjesztheti a Windows rendszerű virtuális asztal funkcióit az ügyfeleknek a Horizon Cloud on Microsoft Azure használatával. Ez a funkció a tech Preview-ban lesz elérhető a 2019 végéig.
+ 
+Jóváhagyott szolgáltatóként a Windows rendszerű virtuális asztalok előnyeit a VMware Horizon Cloud-ra terjeszti ki Microsoft Azure ügyfeleken, beleértve a Windows 10 Enterprise for multi-session, a Windows 7 ingyenes kiterjesztett biztonsági frissítéseit akár három évig is, és FSLogix. Emellett az ügyfelek a Horizon Cloud nagyvállalati szintű funkcióit is megkapják, például a széles körű végpontok támogatását; globális, felhőben optimalizált közvetítés; rugalmas asztali beállítások és konfigurációk; felhasználói környezet kezelése; és a hibrid környezetek támogatása.
 
 - [Regisztráljon a Horizon Cloud Microsoft Azure-on elérhető Tech Preview-ra](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Lépjen a partner webhelyére](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
@@ -93,7 +93,7 @@ A Nerdio egy Azure IT Automation platform, amely megkönnyíti a Windows rendsze
 A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megkönnyíti az Azure-erőforrások kiépítését és az üzembe helyezés egyszerűsítését. Az Azure-hoz készült Nerdio használatával a teljes körű Azure-környezetet, például a Windows virtuális asztalt is automatikusan üzembe helyezheti és kezelheti két órán belül.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Lépjen a partner webhelyére](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
+- [Lépjen a partner webhelyére](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 

@@ -1,5 +1,5 @@
 ---
-title: Automatikus üzembe Windows-eszközök Azure IoT Edge - a DPS |} A Microsoft Docs
+title: Windows-eszközök automatikus kiépítése a DPS-Azure IoT Edgeokkal | Microsoft Docs
 description: Szimulált eszköz használata a Windows-gépen teszteléséhez automatikus eszközkiépítés az Azure IoT Edge Device Provisioning Service szolgáltatással
 author: kgremban
 manager: philmea
@@ -9,23 +9,29 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 16ac8ef9e0fb876103b57b1cc463bdae5b2362b7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677440"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828109"
 ---
-# <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>A Windows egy szimulált TPM Edge-eszköz létrehozása és kiépítése
+# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Szimulált IoT Edge eszköz létrehozása és kiépítése virtuális TPM-sel Windows rendszeren
 
 Az Azure IoT Edge-eszközök automatikus – helyezhetők a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri az Automatikus kiépítés folyamatát, tekintse át a [automatikus kiépítés alapfogalmait](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt.
 
-Ez a cikk bemutatja, hogyan tesztelheti automatikus kiépítés szimulált peremhálózati eszközön az alábbi lépéseket követve:
+Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítést egy szimulált IoT Edge eszközön a következő lépésekkel:
 
 * Hozzon létre egy példányt, IoT Hub Device Provisioning szolgáltatás (DPS).
 * A gépen Windows-egy szimulált platformmegbízhatósági modul (TPM) a hardveres biztonsági egy szimulált eszköz létrehozása.
 * Hozzon létre egyéni regisztrációt az eszközön.
 * Telepítse az IoT Edge-futtatókörnyezet és az eszköz csatlakoztatása az IoT hubhoz.
+
+> [!NOTE]
+> A TPM 2,0-es kiadására akkor van szükség, ha a TPM-igazolást a DPS használatával használja, és csak egyéni, nem csoportos, regisztrációkat hozhat létre.
+
+> [!TIP]
+> Ez a cikk azt ismerteti, hogyan lehet az automatikus kiépítés tesztelését a TPM-igazolás használatával virtuális eszközökön, de a fizikai TPM-hardverek használata esetén ez nagy részét is alkalmazza.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,9 +44,14 @@ Hozzon létre egy új példányát az IoT Hub Device Provisioning Service az Azu
 
 Miután a Device Provisioning Service futó, másolja az értékét **azonosító hatóköre** az Áttekintés lapon. Amikor az IoT Edge-futtatókörnyezet konfigurálja ezt az értéket használja.
 
+> [!TIP]
+> Ha fizikai TPM-eszközt használ, meg kell határoznia a **jóváhagyás kulcsát**, amely minden TPM-lapka esetében egyedi, és a hozzá társított TPM-lapka gyártójától származik. Létrehozhat egy egyedi **regisztrációs azonosítót** a TPM-eszközhöz, például a HÁTIRAT kulcs SHA-256 kivonatának létrehozásával.
+>
+> Kövesse a cikk utasításait az [eszközök regisztrálásának az Azure Portalon való kezeléséhez](../iot-dps/how-to-manage-enrollments.md) a DPS-ben való regisztráció létrehozásához, majd folytassa a jelen cikk [IoT Edge futtatókörnyezet telepítése](#install-the-iot-edge-runtime) című szakaszával a folytatáshoz.
+
 ## <a name="simulate-a-tpm-device"></a>TPM-eszköz szimulálása
 
-Szimulált TPM-eszköz létrehozása a Windows fejlesztői gépen. Lekérése a **regisztrációs azonosító** és **ellenőrzőkulcsot** az eszközhöz, és ezek segítségével egyéni regisztrációs bejegyzés létrehozása a DPS Szolgáltatásban.
+Szimulált TPM-eszköz létrehozása a Windows fejlesztői gépen. Kérje le az eszköz **regisztrációs azonosítóját** és **záradékának kulcsát** , és hozzon létre egy egyéni beléptetési bejegyzést a DPS-ben.
 
 Amikor létrehoz egy regisztrációs a DPS Szolgáltatásban, lehetősége van deklarálnia egy **Ikereszköz kezdeti állapota**. Az ikereszköz címkék beállíthat csoportosítani az eszközöket a megoldás, mint például a régiót, környezetet, hely vagy eszköz típusa kell tetszőleges metrika szerint. Ezekkel a címkékkel hozhatók létre [automatikus központi telepítések](how-to-deploy-monitor.md).
 
@@ -60,15 +71,39 @@ Miután létrehozta az egyéni regisztráció, mentse az értékét a **regisztr
 
 ## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-modul telepítése
 
-Ha befejezte az előző szakaszban, az új eszközt az IoT Hub IoT Edge-eszköz állapottal jelenik meg. Most telepítenie kell az IoT Edge-futtatókörnyezet az eszközön.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Annak összetevői tárolókban futtassa, és lehetővé teszi, hogy a kódot futtathatja a peremhálózaton további tárolókat üzembe az eszközön.
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Annak összetevői tárolókban futtassa, és lehetővé teszi, hogy a kódot futtathatja a peremhálózaton további tárolókat üzembe az eszközön.  
+Az eszköz kiépítés során a következő információkra lesz szüksége:
 
-Kövesse az utasításokat követve telepítse az IoT Edge-futtatókörnyezet, amely az előző szakaszban a szimulált TPM-eszköz fut az eszközön. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést.
+* A DPS- **azonosító hatókörének** értéke
+* A létrehozott eszköz **regisztrációs azonosítója**
 
-Az eszközön a IoT Edge telepítése előtt Ismerje meg a DPS- **azonosító hatókörét** és az eszköz **regisztrációs azonosítóját** .
+Telepítse a IoT Edge futtatókörnyezetet a szimulált TPM-t futtató eszközre. A IoT Edge futtatókörnyezetet automatikus, nem manuális, kiépítés esetén kell konfigurálnia.
 
-[IoT Edge telepítése és automatikus kiépítése](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+> [!TIP]
+> Tartsa meg az ablak, amely a TPM-szimulátor fut, nyissa meg a telepítés során, és a tesztelés.
+
+A IoT Edge Windows rendszeren való telepítésével kapcsolatos további információkért, beleértve a tárolók kezeléséhez és a IoT Edge frissítéséhez szükséges feladatok előfeltételeit és utasításait lásd: [a Azure IoT Edge futtatókörnyezet telepítése Windows](how-to-install-iot-edge-windows.md)rendszeren.
+
+1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. Ügyeljen arra, hogy az IoT Edge telepítésekor a PowerShell AMD64-munkamenetét használja, nem a PowerShell (x86) rendszerre.
+
+1. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, majd letölti a Moby Runtime és a IoT Edge futtatókörnyezetet. A parancs alapértelmezés szerint Windows-tárolókat használ.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Deploy-IoTEdge
+   ```
+
+1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
+
+1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés. `-Dps` A jelző használatával a manuális kiépítés helyett a Device kiépítési szolgáltatást használhatja.
+
+   Cserélje le a `{scope_id}` és a `{registration_id}` helyőrző értékét a korábban összegyűjtött adatokra.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
+   ```
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
@@ -81,7 +116,6 @@ Get-Service iotedge
 ```
 
 Vizsgálja meg a szolgáltatási naplók az elmúlt 5 percben.
-
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

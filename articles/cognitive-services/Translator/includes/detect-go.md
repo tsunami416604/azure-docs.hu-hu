@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c2408d8ea8fb6458761ef1d853d5dde52ac2311
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907175"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837513"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>A fő függvény létrehozása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`környezeti változókból: és. Ha nem ismeri a környezeti változókat, beállíthatja `subscriptionKey` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat, és megjegyzéseket fűzhet hozzájuk.
+Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből a környezeti változókból: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` és a `endpoint` karakterláncokat, és megjegyzéseket fűzhet a feltételes utasításokhoz.
 
 Másolja a projektbe a következő kódot:
 
@@ -78,7 +78,7 @@ func detect(subscriptionKey string, uri string) {
 }
 ```
 
-Ezután hozzon létre egy URL-címet. Az URL-cím a és `Parse()` `Query()` a metódusok használatával készült.
+Ezután hozzon létre egy URL-címet. Az URL-cím a `Parse()` és a `Query()` metódusok használatával készült.
 
 Másolja ezt a kódot a `detect` függvénybe.
 
@@ -94,7 +94,7 @@ u.RawQuery = q.Encode()
 
 ## <a name="create-a-struct-for-your-request-body"></a>Struct létrehozása a kérés törzséhez
 
-Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, és kódolja `json.Marshal()`JSON-ként a következővel:. Adja hozzá ezt a kódot `detect` a függvényhez.
+Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, és kódolja JSON-ként `json.Marshal()` értékkel. Adja hozzá ezt a kódot a `detect` függvényhez.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -131,7 +131,7 @@ Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, 
 
 ## <a name="handle-and-print-the-response"></a>A válasz kezelése és nyomtatása
 
-Adja hozzá ezt a kódot `detect` a függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
+Adja hozzá ezt a kódot a `detect` függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
 
 ```go
 // Decode the JSON response
@@ -156,7 +156,11 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+A minta futtatása után a következőnek kell megjelennie a terminálon:
+
+> [!NOTE]
+> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+
 
 ```json
 [

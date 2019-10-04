@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/03/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 98330e88b0b94c488fd968d8fc18806ec6908b26
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7c137572fadd07254343b7b4c34b5a63534b9d88
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316195"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936997"
 ---
 # <a name="install-and-run-computer-vision-containers"></a>Computer Vision tárolók telepítése és futtatása
 
@@ -44,8 +44,6 @@ A tárolók használata előtt meg kell felelnie a következő előfeltételekne
 ## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
-
-[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ### <a name="the-host-computer"></a>A gazdaszámítógép
 
@@ -99,7 +97,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Miután a tároló a gazdagépen [](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
+Miután a tároló a [gazdagépen](#the-host-computer) található, a következő eljárással dolgozhat a tárolóval.
 
 1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező számlázási beállításokkal. További [példák](computer-vision-resource-container-config.md) a `docker run` parancsra. 
 1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint). 
@@ -108,7 +106,7 @@ Miután a tároló a gazdagépen [](#the-host-computer)található, a következ�
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A`{ENDPOINT_URI}` és`{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
-[](computer-vision-resource-container-config.md#example-docker-run-commands) A`docker run` parancs például elérhető.
+A`docker run` parancs [például](computer-vision-resource-container-config.md#example-docker-run-commands) elérhető.
 
 # <a name="readtabread"></a>[Olvasás](#tab/read)
 
@@ -343,7 +341,7 @@ Használhatja a `POST /vision/v2.0/recognizeTextDirect` művelet szinkron ismeri
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a tárolót egy kimeneti csatlakoztatással [](./computer-vision-resource-container-config.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
+Ha a tárolót egy kimeneti [csatlakoztatással](./computer-vision-resource-container-config.md#mount-settings) futtatja, és a naplózás engedélyezve van, a tároló olyan naplófájlokat hoz létre, amelyek hasznosak a tároló indításakor vagy futtatásakor felmerülő problémák elhárításához.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 

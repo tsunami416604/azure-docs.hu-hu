@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300115"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844402"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
 
@@ -99,7 +99,7 @@ Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonságga
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>A partíciós kulccsal nem rendelkező dokumentumok elérése
 
-Az alkalmazások a "CosmosContainerSettings. NonePartitionKeyValue" nevű speciális rendszertulajdonsággal érhetik el a meglévő dokumentumokat, amelyek nem rendelkeznek partíciós kulccsal, ez a nem áttelepített dokumentumok értéke. Ezt a tulajdonságot használhatja az összes szifilisz-és lekérdezési műveletben. Az alábbi példa egy olyan mintát mutat be, amely egyetlen dokumentumot olvas be a NonePartitionKey. 
+Az alkalmazások a "PartitionKey. None" nevű speciális rendszertulajdonságot használva érhetik el a meglévő dokumentumokat, amelyek nem rendelkeznek partíciós kulccsal, ez a nem áttelepített dokumentumok értéke. Ezt a tulajdonságot használhatja az összes szifilisz-és lekérdezési műveletben. Az alábbi példa egy olyan mintát mutat be, amely egyetlen dokumentumot olvas be a NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 

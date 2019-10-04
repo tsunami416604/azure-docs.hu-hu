@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: raynew
-ms.openlocfilehash: c54273e0ca8c88a6fe47d5611950acd38f50b4c0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212797"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937527"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -73,7 +73,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 **Funkció** | **Részletek**
 --- | ---
-Tárfiók | A Site Recovery mostantól támogatja a Hyper-V-ről az Azure-ba irányuló, a tűzfalon engedélyezve lévő Storage-fiókok használatát.  A tűzfalat támogató Storage-fiókokat célként fiókként vagy gyorsítótárbeli tárolóként is kiválaszthatja. Ha tűzfalat használó fiókot használ, engedélyezze a megbízható Microsoft-szolgáltatások engedélyezését.
+Tárfiók | A Site Recovery mostantól támogatja a Hyper-V-ről az Azure-ba irányuló, a tűzfalon engedélyezve lévő Storage-fiókok használatát.  A tűzfalat támogató Storage-fiókokat célként fiókként vagy gyorsítótárbeli tárolóként is kiválaszthatja. Ha tűzfalat használó fiókot használ, engedélyezze a megbízható Microsoft-szolgáltatások engedélyezését.<br/><br/> Ezt a Hyper-V virtuális gépek támogatják a System Center VMM vagy anélkül.
 
 
 ## <a name="updates-august-2019"></a>Frissítések (2019. augusztus)

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 05bb8b75fb09f3b8df0a6775874e72bdb04fc65e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173581"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937541"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
@@ -52,21 +52,20 @@ A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tart
 
 A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a természettel rokon adatokhoz, illetve olyan alkalmazásokhoz is használhatja, amelyek a kapcsolódó adatbázisban tárolt tartalomtól függenek. Stream Analytics feladatok írását egy meglévő táblába SQL Database. A tábla sémájának pontosan egyeznie kell a feladatok kimenetében szereplő mezőkkel és típusokkal. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) kimenetként is megadható kimenetként a SQL Database output (kimenet) lehetőség használatával. Ha többet szeretne megtudni az írási sebesség javításának módjairól, tekintse meg a [Azure SQL Database as stream Analytics](stream-analytics-sql-output-perf.md) a kimenettel című cikket.
 
+[Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) kimenetként is használható. [Azure SQL Database felügyelt példányban konfigurálnia kell a nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , majd manuálisan kell konfigurálnia a következő beállításokat a Azure stream Analyticsban. A SQL Servert futtató Azure-beli virtuális gépeket az alábbi beállítások manuális konfigurálásával is támogatja.
+
 A következő táblázat felsorolja a tulajdonságok nevét és leírását SQL Database kimenet létrehozásához.
 
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias |A lekérdezés kimenete ehhez az adatbázishoz a lekérdezésekben használt rövid név. |
 | Adatbázis | Annak az adatbázisnak a neve, ahová a kimenetet küldi. |
-| Kiszolgálónév | Az SQL Database-kiszolgáló neve. |
+| Kiszolgálónév | Az SQL Database-kiszolgáló neve. Azure SQL Database felügyelt példány esetében az 3342-es portot kell megadni. Például: *sampleserver. public. database. Windows. net, 3342* |
 | Felhasználónév | Az adatbázishoz írási hozzáféréssel rendelkező Felhasználónév. A Stream Analytics csak az SQL-hitelesítést támogatja. |
 | Windows 10 | A jelszó az adatbázishoz való csatlakozáshoz. |
 | Tábla | A tábla neve, ahol a kimeneti íródik. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával. |
 |Partíciós séma öröklése| Az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több íróival a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).|
 |Maximális kötegszám| Az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.|
-
-> [!NOTE]
-> A Azure SQL Database ajánlat támogatott a Stream Analyticsban, de egy SQL Azure felügyelt példányban SQL Servert futtató Azure-beli virtuális gép még nem támogatott. Ez a jövőbeni kiadásokban változhat.
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>BLOB Storage és Azure Data Lake Gen2
 

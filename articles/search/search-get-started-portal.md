@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884568"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936986"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Azure Search index létrehozása a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70884568"
 > * [Python](search-get-started-python.md)
 > * [C#](search-get-started-dotnet.md)
 
-Azure Search fogalmak gyors felgyorsításához próbálja ki a Azure Portal beépített eszközeit. A varázslók és a szerkesztők nem biztosítanak teljes paritást a .NET és a REST API-kkal, de gyorsan megkezdheti a kód nélküli bevezetést, és néhány percen belül érdekes lekérdezéseket írhat a mintaadatok ellen.
+Azure Search fogalmak gyors felgyorsításához próbálja ki a Azure Portal beépített eszközeit. A varázslók és a szerkesztők nem biztosítanak teljes paritást a .NET és a REST API-kkal, de gyorsan megkezdheti a kód nélküli bevezetést, és néhány percen belül megtudhatja, hogy az indexek milyen érdekes lekérdezéseket tartalmaznak.
 
 > [!div class="checklist"]
 > * Első lépésként az Azure-ban üzemeltetett ingyenes nyilvános mintaadatok
@@ -53,7 +53,7 @@ A szolgáltatás irányítópultjának fejezetei azt mutatják be, hogy hány in
 
 A keresési lekérdezések egy [*index*](search-what-is-an-index.md) alapján ismétlődnek, amely kereshető adatokat, metaadatokat és további szerkezeteket tartalmaz, amelyek bizonyos keresési viselkedések optimalizálásához használhatók.
 
-Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely könnyedén bejárható egy [*indexelővel*](search-indexer-overview.md) az **Adatok importálása** varázslón keresztül. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. Az indexelő általában programozott módon van használatban, de a portálon az adatimportálás varázsló segítségével érheti el azokat. 
+Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az [*Indexer*](search-indexer-overview.md) használatával bejárható az [ **adatimportálás** varázsló](search-import-data-portal.md)segítségével. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. Az indexelő általában programozott módon van használatban, de a portálon az adatimportálás varázsló segítségével érheti el azokat. 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1\. lépés – az adatimportálás varázsló elindítása és adatforrás létrehozása
 

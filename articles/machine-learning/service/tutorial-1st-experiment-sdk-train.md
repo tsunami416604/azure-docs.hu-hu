@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327226"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828013"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -35,21 +35,12 @@ Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munk
 
 Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb` futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
-## <a name="launch-jupyter-web-interface"></a>A Jupyter webes felületének elindítása
+## <a name="open-the-notebook"></a>A jegyzetfüzet megnyitása
 
-1. A Azure Portal munkaterület lapján válassza a bal oldalon található **notebook virtuális gépek** elemet.
+1. Jelentkezzen be a [munkaterület](https://ml.azure.com/)kezdőlapján.
 
-1. Az oktatóanyag első részében létrehozott virtuális gép **URI** oszlopában válassza a **Jupyter** lehetőséget.
+1. Nyissa meg az **oktatóanyag-1st-Experiment-SDK-Train. ipynb** a mappában az első [részben](tutorial-1st-experiment-sdk-setup.md#open)látható módon.
 
-    ![A Jupyter notebook-kiszolgáló elindítása](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
-
-   A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
-
-1. A Jupyter notebook weboldalán válassza ki a saját felhasználónevével rendelkező legfelső szintű mappanév-nevet.  
-
-   Ez a mappa nem a jegyzetfüzet virtuális gépén, hanem a munkaterület [Storage-fiókjában](concept-workspace.md#resources) található.  Ha törli a notebook VM-et, továbbra is megtarthatja a munkáját.  Amikor később hoz létre egy új jegyzetfüzet virtuális gépet, a rendszer ezt a mappát fogja betölteni. Ha a munkaterületet másokkal is megosztja, látni fogja a mappát, és látni fogja a sajátját.
-
-1. Nyissa `samples-*` meg az alkönyvtárat, majd nyissa meg a `.yml` Jupyter-jegyzetfüzetet `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **ne** pedig az azonos nevű fájlt. 
 
 > [!Warning]
 > Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` a jelen oktatóanyaghoz **szükséges összes kóddal és adattal** rendelkezik.
@@ -60,7 +51,7 @@ Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter 
 > A cikk többi része ugyanazt a tartalmat tartalmazza, mint amit a jegyzetfüzetben lát.  
 >
 > Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. 
-> Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy kijelöli a **cella > az összes futtatása** lehetőséget a felső menüben.
+> Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
 
 Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de a fájlra mutató elérésiút-paramétert is megadhat. a `from_config(path="your/file/path")`használata. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
@@ -138,11 +129,11 @@ A képzés befejezését követően hívja meg a `experiment` változót, hogy b
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Az Azure Portalra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
+<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Képzés eredményeinek megtekintése a portálon
 
-Az **Azure Portalra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték (`alpha_value` és `rmse`ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a kísérlet oldal tetején található diagramok és csempék számára is. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
+A **Azure Portalre mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték (`alpha_value` és `rmse`ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a kísérlet oldal tetején található diagramok és csempék számára is. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
 
 Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalon könnyedén megtekintheti a betanított modelleket, és hogy miként változnak az egyedi mérőszámok az idő múlásával.
 
@@ -182,7 +173,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-A legjobb futtatási azonosítóval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja `get_file_names()` meg az erről a futtatásról letölthető összes fájl megtekintését. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
+A legjobb futtatási AZONOSÍTÓval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja `get_file_names()` meg az erről a futtatásról letölthető összes fájl megtekintését. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
 
 ```python
 from azureml.core import Run

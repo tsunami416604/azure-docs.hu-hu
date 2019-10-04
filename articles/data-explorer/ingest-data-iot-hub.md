@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: cbe9aa2ea664d97df6008de05d6cb84da9771bcc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
-ms.translationtype: MT
+ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166549"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937390"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Adatok beolvasása IoT Hubból az Azure Adatkezelőba (előzetes verzió)
 
@@ -38,7 +38,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Céltábla létrehozása az Azure Data Explorerben
 
-Most létrehoz egy táblát az Azure Adatkezelőban, amelybe az IoT-hubok elküldik az adatküldést. Létrehozza a táblát a fürtben, és az előfeltételként kiépített adatbázist. [](#prerequisites)
+Most létrehoz egy táblát az Azure Adatkezelőban, amelybe az IoT-hubok elküldik az adatküldést. Létrehozza a táblát a fürtben, és az [**előfeltételként**](#prerequisites)kiépített adatbázist.
 
 1. A Azure Portal navigáljon a fürthöz, és válassza a **lekérdezés**lehetőséget.
 
@@ -76,11 +76,11 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
 
     **Beállítás** | **Mező leírása**
     |---|---|
-    | Adatkapcsolat neve | Az Azure-Adatkezelő létrehozni kívánt kapcsolódás neve
-    | IoT Hub | IoT Hub neve |
-    | Megosztott elérési házirend | A megosztott hozzáférési szabályzat neve. Olvasási engedélyekkel kell rendelkeznie |
-    | Fogyasztói csoport |  A IoT Hub beépített végpontban definiált fogyasztói csoport |
-    | Eseményvezérelt rendszerek tulajdonságai | A IoT Hub Event System tulajdonságai |
+    | Adatkapcsolat neve | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.
+    | IoT Hub | IoT Hub neve. |
+    | Megosztott elérési házirend | A megosztott hozzáférési szabályzat neve. Olvasási engedélyekkel kell rendelkeznie. |
+    | Fogyasztói csoport |  A IoT Hub beépített végpontban definiált fogyasztói csoport. |
+    | Esemény rendszertulajdonságai | A IoT Hub eseményrendszer tulajdonságai Ha az eseményen több rekord van, akkor a rendszer tulajdonságai hozzáadódnak az elsőhöz. |
     | | 
 
     > [!NOTE]
@@ -95,11 +95,12 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
     |---|---|---|
     | Tábla | *TestTable* | A **testdb**-ben létrehozott tábla. |
     | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. |
-    | Oszlopleképezés | *TestMapping* | A **testdb**-ben létrehozott leképezés, amely leképezi a bejövő JSON-adattípusokat a **testdb**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-és AVRO szükséges, és nem kötelező más formátumokhoz.|
+    | Oszlop-hozzárendelés | *TestMapping* | A **testdb**-ben létrehozott leképezés, amely leképezi a bejövő JSON-adattípusokat a **testdb**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-és AVRO szükséges, és nem kötelező más formátumokhoz.|
     | | |
 
-    > [!TIP]
-    > Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
+    > [!NOTE]
+    > * Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
+    > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
 
 ## <a name="generate-sample-data-for-testing"></a>Mintaadatok készítése teszteléshez
 
@@ -111,7 +112,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 1. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `s_connectionString` változó értékét az eszköz kapcsolódási karakterláncára az [eszköz regisztrálása a IoT hub](#register-a-device-to-the-iot-hub). Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
+    Cserélje le a `s_connectionString` változó értékét az eszköz-kapcsolódási sztringre az [eszköz regisztrálása a IoT hub](#register-a-device-to-the-iot-hub). Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
@@ -164,7 +165,7 @@ Ha nem tervezi a IoT Hub újbóli használatát, törölje a **test-hub-RG-** t,
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
 
-    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/ingest-data-event-hub/expand.png) a kinyitásához.
+    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gomb](media/ingest-data-event-hub/expand.png) a kinyitásához.
 
    ![A törölni kívánt erőforráscsoport kiválasztása](media/ingest-data-event-hub/delete-resources-select.png)
 

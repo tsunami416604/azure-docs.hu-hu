@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c1a8b916feb2ad67623434f2b63468be72bf1aa
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 01168540e27605db0d240c0774159a710b5d5254
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879600"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840089"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Oktatóanyag: A Costpoint integrálása Azure Active Directory
 
@@ -44,129 +44,146 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli környezetekben végezheti el. A Costpoint **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
 
-## <a name="adding-costpoint-from-the-gallery"></a>Costpoint hozzáadása a gyűjteményből
+## <a name="generate-costpoint-metadata"></a>Costpoint-metaadatok előállítása
 
-A Costpoint Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Costpoint a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Costpoint SAML SSO konfigurációját a **DeltekCostpoint711Security. pdf** útmutató ismerteti. Töltse le ezt az útmutatót a Deltek Costpoint támogatási webhelyéről, és tekintse meg az **SAML egyszeri bejelentkezés beállítását** >  az**SAML egyszeri bejelentkezés konfigurálása a Costpoint és a Microsoft Azure szakasz között** . Kövesse az utasításokat, és készítsen **COSTPOINT SP összevonási metaadatokat tartalmazó XML-** fájlt. 
+
+![Costpoint-konfigurációs segédprogram](./media/costpoint-tutorial/config-utility.png)
+
+## <a name="add-costpoint-from-the-gallery"></a>Costpoint hozzáadása a gyűjteményből
+
+A Costpoint és az Azure AD integrálásához először adja hozzá a felügyelt SaaS-alkalmazások listájához a Azure Portal a galériából:
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást.
+
+   ![Az Azure Active Directory gomb](common/select-azuread.png)
+
+1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+
+   ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Costpoint** kifejezést a keresőmezőbe.
-1. Válassza ki a **Costpoint** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+   ![Az új alkalmazás gomb](common/add-new-app.png)
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Costpoint a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Costpoint-ben.
+1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Costpoint** kifejezést a keresőmezőbe.
+
+   ![Costpoint az eredmények listájában](common/search-new-app.png)
+
+1. Az eredmények listájában válassza a **Costpoint**lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+
+## <a name="configure-and-test-azure-ad-single-sgn-on"></a>Az Azure AD egyetlen SGN konfigurálása és tesztelése
+
+Konfigurálja és tesztelje az Azure AD SSO-t a Costpoint-mel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Costpoint-ben.
 
 Az Azure AD SSO és a Costpoint konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
-2. **[Konfigurálja a Costpoint](#configure-costpoint)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre Costpoint-tesztelési felhasználót](#create-costpoint-test-user)** , hogy a Costpoint B. Simon párja legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
-6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja a Costpoint](#configure-costpoint)** az SAML SSO beállításainak konfigurálásához az alkalmazás oldalán.
+1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Hozzon létre egy Costpoint-tesztelési felhasználót](#create-a-costpoint-test-user)** , hogy a Costpoint B. Simon párja legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
+1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/) **Costpoint** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A **Costpoint** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Az egyszeri bejelentkezés hivatkozásának konfigurálása](common/select-sso.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha rendelkezik a szolgáltatói *metaadatok fájljával*, hajtsa végre a következő lépéseket:
 
-    > [!NOTE]
-    > A szolgáltatói metaadat-fájlt a **Costpoint-metaadatok létrehozása** szakaszban találja, amelyet az oktatóanyag későbbi részében ismertet.
+   > [!NOTE]
+   > A szolgáltatói metaadatokat a Costpoint- [metaadatok létrehozása](#generate-costpoint-metadata)című fájlban szerezheti be. A fájl használatát az oktatóanyag későbbi részében ismertetjük.
  
-    1. Kattintson a **metaadatfájl feltöltése**.
+   1. Kattintson a **metaadatok feltöltése** gombra, majd válassza ki a **Costpoint SP összevonási METAADATOKAT tartalmazó XML-** fájlt, amelyet korábban a Costpoint hozott létre, majd kattintson a **Hozzáadás** gombra a fájl feltöltéséhez.
+
+      ![A metaadat-fájl feltöltése](./media/costpoint-tutorial/upload-metadata.png)
     
-    1. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
-    
-    1. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan fel lesznek töltve a Costpoint szakasz szövegmezői között.
+   1. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan ki lesznek töltve a Costpoint szakaszban.
 
-        > [!Note]
-        > Ha az **azonosító** és a **Válasz URL-** értékei nem kapnak automatikus polulated, akkor a követelménynek megfelelően adja meg manuálisan az értékeket. Győződjön meg arról, hogy az **azonosító (Entity ID)** és a **Válasz URL-címe (a fogyasztói szolgáltatás URL-címe)** megfelelően van beállítva, és hogy az **ACS URL-** cím érvényes Costpoint URL-cím **/LoginServlet.CPS**végződik.
+      > [!NOTE]
+      > Ha az **azonosító** és a **Válasz URL-címe** nem automatikus polulated, a követelménynek megfelelően adja meg manuálisan az értékeket. Győződjön meg arról, hogy az **azonosító (Entity ID)** és a **Válasz URL-címe (a fogyasztói szolgáltatás URL-címe)** megfelelően van beállítva, és az **ACS URL-** cím egy érvényes Costpoint URL-cím, amely **/LoginServlet.CPS**végződik.
 
-    1. Kattintson a **további URL-címek beállítása**elemre.
+   1. Válassza a **további URL-címek beállítása**lehetőséget. A **továbbítási állapot**mezőben adjon meg egy értéket a következő minta használatával: `system=[your system]` (például **System = DELTEKCP**).
 
-    1. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó értéket:`system=[your system], (for example, **system=DELTEKCP**)`
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** ikont az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a Jegyzettömbbe mentéséhez.
 
-1. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
-    
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://costpointteea.deltek.com/cpweb/cploginform.htm`
-
-    > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a továbbítási állapottal. Az értékek lekéréséhez forduljon a [Costpoint](https://www.deltek.com/about/contact-us) ügyfélszolgálati csapatához. Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
-
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a másolás ikonra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a Jegyzettömbbe mentéséhez.
-
-   ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
-
-### <a name="generate-costpoint-metadata"></a>Costpoint-metaadatok előállítása
-
-A Costpoint SAML SSO konfigurációját a **DeltekCostpoint711Security. pdf** útmutató ismerteti. Ebből az **SAML egyszeri bejelentkezés beállítása – > az SAML egyszeri bejelentkezés konfigurálása a Costpoint és az Azure ad szakasz között** . Kövesse az utasításokat, és készítsen **COSTPOINT SP összevonási metaadatok XML-** fájlját. Ezt a Azure Portal alapszintű **SAML** -konfigurációjában használhatja.
-
-![Costpoint-konfigurációs segédprogram](./media/costpoint-tutorial/config02.png)
-
-> [!NOTE]
-> A **DeltekCostpoint711Security. pdf** útmutatót a [Costpoint ügyfél-támogatási csapattól](https://www.deltek.com/about/contact-us)kapja meg. Ha nem rendelkezik ezzel a fájllal, kérjük, lépjen kapcsolatba velük a fájl beszerzéséhez.
+   ![SAML-aláíró tanúsítvány](common/copy-metadataurl.png)
 
 ### <a name="configure-costpoint"></a>Costpoint konfigurálása
 
-Térjen vissza a **Costpoint konfigurációs segédprogramhoz** , és illessze be az **alkalmazás-összevonási metaadatok URL-címét** a **identitásszolgáltató összevonási metaadatok XML-** szövegmezőbe, és folytassa a **DeltekCostpoint711Security. pdf** útmutató utasításait a következő befejezéséhez: Costpoint SAML-telepítő. 
+1. Térjen vissza a Costpoint konfigurációs segédprogramhoz. Az **identitásszolgáltató összevonási metaadatok XML-** szövege szövegmezőbe illessze be az *alkalmazás-összevonási metaadatok URL-* fájljának tartalmát. 
 
-![Costpoint-konfigurációs segédprogram](./media/costpoint-tutorial/config01.png)
+   ![Costpoint-konfigurációs segédprogram](./media/costpoint-tutorial/config-utility-idp.png)
+
+1. A Costpoint SAML telepítőjének befejezéséhez folytassa a **DeltekCostpoint711Security. pdf** útmutató utasításait.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ennek a szakasznak a célja, hogy létrehozzon egy teszt felhasználót a B. Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** > **felhasználó** > **minden felhasználó**lehetőséget.
+
+   ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+
+1. Válassza az **új felhasználó**lehetőséget.
+
+   ![Új felhasználó gomb](common/new-user.png)
+
+1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
+
+   ![A felhasználó párbeszédpanel](common/user-properties.png)
+
+   1. A név mezőbe írja be a **B. Simon** **nevet** .
+   
+   1. A **Felhasználónév** mezőbe írja be a következőt: `b.simon\@yourcompanydomain.extension` (például B.Simon@contoso.com).
+   
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha B. Simon-hozzáférést biztosít a Costpoint.
+Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát a B. Simon elérésének biztosításával a Costpoint.
 
 1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+
 1. Az alkalmazások listában válassza a **Costpoint**lehetőséget.
+
 1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+   ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanel **felhasználók** listájában válassza ki a **B. Simon**elemet. Ezután válassza a **kiválasztás**lehetőséget.
 
-### <a name="create-costpoint-test-user"></a>Costpoint-tesztelési felhasználó létrehozása
+1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd válassza a **kiválasztás**lehetőséget.
 
-Ebben a szakaszban egy felhasználót fog létrehozni a Costpoint-ben. Tegyük fel, hogy a **felhasználói azonosító** a **b. Simon** és a **b. Simon**név. A [Costpoint ügyfél-támogatási csapattal](https://www.deltek.com/about/contact-us) együttműködve vegye fel a felhasználót a Costpoint-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználót.
- 
-A létrehozást követően a felhasználó **hitelesítési módszerének** **Active Directory**kell lennie, az **SAML egyszeri bejelentkezés** jelölőnégyzetet ki kell jelölni, és a felhasználónévnek Azure Active Directory kell LENNIe **Active Directory vagy a tanúsítvány azonosítója** (az alább látható módon).
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
-![Costpoint-felhasználó](./media/costpoint-tutorial/user01.png)
+### <a name="create-a-costpoint-test-user"></a>Costpoint-teszt felhasználó létrehozása
+
+Ebben a szakaszban egy felhasználót hoz létre a Costpoint-ben. Tegyük fel, hogy a felhasználói azonosító **b. Simon** , a felhasználó neve pedig **b. Simon**. A [Costpoint ügyfél-támogatási csapattal](https://www.deltek.com/about/contact-us) együttműködve vegye fel a felhasználót a Costpoint-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználót.
+
+A felhasználó létrehozása után a felhasználó **hitelesítési módszerének** **Active Directory**kell lennie, az **SAML egyszeri bejelentkezés** jelölőnégyzetet be kell jelölni, és a felhasználónévnek Azure Active Directory kell lennie **Active Directory vagy Tanúsítvány azonosítója** (a következő képernyőképen látható).
+
+![Costpoint-felhasználó](./media/costpoint-tutorial/costpoint-user.png)
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Amikor kiválasztja a Costpoint csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Costpoint, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Costpoint csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Costpoint alkalmazásba, mert be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

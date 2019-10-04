@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266925"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830099"
 ---
 A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt kínálnak, amely kiválóan használható a kapcsolódó adatbázis-kiszolgálók, a közepes és a nagy gyorsítótárak, valamint a memóriabeli elemzések számára. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózati sávszélességgel kapcsolatos információkat tartalmaz ebben a csoportosításban.
 
@@ -49,10 +49,10 @@ Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) pr
 | Standard_E8s_v3&nbsp;<sup>2</sup> | 8      | 64          | 128            | 16             | 16000 / 128 (200)                                                    | 12800 / 192                              | 4 / 4000                                       |
 | Standard_E16s_v3&nbsp;<sup>2</sup> | 16     | 128         | 256            | 32             | 32000 / 256 (400)                                                    | 25600 / 384                              | 8 / 8000                                       |
 | Standard_E20s_v3                   | 20     | 160         | 320            | 32             | 40000/320 (400)                                                    | 32000/480                              | 8 / 10000                                       |
-| &nbsp;<sup>2</sup> . Standard_E32s_v3 | 32     | 256         | 512            | 32             | 64000 / 512 (800)                                                    | 51200 / 768                              | 8 / 16000                             |
-| &nbsp;<sup>2</sup> . Standard_E48s_v3 | 48     | 384         | 768            | 32             | 96000/768 (1200)                                                   | 76800 / 1152                             | 8 / 24000                             |
+| Standard_E32s_v3 @ no__t – 0<sup>2</sup> | 32     | 256         | 512            | 32             | 64000 / 512 (800)                                                    | 51200 / 768                              | 8 / 16000                             |
+| Standard_E48s_v3 @ no__t – 0<sup>2</sup> | 48     | 384         | 768            | 32             | 96000/768 (1200)                                                   | 76800 / 1152                             | 8 / 24000                             |
 | Standard_E64s_v3&nbsp;<sup>2</sup> | 64     | 432         | 864            | 32             | 128000 / 1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
-| &nbsp;<sup>3</sup> . Standard_E64is_v3 | 64     | 432         | 864            | 32             | 128000 / 1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
+| Standard_E64is_v3 @ no__t – 0<sup>3</sup> | 64     | 432         | 864            | 32             | 128000 / 1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
 
 
 <sup>1</sup> a Esv3 SOROZATú virtuális gépek funkciójának Intel® Hyper-Threading technológiája.
@@ -200,20 +200,22 @@ Prémium szintű Storage:  Támogatott
 
 Premium Storage gyorsítótárazás:  Támogatott
 
+Az M-sorozat méretei az Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz-es verzión alapulnak.   
+
 Írásgyorsító:  [Támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Size            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| &nbsp;<sup>3</sup> . Standard m8ms    | 8  | 218,75 | 256  | 8  | 10000/100 (793)  | 5000  / 125 | 4 / 2000 |
+| Standard m8ms @ no__t – 0<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10000/100 (793)  | 5000  / 125 | 4 / 2000 |
 | Standard_M16ms&nbsp;<sup>3</sup>   | 16 | 437,5  | 512  | 16 | 20000 / 200 (1587) | 10000/250 | 8 / 4000 |
 | Standard m32ts | 32 | 192    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
 | Standard m32ls | 32 | 256    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
-| &nbsp;<sup>3</sup> . Standard m32ms   | 32 | 875    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
+| Standard m32ms @ no__t – 0<sup>3</sup>   | 32 | 875    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
 | Standard m64s  | 64 | 1024   | 2048 | 64 | 80000 / 800 (6348)| 40000/1000 | 8 / 16000          |
 | Standard m64ls  | 64 | 512    | 2048 | 64 | 80000 / 800 (6348) | 40000/1000 | 8 / 16000 |
-| &nbsp;<sup>3</sup> . Standard m64ms  | 64   | 1792 | 2048 | 64 | 80000 / 800 (6348)| 40000/1000 | 8 / 16000          |
-| &nbsp;<sup>2</sup> . Standard m128s | 128  | 2048        | 4096  | 64 | 160000 / 1600 (12696) | 80000 / 2000                            | 8 / 30000          |
-| Standard m128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3892  | 4096 | 64 | 160000 / 1600 (12696) | 80000 / 2000                            | 8 / 30000          |
+| Standard m64ms @ no__t – 0<sup>3</sup>  | 64   | 1792 | 2048 | 64 | 80000 / 800 (6348)| 40000/1000 | 8 / 16000          |
+| Standard m128s @ no__t – 0<sup>2</sup> | 128  | 2048        | 4096  | 64 | 160000 / 1600 (12696) | 80000 / 2000                            | 8 / 30000          |
+| Standard m128ms @ no__t-0<sup>2, &nbsp;3, &nbsp;4</sup> | 128  | 3892  | 4096 | 64 | 160000 / 1600 (12696) | 80000 / 2000                            | 8 / 30000          |
 | Standard_M64   | 64  | 1024 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16000 |
 | Standard_M64m  | 64  | 1792 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16000 |
 | Standard_M128&nbsp;<sup>2  | 128 | 2048 | 14336 | 64 | 250000 / 1600 (2456) | 80000 / 2000 | 8 / 32000 |
@@ -239,6 +241,8 @@ Prémium szintű Storage:  Támogatott
 
 Premium Storage gyorsítótárazás:  Támogatott
 
+A DSv2-sorozat méretei az Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz-es verzión alapulnak.
+
 | Size | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8000 / 64 (72) |6400/96 |2 / 1500 |
@@ -262,7 +266,9 @@ Prémium szintű Storage:  Nem támogatott
 
 Premium Storage gyorsítótárazás:  Nem támogatott
 
-| Méret              | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Maximális Temp Storage-átviteli sebesség: IOPS/olvasási MBps/írási MBps | Adatlemezek maximális száma/átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+A DSv2-sorozat méretei az Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz-es verzión alapulnak.
+
+| Size              | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Maximális Temp Storage-átviteli sebesség: IOPS/olvasási MBps/írási MBps | Adatlemezek maximális száma/átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 10/2/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7555dc44e533945d360a3d2e4120f71f953a6d2
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709352"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827105"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -42,6 +42,17 @@ Letöltés | [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?Lin
 >A Azure AD Connect új verziójának kiadása egy olyan folyamat, amely több minőségellenőrzési lépést igényel a szolgáltatás működésének biztosításához, és a folyamat során az új kiadás verziószáma, valamint a kiadási állapot frissítése is megtörténik. a legutóbbi állapotnak megfelelően.
 Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik meg a másodlagos kiadási szám pozíciójában, ahogy az "1.3. X. 0" értéknél – ez azt jelenti, hogy a jelen dokumentumban szereplő kibocsátási megjegyzések az "1,3." kezdetű összes verzióra érvényesek. Amint elvégezte a kiadási folyamat véglegesítését, a kiadás verziószámát a rendszer frissíti a legújabb verzióra, és a kiadási állapot frissülni fog a "kiadás a letöltéshez és az automatikus frissítéshez".
 Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) kapcsolatos további információért kövesse ezt a hivatkozást
+
+## <a name="14250"></a>1.4.25.0
+
+### <a name="release-status"></a>Kiadás állapota
+9/28/2019: A bérlők kiválasztására szolgáló automatikus frissítésre kiadva. Nem érhető el letöltésre.
+
+Ez a verzió javít egy hibát, amelyben néhány olyan kiszolgáló, amely egy korábbi verzióról automatikusan frissült, 1.4.18.0, és az önkiszolgáló jelszó-visszaállítás (SSPR) és a jelszó visszaírási miatt tapasztalt problémákat észlelt.
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+
+Bizonyos esetekben előfordulhat, hogy a 1.4.18.0 verzióra automatikusan frissített kiszolgálók nem engedélyezték újra az önkiszolgáló jelszó-visszaállítást és a jelszó visszaírási a frissítés befejeződése után. Ez az automatikus frissítési kiadás javítja az önkiszolgáló jelszó-visszaállítást és a jelszó visszaírási.
 
 ## <a name="14180"></a>1.4.18.0
 

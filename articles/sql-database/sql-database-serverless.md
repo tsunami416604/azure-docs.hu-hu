@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123083"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828231"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -66,8 +66,8 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási r�
 | | **Kiszolgáló nélküli számítás** | **Kiépített számítás** |
 |:---|:---|:---|
 |**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. |  A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
-| **Teljesítmény-felügyeleti tevékenység** |Alacsonyabb|Jobb|
-|**Számítási skálázás**|Automatikus|Manuális|
+| **Teljesítmény-felügyeleti tevékenység** |Alacsonyabb|Magasabb|
+|**Számítási skálázás**|Automatikus|Kézi|
 |**Számítási rugalmasság**|Alacsonyabb az inaktív időszakok után|Azonnali|
 |**Számlázási részletesség**|Másodpercenként|/ óra|
 
@@ -171,7 +171,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
    |Paraméter|Értékek megválasztása|Alapértelmezett érték|
    |---|---|---|---|
-   |Virtuális magok min. száma|{0,5, 1, 2, 4} nem haladhatja meg a maximális virtuális mag|0,5 virtuális mag|
+   |Virtuális magok min. száma|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 virtuális mag|
    |Automatikus szüneteltetés késleltetése|Minimális 60 perc (1 óra)<br>Maximális 10080 perc (7 nap)<br>Lépésekben 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
 > [!NOTE]
@@ -294,7 +294,7 @@ Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](
 
 A számlázott számítások mennyisége a felhasznált CPU és a másodpercenként felhasznált memória maximális mennyisége. Ha a felhasznált CPU mennyisége és a felhasznált memória kevesebb, mint az egyesek számára kiépített minimális mennyiség, akkor a kiosztott mennyiség számlázásra kerül. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.
 
-- **Számlázott erőforrás**: CPU és memória
+- **Számlázott erőforrás**: PROCESSZOR és memória
 - **Számlázott összeg**: virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
 - **Számlázási gyakoriság**: Másodpercenként
 

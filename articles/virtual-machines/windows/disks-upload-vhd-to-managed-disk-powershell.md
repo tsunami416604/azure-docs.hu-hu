@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: de9975151270ccce8d4a7abd58210c6550d40464
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720343"
+ms.locfileid: "71828657"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>VHD feltöltése az Azure-ba a Azure PowerShell használatával
 
@@ -74,7 +74,7 @@ A AzCopy v10 használatával töltse fel a helyi VHD-fájlt egy felügyelt lemez
 Ez a feltöltés azonos átviteli sebességgel rendelkezik, mint a [szabványos HDD](disks-types.md#standard-hdd). Ha például egy olyan mérettel rendelkezik, amely megfelel az S4 értéknek, akkor akár 60 MiB/s sebességű átviteli sebességgel fog rendelkezni. Ha azonban egy olyan mérettel rendelkezik, amely megfelel a S70, akkor akár 500 MiB/s sebességű átviteli sebességgel fog rendelkezni.
 
 ```
-AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas --blob-type PageBlob
+AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
 Ha a sas lejár a feltöltés során, és még nem hívta `revoke-access` meg, egy új sas-t is beszerezhet a feltöltés folytatásához a használatával. `grant-access`

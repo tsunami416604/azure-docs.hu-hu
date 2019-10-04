@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 9508ce927ef03c83f1c4ef7bf28d2fc02b831a99
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879924"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937305"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server példány áttelepítése Azure SQL Database felügyelt példányra
 
@@ -169,7 +169,7 @@ Ennek eredményeképpen össze kell hasonlítani a teljesítménnyel kapcsolatos
 A teljesítmény-összehasonlítás eredménye a következőket teheti:
 - A felügyelt példányon a számítási feladatok teljesítményének igazítása vagy jobb, ha a számítási feladatok teljesítménye SQL Server. Ebben az esetben sikeresen megerősítette, hogy az áttelepítés sikeres volt.
 - A teljesítménnyel kapcsolatos paraméterek és a számítási feladatok nagy része megfelelően működik, és bizonyos kivételeket okoz a csökkentett teljesítmény. Ebben az esetben meg kell határoznia a különbségeket és azok fontosságát. Ha vannak olyan fontos lekérdezések, amelyek csökkentett teljesítményű teljesítménnyel rendelkeznek, érdemes megvizsgálni a mögöttes SQL-csomagokat, vagy a lekérdezések néhány erőforrás-korlátot találnak. Ebben az esetben a kritikus lekérdezésekre (például a módosított kompatibilitási szintre, az örökölt kardinális kalkulátorra) vonatkozó javaslatok alkalmazhatók közvetlenül vagy tervezési útmutatók használatával, újraépíteni vagy létrehozni azokat a statisztikákat és indexeket, amelyek hatással lehetnek a csomagokra. 
-- A legtöbb lekérdezés lassabb a felügyelt példányon a forrás-SQL Server képest. Ebben az esetben meg kell határozni a különbség kiváltó okait, például az [egyes erőforrások korlátozásait]( sql-database-managed-instance-resource-limits.md#instance-level-resource-limits) , például az i/o-korlátokat, a memória korlátját, a példányok naplózási sebességének korlátozását stb. Ha nincs olyan erőforrás-korlát, amely a különbséget okozhatja, próbálja meg módosítani az adatbázis kompatibilitási szintjét, vagy módosítsa az adatbázis beállításait, például a örökölt kardinális becslést, és indítsa újra a tesztet. Tekintse át a felügyelt példány vagy a lekérdezési tár nézetei által megadott ajánlásokat a romlott teljesítményű lekérdezések azonosításához.
+- A legtöbb lekérdezés lassabb a felügyelt példányon a forrás-SQL Server képest. Ebben az esetben meg kell határozni a különbség kiváltó okait, például az [egyes erőforrások korlátozásait]( sql-database-managed-instance-resource-limits.md#service-tier-characteristics) , például az i/o-korlátokat, a memória korlátját, a példányok naplózási sebességének korlátozását stb. Ha nincs olyan erőforrás-korlát, amely a különbséget okozhatja, próbálja meg módosítani az adatbázis kompatibilitási szintjét, vagy módosítsa az adatbázis beállításait, például a örökölt kardinális becslést, és indítsa újra a tesztet. Tekintse át a felügyelt példány vagy a lekérdezési tár nézetei által megadott ajánlásokat a romlott teljesítményű lekérdezések azonosításához.
 
 > [!IMPORTANT]
 > A felügyelt példány beépített automatikus csomag-javítási funkciója alapértelmezés szerint engedélyezve van. Ez a funkció biztosítja, hogy a beillesztés során kitöltött lekérdezések a jövőben ne legyenek csökkenhetve. Győződjön meg arról, hogy ez a funkció engedélyezve van, és hogy az új beállítások módosítása előtt a régi beállításokkal elvégezte a munkaterhelést, hogy a felügyelt példány az alapteljesítményről és a csomagokról tudjon tájékozódni.

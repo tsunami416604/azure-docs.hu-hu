@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 875db0d34932dca1c7eae7e3650acf01856c6413
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 2c1473083c4fdb025588a7c4b410860a5f18dd5a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934429"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937061"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -45,10 +45,10 @@ Mielőtt elkezdené, ellenőrizze az alábbiakat:
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott központi telepítések** | Az SQL Marketplace Azure-beli virtuális gépek és a nem piactér (SQL Server manuálisan telepített) virtuális gépek támogatottak.
-**Támogatott térségek** | Délkelet-Ausztrália, Kelet-Ausztrália (AE) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS) <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió
-**Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> A Linux jelenleg nem támogatott.
+**Támogatott térségek** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br>
+Észak-Svájc Nyugat-Svájc **támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> A Linux jelenleg nem támogatott.
 **Támogatott SQL Server verziók** | SQL Server 2017-as részletes leírást [itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS részletesen [itt](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Támogatott .NET-verziók** | A .NET-keretrendszer 4.5.2-es és újabb verziójának telepítése a virtuális gépen
+**Támogatott .NET-verziók** | a .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve van a virtuális gépen
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatása
 
@@ -92,7 +92,7 @@ A biztonsági mentési beállítások és a biztonsági másolatok típusaitól 
 **Biztonsági mentés típusa** | **Node**
     --- | ---
     Teljes | Elsődleges
-    Differenciál | Elsődleges
+    Különbségi | Elsődleges
     napló |  Elsődleges
     Csak másolás – teljes |  Elsődleges
 
@@ -101,7 +101,7 @@ A biztonsági mentési beállítások és a biztonsági másolatok típusaitól 
 **Biztonsági mentés típusa** | **Node**
 --- | ---
 Teljes | Elsődleges
-Differenciál | Elsődleges
+Különbségi | Elsődleges
 napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
 
@@ -110,7 +110,7 @@ Csak másolás – teljes |  Másodlagos
 **Biztonsági mentés típusa** | **Node**
 --- | ---
 Teljes | Elsődleges
-Differenciál | Elsődleges
+Különbségi | Elsődleges
 napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
 
@@ -119,7 +119,7 @@ Csak másolás – teljes |  Másodlagos
 **Biztonsági mentés típusa** | **Node**
 --- | ---
 Teljes | Elsődleges
-Differenciál | Elsődleges
+Különbségi | Elsődleges
 napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
 

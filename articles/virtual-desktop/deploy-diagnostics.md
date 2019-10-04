@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676657"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839634"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -203,7 +203,7 @@ Miután bejelentkezett a fiókjába a szervezettől kapott információk alapjá
 
 ### <a name="how-to-read-activity-search-results"></a>Tevékenységek keresési eredményeinek olvasása
 
-A tevékenységek timestamp szerint vannak rendezve, a legújabb tevékenységgel. Ha az eredmények hibát adnak vissza, először ellenőrizze, hogy a szolgáltatás hiba-e. Szolgáltatási hibák esetén hozzon létre egy támogatási jegyet a tevékenység adataival, hogy segítsen a probléma hibakeresésében. A felhasználó vagy a rendszergazda a többi típusú hibát általában megoldhatja. A leggyakoribb hibák listáját és azok megoldását lásd: [a diagnosztikai szolgáltatással kapcsolatos problémák azonosítása](diagnostics-role-service.md#common-error-scenarios).
+A tevékenységek timestamp szerint vannak rendezve, a legújabb tevékenységgel. Ha az eredmények hibát adnak vissza, először ellenőrizze, hogy a szolgáltatás hiba-e. Szolgáltatási hibák esetén hozzon létre egy támogatási jegyet a tevékenység adataival, hogy segítsen a probléma hibakeresésében. A felhasználó vagy a rendszergazda a többi típusú hibát általában megoldhatja. A leggyakoribb hiba-forgatókönyvek listáját és azok megoldását a [problémák azonosítása és diagnosztizálása](diagnostics-role-service.md#common-error-scenarios)című cikkben tekintheti meg.
 
 >[!NOTE]
 >A szolgáltatási hibák a csatolt dokumentációban "külső hibák" néven jelennek meg. Ez módosítva lesz a PowerShell-hivatkozás frissítésekor.

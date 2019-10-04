@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309242"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828610"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server virtuális gépek tárolási konfigurációja
 
@@ -42,9 +42,28 @@ A következő szakaszok azt ismertetik, hogyan konfigurálható a tároló az ú
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Ha egy Azure-beli virtuális gépet kiépít egy SQL Server Gallery-rendszerkép használatával, beállíthatja, hogy automatikusan konfigurálja a tárolót az új virtuális géphez. Megadhatja a tárterület méretét, a teljesítmény korlátait és a munkaterhelés típusát. Az alábbi képernyőfelvételen az SQL-alapú virtuális gépek üzembe helyezése során használt tárolási konfiguráció panel látható.
+Ha egy Azure-beli virtuális gépet kiépít egy SQL Server Gallery-rendszerkép használatával, válassza a **konfiguráció módosítása** lehetőséget a **SQL Server beállítások** lapon a teljesítményre optimalizált tárolási konfiguráció lap megnyitásához. Meghagyhatja az alapértelmezett értékeket, vagy módosíthatja az igényeinek leginkább megfelelő lemez-konfigurációt a munkaterhelés alapján. 
 
 ![SQL Server VM tárolási konfiguráció a kiépítés során](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+
+Válassza ki, hogy milyen típusú számítási feladatot kíván üzembe helyezni a SQL Server a **tárolási optimalizálás**alatt. Az **általános** optimalizálási beállítással alapértelmezés szerint egy 5000-os maximális IOPS rendelkező adatlemez lesz, és ugyanazt a meghajtót fogja használni az adataihoz, a tranzakciónaplóhoz és a tempdb-tárolóhoz. A **tranzakciós feldolgozás** (OLTP) vagy **az adattárházak** kiválasztása külön lemezt hoz létre az adattároláshoz, egy külön lemezt a tranzakciónaplóhoz, és a helyi SSD-t használja a tempdb. A **tranzakciós feldolgozás** és **az adattárház**közötti különbség nem változik, de a [sáv konfigurációját és a nyomkövetési jelzőket](#workload-optimization-settings)is megváltoztatja. Ha a Premium Storage-t választja, a gyorsítótárazást *readonly* értékre állítja az adatmeghajtón, és a naplófájlok *egyikét sem* [SQL Server VM teljesítményre vonatkozó ajánlott eljárások](virtual-machines-windows-sql-performance.md)alapján. 
+
+![SQL Server VM tárolási konfiguráció a kiépítés során](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+A lemez konfigurációja teljesen testreszabható, így beállíthatja a SQL Server VM számítási feladathoz szükséges tárolási topológiát, lemez típusát és IOPs. Lehetősége van arra is, hogy a UltraSSD (előzetes verzió) lehetőséget adja a **lemez típusának** , ha a SQL Server VM az egyik támogatott régióban van (az USA 2. keleti régiója, Délkelet-Ázsia és Észak-Európa), és az [előfizetése számára](/azure/virtual-machines/windows/disks-enable-ultra-ssd)engedélyezte az ultra-lemezek használatát.  
+
+Ezen kívül lehetősége van a lemezek gyorsítótárazásának beállítására is. Az Azure-beli virtuális gépek többrétegű gyorsítótárazási technológiával rendelkeznek, amelyet a [prémium szintű lemezek](/azure/virtual-machines/windows/disks-types#premium-ssd)használatakor használ a [blob cache](/azure/virtual-machines/windows/premium-storage-performance#disk-caching) . A blob cache a virtuális gép RAM és a helyi SSD kombinációját használja a gyorsítótárazáshoz. 
+
+A prémium SSD lemezes gyorsítótárazása *readonly*, *READWRITE* vagy *none*lehet. 
+
+- A *readonly* gyorsítótárazás nagyon hasznos SQL Server Premium Storage tárolt adatfájlok esetében. Az *írásvédett* gyorsítótárazási szolgáltatás alacsony olvasási késést, nagy olvasási IOPS és adatátviteli sebességet biztosít, olvasásokat végez a gyorsítótárból, amely a virtuális gép memóriájában és a helyi SSD-n belüli operációs rendszer. Ezek az olvasások sokkal gyorsabbak, mint az adatlemezről beolvasott adatok, amelyek az Azure Blob Storage-ból származnak. A Premium Storage nem számítja ki a gyorsítótárból kiszolgált adatokat a lemez IOPS és az átviteli sebesség felé. Ezért az Ön megfelelője magasabb teljes IOPS-os adatátviteli sebességet érhet el. 
+- *Nincs* szükség gyorsítótár-konfigurációra a SQL Server naplófájlt futtató lemezekhez, mivel a naplófájlt a rendszer szekvenciálisan írja le, és nem használja az *írásvédett* gyorsítótárazást. 
+- A *READWRITE* gyorsítótárazás nem használható SQL Server fájlok üzemeltetéséhez, mivel SQL Server nem támogatja az adatkonzisztencia a *READWRITE* cache-sel. Az *írásvédett* blobos gyorsítótárban lévő adatmennyiséget írja, és a késleltetések kis mértékben megnő, ha az írások *readonly* blob cache-rétegeken mennek át. 
+
+
+   > [!TIP]
+   > Győződjön meg arról, hogy a tárolási konfiguráció megfelel a kiválasztott virtuálisgép-méret által támasztott korlátozásoknak. A virtuálisgép-méretet meghaladó tárolási paraméterek kiválasztásakor a következő hibaüzenetet fogja eredményezni: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Csökkentse a IOPs a lemez típusának módosításával, vagy növelje a teljesítmény korlátját a virtuális gép méretének növelésével. 
+
 
 A lehetőségek alapján az Azure a következő tárolási konfigurációs feladatokat hajtja végre a virtuális gép létrehozása után:
 
@@ -64,6 +83,13 @@ Ha a következő Resource Manager-sablonokat használja, a rendszer alapértelme
 * [Automatikus javítással rendelkező virtuális gép létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Virtuális gép létrehozása AKV-integrációval](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
+### <a name="quickstart-template"></a>Gyorssablon
+
+A következő rövid útmutató sablon használatával telepítheti SQL Server VM a tárolási optimalizálással. 
+
+* [Virtuális gép létrehozása tárolási optimalizálással](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [Virtuális gép létrehozása a UltraSSD használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
+
 ## <a name="existing-vms"></a>Meglévő virtuális gépek
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
@@ -79,34 +105,13 @@ A tárolási beállítások módosításához kattintson a **Konfigurálás** el
 
 ![Meglévő SQL Server VM tárterületének konfigurálása](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-A megjelenő konfigurációs beállítások attól függően változnak, hogy korábban használta-e ezt a szolgáltatást. Ha első alkalommal használja az-t, megadhatja az új meghajtók tárolási követelményeit. Ha korábban ezt a szolgáltatást használta a meghajtó létrehozásához, kiterjesztheti a meghajtó tárterületét.
+Módosíthatja a SQL Server VM létrehozási folyamat során konfigurált meghajtók lemezének beállításait. A **kibővített meghajtó** kiválasztásával megnyithatja a meghajtó módosítása lapot, amely lehetővé teszi a lemez típusának módosítását, valamint további lemezek hozzáadását. 
 
-### <a name="use-for-the-first-time"></a>Első alkalommal történő használat
+![Meglévő SQL Server VM tárterületének konfigurálása](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
-Ha első alkalommal használja ezt a funkciót, megadhatja a tárterület méretét és a teljesítményre vonatkozó korlátokat egy új meghajtóra vonatkozóan. Ez a felület hasonló ahhoz, amit a kiépítési időszakban látni fog. A fő különbség az, hogy nem lehet megadnia a munkaterhelés típusát. Ez a korlátozás megakadályozza a virtuális gép meglévő SQL Server konfigurációinak megszakadását.
 
-Az Azure új meghajtót hoz létre a specifikációk alapján. Ebben az esetben az Azure a következő tárolási konfigurációs feladatokat végzi el:
 
-* Létrehozza és csatolja a Premium Storage-adatlemezeket a virtuális géphez.
-* Az adatlemezek SQL Server számára elérhetővé való hozzáférhetőségének beállítása.
-* A megadott méret és teljesítmény (IOPS és átviteli sebesség) követelményei alapján konfigurálja az adatlemezeket a tárolási készletekbe.
-* Társítja a tárolót egy új meghajtóval a virtuális gépen.
-
-További információ arról, hogy az Azure hogyan konfigurálja a tárolási beállításokat: [tárolási konfiguráció szakasz](#storage-configuration).
-
-### <a name="add-a-new-drive"></a>Új meghajtó hozzáadása
-
-Ha már konfigurálta a tárolót a SQL Server VMon, a tárterület bővítése két új lehetőséget biztosít. Az első lehetőség egy új meghajtó hozzáadása, amely növelheti a virtuális gép teljesítményének szintjét.
-
-A meghajtó hozzáadása után azonban néhány további manuális konfigurációt is végre kell hajtania a teljesítmény növelése érdekében.
-
-### <a name="extend-the-drive"></a>A meghajtó kiterjesztése
-
-A tárterület bővítésének másik lehetősége a meglévő meghajtó kiterjesztése. Ez a beállítás növeli a meghajtó rendelkezésre álló tárhelyét, de nem növeli a teljesítményt. A tárolási készletek esetében az oszlopok száma nem módosítható a készlet létrehozása után. Az oszlopok száma határozza meg a párhuzamos írások számát, amelyek az adatlemezek között sávok lehetnek. Ezért a hozzáadott adatlemezek nem növelhetik a teljesítményt. Csak a megírt adattárolók számára biztosítanak további tárhelyet. Ez a korlátozás azt is jelenti, hogy a meghajtó kibővítésekor az oszlopok száma határozza meg a felvehető adatlemezek minimális számát. Tehát ha négy adatlemezzel rendelkező tárolási készletet hoz létre, az oszlopok száma is négy. Minden alkalommal, amikor bővíti a tárterületet, legalább négy adatlemezt kell felvennie.
-
-![Meghajtó kiterjesztése egy SQL virtuális géphez](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
-
-## <a name="storage-configuration"></a>Tároló konfigurálása
+## <a name="storage-configuration"></a>Tárolókonfiguráció
 
 Ez a szakasz a tárolási konfiguráció változásairól nyújt hivatkozást, amelyeket az Azure automatikusan végrehajt az SQL virtuális gépek üzembe helyezése vagy konfigurálása során a Azure Portal.
 

@@ -9,22 +9,19 @@ ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787618b59cd18dd4c38892ddf0861808211671cb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453834"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936623"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Figyelési használat és becsült költségek az Azure monitorban
 
 > [!NOTE]
-> Ez a cikk ismerteti a használat és becsült költségek megtekintése eltérő díjszabási modelleket a több Azure figyelési szolgáltatások között.  További kapcsolódó információt a következő cikkekben talál.
-> - [Költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](manage-cost-storage.md) azt ismerteti, hogyan tarthatja a költségeket az Adatmegőrzés időtartama módosításával.
-> - [Adathasználat elemzése a Log Analytics](../../azure-monitor/platform/data-usage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
-> - [Az Application Insights árak és adatmennyiségek kezelése](../../azure-monitor/app/pricing.md) adathasználat elemzése az Application Insights a ismerteti.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> Ez a cikk leírja, hogyan tekintheti meg a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez. A Azure Monitor adott összetevőivel kapcsolatos kapcsolódó cikkek a következők:
+> - A [használat és a költségek kezelése Azure monitor naplókkal](manage-cost-storage.md) : az adatmegőrzési időszak módosításával, valamint az adatfelhasználás elemzésével és riasztásával kapcsolatos költségek szabályozása.
+> - [A Application Insights használatának és költségeinek kezelése](../../azure-monitor/app/pricing.md) a Application Insights adatfelhasználásának elemzését ismerteti.
 
 A figyelő hubon, az Azure Portal a **felhasználás és becsült költségek** lap bemutatja, core, például a figyelési funkciók használata [riasztási, metrikákat, értesítéseket](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), és [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). A 2018 április előtt elérhető díjcsomagok az ügyfelek is magában foglalja az Insights keretében vásárolt Log Analytics-használat és elemzési ajánlat.
 
@@ -42,14 +39,16 @@ Válassza ki a hivatkozás megnyitásához egy diagram, amely az elmúlt 31 napo
 
 ![Használat és becsült költségek portál képernyőképe – díjszabása 2018 április](./media/usage-estimated-costs/003.png)
 
-## <a name="new-pricing-model"></a>Új díjszabási modellben
+## <a name="pricing-model"></a>Díjszabási modell
 
-A 2018 április egy [új figyelési díjszabási modellt jelent](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Ez a szolgáltatás felhőalapú mobilbarát fogyasztásalapú díjszabást. Csak fizet, amit ténylegesen használ csomópont-alapú kötelezettségvállalás nélkül. Információk az új díjszabási modell [riasztási, metrikákat, értesítéseket](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) és [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+A 2018 április egy [új figyelési díjszabási modellt jelent](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Ez a funkció felhőalapú, fogyasztáson alapuló díjszabást ("utólagos elszámolású") tartalmaz. Csak fizet, amit ténylegesen használ csomópont-alapú kötelezettségvállalás nélkül. Információk az új díjszabási modell [riasztási, metrikákat, értesítéseket](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) és [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+
+Az utólagos elszámolású modellen kívül a 2019-es verzióban a kapacitás foglalása Log Analytics, amely lehetővé teszi, hogy akár 25%-ot is megtakaríthat az utólagos elszámolású díjszabáshoz képest. A kapacitás foglalásának díjszabása lehetővé teszi, hogy a foglalást 100 GB/nap után vásárolja meg. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. [További](https://azure.microsoft.com/pricing/details/monitor/) információ a kapacitás foglalásának díjszabásáról.
 
 A Log Analytics vagy az Application Insights 2018. április 2., után ügyfelek bevezetéséhez az új díjszabási modellre az egyetlen lehetőség. Azok a vásárlóknak, akik már használják ezeket a szolgáltatásokat az új díjszabási modellre való megadása nem kötelező.
 
 ## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Az új díjszabási modell hatásának felmérése
-Az új díjszabási modell lesz a különböző hatással van a minden ügyfél saját figyelési használati minták alapján. 2018\. április 2., mielőtt a Log Analytics vagy az Application Insights használó ügyfelek számára a **használat és becsült költségek** oldal az Azure monitorban bármilyen módosítás a költségek becslése, abban az esetben az új díjszabási modellre. Az előfizetés áthelyezése az új modellbe megoldást kínál. A legtöbb ügyfél számára előnyös lesz az új díjszabási modellre. A különösen magas használati mintái, illetve magasabb költségű régiókra rendelkező ügyfelek esetén ez nem lehet a helyzet.
+Az új díjszabási modell lesz a különböző hatással van a minden ügyfél saját figyelési használati minták alapján. 2018. április 2., mielőtt a Log Analytics vagy az Application Insights használó ügyfelek számára a **használat és becsült költségek** oldal az Azure monitorban bármilyen módosítás a költségek becslése, abban az esetben az új díjszabási modellre. Az előfizetés áthelyezése az új modellbe megoldást kínál. A legtöbb ügyfél számára előnyös lesz az új díjszabási modellre. A különösen magas használati mintái, illetve magasabb költségű régiókra rendelkező ügyfelek esetén ez nem lehet a helyzet.
 
 Az előfizetések a költségeket, a választott becsült megtekintéséhez a **felhasználás és becsült költségek** lapra, jelölje be a kék szalagcím a lap tetején. Érdemes tennie ehhez az egy előfizetéshez egyszerre, mivel ez a szint, amelyen az új díjszabási modellben kell megoldania.
 
@@ -102,14 +101,13 @@ Költségbecslési bemutatja ezeket a módosításokat a hatásait.
 
 ## <a name="moving-to-the-new-pricing-model"></a>Az új díjszabási modellre áthelyezése
 
-Ha már eldöntötte, hogy elfogadják az új díjszabási modellben az adott előfizetés, nyissa meg minden Application Insights-erőforrást, nyissa meg a **felhasználás és becsült költségek** és ellenőrizze, hogy az alapszintű díjcsomag van, és nyissa meg az egyes Log Analytics munkaterületen, a nyílt minden a **tarifacsomag** lapon, és módosítsa a **GB (2018)** tarifacsomag. 
+Ha úgy döntött, hogy elfogadja az új díjszabási modellt egy adott előfizetéshez, lépjen minden Application Insights erőforráshoz, nyissa meg a **használati és becsült költségeket** , és győződjön meg arról, hogy az alapszintű díjszabási szinten van, és lépjen az egyes log Analytics-munkaterületekre, és nyissa meg a  **A díjszabási** csomag oldalát, és váltson a **GB-ra (2018)** vonatkozó díjszabási szintjére. 
 
 > [!NOTE]
-> A követelmény, hogy az Application Insights-erőforrások és a egy adott előfizetésen belül a Log Analytics-munkaterületek elfogadják a legújabb díjszabási modell most már el lett távolítva, nagyobb képességeket és a konfiguráció egyszerűbb. 
+> Az adott előfizetésben lévő összes Application Insights erőforrás és Log Analytics munkaterület bevezetésének követelménye, hogy a legújabb díjszabási modell el lett távolítva, ami nagyobb mértékű rugalmas és egyszerűbb konfigurálást tesz lehetővé. 
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Az új díjszabási modellre való automatizálásához
 
-A fentieknek megfelelően, a már nem kell az összes figyelési erőforrások áthelyezése egy adott előfizetés az új díjszabási modellre egyszerre, így a ``migratetonewpricingmodel`` művelet többé nem lesz hatása. Most már továbbléphet az Application Insights-erőforrások és a Log Analytics-munkaterületek külön be a legújabb tarifacsomagban is kapható.  
+A fentiekben leírtaknak megfelelően a már nem követelmény, hogy az előfizetéshez tartozó összes figyelési erőforrást egy időben helyezze át az új díjszabási modellbe, így a ``migratetonewpricingmodel`` művelet többé nem lesz hatással. Most áthelyezheti Application Insights erőforrásait és Log Analytics munkaterületeket a legújabb díjszabási csomagokra.  
 
-Ez a változás automatizálása az Application Insights használatával dokumentált [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) a ``-PricingPlan "Basic"`` és a Log Analytics használatával [Set-azurermoperationalinsightsworkspace parancsmagok](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) a ``-sku "PerGB2018"``. 
-
+A módosítás automatizálása Application Insights a [set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) és a ``-PricingPlan "Basic"``, valamint a log Analytics a set [-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) és a ``-sku "PerGB2018"`` használatával. 

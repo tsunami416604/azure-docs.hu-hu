@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/25/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 551918373f8292d798980600d6e0d43add55bd18
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224512"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828272"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -70,6 +70,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják Az
 | Ubuntu | 18,04| Operációsrendszer- és lemez |
 | Ubuntu | 16.04| Operációsrendszer- és lemez |
 | Ubuntu | 14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Operációsrendszer- és lemez |
+| RHEL | 7,7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7,6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
@@ -77,6 +78,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják Az
 | RHEL | 7.2 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
+| CentOS | 7,7 | Operációsrendszer- és lemez |
 | CentOS | 7,6 | Operációsrendszer- és lemez |
 | CentOS | 7.5 | Operációsrendszer- és lemez |
 | CentOS | 7.4 | Operációsrendszer- és lemez |
@@ -181,7 +183,7 @@ A [Azure CLI 2.0](/cli/azure) Azure-erőforrások kezelésére szolgáló paranc
 
 
 ## <a name="prerequisite-workflow-for-key-vault"></a>A Key vault előfeltétel munkafolyamat
-Ha már ismeri az Azure Disk Encryption Key Vault és az Azure AD szükséges előfeltételeket, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Az előfeltétel-konfigurációs parancsprogram használatáról további információkért lásd: a [titkosítani a virtuális gépek gyors üzembe helyezés](azure-disk-encryption-linux-powershell-quickstart.md) és a [Azure Disk Encryption függelék](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Ha már ismeri az Azure Disk Encryption Key Vault és az Azure AD szükséges előfeltételeket, használhatja a [az Azure Disk Encryption előfeltétel PowerShell-parancsprogram](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Az előfeltétel-konfigurációs parancsprogram használatáról további információkért lásd: a [titkosítani a virtuális gépek gyors üzembe helyezés](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) és a [Azure Disk Encryption függelék](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Ha szükséges, hozzon létre egy erőforráscsoportot.
 2. Kulcstartó létrehozása. 

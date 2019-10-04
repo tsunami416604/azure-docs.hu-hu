@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: e52ce4411a2fa1969db196ba2e32bb485f71f8b6
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931230"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937398"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
@@ -125,11 +125,12 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
     | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: GZip |
-    | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra. JSON-, többsoros JSON-vagy AVRO szükséges, és más formátumokhoz nem kötelező.|
+    | Oszlop-hozzárendelés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra. JSON-, többsoros JSON-vagy AVRO szükséges, és más formátumokhoz nem kötelező.|
     | | |
 
     > [!NOTE]
-    > Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
+    > * Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
+    > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
@@ -197,7 +198,7 @@ Ha nem tervezi, hogy továbbra is használja, a költségek elkerülése érdek�
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
 
-    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/ingest-data-event-hub/expand.png) a kinyitásához.
+    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gomb](media/ingest-data-event-hub/expand.png) a kinyitásához.
 
    ![A törölni kívánt erőforráscsoport kiválasztása](media/ingest-data-event-hub/delete-resources-select.png)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 205809c34eb64255af511f316f138be1efd9983b
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 2aa2ed6fe4d8218737c42bb3d76084c5d677623f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315068"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826946"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Azure Active Directory fiókkal egyéni házirendek használatával Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
 1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
 1. A **Beállítások**területen válassza `Manual`a lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `ContosoAppSecret`.  A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs neveként a létrehozáskor, ezért a következő szakaszban található XML-ben szereplő hivatkozás a *B2C_1A_ContosoAppSecret*.
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `ContosoAppSecret`.  A (z) @no__t – 0 előtagot a rendszer automatikusan hozzáadja a kulcs neveként a létrehozáskor, ezért a következő szakaszban található XML-ben szereplő hivatkozás a *B2C_1A_ContosoAppSecret*.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban feljegyzett ügyfél-titkot.
 1. A **kulcshasználat**beállításnál válassza `Signature`a elemet.
 1. Kattintson a **Létrehozás** gombra.
@@ -178,6 +178,8 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben 
 1. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
+
+A Azure AD B2Ckel folytatott kommunikáció egy, a B2C-bérlőben regisztrált alkalmazáson keresztül történik. Ez a szakasz azokat a választható lépéseket sorolja fel, amelyekkel elvégezheti a tesztelési alkalmazások létrehozását, ha még nem tette meg.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

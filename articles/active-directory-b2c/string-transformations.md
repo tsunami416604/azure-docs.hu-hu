@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063443"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936811"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc-jogcímek átalakítása
 
@@ -319,7 +319,7 @@ Ezzel a jogcím-átalakítással bármilyen sztringet formázhat {0}egyetlen par
 - Bemeneti jogcímek:
     - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Bemeneti paraméterek:
-    - **stringFormat**: cpim_{0}@ {RelyingPartyTenantId}
+    - **stringFormat**: cpim_ @ no__t-1 @ {RelyingPartyTenantId}
 - Kimeneti jogcímek:
   - **outputClaim**:cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 

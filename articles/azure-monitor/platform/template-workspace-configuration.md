@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147329"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840896"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
 
@@ -121,7 +121,7 @@ A következő példa egy munkaterületet hoz létre egy sablon használatával a
 
 2. Szerkessze a sablont az igényeknek. Felülvizsgálat [Microsoft.OperationalInsights/workspaces sablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referencia megtudhatja, milyen tulajdonságok és értékek támogatottak. 
 3. Mentse a fájlt **deploylaworkspacetemplate.json** egy helyi mappába.
-4. Készen áll a sablon üzembe helyezésére. A munkaterület létrehozásához használja a PowerShellt vagy a parancssort, és adja meg a munkaterület nevét és helyét a parancs részeként.
+4. Készen áll a sablon üzembe helyezésére. A munkaterület létrehozásához használja a PowerShellt vagy a parancssort, és adja meg a munkaterület nevét és helyét a parancs részeként. A munkaterület nevének globálisan egyedinek kell lennie az összes Azure-előfizetésen belül.
 
    * A PowerShell használatához használja az alábbi parancsokat a sablont tartalmazó mappából:
    
@@ -596,7 +596,7 @@ A következő sablon szemlélteti a következőket:
 
 A minta sablon üzembe helyezése:
 
-1. Mentse a csatolt mintát egy fájlba, például:`azuredeploy.json` 
+1. Mentse a csatolt mintát egy fájlba, például `azuredeploy.json` 
 2. Szerkessze a sablont a kívánt konfigurációval
 3. A sablon üzembe helyezéséhez használja a PowerShellt vagy a parancssort
 

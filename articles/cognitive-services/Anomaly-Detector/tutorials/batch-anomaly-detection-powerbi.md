@@ -1,74 +1,74 @@
 ---
-title: Rendellenességek batch észlelése és a Power BI használatával jelenítheti meg
+title: Anomáliák vizualizálása kötegelt észlelés és a Power BI használatával
 titleSuffix: Azure Cognitive Services
-description: Az Anomáliadetektálási detector használatával API és a Power BI használatával rendellenességek során az idősorozat-adatok megjelenítése.
+description: Az anomáliák Kiderítő API-val és a Power BI az idősorozat-adatain belüli rendellenességek megjelenítésére használható.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 04/30/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: 74b51d04f2706d890475c500e1e730cff75397c5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721487"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840868"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: Rendellenességek batch észlelése és a Power BI használatával jelenítheti meg
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: Anomáliák vizualizálása kötegelt észlelés és a Power BI használatával
 
-Ebben az oktatóanyagban használja kötegként time series adatkészlet belül előforduló rendellenességek felderítéséhez. Power BI desktop használatával, Ön lesz igénybe vehet egy Excel-fájl, az adatok előkészítése az Anomáliadetektálási detector használatával API és jelenítheti meg, egész statisztikai rendellenességek.
+Ez az oktatóanyag egy idősorozat-adatkészletben lévő anomáliák megkeresésére használható kötegként. A Power BI Desktop használatával egy Excel-fájlt fog készíteni, előkészíti az adatvesztési detektor API-ját, és megjeleníti a statisztikai rendellenességeket az egészben.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * A Power BI Desktop használatával importálja, és a egy time series adatkészlet átalakítása
-> * A Power BI Desktop integrálása a Anomáliadetektálási detector használatával batch anomáliadetektálás API
-> * Megjelenítheti a rendellenességeket, többek között a várt és látott értékeket, és a rendellenességek észlelése határok belül.
+> * Idősorozat-adatkészletek importálása és átalakítása Power BI Desktop használatával
+> * Power BI Desktop integrálása a Batch-anomáliák észleléséhez tartozó anomáliák Kiderítő API-val
+> * Megjelenítheti az adatokban talált rendellenességeket, beleértve a várt és látható értékeket, valamint a rendellenességek észlelési határait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), elérhető ingyenes.
-* Az excel (.xlsx) fájlt tartalmazó idősorozat-adatok mutat. A példaadatokat ebben a rövid útmutatóban található [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962)
+* A [Microsoft Power bi Desktop](https://powerbi.microsoft.com/get-started/)ingyenesen elérhető.
+* Az idősorozat adatpontjait tartalmazó Excel-fájl (. xlsx). A rövid útmutatóhoz tartozó példa a [githubon](https://go.microsoft.com/fwlink/?linkid=2090962) érhető el
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-## <a name="load-and-format-the-time-series-data"></a>Betölteni, és az idősorozat-adatok formázása
+## <a name="load-and-format-the-time-series-data"></a>Az idősorozat-adatértékek betöltése és formázása
 
-Első lépésként nyissa meg a Power BI Desktopban, és a letöltött a Előfeltételek idősorozat-adatok betöltése. Az excel-fájlban található tartalmazza az egyezményes világidő (UTC) időbélyegző-érték párokat.  
+Első lépésként nyissa meg Power BI Desktop és töltse be az előfeltételekből letöltött idősorozat-adatok betöltését. Ez az Excel-fájl az egyezményes világidő (UTC) és az érték párok sorozatát tartalmazza.  
 
 > [!NOTE]
-> A Power BI számos különböző forrásból, mint például a .csv-fájlok, SQL adatbázisok, az Azure blob storage-bA és további adatokat használhatja.  
+> A Power BI számos különböző forrásból, például. csv-fájlokból, SQL-adatbázisokból, Azure Blob Storage-ból és egyebekből származó adatok használatával használható.  
 
-A Power BI Desktop fő ablakban kattintson a **kezdőlap** menüszalagon. Az a **külső adatok** csoportba, a menüszalag, nyissa meg a **adatok lekérése** legördülő menüben, majd kattintson **Excel**.
+A fő Power BI Desktop ablakban kattintson a **Kezdőlap** menüszalagra. A menüszalag **külső** adatcsoportjában nyissa meg az **adatlekérdezés** legördülő menüt, és kattintson az **Excel**elemre.
 
-![A Power BI-ban "Adatok lekérése" gomb képe](../media/tutorials/power-bi-get-data-button.png)
+![Az "adatok lekérése" gomb képe Power BI](../media/tutorials/power-bi-get-data-button.png)
 
-Miután a párbeszédpanel megjelenik, lépjen abba a mappába, ahová letöltötte a példa .xlsx-fájlt, és jelölje ki. Miután a **kezelő** párbeszédpanelen megjelenik, kattintson a **Munka1**, majd **szerkesztése**.
+A párbeszédpanel megjelenése után Navigáljon arra a mappára, ahová letöltötte a example. xlsx fájlt, majd válassza ki. Miután a **navigátor** párbeszéd megjelenik, kattintson a **Munka1**elemre, majd a **Szerkesztés**gombra.
 
-![Az adatforrás "Kezelő" – Power BI-ban képe](../media/tutorials/navigator-dialog-box.png)
+![A "navigátor" adatforrás képe Power BI](../media/tutorials/navigator-dialog-box.png)
 
-A Power BI átalakítja az időbélyegeket az első oszlopban egy `Date/Time` adattípus. Ezek az időbélyegek konvertálni kell szöveggé annak érdekében, hogy az Anomáliadetektálási detector használatával API-hoz küldhető. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a **lekérdezések szerkesztése** kezdőlap lapján. 
+Power BI a rendszer az első oszlopban lévő időbélyegeket `Date/Time` adattípusra konvertálja. Ezeket az időbélyegeket szöveggé kell alakítani, hogy el lehessen elküldeni az anomália-detektor API-nak. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a kezdőlapon a **lekérdezések szerkesztése** elemre. 
 
-Kattintson a **átalakítása** menüszalagján a Power Query-szerkesztőben. Az a **minden oszlop** csoportjában nyissa meg a **adattípus:** legördülő menüből, és válassza ki **szöveg**.
+Kattintson az **átalakítás** menüszalagra a Power Query-szerkesztőben. A **bármely oszlop** csoportban nyissa meg az **adattípus:** legördülő menüt, és válassza a **text (szöveg**) lehetőséget.
 
-![Az adatforrás "Kezelő" – Power BI-ban képe](../media/tutorials/data-type-drop-down.png)
+![A "navigátor" adatforrás képe Power BI](../media/tutorials/data-type-drop-down.png)
 
-Ha az oszlop típusának a módosításával kapcsolatos értesítést kap, kattintson az **cserélje le az aktuális**. Ezt követően kattintson a **Bezárás és alkalmazás** vagy **alkalmaz** a a **kezdőlap** menüszalagon. 
+Amikor értesítést kap az oszlop típusának módosításáról, kattintson az **aktuális cseréje**elemre. Ezt követően kattintson a **Bezárás gombra & alkalmazása** vagy az **alkalmazás** a **Kezdőlap** menüszalagon. 
 
-## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Hozzon létre egy függvényt, hogy elküldje az adatokat, és a válasz formázása
+## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Függvény létrehozása az adat elküldéséhez és a válasz formázásához
 
-Formázása, és küldje el a data-fájlt az Anomáliadetektálási detector használatával API-hoz, hívhat meg egy lekérdezést a fent létrehozott táblában. A Power Query-szerkesztőben, az a **kezdőlap** menüszalagon, nyissa meg a **új forrás** legördülő menüben, majd kattintson **üres lekérdezés**.
+Az adatfájlnak a rendellenesség-érzékelő API-hoz való formázásához és elküldéséhez egy lekérdezést hívhat meg a fent létrehozott táblán. A Power Query szerkesztőben, a **Kezdőlap** menüszalagján nyissa meg az **új forrás** legördülő menüt, és kattintson az **üres lekérdezés**elemre.
 
-Győződjön meg arról, hogy az új lekérdezés ki van jelölve, majd kattintson a **speciális szerkesztő**. 
+Győződjön meg arról, hogy az új lekérdezés van kiválasztva, majd kattintson a **speciális szerkesztő**elemre. 
 
-![A Power bi-ban a "Speciális szerkesztő" gomb képe](../media/tutorials/advanced-editor-screen.png)
+![A "Speciális szerkesztő" gomb képe a Power BI](../media/tutorials/advanced-editor-screen.png)
 
-A speciális szerkesztő belül a következő Power Query M kódrészletet használja az oszlopok kigyűjtése a táblában, és küldje el az API-hoz. Ezt követően a lekérdezés fog hozzon létre egy táblát a JSON-válaszból, és küldje vissza. Cserélje le a `apiKey` érvényes Anomáliadetektálási detector használatával API-kulcsát, a változó és `endpoint` a végponthoz. Miután megadta a lekérdezést, a speciális szerkesztő, kattintson a **kész**.
+A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bontsa ki az oszlopokat a táblából, és küldje el az API-nak. Ezt követően a lekérdezés létrehoz egy táblát a JSON-válaszból, és visszaküldi azt. Cserélje le a `apiKey` változót az érvényes anomália-érzékelő API-kulcsára, és `endpoint` a végponttal. Miután megadta a lekérdezést a Speciális szerkesztőban, kattintson a **kész**gombra.
 
 ```M
 (table as table) => let
@@ -112,67 +112,67 @@ A speciális szerkesztő belül a következő Power Query M kódrészletet haszn
  in results
 ```
 
-A lekérdezés: adatok oszlopfejléc meghívása kiválasztásával `Sheet1` alábbi **paraméter megadása**, kattintson **Invoke**. 
+Hívja meg a lekérdezést az adatlapon úgy, hogy kijelöli a `Sheet1` értéket az **ENTER paraméternél**, majd kattintson a **meghívás**gombra. 
 
 ![A "Speciális szerkesztő" gomb képe](../media/tutorials/invoke-function-screenshot.png)
 
-## <a name="data-source-privacy-and-authentication"></a>Forrás adatvédelem és hitelesítés
+## <a name="data-source-privacy-and-authentication"></a>Adatforrás-adatvédelem és-hitelesítés
 
 > [!NOTE]
-> Vegye figyelembe az adatok védelmében, és a hozzáférés a szervezet szabályzatait. Lásd: [Power BI Desktop adatvédelmi szintjeinek](https://docs.microsoft.com/power-bi/desktop-privacy-levels) további információt.
+> Ügyeljen arra, hogy a szervezet szabályzatai adatvédelmet és hozzáférést biztosítson. További információ: [Power bi Desktop adatvédelmi szintek](https://docs.microsoft.com/power-bi/desktop-privacy-levels) .
 
-Figyelmeztető üzenetet kaphat, amikor megpróbálja futtatni a lekérdezést, mert azt már használja egy külső adatforrást. 
+Előfordulhat, hogy a lekérdezés futtatására tett kísérlet során figyelmeztető üzenet jelenik meg, mivel külső adatforrást használ. 
 
-![Egy Power BI által létrehozott figyelmeztetés képe](../media/tutorials/blocked-function.png)
+![A Power BI által létrehozott figyelmeztetést ábrázoló kép](../media/tutorials/blocked-function.png)
 
-Ennek kijavításához kattintson **fájl**, és **lehetőségek és beállítások**. Kattintson a **beállítások**. Alább **aktuális fájl**válassza **adatvédelmi**, és **teljesítmény lehetséges javítása az adatvédelmi szintek figyelmen kívül hagyásával**. 
+A probléma megoldásához kattintson a **fájl**, majd a beállítások **és beállítások**elemre. Ezután kattintson a **Beállítások**elemre. Az **aktuális fájl**alatt válassza az **Adatvédelem**lehetőséget, és **hagyja figyelmen kívül az adatvédelmi szinteket, és javítsa a teljesítményt**. 
 
-Ezenkívül előfordulhat, hogy kap egy üzenetben kéri, adja meg, hogyan csatlakozhat az API-hoz való.
+Emellett üzenet jelenik meg, amely arra kéri, hogy határozza meg, hogyan kíván csatlakozni az API-hoz.
 
-![Egy kérelem eléréséhez szükséges hitelesítő adatokat adja meg a kép](../media/tutorials/edit-credentials-message.png)
+![A hozzáférési hitelesítő adatok megadására vonatkozó kérést megjelenítő kép](../media/tutorials/edit-credentials-message.png)
 
-Ennek kijavításához kattintson **hitelesítő adatok szerkesztése** az üzenetben. Miután a párbeszédpanel megjelenik, válassza ki a **névtelen** kapcsolódásának az API-hoz. Ezután kattintson a **Csatlakozás** gombra. 
+A probléma megoldásához kattintson a **hitelesítő adatok szerkesztése** elemre az üzenetben. Ha a párbeszédablak megjelenik, akkor a **Névtelen** API-hoz való csatlakozáshoz válassza a névtelen lehetőséget. Ezután kattintson a **Csatlakozás** gombra. 
 
-Ezt követően kattintson a **Bezárás és alkalmazás** a a **kezdőlap** menüszalagján a módosítások életbe léptetéséhez.
+Ezt követően kattintson a **Bezárás gombra & alkalmazás** a **Kezdőlap** menüszalagján a módosítások alkalmazásához.
 
-## <a name="visualize-the-anomaly-detector-api-response"></a>Az Anomáliadetektálási detector használatával API-válasz megjelenítése
+## <a name="visualize-the-anomaly-detector-api-response"></a>Az anomália-érzékelő API-válaszának megjelenítése
 
-A fő Power BI-képernyőn jelenítheti meg az adatokat a fent létrehozott lekérdezések használatának megkezdéséhez. Először válasszon **vonaldiagram** a **Vizualizációk**. Majd adja hozzá az időbélyeg a meghívott függvény a vonaldiagram **tengely**. Kattintson rá a jobb gombbal, és válassza ki **időbélyeg**. 
+A fő Power BI képernyőn kezdje el használni a fent létrehozott lekérdezéseket az adatmegjelenítéshez. Először válassza ki a **diagramot** a **vizualizációkban**. Ezután adja hozzá a meghívott függvény időbélyegét a vonal diagramjának **tengelyéhez**. Kattintson rá a jobb gombbal, és válassza az **időbélyeg**lehetőséget. 
 
-![Kattintson a jobb gombbal az időbélyegző-érték](../media/tutorials/timestamp-right-click.png)
+![Kattintson a jobb gombbal az időbélyeg értékére](../media/tutorials/timestamp-right-click.png)
 
-Adja hozzá a következő mezőket a **meghívott függvény** a diagramhoz **értékek** mező. Használja az alábbi képernyőfelvétel a diagram létrehozása érdekében.
+Adja hozzá a következő mezőket a **meghívott függvényből** a diagram **értékek** mezőjébe. A diagram létrehozásához használja az alábbi képernyőképet.
 
-    * Érték
+    * Value
     * UpperMargins
     * LowerMargins
     * ExpectedValues
 
-![Az új gyorsmérő képernyő képe](../media/tutorials/chart-settings.png)
+![Az új gyors mérték képernyő képe](../media/tutorials/chart-settings.png)
 
-Miután hozzáadta a mezőket, kattintson a diagramra, majd méretezze át, és megjeleníti az összes adatponttal. A diagram hasonlóan néz ki az alábbi képernyőképet:
+A mezők hozzáadása után kattintson a diagramra, és méretezze át az összes adatpont megjelenítéséhez. A diagram az alábbi képernyőképhez hasonlóan fog kinézni:
 
-![Az új gyorsmérő képernyő képe](../media/tutorials/chart-visualization.png)
+![Az új gyors mérték képernyő képe](../media/tutorials/chart-visualization.png)
 
-### <a name="display-anomaly-data-points"></a>Anomáliadetektálási adatpontok megjelenítése
+### <a name="display-anomaly-data-points"></a>Az anomália adatpontjainak megjelenítése
 
-A Power BI-ablak jobb oldalán alább a **MEZŐK** ablaktáblán kattintson a jobb gombbal a **érték** alatt a **függvény meghívása lekérdezésben**, kattintson **új gyors mérték**.
+A Power BI ablak jobb oldalán, a **mezők** ablaktábla alatt kattintson a jobb gombbal az **értékre** a **meghívott függvény lekérdezésében**, és kattintson az **új gyors mérték**elemre.
 
-![Az új gyorsmérő képernyő képe](../media/tutorials/new-quick-measure.png)
+![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure.png)
 
-A megjelenő képernyőn jelölje be a **szűrt érték** a számítási. Állítsa be **érték kiinduló** való `Sum of Value`. Ezután húzza `IsAnomaly` a a **meghívott függvény** mező a **szűrő**. Válassza ki `True` származó a **szűrő** legördülő menüből.
+A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetőséget. **Alapértékének** beállítása a következőre: `Sum of Value`. Ezután húzza a `IsAnomaly` értéket a **meghívott függvény** mezőiből a **szűréshez**. Válassza a `True` elemet a **szűrő** legördülő menüből.
 
-![Az új gyorsmérő képernyő képe](../media/tutorials/new-quick-measure-2.png)
+![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure-2.png)
 
-Kattintás után **Ok**, hogy egy `Value for True` mezőt, a mezők listájának alján. Kattintson a jobb gombbal, és nevezze át, hogy **Anomáliadetektálási**. Adja hozzá a diagram **értékek**. Válassza ki a **formátum** , és állítsa be az x tengely típusát eszközzel **Kategorikus**.
+Miután rákattintott **az OK gombra**, a mezők listájának alján egy `Value for True` mező jelenik meg. Kattintson rá a jobb gombbal, és nevezze át az **anomáliára**. Adja hozzá a diagram **értékeit**. Ezután válassza ki a **formázó** eszközt, és állítsa az X tengely típusát **kategorikus**értékre.
 
-![Az új gyorsmérő képernyő képe](../media/tutorials/format-x-axis.png)
+![Az új gyors mérték képernyő képe](../media/tutorials/format-x-axis.png)
 
-Színek alkalmazása a diagramra kattintva a **formátum** eszköz és **adatszínek**. A diagram a következőhöz a következőhöz hasonlóan kell kinéznie:
+Színeket alkalmazhat a diagramra úgy, hogy a **Formátum** eszközre és az **adatszínekre**kattint. A diagramnak a következőhöz hasonlóan kell kinéznie:
 
-![Az új gyorsmérő képernyő képe](../media/tutorials/final-chart.png)
+![Az új gyors mérték képernyő képe](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Az Azure Databricks streamelési anomáliadetektálás](anomaly-detection-streaming-databricks.md)
+>[Adatfolyam-rendellenességek észlelése Azure Databricks](anomaly-detection-streaming-databricks.md)

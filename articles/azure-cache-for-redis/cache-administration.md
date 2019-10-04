@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: ddb9dd49af4557e6ff8d38110de4a99a9cf6fed7
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687006"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827590"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .
@@ -83,7 +83,7 @@ Igen, a PowerShell-utasításokért lásd: az [Azure cache újraindítása a Red
 Az újraindítás minden díjszabási szinten elérhető.
 
 ## <a name="schedule-updates"></a>Frissítések ütemezése
-A **frissítések ütemezett frissítése** panelen beállíthatja a prémium szintű gyorsítótárhoz tartozó karbantartási időszakot. Ha a karbantartási időszak meg van adva, a rendszer minden Redis-kiszolgáló frissítést végez ebben az ablakban. 
+A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár-példány karbantartási időszakát. Ha a karbantartási időszak meg van adva, a rendszer minden Redis-kiszolgáló frissítést végez ebben az ablakban. 
 
 > [!NOTE] 
 > A karbantartási időszak csak a Redis-kiszolgáló frissítéseire vonatkozik, és nem a gyorsítótárat üzemeltető virtuális gépek operációs rendszerének összes Azure-frissítésére vagy frissítésére.

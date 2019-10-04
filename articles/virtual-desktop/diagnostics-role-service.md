@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676637"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840130"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>A diagnosztikai funkcióval kapcsolatos problémák azonosítása
+# <a name="identify-and-diagnose-issues"></a>Problémák azonosítása és diagnosztizálása
 
 A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. A Windows rendszerű virtuális asztali szerepkörök diagnosztikai tevékenységet naplóznak, amikor egy felhasználó kommunikál a rendszerrel. Minden napló olyan releváns információkat tartalmaz, mint például a tranzakcióban részt vevő Windows virtuális asztali szerepkörök, a hibaüzenetek, a bérlői adatok és a felhasználói adatok. A diagnosztikai tevékenységeket mind a végfelhasználói, mind a rendszergazdai műveletek hozzák létre, és három fő gyűjtőbe sorolhatók:
 

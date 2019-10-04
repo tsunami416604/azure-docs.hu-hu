@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 94e9a484afe42f8621380fa685f8bc9faeb894d3
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816042"
+ms.locfileid: "71828729"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -334,7 +334,7 @@ A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mapp
 
 A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mappák számára, így a következő korlátozások érvényesek:
 
-- Csak `CREATE ASSEMBLY FROM BINARY` a támogatott. Lásd: [szerelvény létrehozása bináris fájlból](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
+- Csak `CREATE ASSEMBLY FROM BINARY` a támogatott. Lásd: [az adatforrások létrehozása a bináris fájlból](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
 - `CREATE ASSEMBLY FROM FILE`nem támogatott. Lásd: [szerelvény létrehozása fájlból](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`nem lehet hivatkozni a fájlokra. Lásd: az [Alter Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
@@ -548,7 +548,7 @@ A felügyelt példányok részletes információkat helyeznek el a hibák napló
 
 **Dátum** TOT 2019
 
-SQL Server/felügyelt példány nem [engedi, hogy a felhasználó eldobjon egy nem üres fájlt](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database.md#Prerequisites). Ha nem üres adatfájlt próbál meg eltávolítani `ALTER DATABASE REMOVE FILE` utasítás használatával, a rendszer nem adja vissza azonnal a következő hibát: `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty`. A felügyelt példányok továbbra is megpróbálják eldobni a fájlt, és a művelet sikertelen lesz, miután a 30min `Internal server error`.
+SQL Server/felügyelt példány nem [engedi, hogy a felhasználó eldobjon egy nem üres fájlt](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Ha nem üres adatfájlt próbál meg eltávolítani `ALTER DATABASE REMOVE FILE` utasítás használatával, a rendszer nem adja vissza azonnal a következő hibát: `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty`. A felügyelt példányok továbbra is megpróbálják eldobni a fájlt, és a művelet sikertelen lesz, miután a 30min `Internal server error`.
 
 **Áthidaló megoldás**: Távolítsa el a fájl tartalmát a `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` parancs használatával. Ha ez az egyetlen fájl a fájlcsoportja, akkor törölnie kell az ehhez a fájlcsoportja tartozó táblából vagy partícióból származó adatait a fájl zsugorítása előtt, és opcionálisan be kell töltenie ezeket az adatok egy másik táblába/partícióba.
 

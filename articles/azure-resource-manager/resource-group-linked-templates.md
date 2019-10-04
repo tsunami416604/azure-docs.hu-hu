@@ -4,20 +4,20 @@ description: Ismerteti, hogyan lehet kapcsolt sablonok használata az Azure Reso
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 59af553f4080ca86e964b75234e4d812297d8541
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194380"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827336"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
-A megoldás üzembe helyezéséhez használhatja egyetlen sablon és a egy fő sablont számos kapcsolódó sablonok. A kapcsolódó sablon lehet egy külön fájlt, amely kapcsolódik a fő sablonból, vagy egy sablont, amely a fő sablon van beágyazva.
+A megoldás üzembe helyezéséhez használhatja egyetlen sablon és a egy fő sablont számos kapcsolódó sablonok. A kapcsolódó sablonok lehetnek különálló fájlok, amelyek a fősablonból vannak összekapcsolva, vagy a fő sablonba beágyazott sablonok.
 
-Kis és közepes méretű megoldások egyetlen sablon egyszerűbb átlátni és fenntartani. Megtekintheti az erőforrások és értékek egyetlen fájlban. A speciális alkalmazási a hivatkozott sablonok lehetővé teszik a megoldás célzott összetevőből felosztania, és újra felhasználhatja a sablonokat.
+Kis és közepes méretű megoldások egyetlen sablon egyszerűbb átlátni és fenntartani. Megtekintheti az erőforrások és értékek egyetlen fájlban. A speciális forgatókönyvek esetében a csatolt sablonok lehetővé teszik a megoldás megkeresését a célként megadott összetevőkre. Ezeket a sablonokat könnyedén újra felhasználhatja más forgatókönyvek esetében is.
 
 Kapcsolt sablonok használata esetén hozzon létre egy fő sablont, amely megkapja a paraméterértékek üzembe helyezés során. A fő sablon tartalmazza az összes társított sablon, és értékeket továbbítja ezeket a sablonokat, igény szerint.
 
@@ -27,7 +27,7 @@ Foglalkozó oktatóanyagért lásd: [oktatóanyag: a csatolt Azure Resource Mana
 > Csatolt vagy beágyazott sablonok esetében csak növekményes telepítési módot [](deployment-modes.md) használhat.
 >
 
-## <a name="link-or-nest-a-template"></a>Hivatkozás, vagy egy sablon beágyazása
+## <a name="deployments-resource"></a>Üzembe helyezési erőforrás
 
 Egy másik sablonnal, vegyen fel egy **központi telepítések** erőforrás a fő sablont.
 
@@ -47,7 +47,7 @@ Egy másik sablonnal, vegyen fel egy **központi telepítések** erőforrás a f
 
 Ad meg a központi telepítési erőforrás tulajdonságainak függ attól, létrehozhatja, ha egy külső sablon akár egy beágyazott sablont, a fő sablont a beágyazási.
 
-### <a name="nested-template"></a>Beágyazott sablont
+## <a name="nested-template"></a>Beágyazott sablont
 
 A sablon ugyanazon a fő sablont beágyazása, használja a **sablon** tulajdonságot, és adja meg a sablon szintaxisáról.
 
@@ -94,9 +94,17 @@ A sablon ugyanazon a fő sablont beágyazása, használja a **sablon** tulajdons
 
 A beágyazott sablonhoz szükséges a [azonos tulajdonságokkal](resource-group-authoring-templates.md) standard sablonként.
 
-### <a name="external-template-and-external-parameters"></a>Külső sablon és a külső paraméterek
+## <a name="external-template"></a>Külső sablon
 
-Társítson egy külső sablont és paraméterfájlt, használja a **templateLink** és **parametersLink**. Kapcsolja a sablonok, az erőforrás-kezelő szolgáltatás elérheti azt kell lennie. Egy helyi fájlból vagy egy fájlt, amely csak a helyi hálózaton elérhető nem adható meg. Csak adja meg a URI értéket, amely akár **http** vagy **https**. Az egyik lehetőség, hogy a hivatkozott sablonnak helyezze a storage-fiókban, és az URI-t használja, a cikk.
+Külső sablonra való hivatkozáshoz használja a **templateLink** tulajdonságot. Egy helyi fájlból vagy egy fájlt, amely csak a helyi hálózaton elérhető nem adható meg. Csak adja meg a URI értéket, amely akár **http** vagy **https**. A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz.
+
+Az egyik lehetőség, hogy a hivatkozott sablonnak helyezze a storage-fiókban, és az URI-t használja, a cikk.
+
+A külső sablon paramétereit külső fájlban vagy beágyazottan is megadhatja.
+
+### <a name="external-parameters"></a>Külső paraméterek
+
+Külső paraméterérték megadásakor használja a **parametersLink** tulajdonságot:
 
 ```json
 "resources": [
@@ -105,15 +113,15 @@ Társítson egy külső sablont és paraméterfájlt, használja a **templateLin
     "apiVersion": "2018-05-01",
     "name": "linkedTemplate",
     "properties": {
-    "mode": "Incremental",
-    "templateLink": {
+      "mode": "Incremental",
+      "templateLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
         "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
+      },
+      "parametersLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
         "contentVersion":"1.0.0.0"
-    }
+      }
     }
   }
 ]
@@ -121,11 +129,11 @@ Társítson egy külső sablont és paraméterfájlt, használja a **templateLin
 
 Nem kell adnia a `contentVersion` tulajdonságot a sablonból vagy a paraméterek számára. Tartalomverzió értéket nem ad meg, ha a sablon aktuális verziója van telepítve. Ha megad egy értéket a tartalom verziója, akkor a verziószámnak egyeznie kell a társított sablonban; Ellenkező esetben az üzembe helyezés egy hibaüzenettel meghiúsul.
 
-### <a name="external-template-and-inline-parameters"></a>Külső sablon és a beágyazott paraméterek
+### <a name="inline-parameters"></a>Beágyazott paraméterek
 
 Vagy megadhatja a paraméterrel beágyazott. A beágyazott paraméterek és a egy hivatkozást az alkalmazásparaméter-fájlt nem használható. Egy hiba miatt nem sikerül a telepítés során is `parametersLink` és `parameters` vannak megadva.
 
-A fő sablonból értéket adnak át a hivatkozott sablonnak, használja a **paraméterek**.
+Ha át szeretne adni egy értéket a fő sablonból a csatolt sablonra, használja a **Parameters (paraméterek** ) tulajdonságot.
 
 ```json
 "resources": [
@@ -269,7 +277,7 @@ A fő sablon üzembe helyezi a hivatkozott sablonnak, és a visszaadott érték 
 }
 ```
 
-Más típusú erőforrásokat, például beállíthatja a hivatkozott sablonnak és más erőforrások közötti függőségek. Ezért más erőforrásokhoz egy kimeneti értéket, a társított sablonból van szükség, amikor győződjön meg arról, a társított sablon előtt őket üzembe. Vagy ha a hivatkozott sablonnak támaszkodik más erőforrások, ellenőrizze, hogy más erőforrások telepítése előtt a hivatkozott sablonnak.
+Más típusú erőforrásokat, például beállíthatja a hivatkozott sablonnak és más erőforrások közötti függőségek. Ha más erőforrásokhoz szükség van egy kimeneti értékre a csatolt sablonból, győződjön meg róla, hogy a csatolt sablon telepítve van. Vagy ha a hivatkozott sablonnak támaszkodik más erőforrások, ellenőrizze, hogy más erőforrások telepítése előtt a hivatkozott sablonnak.
 
 Az alábbi példa bemutatja egy sablont, amely üzembe helyez egy nyilvános IP-címet, és visszaadja az erőforrás-azonosító:
 

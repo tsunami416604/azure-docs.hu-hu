@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 9c750522123995685191001988ae0081d9454ccf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728363"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828583"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikáció biztonsága | Enyhítését 
 | Termék vagy szolgáltatás | Cikk |
@@ -33,7 +33,7 @@ ms.locfileid: "68728363"
 | **Adatbázis** | <ul><li>[Az SQL Server-kapcsolatok titkosításának és a tanúsítvány ellenőrzésének biztosítása](#sqlserver-validation)</li><li>[Titkosított kommunikáció kényszerítése az SQL Serverrel](#encrypted-sqlserver)</li></ul> |
 | **Azure Storage** | <ul><li>[Győződjön meg arról, hogy az Azure Storage-ba irányuló kommunikáció HTTPS-alapú](#comm-storage)</li><li>[MD5-kivonat érvényesítése a blob letöltése után, ha a HTTPS nem engedélyezhető](#md5-https)</li><li>[SMB 3,0-kompatibilis ügyfél használata az Azure-fájlmegosztás továbbításának biztosítása érdekében](#smb-shares)</li></ul> |
 | **Mobil ügyfél** | <ul><li>[Tanúsítvány-rögzítés implementálása](#cert-pinning)</li></ul> |
-| **WCF** | <ul><li>[HTTPS-alapú biztonságos átviteli csatorna engedélyezése](#https-transport)</li><li>[WCF: Üzenet biztonsági védelmi szintjének beállítása EncryptAndSign](#message-protection)</li><li>[WCF: A WCF szolgáltatás futtatásához használjon egy legkevésbé Kiemelt jogosultságú fiókot](#least-account-wcf)</li></ul> |
+| **WCF** | <ul><li>[HTTPS-alapú biztonságos átviteli csatorna engedélyezése](#https-transport)</li><li>[WCF: Az üzenet biztonsági védelmi szintjének beállítása a EncryptAndSign @ no__t-0 értékre</li><li>[WCF: Használjon legkevésbé Kiemelt fiókot a WCF-szolgáltatás futtatásához @ no__t-0</li></ul> |
 | **Webes API** | <ul><li>[A webes API-khoz érkező összes forgalom kényszerítése HTTPS-kapcsolaton keresztül](#webapi-https)</li></ul> |
 | **Azure Cache for Redis** | <ul><li>[Győződjön meg arról, hogy az Azure cache Redis-hez való kommunikációja SSL-kapcsolaton keresztül történik](#redis-ssl)</li></ul> |
 | **IoT-mező átjárója** | <ul><li>[Az eszköz és a mező közötti átjáró kommunikációjának biztonságossá tétele](#device-field)</li></ul> |
@@ -136,7 +136,7 @@ Az alábbi példa egy alapszintű URL-re vonatkozó Újraírási szabályt tarta
   </system.webServer>
 </configuration>
 ```
-Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot ad vissza (állandó átirányítás), amikor a felhasználó HTTP-t használó lapot kér. Az 301 átirányítja a kérelmet ugyanarra az URL-címre, mint amelyet a látogató kért, de a kérelem HTTP-részét a HTTPS értékre váltja. A rendszer átirányítja például HTTP://contoso.com a HTTPS://contoso.comkövetkezőre:. 
+Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot ad vissza (állandó átirányítás), amikor a felhasználó HTTP-t használó lapot kér. Az 301 átirányítja a kérelmet ugyanarra az URL-címre, mint amelyet a látogató kért, de a kérelem HTTP-részét a HTTPS értékre váltja. A HTTP://contoso.com például HTTPS://contoso.com-re lesz átirányítva. 
 
 ## <a id="http-hsts"></a>HTTP-alapú szigorú átviteli biztonság engedélyezése (HSTS)
 
@@ -147,7 +147,7 @@ Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot ad vissza (ál
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozik**              | [OWASP HTTP-alapú szigorú átviteli biztonsági Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Lépések** | <p>A HTTP Strict Transport Security (HSTS) egy speciális válasz fejléc használatával egy webalkalmazás által meghatározott, a biztonsági fejlesztést engedélyező szolgáltatás. Ha egy támogatott böngésző megkapja ezt a fejlécet, a böngésző megakadályozza, hogy a kommunikáció HTTP-n keresztül történjen a megadott tartományon, és ehelyett a HTTPS protokollon keresztül küldje el az összes kommunikációt. Emellett megakadályozza a HTTPS-kattintást a böngészőkön keresztül.</p><p>A HSTS megvalósításához a következő válasz fejlécét globálisan kell konfigurálni egy webhelyhez a kódban vagy a konfigurációban. Szigorú szállítás – biztonság: max. Age = 300; a altartományok belefoglalása HSTS a következő fenyegetéseket kezeli:</p><ul><li>A felhasználói könyvjelzők vagy https://example.com a manuális típusok, és egy ember által a közepén lévő támadóra vonatkoznak: A HSTS automatikusan átirányítja a HTTP-kérelmeket a célként megadott tartományhoz tartozó HTTPS-re.</li><li>A kizárólag HTTPS-alapú webalkalmazások, amelyek szándékosan HTTP-hivatkozásokat tartalmaznak, vagy HTTP-n keresztül szolgáltatnak tartalmat: A HSTS automatikusan átirányítja a HTTP-kérelmeket a célként megadott tartományhoz tartozó HTTPS-re.</li><li>Egy ember által a közepén lévő támadó egy érvénytelen tanúsítvánnyal kísérli meg feltartóztatni a forgalmat egy sértett felhasználótól, és reméli, hogy a felhasználó elfogadja a hibás tanúsítványt: A HSTS nem engedélyezi, hogy a felhasználó felülbírálja az érvénytelen tanúsítvány üzenetét</li></ul>|
+| **Lépések** | <p>A HTTP Strict Transport Security (HSTS) egy speciális válasz fejléc használatával egy webalkalmazás által meghatározott, a biztonsági fejlesztést engedélyező szolgáltatás. Ha egy támogatott böngésző megkapja ezt a fejlécet, a böngésző megakadályozza, hogy a kommunikáció HTTP-n keresztül történjen a megadott tartományon, és ehelyett a HTTPS protokollon keresztül küldje el az összes kommunikációt. Emellett megakadályozza a HTTPS-kattintást a böngészőkön keresztül.</p><p>A HSTS megvalósításához a következő válasz fejlécét globálisan kell konfigurálni egy webhelyhez a kódban vagy a konfigurációban. Szigorú szállítás – biztonság: max. Age = 300; a altartományok belefoglalása HSTS a következő fenyegetéseket kezeli:</p><ul><li>A felhasználói könyvjelzők vagy a manuálisan begépelhető https://example.com, és egy ember által a közepén lévő támadóra vonatkozik: A HSTS automatikusan átirányítja a HTTP-kérelmeket a célként megadott tartományhoz tartozó HTTPS-re.</li><li>A kizárólag HTTPS-alapú webalkalmazások, amelyek szándékosan HTTP-hivatkozásokat tartalmaznak, vagy HTTP-n keresztül szolgáltatnak tartalmat: A HSTS automatikusan átirányítja a HTTP-kérelmeket a célként megadott tartományhoz tartozó HTTPS-re.</li><li>Egy ember által a közepén lévő támadó egy érvénytelen tanúsítvánnyal kísérli meg feltartóztatni a forgalmat egy sértett felhasználótól, és reméli, hogy a felhasználó elfogadja a hibás tanúsítványt: A HSTS nem engedélyezi, hogy a felhasználó felülbírálja az érvénytelen tanúsítvány üzenetét</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Az SQL Server-kapcsolatok titkosításának és a tanúsítvány ellenőrzésének biztosítása
 
@@ -158,7 +158,7 @@ Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot ad vissza (ál
 | **Alkalmazható technológiák** | SQL Azure  |
 | **Attribútumok**              | SQL-verzió – V12 |
 | **Hivatkozik**              | [Ajánlott eljárások biztonságos kapcsolatok sztringek írásához SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Lépések** | <p>A SQL Database és az ügyfélalkalmazás közötti kommunikáció minden esetben SSL (SSL) használatával titkosítva van. A SQL Database nem támogatja a titkosítatlan kapcsolatokat. Ha az alkalmazás kódjával vagy eszközeivel szeretné érvényesíteni a tanúsítványokat, explicit módon igényeljen titkosított kapcsolatot, és ne Bízzon meg a kiszolgálói tanúsítványokban. Ha az alkalmazás kódja vagy eszközei nem igényelnek titkosított kapcsolatot, továbbra is megkapják a titkosított kapcsolatokat</p><p>Előfordulhat azonban, hogy nem érvényesítik a kiszolgálói tanúsítványokat, így azok a "Man in the middle" támadásokban lesznek kitéve. A ADO.net-kóddal rendelkező tanúsítványok érvényesítéséhez állítsa `Encrypt=True` a `TrustServerCertificate=False` és az adatbázis-kapcsolódási karakterláncot. A tanúsítványok SQL Server Management Studio használatával történő ellenőrzéséhez nyissa meg a Kapcsolódás a kiszolgálóhoz párbeszédpanelt. A kapcsolatok tulajdonságai lapon kattintson a kapcsolatok titkosítása elemre.</p>|
+| **Lépések** | <p>A SQL Database és az ügyfélalkalmazás közötti kommunikáció minden esetben SSL (SSL) használatával titkosítva van. A SQL Database nem támogatja a titkosítatlan kapcsolatokat. Ha az alkalmazás kódjával vagy eszközeivel szeretné érvényesíteni a tanúsítványokat, explicit módon igényeljen titkosított kapcsolatot, és ne Bízzon meg a kiszolgálói tanúsítványokban. Ha az alkalmazás kódja vagy eszközei nem igényelnek titkosított kapcsolatot, továbbra is megkapják a titkosított kapcsolatokat</p><p>Előfordulhat azonban, hogy nem érvényesítik a kiszolgálói tanúsítványokat, így azok a "Man in the middle" támadásokban lesznek kitéve. A ADO.NET alkalmazási kóddal rendelkező tanúsítványok érvényesítéséhez állítsa a `Encrypt=True` és a `TrustServerCertificate=False` értéket az adatbázis-kapcsolódási karakterláncban. A tanúsítványok SQL Server Management Studio használatával történő ellenőrzéséhez nyissa meg a Kapcsolódás a kiszolgálóhoz párbeszédpanelt. A kapcsolatok tulajdonságai lapon kattintson a kapcsolatok titkosítása elemre.</p>|
 
 ## <a id="encrypted-sqlserver"></a>Titkosított kommunikáció kényszerítése az SQL Serverrel
 
@@ -213,7 +213,7 @@ Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot ad vissza (ál
 | **Alkalmazható technológiák** | Általános, Windows Phone-telefon |
 | **Attribútumok**              | –  |
 | **Hivatkozik**              | [Tanúsítványra és nyilvános kulcsra vonatkozó rögzítés](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Lépések** | <p>A tanúsítvány rögzítésével védekezik a MITM-támadások ellen. A rögzítés a gazdagépnek a várt X509-tanúsítvánnyal vagy nyilvános kulccsal való társításának folyamata. Ha egy adott tanúsítvány vagy nyilvános kulcs ismert vagy látható egy gazdagép számára, a tanúsítvány vagy a nyilvános kulcs társítva van, vagy a gazdagéphez van rögzítve. </p><p>Így ha egy támadó megkísérli az SSL-MITM támadását, akkor az SSL-kézfogás során a támadó kiszolgálójának kulcsa eltér a rögzített tanúsítvány kulcsaitól, és a rendszer elveti a kérést, így megakadályozza a MITM-tanúsítványok rögzítését a `ServerCertificateValidationCallback` ServicePointManager delegálása implementálva.</p>|
+| **Lépések** | <p>A tanúsítvány rögzítésével védekezik a MITM-támadások ellen. A rögzítés a gazdagépnek a várt X509-tanúsítvánnyal vagy nyilvános kulccsal való társításának folyamata. Ha egy adott tanúsítvány vagy nyilvános kulcs ismert vagy látható egy gazdagép számára, a tanúsítvány vagy a nyilvános kulcs társítva van, vagy a gazdagéphez van rögzítve. </p><p>Így ha egy támadó megkísérli az SSL-MITM támadását, akkor az SSL-kézfogás során a támadó kiszolgálójának kulcsa eltér a rögzített tanúsítvány kulcsaitól, és a rendszer elveti a kérést, így megakadályozza a MITM-tanúsítványok rögzítését a ServicePointManager `ServerCertificateValidationCallback` delegált implementálása.</p>|
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -289,8 +289,8 @@ namespace CertificatePinningExample
 | **SDL Phase**               | Felépítés |  
 | **Alkalmazható technológiák** | NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
-| **Hivatkozik**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
-| **Lépések** | Az alkalmazás konfigurációjának biztosítania kell, hogy a HTTPS-t használja a bizalmas adatokhoz való összes hozzáféréshez.<ul><li>**MAGYARÁZAT** Ha egy alkalmazás bizalmas adatokat kezel, és nem használ üzenet szintű titkosítást, akkor csak titkosított átviteli csatornán keresztül lehet kommunikálni.</li><li>**JAVASLATOK** Győződjön meg arról, hogy a HTTP-átvitel le van tiltva, és engedélyezze a HTTPS-átvitelt. Például cserélje le a `<httpTransport/>` with `<httpsTransport/>` címkét. Ne támaszkodjon hálózati konfigurációra (tűzfal) annak biztosítására, hogy az alkalmazás csak biztonságos csatornán keresztül érhető el. Filozófiai szempontból az alkalmazás nem függ a hálózattól a biztonsága szempontjából.</li></ul><p>Gyakorlati szempontból a hálózat védelméért felelős személyek nem mindig követik az alkalmazás biztonsági követelményeit, ahogy azok fejlődnek.</p>|
+| **Hivatkozik**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **Lépések** | Az alkalmazás konfigurációjának biztosítania kell, hogy a HTTPS-t használja a bizalmas adatokhoz való összes hozzáféréshez.<ul><li>**MAGYARÁZAT** Ha egy alkalmazás bizalmas adatokat kezel, és nem használ üzenet szintű titkosítást, akkor csak titkosított átviteli csatornán keresztül lehet kommunikálni.</li><li>**JAVASLATOK** Győződjön meg arról, hogy a HTTP-átvitel le van tiltva, és engedélyezze a HTTPS-átvitelt. Például cserélje le a `<httpTransport/>` értéket `<httpsTransport/>` címkével. Ne támaszkodjon hálózati konfigurációra (tűzfal) annak biztosítására, hogy az alkalmazás csak biztonságos csatornán keresztül érhető el. Filozófiai szempontból az alkalmazás nem függ a hálózattól a biztonsága szempontjából.</li></ul><p>Gyakorlati szempontból a hálózat védelméért felelős személyek nem mindig követik az alkalmazás biztonsági követelményeit, ahogy azok fejlődnek.</p>|
 
 ## <a id="message-protection"></a>WCF: Üzenet biztonsági védelmi szintjének beállítása EncryptAndSign
 
@@ -301,10 +301,10 @@ namespace CertificatePinningExample
 | **Alkalmazható technológiák** | .NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozik**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Lépések** | <ul><li>**MAGYARÁZAT** Ha a védelmi szint "None" értékre van állítva, akkor letiltja az üzenetek védelmét. A titkosság és az integritás megfelelő szintű beállítással érhető el.</li><li>**JAVASLATOK**<ul><li>Ha `Mode=None` – letiltja az üzenetek védelmét</li><li>Ha `Mode=Sign` a-Signs, de nem titkosítja az üzenetet, akkor kell használni, ha az adatok integritása fontos</li><li>Ha `Mode=EncryptAndSign` – aláírja és titkosítja az üzenetet</li></ul></li></ul><p>Érdemes lehet kikapcsolni a titkosítást, és csak akkor aláírni az üzenetet, ha csak az információ integritását szeretné ellenőrizni a titkossági probléma nélkül. Ez olyan műveletekhez vagy szolgáltatási szerződésekhez lehet hasznos, amelyekben érvényesíteni kell az eredeti feladót, de nem történik bizalmas adatok továbbítása. A védelmi szint csökkentése érdekében ügyeljen arra, hogy az üzenet ne tartalmazzon személyazonosításra alkalmas adatokat.</p>|
+| **Lépések** | <ul><li>**MAGYARÁZAT** Ha a védelmi szint "None" értékre van állítva, akkor letiltja az üzenetek védelmét. A titkosság és az integritás megfelelő szintű beállítással érhető el.</li><li>**JAVASLATOK**<ul><li>Ha @no__t – 0 – letiltja az üzenetek védelmét</li><li>Ha @no__t – 0 – aláírja, de nem titkosítja az üzenetet; akkor kell használni, ha fontos az adatok integritása</li><li>Ha @no__t – 0 – aláírja és titkosítja az üzenetet</li></ul></li></ul><p>Érdemes lehet kikapcsolni a titkosítást, és csak akkor aláírni az üzenetet, ha csak az információ integritását szeretné ellenőrizni a titkossági probléma nélkül. Ez olyan műveletekhez vagy szolgáltatási szerződésekhez lehet hasznos, amelyekben érvényesíteni kell az eredeti feladót, de nem történik bizalmas adatok továbbítása. A védelmi szint csökkentése érdekében ügyeljen arra, hogy az üzenet ne tartalmazzon személyes adatmennyiséget.</p>|
 
 ### <a name="example"></a>Példa
-A szolgáltatás konfigurálása és a művelet csak az üzenet aláírására szolgál, az alábbi példákban látható. Szolgáltatási szerződés példája `ProtectionLevel.Sign`: A következő példa a ProtectionLevel. Sign használatát szemlélteti a szolgáltatási szerződés szintjén: 
+A szolgáltatás konfigurálása és a művelet csak az üzenet aláírására szolgál, az alábbi példákban látható. Szolgáltatási szerződés – példa `ProtectionLevel.Sign` értékre: A következő példa a ProtectionLevel. Sign használatát szemlélteti a szolgáltatási szerződés szintjén: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -314,7 +314,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>Példa
-Működési szerződés példája `ProtectionLevel.Sign` (a részletes szabályozáshoz): Az alábbi példa a OperationContract szintjén történő `ProtectionLevel.Sign` használatát szemlélteti:
+A `ProtectionLevel.Sign` (a részletes vezérléshez) műveleti szerződés példája: Az alábbi példa a `ProtectionLevel.Sign` használatát szemlélteti a OperationContract szintjén:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 

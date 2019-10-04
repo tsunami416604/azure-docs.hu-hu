@@ -5,17 +5,17 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 94baeb3d459b700cc95d88fb82f995957640aab6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 1f4cdf45fb643499f7d6ab717c6f36395ad292c8
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012159"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827710"
 ---
-A `objectIdType` (vagy az **objektumazonosító típusa**) a szerepkörhöz megadott identitás típusát jelöli. A és `DeviceId` `UserDefinedFunctionId` a típustól eltekintve az objektumazonosítók típusai Azure Active Directory objektumok tulajdonságaira vonatkoznak.
+A `objectIdType` (vagy **objektumazonosító típusa**) a szerepkörhöz megadott identitás típusát jelöli. A `DeviceId` és a `UserDefinedFunctionId` típusokon kívül az objektumazonosítók típusai Azure Active Directory objektumok tulajdonságaihoz tartoznak.
 
 A következő táblázat a támogatott objektumazonosító-típusokat tartalmazza az Azure Digital Ikrekben:
 

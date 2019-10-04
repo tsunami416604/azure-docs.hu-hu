@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 83ff39e9f3b7f95256466c74011e55ebdc22a7a9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910532"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935601"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -187,7 +187,7 @@ Az újrafordítás (vagy a gyorsítótár kiürítése utáni friss fordítás) 
 
 A probléma azonosítása után beállíthatja a problémák lekérdezését, vagy frissítheti a számítási méretet vagy a szolgáltatási szintet, hogy növelje az SQL-adatbázis kapacitását a CPU-követelmények befogadásához. 
 
-További információkért lásd: [önálló adatbázis-erőforrások méretezése Azure SQL Database](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése a Azure SQL Databaseban](sql-database-elastic-pool-scale.md). A felügyelt példányok skálázásával kapcsolatos információkért lásd: [példány szintű erőforrás-korlátok](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+További információkért lásd: [önálló adatbázis-erőforrások méretezése Azure SQL Database](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése a Azure SQL Databaseban](sql-database-elastic-pool-scale.md). A felügyelt példányok skálázásával kapcsolatos információkért lásd: [szolgáltatási rétegbeli erőforrás-korlátok](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ### <a name="performance-problems-caused-by-increased-workload-volume"></a>Megnövekedett munkaterhelés-mennyiség által okozott teljesítménnyel kapcsolatos problémák
 

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 07db6c5cecf2b8dec803e73d5775edef3f8906fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726250"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828629"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -24,7 +24,7 @@ A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára a
 
 > [!WARNING]
 > - Bizonyos ajánlások növelheti az adatok, hálózati vagy számítási erőforrás-használat, ami további licencek vagy előfizetések költségeit. Érvényes aktív Azure-előfizetést hozhat létre erőforrásokat az Azure-ban támogatott régiókban kell rendelkeznie.
-> - Ha korábban már használta [Azure Disk Encryption az Azure ad](azure-security-disk-encryption-prerequisites-aad.md) -alkalmazással a virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Ezen a titkosított virtuális gépen nem használható [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) , mivel ez nem támogatott forgatókönyv, ami azt jelenti, hogy a titkosított virtuális gép esetében a HRE alkalmazásból való átállás még nem támogatott. 
+> - Ha korábban már használta [Azure Disk Encryption az Azure ad-alkalmazással](azure-security-disk-encryption-prerequisites-aad.md) a virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Ezen a titkosított virtuális gépen nem használható [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) , mivel ez nem támogatott forgatókönyv, ami azt jelenti, hogy a titkosított virtuális gép esetében a HRE alkalmazásból való átállás még nem támogatott. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -53,6 +53,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják Az
 | Ubuntu | 18,04| Operációsrendszer- és lemez |
 | Ubuntu | 16.04| Operációsrendszer- és lemez |
 | Ubuntu | 14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Operációsrendszer- és lemez |
+| RHEL | 7,7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7,6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
@@ -60,6 +61,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják Az
 | RHEL | 7.2 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
+| CentOS | 7,7 | Operációsrendszer- és lemez |
 | CentOS | 7,6 | Operációsrendszer- és lemez |
 | CentOS | 7.5 | Operációsrendszer- és lemez |
 | CentOS | 7.4 | Operációsrendszer- és lemez |

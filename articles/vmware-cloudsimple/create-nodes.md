@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5806198968d98fea4c5cbf8731358ca4041f0935
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972872"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828181"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Csomópontok kiépítése az Azure VMware-megoldáshoz CloudSimple szerint
 
@@ -30,7 +30,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
    ![CloudSimple-csomópontok keresése](media/create-cloudsimple-node-search.png)
 
-3. Válassza a **CloudSimple**-csomópontok lehetőséget.
+3. Válassza a **CloudSimple-csomópontok**lehetőséget.
 4. Csomópontok létrehozásához kattintson a **Hozzáadás** gombra.
 
     ![CloudSimple-csomópontok hozzáadása](media/create-cloudsimple-node-add.png)
@@ -40,7 +40,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 7. Adja meg a csomópontok azonosításához szükséges előtagot.
 8. Válassza ki a csomópont-erőforrások helyét.
 9. Válassza ki a csomópont-erőforrások tárolására szolgáló dedikált helyet.
-10. Válassza ki a csomópont típusát. Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
+10. Válassza ki a [csomópont típusát](cloudsimple-node.md).
 11. Válassza ki a kiépíteni kívánt csomópontok számát.
 12. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 13. Tekintse át a beállításokat. A beállítások módosításához kattintson az **előző**gombra.

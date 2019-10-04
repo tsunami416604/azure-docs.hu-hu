@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 7f7eff0a8231d994a792ad20b02607c33db1833a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f15fb46568f4ad062605b51600d3c61870b48645
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306155"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828851"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -26,7 +26,7 @@ Ez a cikk ismerteti a Azure SQL Database és SQL Data Warehouse kapcsolati archi
 
 Az alábbi ábra a Azure SQL Database kapcsolati architektúrájának áttekintését nyújtja.
 
-![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-overview.png)
+![Architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
 A következő lépések azt ismertetik, hogyan történik a kapcsolatok létrehozása egy Azure SQL Database-adatbázisba:
 
@@ -38,7 +38,7 @@ A következő lépések azt ismertetik, hogyan történik a kapcsolatok létreho
 
 A Azure SQL Database a következő három lehetőséget támogatja egy SQL Database-kiszolgáló kapcsolatbiztonsági házirendjének beállításához:
 
-- **Redirect (recommended):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. A kapcsolat engedélyezéséhez az ügyfeleknek engedélyezniük kell a kimenő tűzfalszabályok használatát a régió összes Azure-beli IP-címére a hálózati biztonsági csoportok (NSG) [és a (](../virtual-network/security-overview.md#service-tags)z) 11000-11999-es portokon keresztül, nem csak a 1433-es porton található átjáró IP-címeinek Azure SQL Database. Mivel a csomagok közvetlenül az adatbázishoz mennek, a késés és az átviteli sebesség jobb teljesítményt biztosít.
+- **Redirect (recommended):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. A kapcsolat engedélyezéséhez az ügyfeleknek engedélyezniük kell a kimenő tűzfalszabályok használatát a régió összes Azure-beli IP-címére a hálózati biztonsági csoportok (NSG) és a (z) 11000-11999-es portokon keresztül, nem csak a 1433 [-es](../virtual-network/security-overview.md#service-tags)porton található átjáró IP-címeinek Azure SQL Database. Mivel a csomagok közvetlenül az adatbázishoz mennek, a késés és az átviteli sebesség jobb teljesítményt biztosít.
 - **Proxy** Ebben a módban az összes kapcsolat proxyn keresztül az Azure SQL Database-átjárón keresztül történik. A kapcsolat engedélyezéséhez az ügyfélnek olyan kimenő tűzfalszabályok szükségesek, amelyek csak a Azure SQL Database átjáró IP-címeit engedélyezik (általában két IP-cím régiónként). Ha ezt a módot választja, a számítási feladatok természetétől függően nagyobb késést és alacsonyabb átviteli sebességet eredményezhet. A kapcsolati szabályzatot a legalacsonyabb késés `Proxy` és a legmagasabb átviteli sebesség érdekében javasoljuk `Redirect` .
 - **Alapértelmezett** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási `Redirect`házirendet `Proxy` a vagy a rendszerre. A hatályos szabályzat attól függ, hogy a kapcsolatok az Azure`Redirect`-ból vagy az`Proxy`Azure-on kívülről () származnak-e.
 
@@ -46,13 +46,13 @@ A Azure SQL Database a következő három lehetőséget támogatja egy SQL Datab
 
 Ha az Azure-on belülről csatlakozik, a kapcsolatokhoz alapértelmezés `Redirect` szerint csatlakozási házirend tartozik. `Redirect` Az azt jelenti, hogy a TCP-munkamenet az Azure SQL Database-adatbázishoz való létrehozása után a rendszer átirányítja az ügyfél-munkamenetet a megfelelő adatbázis-fürtre, és a célként megadott virtuális IP-címet a Azure SQL Database átjárótól a fürt. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
-![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
+![Architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Kapcsolódás az Azure-on kívülről
 
 Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés `Proxy` szerint csatlakozási házirendtel rendelkeznek. A szabályzat `Proxy` azt jelenti, hogy a TCP-munkamenet a Azure SQL Database átjárón és az összes további, az átjárón keresztüli adatcsomagon keresztül jön. A következő ábra szemlélteti ezt a forgalmat.
 
-![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+![Architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database-átjárók IP-címei
 
@@ -70,11 +70,11 @@ A következő cikk részletesen ismerteti, hogyan történik a forgalom áttelep
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
 | Közép-Kanada       | 40.85.224.249      |
 | Kelet-Kanada          | 40.86.226.166      |
-| USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96 | 
+| USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Kelet-Kína           | 139.219.130.35     |
-| Kelet-Kína 2         | 40.73.82.1         |
+| Kína 2. keleti régiója         | 40.73.82.1         |
 | Észak-Kína          | 139.219.15.17      |
-| Észak-Kína 2        | 40.73.50.0         |
+| Kína 2. északi régiója        | 40.73.50.0         |
 | Kelet-Ázsia            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 

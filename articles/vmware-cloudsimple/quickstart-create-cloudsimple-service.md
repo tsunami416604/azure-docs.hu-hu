@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39395c9d082bc40836c14ee4c0d328341f96edca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816119"
+ms.locfileid: "71828906"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Rövid útmutató – Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
 
@@ -77,7 +77,7 @@ Ha a CloudSimple saját felhőalapú környezete számára szeretné beállítan
 7. Adja meg a csomópontok azonosításához szükséges előtagot.
 8. Válassza ki a csomópont-erőforrások helyét.
 9. Válassza ki a csomópont-erőforrások tárolására szolgáló dedikált helyet.
-10. Válassza ki a csomópont típusát. Kiválaszthatja a [CS28 vagy a CS36 lehetőséget](cloudsimple-node.md). Az utóbbi lehetőség a maximális számítási és memória-kapacitást is tartalmazza.
+10. Válassza ki a [csomópont típusát](cloudsimple-node.md).
 11. Válassza ki a kiépíteni kívánt csomópontok számát.
 12. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 13. Tekintse át a beállításokat. A beállítások módosításához kattintson az **előző**gombra.

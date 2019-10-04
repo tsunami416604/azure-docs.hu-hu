@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102206"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828794"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Windows SQL Server virtuális gép kiépítése a Azure Portal
 
@@ -38,7 +38,7 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
 
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A **Részletek megjelenítése**lehetőség kiválasztásával további információkat is megtekintheti. 
-1. Írja `2017` be az **SQL Virtual Machines** csempe SQL Server képkeresés mezőjébe, majd válassza az **ingyenes SQL Server licenc lehetőséget: SQL Server 2017 fejlesztő a Windows Server 2016** -ből a legördülő menüből. 
+1. Írja be a `2017` értéket az **SQL Virtual Machines** csempén található SQL Server képkeresés mezőbe, majd válassza a **Free SQL Server licenc: SQL Server 2017 Developer on Windows Server 2016 @ no__t-0 a legördülő menüből. 
 
 
    ![SQL VM-rendszerkép kiválasztása](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
@@ -54,17 +54,6 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
 
 1. Kattintson a **Létrehozás** gombra.
 
-
-## <a id="configure"></a>Konfigurációs beállítások
-
-SQL Server virtuális gép konfigurálásához több lap is rendelkezésre áll. Ebben az útmutatóban a következőkre fogunk összpontosítani: 
-
-| Lépés | Leírás |
-| --- | --- |
-| **Alapvető beállítások** |[Az alapvető beállítások konfigurálása](#1-configure-basic-settings) |
-| **Választható funkciók** |[Választható funkciók konfigurálása](#2-configure-optional-features) |
-| **Az SQL Server beállításai** |[Az SQL Server beállításainak konfigurálása](#3-configure-sql-server-settings) |
-| **Felülvizsgálat + létrehozás** | [Az összefoglalás áttekintése](#4-review--create) |
 
 ## <a name="1-configure-basic-settings"></a>1. Alapvető beállítások konfigurálása
 
@@ -122,7 +111,7 @@ A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat.
 
 * Hozzon létre egy új **virtuális hálózatot**, vagy használjon egy meglévő vNet a SQL Server VMhoz. Jelölje ki az alhálózatot is. 
 
-* A **NIC hálózati biztonsági csoport**területen válassza az alapszintű biztonsági csoport vagy a speciális biztonsági csoport lehetőséget. Az alapszintű beállítás választása lehetővé teszi a bejövő portok kiválasztását a SQL Server VM számára (az alaplapon megegyező értékeket). A speciális beállítás kiválasztásával választhat egy meglévő hálózati biztonsági csoportot, vagy létrehozhat egy újat. 
+* A **NIC hálózati biztonsági csoport**területen válassza az alapszintű biztonsági csoport vagy a speciális biztonsági csoport lehetőséget. Az alapszintű beállítás választása lehetővé teszi a bejövő portok kiválasztását a SQL Server VM számára (az **alaplapon** megegyező értékeket). A speciális beállítás kiválasztásával választhat egy meglévő hálózati biztonsági csoportot, vagy létrehozhat egy újat. 
 
 * Más módosításokat is végezhet a hálózati beállításokon, vagy megtarthatja az alapértelmezett értékeket.
 
@@ -132,7 +121,7 @@ A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat.
 
 A **figyelés** lapon konfigurálja a figyelést és az automatikus leállítást. 
 
-* Az Azure alapértelmezés szerint a virtuális gép számára kijelölt Storage-fiókkal teszi lehetővé a rendszerindítási **diagnosztika** használatát. Itt módosíthatja ezeket a beállításokat, valamint engedélyezheti az **operációs rendszer vendégének diagnosztikaát**is. 
+* Az Azure alapértelmezés szerint a virtuális gép számára kijelölt Storage-fiókkal teszi lehetővé a **rendszerindítási diagnosztika** használatát. Itt módosíthatja ezeket a beállításokat, valamint engedélyezheti az **operációs rendszer vendégének diagnosztikaát**is. 
 * Ezen a lapon is engedélyezheti a **rendszerhez rendelt felügyelt identitást** és automatikus leállítást. 
 
 ![SQL VM-felügyeleti beállítások](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
@@ -141,8 +130,6 @@ A **figyelés** lapon konfigurálja a figyelést és az automatikus leállítás
 ## <a name="3-configure-sql-server-settings"></a>3. SQL Server beállítások konfigurálása
 
 A **SQL Server beállítások** lapon adja meg a SQL Server adott beállításait és optimalizálási lehetőségeit. A SQL Server konfigurálható beállítások közé tartoznak a következők:
-
-
 
 | Beállítás |
 | --- |
@@ -206,26 +193,21 @@ A következő táblázat tartalmazza az Azure Key Vault-integráció konfigurál
 
 További információkért lásd: [Configure Azure Key Vault Integration for SQL Server on Azure VMs](virtual-machines-windows-ps-sql-keyvault.md) Az Azure Key Vault-integráció konfigurálása az SQL Serverhez Azure virtuális gépeken.
 
-### <a name="storage-configuration"></a>Tároló konfigurálása
+### <a name="storage-configuration"></a>Tárolókonfiguráció
 
-A **SQL Server beállítások** lap **tárolási konfiguráció**területén válassza a **konfiguráció módosítása** lehetőséget a tárolási követelmények megadásához.
+A **SQL Server beállítások** lap **tárolási konfiguráció**területén válassza a **konfiguráció módosítása** lehetőséget a teljesítményre optimalizált tárolási konfiguráció lap megnyitásához, és adja meg a tárolási követelményeket.
 
-
-> [!NOTE]
-> Ha manuálisan konfigurálta a virtuális gépet a Standard szintű tárolás használatára, ez a beállítás nem érhető el. Az automatikus tárolóoptimalizálás csak a prémium szintű Storage esetében érhető el.
-
-> [!TIP]
-> Az egyes csúszkák lépéseinek száma és felső határértéke a kiválasztott virtuális gép méretétől függ. A nagyobb méretű és teljesítményű virtuális gépeken nagyobb mértékű vertikális felskálázás végezhető.
-
-Megadhat különböző követelményeket, például a kimeneti/bemeneti műveletek másodpercenkénti számát (IOPS), a MB/másodpercben megadott átviteli sebességet, illetve a tárterület teljes méretét. Ezeket az értékeket a csúszkákkal állíthatja be. Ezek a tárolóbeállítások a számítási feladatok mennyiségéhez igazodva módosíthatók. A portál ezen követelmények alapján automatikusan kiszámítja a csatlakoztatandó és konfigurálandó lemezek számát.
+![SQL virtuális gép tárolójának konfigurációja](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 A **Storage optimized for** (Tároló optimalizálási módja) területen válasszon az alábbi lehetőségek közül:
 
 * A **General** (Általános) az alapértelmezett beállítás, amely a legtöbb számítási feladatot támogatja.
-* A **Transactional** (Tranzakciós) feldolgozás a tárolót az adatbázisok hagyományos OLTP számítási feladataira optimalizálja.
+* A **tranzakciós feldolgozás** optimalizálja a tárolót a hagyományos adatbázis-OLTP munkaterhelésekhez.
 * A **Data warehousing** (Adatraktározás) beállítás elemzési és jelentéskészítési számítási feladatokra optimalizálja a tárolót.
 
-![SQL virtuális gép tárolójának konfigurációja](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
+![SQL virtuális gép tárolójának konfigurációja](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+Dönthet úgy is, hogy alapértelmezés szerint elhagyja az értékeket, vagy manuálisan is módosíthatja a tárolási topológiát, hogy megfeleljen a IOPS igényeinek. További információ: [tárolási konfiguráció](virtual-machines-windows-sql-server-storage-configuration.md). 
 
 ### <a name="sql-server-license"></a>SQL Server-licenc
 Ha frissítési garanciával rendelkező ügyfelet használ, használhatja a [Azure Hybrid Benefitt](https://azure.microsoft.com/pricing/hybrid-benefit/) saját SQL Server licenc használatára, és mentheti az erőforrásokat. 
@@ -252,7 +234,7 @@ Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja 
 * Rendszeradatbázisok biztonsági mentése
 * Biztonsági mentések ütemezésének konfigurálása
 
-A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemterv automatikusan be van állítva, de manuális ütemtervet is létrehozhat. 
+A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemterv automatikusan be van állítva, de manuális ütemtervet is **létrehozhat.** 
 
 ![SQL virtuális gép automatikus biztonsági mentései](media/virtual-machines-windows-portal-sql-server-provision/automated-backup.png)
 

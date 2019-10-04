@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.subservice: cognitive-search
-ms.openlocfilehash: 4e31f818e96ae9f13e3ce8892e575318831848f6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 18befbfb924129518ac32a7fdddaa9ee573840b0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329382"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936491"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Gyakori hibák és figyelmeztetések a mesterséges intelligencia-bővítési folyamatról Azure Search
 
@@ -52,6 +51,64 @@ Az indexelő beolvassa a dokumentumot az adatforrásból, de hiba történt a do
 | A dokumentum kulcsa érvénytelen | A dokumentum kulcsa nem lehet hosszabb 1024 karakternél | Módosítsa a dokumentum kulcsát az érvényesítési követelmények teljesítéséhez. |
 | A mező leképezése nem alkalmazható egy mezőre | Nem lehet alkalmazni a leképezési függvényt `'functionName'` értékre a következő mezőhöz: `'fieldName'`. A tömb nem lehet null. Paraméter neve: bájtok | Ellenőrizze az indexelő által definiált [mező-hozzárendeléseket](search-indexer-field-mappings.md) , és hasonlítsa össze a hibás dokumentum megadott mezőjének értékével. Előfordulhat, hogy módosítania kell a mező-hozzárendeléseket vagy a dokumentum-adattípust. |
 | Nem olvasható be a mező értéke | Nem lehetett beolvasni a (z) `'fieldName'` oszlop értékét a következő indexnél: `'fieldIndex'`. Átviteli szintű hiba történt a kiszolgáló eredményeinek fogadása során. Szolgáltató TCP-szolgáltató, hiba: 0 – a távoli gazdagép kényszerített módon lezárta a meglévő kapcsolatokat.) | Ezek a hibák általában az adatforrás mögöttes szolgáltatásával kapcsolatos váratlan kapcsolódási problémák miatt jelentkeznek. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
+
+### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>A "languageCode" képzettségi bemenethez a következő nyelvi kódok szerepelnek: "X, Y, Z", amelyek közül legalább az egyik érvénytelen.
+Az alárendelt képességek opcionális `languageCode` bemenetének egy vagy több értéke nem támogatott. Ez akkor fordulhat elő, ha a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) kimenetét átadja a következő szakismereteknek, a kimenet pedig több nyelvből áll, mint amennyit az adott alsóbb rétegbeli készségek támogatnak.
+
+Ha tudja, hogy az adatkészlete egyetlen nyelven van, távolítsa el a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) és a `languageCode` skill-bemenetet, és használja a `defaultLanguageCode` Skill paramétert ehhez a szaktudáshoz, feltéve, hogy az adott szakértelem nyelve támogatott.
+
+Ha tudja, hogy az adathalmaz több nyelvet tartalmaz, ezért a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) és a `languageCode` bemenetre van szüksége, vegyen fel egy [ConditionalSkill](cognitive-search-skill-conditional.md) , hogy kiszűrje a szöveget olyan nyelvekkel, amelyek nem támogatottak a az alárendelt képességek szövege.  Íme egy példa arra, hogy ez hogyan néz ki a EntityRecognitionSkill:
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
+        { "name": "whenTrue", "source": "/document/content" },
+        { "name": "whenFalse", "source": "= null" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
+}
+```
+
+Íme néhány hivatkozás a jelenleg támogatott nyelvekhez minden olyan szaktudáshoz, amely a következő hibaüzenetet eredményezheti:
+* [Text Analytics támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (a [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), a [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)és a [SentimentSkill](cognitive-search-skill-sentiment.md)esetében)
+* [Fordító által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (a [szöveg TranslationSkill](cognitive-search-skill-text-translation.md))
+* [Szöveges SplitSkill](cognitive-search-skill-textsplit.md) Támogatott nyelvek: `da, de, en, es, fi, fr, it, ko, pt`
+
+### <a name="skill-did-not-execute-within-the-time-limit"></a>A szakértelem nem volt végrehajtva az időkorláton belül
+Ez a hibaüzenet két esetben fordulhat elő, amelyek mindegyikét másképp kell kezelni. Kövesse az alábbi utasításokat attól függően, hogy milyen képességgel tért vissza ez a hiba.
+
+#### <a name="built-in-cognitive-service-skills"></a>Beépített kognitív szolgáltatásokkal kapcsolatos ismeretek
+Számos beépített kognitív képesség, például a nyelvfelismerés, az entitások felismerése vagy az OCR, a kognitív szolgáltatás API-végpontja támogatja. Időnként átmeneti problémák léptek fel ezekkel a végpontokkal, és a kérés időtúllépést eredményez. Átmeneti problémák esetén nincs szükség jogorvoslatra, kivéve a várakozást, és próbálkozzon újra. Enyhítő megoldásként érdemes lehet úgy beállítani az indexelő, hogy [menetrend szerint fusson](search-howto-schedule-indexers.md). Az ütemezett indexelés megkeresi, hogy hol maradt. Az átmeneti problémák megoldása érdekében az indexelést és a kognitív képességek feldolgozását folytatni kell a következő ütemezett futtatáskor.
+
+#### <a name="custom-skills"></a>Egyéni készségek
+Ha az Ön által létrehozott egyéni szakértelem időtúllépési hibába ütközik, néhány dolog kipróbálható. Először tekintse át az egyéni szaktudást, és győződjön meg arról, hogy nem ragadt meg egy végtelen hurokban, és hogy az eredmény következetesen tér vissza. Miután meggyőződött róla, hogy a helyzet megtörtént, állapítsa meg, hogy milyen végrehajtási idő van a szakértelemben. Ha nem adott meg explicit módon egy `timeout` értéket az egyéni szaktudás definíciójában, akkor az alapértelmezett @no__t – 1 érték 30 másodperc. Ha 30 másodperc nem elég hosszú a szaktudás végrehajtásához, akkor magasabb @no__t – 0 értéket adhat meg az egyéni szakértelem-definícióban. Íme egy példa egy egyéni képesség-definícióra, amelyben az időtúllépés 90 másodpercre van állítva:
+
+```json
+  {
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "uri": "<your custom skill uri>",
+        "batchSize": 1,
+        "timeout": "PT90S",
+        "context": "/document",
+        "inputs": [
+          {
+            "name": "input",
+            "source": "/document/content"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "output",
+            "targetName": "output"
+          }
+        ]
+      }
+```
+
+A `timeout` paraméter számára beállítható maximális érték 230 másodperc.  Ha az egyéni képesség nem hajtható végre következetesen az 230 másodpercen belül, érdemes lehet az egyéni képességek `batchSize` értékének csökkentésére, hogy kevesebb dokumentum legyen feldolgozható egyetlen végrehajtáson belül.  Ha már beállította a `batchSize` értéket 1-re, újra kell írnia a képességet, hogy el tudja végezni a végrehajtást a 230 másodperc alatt, vagy más módon feloszthatja azt több egyéni képességre, hogy az egyetlen egyéni képesség végrehajtásának ideje legfeljebb 230 másodperc legyen. További információért tekintse át az [Egyéni szakértelem dokumentációját](cognitive-search-custom-skill-web-api.md) .
 
 ##  <a name="warnings"></a>Figyelmeztetések
 A figyelmeztetések nem állíthatják le az indexelést, de olyan feltételeket jeleznek, amelyek váratlan eredményekhez vezethetnek. Függetlenül attól, hogy végrehajtja-e a műveletet, vagy nem függ az adatoktól és a forgatókönyvtől.

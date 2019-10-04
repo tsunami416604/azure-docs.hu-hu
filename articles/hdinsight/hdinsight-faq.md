@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308068"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827612"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Gyakori kérdések
 
@@ -193,7 +193,7 @@ További információ a kártevők elleni védelemről: a [Microsoft antimalware
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>Hogyan hozzon létre egy keytab kiterjesztésű egy HDInsight ESP-fürthöz?
 
-Hozzon létre egy Kerberos-keytab kiterjesztésű a tartomány felhasználónevéhez. Ezt a keytab kiterjesztésű később is használhatja a távoli tartományhoz csatlakoztatott fürtök hitelesítéséhez jelszó megadása nélkül. Vegye figyelembe, hogy a tartománynév nagybetűvel van elnevezve:
+Hozzon létre egy Kerberos-keytab kiterjesztésű a tartomány felhasználónevéhez. Ezt a keytab kiterjesztésű később is használhatja a távoli tartományhoz csatlakoztatott fürtök hitelesítéséhez jelszó megadása nélkül. A tartománynév nagybetűs:
 
 ```shell
 ktutil
@@ -310,14 +310,14 @@ A megőrzött parancsfájlok segítségével testre szabhatja a fürthöz a ská
 
 A szükséges információk JSON formátumban való lekéréséhez a következő REST-végpontok használhatók. A kérések létrehozásához használja az alapszintű hitelesítési fejléceket.
 
-- Tez lekérdezés nézete: *https\/:/\<fürt neve >. azurehdinsight. net/ws/v1/Timeline/HIVE_QUERY_ID/*
-- Tez Dag nézet: *https:\//\<fürt neve >. azurehdinsight. net/ws/v1/Timeline/TEZ_DAG_ID/*
+- Tez lekérdezés nézete: *https: \/ @ no__t-2 @ no__t-3cluster neve >. azurehdinsight. net/ws/v1/Timeline/HIVE_QUERY_ID/*
+- Tez Dag nézet: *https: \/ @ no__t-2 @ no__t-3cluster neve >. azurehdinsight. net/ws/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Hogyan lekérni a konfigurációs adatokat a HDI-fürtből egy Azure Active Directory felhasználó használatával?
 
 Ha a HRE-felhasználóval egyeztetni szeretné a megfelelő hitelesítési jogkivonatokat, az átjárót a következő formátumban kell megtennie:
 
-* https://`<cluster dnsname>`. azurehdinsight.NET/API/v1/Clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://@no__t – 0.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Hogyan a Ambari REST-API-t használja a fonal teljesítményének figyeléséhez?
 
@@ -352,6 +352,10 @@ Ha a parancsot a virtuális hálózaton kívülről vagy egy nem társ virtuáli
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Mennyibe kerül a HDInsight-fürt üzembe helyezése?
 
 A számlázással kapcsolatos díjszabásról és gyakori kérdésekért lásd az [Azure HDInsight díjszabását](https://azure.microsoft.com/pricing/details/hdinsight/) ismertető oldalt.
+
+### <a name="when-does-hdinsight-billing-start--stop"></a>Mikor kezdődik a HDInsight-számlázás & leállítása?
+
+A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percenként történik.
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Hogyan lemondani az előfizetést?
 

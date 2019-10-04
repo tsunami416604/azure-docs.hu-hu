@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f118f27d870f4c69a3bf568bacb3765fefee34c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907145"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837547"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir detect-sample
 cd detect-sample
 ```
 
-Ezután egy Gradle-projektet fog inicializálni. Ez a parancs a Gradle nélkülözhetetlen Build-fájljait hozza létre, ami a `build.gradle.kts`legfontosabb: a, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához. Futtassa ezt a parancsot a munkakönyvtárból:
+Ezután egy Gradle-projektet fog inicializálni. Ez a parancs alapvető Build-fájlokat hoz létre a Gradle, ami a legfontosabb, a `build.gradle.kts`, amely a futásidőben használatos az alkalmazás létrehozásához és konfigurálásához. Futtassa ezt a parancsot a munkakönyvtárból:
 
 ```console
 gradle init --type basic
@@ -34,7 +34,7 @@ Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**l
 
 ## <a name="configure-the-build-file"></a>A Build fájl konfigurálása
 
-Keresse `build.gradle.kts` meg és nyissa meg kedvenc ide-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba:
+Keresse meg `build.gradle.kts`, majd nyissa meg a kedvenc IDE-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba:
 
 ```
 plugins {
@@ -63,11 +63,11 @@ Hozzon létre egy mappát a minta alkalmazáshoz. A munkakönyvtárból futtassa
 mkdir -p src/main/java
 ```
 
-Ezután a mappában hozzon létre egy nevű `Detect.java`fájlt.
+Ezután a mappában hozzon létre egy `Detect.java` nevű fájlt.
 
 ## <a name="import-required-libraries"></a>Szükséges kódtárak importálása
 
-Nyissa meg `Detect.java` és adja hozzá a következő importálási utasításokat:
+Nyissa meg `Detect.java`, és adja hozzá a következő importálási utasításokat:
 
 ```java
 import java.io.*;
@@ -88,7 +88,7 @@ public class Detect {
 }
 ```
 
-Adja hozzá ezeket a sorokat `Detect` a osztályhoz. Figyelje meg, hogy az előfizetési kulcs és a végpont beolvasása környezeti változókból történik:
+Adja hozzá ezeket a sorokat a `Detect` osztályhoz. Figyelje meg, hogy az előfizetési kulcs és a végpont beolvasása környezeti változókból történik:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -100,7 +100,7 @@ Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, 
 
 ## <a name="create-a-client-and-build-a-request"></a>Ügyfél létrehozása és kérelem készítése
 
-Adja hozzá ezt a sort `Detect` a osztályhoz a következő `OkHttpClient`létrehozásához:
+Adja hozzá ezt a sort a `Detect` osztályhoz a `OkHttpClient` létrehozásához:
 
 ```java
 // Instantiates the OkHttpClient.
@@ -170,7 +170,10 @@ gradle run
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+A minta futtatása után a következőnek kell megjelennie a terminálon:
+
+> [!NOTE]
+> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

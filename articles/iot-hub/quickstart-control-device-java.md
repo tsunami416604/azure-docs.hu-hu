@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f59a3409d508c63f232294d8d66ade5669815b3c
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306488"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843359"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Gyors útmutató: Azure IoT hub-hoz csatlakoztatott eszköz kezelése Javával
 
@@ -119,7 +119,7 @@ Ezt az értéket használni fogja a rövid útmutató későbbi részében. A sz
 
 ## <a name="listen-for-direct-method-calls"></a>Közvetlen metódusok hívásának figyelése
 
-A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik, szimulált telemetriát küld, és figyeli a hubról érkező közvetlenmetódus-hívásokat. Ebben a rövid útmutatóban a hubról érkező közvetlenmetódus-hívás arra utasítja az eszközt, hogy módosítsa a telemetriaküldések közötti időintervallumot. A szimulált eszköz nyugtázást küld vissza a hubra a közvetlen metódus végrehajtása után.
+A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik, szimulált telemetriát küld, és figyeli a hubról érkező közvetlenmetódus-hívásokat. Ebben a rövid útmutatóban a hubról érkező közvetlenmetódus-hívás arra utasítja az eszközt, hogy módosítsa a telemetriaküldések közötti időintervallumot. A szimulált eszköz visszaigazolást küld a hubhoz a közvetlen metódus végrehajtása után.
 
 1. Egy helyi terminálablakban keresse meg a Java-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\simulated-device-2** mappába.
 
@@ -141,11 +141,11 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    ![A szimulált eszköz futtatása](./media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![Az eszköz által az IoT hubhoz továbbított telemetria kimenete](./media/quickstart-control-device-java/iot-hub-application-send-telemetry-output.png)
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
-A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik. Az alkalmazás közvetlen metódusokat hív meg egy eszközre az IoT Hubon keresztül, és figyeli a nyugtázásokat. Az IoT Hub-háttéralkalmazások általában a felhőben futnak.
+A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik. Az alkalmazás lehetővé teszi, hogy a közvetlen metódus hívásokat hajtson végre egy eszközön az IoT hub segítségével, és figyelje a nyugtákat. Az IoT Hub-háttéralkalmazások általában a felhőben futnak.
 
 1. Egy másik helyi terminálablakban keresse meg a Java-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\back-end-application** mappába.
 
@@ -165,13 +165,13 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
     java -jar target/back-end-application-1.0.0-with-deps.jar
     ```
 
-    A következő képernyőképen az a kimenet látható, amelyben az alkalmazás közvetlen metódust hív meg az eszközre, és megkapja a nyugtázást:
+    Az alábbi képernyőfelvételen a kimenet látható, mivel az alkalmazás közvetlen metódust hív meg az eszköznek, és nyugtát kap:
 
-    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-java/BackEndApplication.png)
+    ![Kimenet, mivel az alkalmazás közvetlen metódust hív meg az IoT hub használatával](./media/quickstart-control-device-java/iot-hub-direct-method-call-output.png)
 
     A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
 
-    ![Változás a szimulált ügyfélben](./media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![A konzol üzenete az eszközről megjeleníti a változási arányt](./media/quickstart-control-device-java/iot-hub-sent-message-change-rate.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

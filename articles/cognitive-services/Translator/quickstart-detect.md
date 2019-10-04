@@ -11,20 +11,18 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: c4aa9c146e50dc45b8856b5611e3032b1ba703f8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3d5184a531e86bdfbb49464a3bc048844e713503
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393869"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827857"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Gyors útmutató: A Translator Text API használata a szöveg nyelvének észleléséhez
 
 Ebből a rövid útmutatóból megtudhatja, hogyan derítheti fel a megadott szöveg nyelvét a Translator Text REST API.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/27/2019
+ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c2066502a6a9d742c347e08d528a2490a390bb7e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 65a049070806fd702497d50236e9d541de2e8b1a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672644"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842302"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Beépített szerepkörök az Azure-erőforrásokhoz
 
@@ -60,6 +60,9 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 | [Azure Kubernetes Service-fürt rendszergazdai szerepköre](#azure-kubernetes-service-cluster-admin-role) | A fürt rendszergazdai hitelesítő adatainak listázása művelet. |
 | [Azure Kubernetes Service-fürt felhasználói szerepköre](#azure-kubernetes-service-cluster-user-role) | Fürt felhasználói hitelesítő adatainak listázása. |
 | [Azure Maps Adatolvasó (előzetes verzió)](#azure-maps-data-reader-preview) | Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel kapcsolatos adatokhoz. |
+| [Azure Sentinel közreműködő](#azure-sentinel-contributor) | Azure Sentinel közreműködő |
+| [Azure Sentinel-olvasó](#azure-sentinel-reader) | Azure Sentinel-olvasó |
+| [Azure Sentinel-válaszadó](#azure-sentinel-responder) | Azure Sentinel-válaszadó |
 | [Azure Service Bus adattulajdonos](#azure-service-bus-data-owner) | Teljes hozzáférés engedélyezése Azure Service Bus erőforrásokhoz. |
 | [Adatfogadó Azure Service Bus](#azure-service-bus-data-receiver) | Engedélyezi a hozzáférést Azure Service Bus erőforrásokhoz. |
 | [Adatfeladó Azure Service Bus](#azure-service-bus-data-sender) | Lehetővé teszi a Azure Service Bus erőforrásokhoz való hozzáférés küldését. |
@@ -178,7 +181,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi, hogy mindent kezelje, kivéve az erőforrásokhoz való hozzáférést. |
+> | **Leírás** | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. |
 > | **Azonosító** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Műveletek** |  |
 > | * | Minden típusú erőforrás létrehozása és kezelése |
@@ -645,6 +648,89 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | *none* |  |
 > | **DataActions** |  |
 > | Microsoft. Maps/fiókok/adatgyűjtés/olvasás | Olvasási hozzáférést biztosít a Maps-fiókhoz. |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-sentinel-contributor"></a>Azure Sentinel közreműködő
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Sentinel közreműködő |
+> | **Azonosító** | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | **Műveletek** |  |
+> | Microsoft. SecurityInsights/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | Keresés az új motor használatával. |
+> | Microsoft.OperationalInsights/workspaces/read | Meglévő munkaterület beolvasása |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
+> | Microsoft.OperationsManagement/solutions/read | OMS-megoldás beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/olvasás | Lekérdezések futtatása a munkaterület összes adatán |
+> | Microsoft. OperationalInsights/munkaterületek/adatforrások/olvasás | Munkaterületen lévő adatforrások beolvasása. |
+> | Microsoft. bepillantások/munkafüzetek/* |  |
+> | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | Microsoft.Insights/alertRules/* | Az adatáttekintési riasztási szabályok létrehozása és kezelése |
+> | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
+> | **Nincs tapintat** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-sentinel-reader"></a>Azure Sentinel-olvasó
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Sentinel-olvasó |
+> | **Azonosító** | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | **Műveletek** |  |
+> | Microsoft. SecurityInsights/*/READ |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | Keresés az új motor használatával. |
+> | Microsoft.OperationalInsights/workspaces/read | Meglévő munkaterület beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/savedSearches/olvasás | Mentett keresési lekérdezés beolvasása |
+> | Microsoft.OperationsManagement/solutions/read | OMS-megoldás beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/olvasás | Lekérdezések futtatása a munkaterület összes adatán |
+> | Microsoft. OperationalInsights/munkaterületek/adatforrások/olvasás | Munkaterületen lévő adatforrások beolvasása. |
+> | Microsoft. bepillantások/munkafüzetek/olvasás | Munkafüzet olvasása |
+> | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | Microsoft.Insights/alertRules/* | Az adatáttekintési riasztási szabályok létrehozása és kezelése |
+> | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
+> | **Nincs tapintat** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-sentinel-responder"></a>Azure Sentinel-válaszadó
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Sentinel-válaszadó |
+> | **Azonosító** | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | **Műveletek** |  |
+> | Microsoft. SecurityInsights/*/READ |  |
+> | Microsoft. SecurityInsights/esetek/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | Keresés az új motor használatával. |
+> | Microsoft.OperationalInsights/workspaces/read | Meglévő munkaterület beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/adatforrások/olvasás | Munkaterületen lévő adatforrások beolvasása. |
+> | Microsoft. OperationalInsights/munkaterületek/savedSearches/olvasás | Mentett keresési lekérdezés beolvasása |
+> | Microsoft.OperationsManagement/solutions/read | OMS-megoldás beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/olvasás | Lekérdezések futtatása a munkaterület összes adatán |
+> | Microsoft. OperationalInsights/munkaterületek/adatforrások/olvasás | Munkaterületen lévő adatforrások beolvasása. |
+> | Microsoft. bepillantások/munkafüzetek/olvasás | Munkafüzet olvasása |
+> | Microsoft. Authorization/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | Microsoft.Insights/alertRules/* | Az adatáttekintési riasztási szabályok létrehozása és kezelése |
+> | Microsoft.Resources/deployments/* | Erőforráscsoport-telepítések létrehozása és kezelése |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | Microsoft.Support/* | Támogatási jegyek létrehozása és kezelése |
+> | **Nincs tapintat** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
 > | **NotDataActions** |  |
 > | *none* |  |
 
@@ -1767,7 +1853,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.Web/customApis/* | Egyéni API létrehozása és kezelése. |
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | App Service csomag tulajdonságainak beolvasása |
-> | Microsoft.Web/sites/functions/listSecrets/action | A Secrets Web Apps függvények listázása. |
+> | Microsoft.Web/sites/functions/listSecrets/action | A függvények titkainak listázása. |
 > | **Nincs tapintat** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -2278,6 +2364,7 @@ A következő táblázat az egyes beépített szerepkörök rövid leírását t
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Replikációs helyreállítási pontok olvasása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | Replikáció javítása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | Védett elem ismételt védelme |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | Védelmitároló-váltás |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Feladatátvételi teszt |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Feladatátvételi teszt karbantartása |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | Feladatátvétel |

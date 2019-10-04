@@ -4,16 +4,16 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1ab6243be39bf30bc060ed5745fbf600924743a9
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67179523"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839225"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
-| Gyorsítótár mérete |530 GB |
+| Gyorsítótár mérete |1,2 TB |
 | Adatbázisok |64 |
 | Csatlakoztatott ügyfelek maximális száma |40,000 |
 | Azure cache a Redis-replikák számára a magas rendelkezésre állás érdekében |1 |

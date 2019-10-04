@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 127c12b6a36f31f91fdce3700c43e2602a5c0194
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624541"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827268"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 
@@ -23,7 +23,7 @@ Ahelyett, hogy a Gremlin-lekérdezéseket egy adatbázisba küldi, ahol a rendsz
 
 ## <a name="bulk-operations-with-graph-data"></a>Tömeges gráfadatműveletek
 
-A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) tartalmaz egy `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret, amely lehetővé teszi a Graph-objektumok létrehozásához és importálásához szükséges funkciókat. 
+A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret tartalmaz a Graph-objektumok létrehozásához és importálásához szükséges funkciók biztosításához. 
 
 Az alábbi folyamat bemutatja, hogyan használható az adatmigrálás a Gremlin API-tárolók esetében:
 1. Rekordok lekérése az adatforrásból.
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-A tömeges végrehajtó könyvtár paramétereivel kapcsolatos további információkért tekintse meg a [BulkImportData Azure Cosmos db témakört](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db).
+A tömeges végrehajtó könyvtár paramétereivel kapcsolatos további információkért tekintse meg a [BulkImportData Azure Cosmos db témakört](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account).
 
 A hasznos adatokat példányosítani kell `GremlinVertex`- és `GremlinEdge`-objektumokba. Ezeket az objektumokat így lehet létrehozni:
 
@@ -131,7 +131,7 @@ Ez az adattár tartalmazza a GraphBulkExecutor mintát a következő fájlokkal:
 Fájl|Leírás
 ---|---
 `App.config`|Itt vannak megadva az alkalmazás- és adatbázis-specifikus paraméterek. Ezt a fájlt előbb módosítani kell, hogy a céladatbázishoz és -gyűjteményekhez csatlakozzon.
-`Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozása, a tisztítások kezelését és a tömeges végrehajtó kérések küldésének logikáját.
+`Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozását, a tisztítások kezelését és a tömeges végrehajtó kérések küldését.
 `Util.cs`| Ez a fájl egy segítőosztályt tartalmaz, amely a tesztadatok létrehozásához szükséges mögöttes logikát biztosítja, valamint az adatbázis és a gyűjtemények meglétének ellenőrzését végzi.
 
 Az `App.config` fájlban az alábbi konfigurációs értékek adhatók meg:

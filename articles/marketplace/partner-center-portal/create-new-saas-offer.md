@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e846db86ce95bd32d21727a4a5ec3195458cb9eb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013090"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936874"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -22,7 +22,7 @@ A szolgáltatott szoftver (SaaS)-ajánlatok létrehozásának megkezdéséhez el
 
 Válassza ki az + **új ajánlatot...** gombra, majd válassza ki a **szoftvert szolgáltatásként** menüpontot. 
 
-Ha más ajánlat típusát választja, akkor a rendszer átirányítja a régebbi Cloud Partner Portalra [](https://cloudpartner.azure.com/). Jelenleg csak a SaaS-és Dynamics 365-ajánlatok érhetők el a partner Center kereskedelmi piactér portálján.
+Ha más ajánlat típusát választja, akkor a rendszer átirányítja a régebbi [Cloud Partner Portalra](https://cloudpartner.azure.com/). Jelenleg csak a SaaS-és Dynamics 365-ajánlatok érhetők el a partner Center kereskedelmi piactér portálján.
 
 ![Ajánlati ablak létrehozása a partner Centerben](./media/new-offer-click.png)
 
@@ -93,7 +93,7 @@ Az alábbi táblázat egy példát mutat be a költségek és a kifizetések leb
 
 |**Microsoft-számlák**|**$100/hó**|
 |:---|:---|
-|A Microsoft a licencelési díj 80%-ában fizet <br>**A minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet*|$80,00/hó <br>*$* 90,00/hó *|
+|A Microsoft a licencelési díj 80%-ában fizet <br>@no__t – 0*a minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet*|$80,00/hó <br>*$* 90,00/hó *|
 
 - Ebben a példában a Microsoft $100,00-es számlát küld az ügyfélnek a szoftverlicenc számára, és kifizeti a $80,00-et a közzétevőnek.
 - Azok a partnerek, akik a **kedvezményes Piactéri szolgáltatási díjjal** rendelkeznek, csökkentett tranzakciós díjat kapnak az SaaS-ajánlatokról, a május 2019-ig, 2020-ig. Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $90,00-et a közzétevőnek.
@@ -244,19 +244,19 @@ Az érték kiosztásának alapvető összetevőinek a következő információka
 
 Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címkék használatával formázhatja a leírást. 
 
-1. Ha bekezdéseket szeretne létrehozni, vegye fel `<p>` a szöveget a szöveg megadásával, és `</p>` adja hozzá a végéhez.
+1. Ha bekezdéseket szeretne létrehozni, adja hozzá a `<p>` parancsot a szöveg megadásához, és adja hozzá a `</p>` értéket a végén.
 
     **Példa**: 
 
-    `<p>`Ez az első bekezdés. `</p>` <br>
-    `<p>`Ez a második bekezdés. `</p>` <br>
+    @no__t – 0 ez az első bekezdésem. `</p>` <br>
+    @no__t – 0 Ez a második bekezdés. `</p>` <br>
 
     A fentiek így néznek ki:
 
     <p> Ez az első bekezdés. </p>
     <p> Ez a második bekezdés. </p>
 
-1. Ha listajeles listát kíván hozzáadni az **elemek listájához**, vigye a szöveget az `<li>` alábbi címkékre. `<li>` A és `</li>` `<ul>` a címkén belül több listajeles elemet (a és a címkék közötti elemeket) is másolhat és beilleszthet. `</ul>` Ügyeljen rá, hogy hozzáadja `<ul></ul>`a-t. 
+1. Ha **listajeles listát kíván hozzáadni az elemek listájához**, helyezze a szöveget az alábbi `<li>` címkén belül. A `<ul>` és a `</ul>` címkén belül több listajeles elemet (a `<li>` és a `</li>` címke közötti elemeket) másolhat és illeszthet be. Ügyeljen arra, hogy hozzáadja a `<ul></ul>` értéket. 
 
     **Példa**:
 
@@ -275,34 +275,34 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
         <li> Ide írja be a szöveget </li> 
     </ul> 
 
-1. **Félkövér** tartalom hozzáadásához vegye `<b>` fel a szöveget a félkövérre szánt szöveg elejére, és `</b>` adja hozzá a félkövér betűvel szedett szöveg végéhez. 
+1. **Félkövér** tartalom hozzáadásához vegye fel `<b>` betűt a félkövérre állítani kívánt szöveg elejére, és vegye fel `</b>` szöveget a félkövérre szedett szöveg végén. 
 
-    **Példa**: `<b>`INGYENES PRÓBAVERZIÓ`</b>`
+    **Példa**: @NO__T – 0 INGYENES PRÓBAVERZIÓ `</b>`
     
     A fentiek hatására az ingyenes PRÓBAIDŐSZAKot a kirakatban található ajánlat leírásában félkövérre kell állítani. 
 
     **INGYENES PRÓBAVERZIÓ**
 
-1. Ha **sortörést** szeretne hozzáadni a tartalomhoz, `<br>` adja hozzá a tartalmat az új sorban kezdeni kívánt tartalomhoz. Ha helyet szeretne hagyni, és a tartalom új sorban indul el, adja hozzá `<br><br>` a tartalmat a tartalomhoz. 
+1. Ha sortörést szeretne hozzáadni a tartalomhoz, adja hozzá a `<br>` **parancsot** az új sorban elindítani kívánt tartalomhoz. Ha helyet szeretne hagyni, és gondoskodjon arról, hogy a tartalom új sorban induljon el, adja hozzá a `<br><br>` értéket a tartalom előtt. 
 
     **Példa**:
 
-    Ez egy szöveges sor. `<br>`Ez egy olyan szövegsor, amely új sorban indul el. `<br><br>`Ez egy olyan sor, amely az alábbi két sort fogja elindítani. 
+    Ez egy szöveges sor. @no__t – 0 ez egy olyan szövegsor, amely új sorban indul el. @no__t – 0 – ez egy sor, amely az alábbi két sort fogja elindítani. 
 
     A fentiek így néznek ki:
 
     Ez egy szöveges sor. <br> Ez egy olyan szövegsor, amely új sorban indul el. <br><br> Ez egy olyan sor, amely az alábbi két sort fogja elindítani. 
 
-1. Ha szeretné megnövelni a **szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő `<H*></H*>` címkéket a szöveg elejéhez és végéhez. 
+1. Ha szeretné **megnövelni a szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő @no__t – 0 címkét a szöveg elejéhez és végéhez. 
 
     **Példa**:
 
-    `<h1>`Ez az 1. címsor`</h1>` <br>
-    `<h2>`Ez a 2. fejléc`</h2>` <br>
-    `<h3>`Ez a 3. címsor`</h3>` <br>
-    `<h4>`Ez a 4. címsor`</h4>` <br>
-    `<h5>`Ez az 5. címsor`</h5>` <br>
-    `<h6>`Ez a 6. címsor`</h6>` 
+    `<h1>`This az 1 @ no__t-1 fejléc <br>
+    @no__t – a 0This a 2. no__t-1. <br>
+    @no__t – a 0This a 3. no__t-1. <br>
+    @no__t – a 0This a 4. @ no__t-1. <br>
+    @no__t – a 0This 5. címsor @ no__t-1. <br>
+    @no__t – a 0This a 6 @ no__t-1. 
 
     A fentiek így néznek ki:
 
@@ -316,7 +316,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
 #### <a name="contact-information"></a>Kapcsolattartási adatok
 
-- **Névjegyek**: Minden ügyfél-kapcsolattartó esetében adja meg az alkalmazott **nevét** , **telefonszámát**és **e-mail-** címét.  (Ezek *nem* lesznek nyilvánosan megjelenítve). A **támogatási kapcsolattartó** csoportnak egy **támogatási URL-címet** is meg kell adnia.  (Ez az információ nyilvánosan jelenik meg).
+- **Névjegyek**: Minden ügyfél-kapcsolattartó esetében adja meg az alkalmazott **nevét** , **telefonszámát**és **e-mail-** címét.  (Ezek *nem* lesznek nyilvánosan megjelenítve). A **támogatási kapcsolattartó** csoportnak egy **támogatási URL-címet** is meg kell adnia.  (Ez az *információ nyilvánosan* jelenik meg).
 
 **Támogatási kapcsolattartó** (kötelező): Általános támogatási kérdésekre.
 
@@ -409,6 +409,9 @@ A kereskedelmi Piactéren keresztül elérhető SaaS-ajánlatok lehetővé teszi
 Az ingyenes próbaverzió konfigurálásának lehetősége az ajánlat minden csomagjában elérhető. Egyszerűen keresse meg az egyes ajánlatok díjszabását és rendelkezésre állását, és jelölje be a jelölőnégyzetet egy hónapos próbaverzió engedélyezéséhez.
 
 ![Egy hónapos ingyenes próbaverzió jelölőnégyzet](./media/free-trial-enable.png)
+
+>[!Note]
+>Ha a visszagörgethető ajánlat ingyenes próbaverzióval lett közzétéve, az adott csomag esetében nem tiltható le. Győződjön meg arról, hogy ez a beállítás megfelelő az első közzétételhez, hogy ne kelljen újból létrehoznia a csomagot.
 
 Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja `isFreeTrial`az új API-tulajdonságot, amely igaz vagy hamis értékként lesz megjelölve. További információt a [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) -val foglalkozó témakörben talál.
 

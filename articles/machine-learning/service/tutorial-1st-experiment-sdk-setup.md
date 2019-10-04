@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/28/2019
-ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 09/25/2019
+ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004057"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828038"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlet létrehozásával a Python SDK-val
 
@@ -25,44 +25,65 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Hozzon létre egy [Azure Machine learning-munkaterület](concept-workspace.md) , amelyet a következő oktatóanyagban szeretne használni.
+> * Az oktatóanyagok notebookjának klónozása a munkaterületen lévő mappába.
 > * Hozzon létre egy felhőalapú Jupyter notebook virtuális gépet Azure Machine Learning Python SDK-val telepített és előre konfigurált.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi az SDK-ban. Ha már rendelkezik Azure Machine Learning munkaterülettel, ugorjon a [következő szakaszra](#azure). Ellenkező esetben hozzon létre egyet most.
+Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
+
+A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú konzolon Azure Portal segítségével hozhatja létre. 
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="azure"></a>Felhőalapú notebook-kiszolgáló létrehozása
+>[!IMPORTANT] 
+> Jegyezze fel a **munkaterületet** és az **előfizetést**. Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
+
+
+## <a name="azure"></a>Jegyzetfüzet-mappa klónozása
 
 Ez a példa a Felhőbeli notebook-kiszolgálót használja a munkaterületen a telepítés ingyenes és előre konfigurált felületén. [Saját környezetét](how-to-configure-environment.md#local) használhatja, ha a környezetét, a csomagokat és a függőségeket szeretné vezérelni.
 
-A munkaterületről hozzon létre egy felhőalapú erőforrást a Jupyter-jegyzetfüzetek használatának megkezdéséhez. Ez az erőforrás egy felhőalapú Linux rendszerű virtuális gép, amely minden Azure Machine Learning futtatásához szükséges.
+A következő kísérlet beállítása és futtatása lépések a munkaterület kezdőlapján (előzetes verzió), egy összevont felület, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek készíthetők az összes képzettségi szint adatelemző szakemberek számára.
 
-1. Nyissa meg a munkaterületet a [Azure Portalban](https://portal.azure.com/).  Ha nem tudja, hogyan keresse meg a munkaterületét a portálon, tekintse meg a [munkaterület megkeresése](how-to-manage-workspace.md#view)című témakört.
+1. Jelentkezzen be a [munkaterület](https://ml.azure.com/)kezdőlapján.
 
-1. A Azure Portal munkaterület lapján válassza a bal oldalon található **notebook virtuális gépek** elemet.
+1. Válassza ki az előfizetését és a létrehozott munkaterületet.
 
-1. A notebook virtuális gép létrehozásához válassza az **+ új** lehetőséget.
+1. Válassza a bal oldali **jegyzetfüzetek és fájlok** elemet.
 
-     ![Új virtuális gép kiválasztása](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
+1. Nyissa meg a **Samples** mappát.
 
-1. Adja meg a virtuális gép nevét. 
-   + A notebook virtuális gép nevének 2 – 16 karakter közöttinek kell lennie. Az érvényes karakterek a betűk, a számok és a karakter.  
-   + A névnek egyedinek kell lennie az Azure-előfizetésen belül is.
+1. Válassza a **"..."** lehetőséget az **oktatóanyagok** mappa jobb oldalán, majd válassza a **klónozás**elemet.
 
-1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása eltarthat egy kis ideig.
+    ![Klónozási mappa](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Várjon, amíg az állapot **futni**nem változik.
-   A virtuális gép futása után a **notebook virtuális gépek** szakasz használatával indítsa el a Jupyter webes felületét.
+1. Minden olyan felhasználó számára megjelenik egy mappa, aki hozzáfér a munkaterülethez.  Válassza ki azt a mappát, amelybe be szeretné választani az **oktatóanyag** mappáját.
 
-1. A virtuális gép **URI** oszlopában válassza a **Jupyter** lehetőséget.
+## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a>@no__t – virtuális gép 0Select a notebook futtatásához
 
-    ![A Jupyter notebook-kiszolgáló elindítása](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+1. A **felhasználói fájlok** területen nyissa meg a mappát, majd nyissa meg a klónozott **oktatóanyagok** mappát.
 
-   A hivatkozás elindítja a notebook-kiszolgálót, és megnyitja a Jupyter notebook weboldalát egy új böngésző lapon.  Ez a hivatkozás csak a virtuális gépet létrehozó személy számára fog működni. A munkaterület minden felhasználójának létre kell hoznia a saját virtuális gépet.
+    ![Oktatóanyagok mappa megnyitása](media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+
+    > [!IMPORTANT]
+    > A jegyzetfüzeteket megtekintheti a **Samples** mappában, de onnan nem futtathat jegyzetfüzetet.  Jegyzetfüzet futtatásához győződjön meg arról, hogy a **felhasználói fájlok** szakaszban megnyitta a jegyzetfüzet klónozott verzióját.
+    
+1. Válassza ki a **tutorial-1st-Experiment-SDK-Train. ipynb** fájlt az **oktatóanyagok** mappában.
+
+1. A felső sávon válassza ki a notebook futtatásához használni kívánt notebook virtuális gépet. Ezek a virtuális gépek előre konfigurálva vannak a Azure Machine Learning futtatásához szükséges összes értékkel. Kiválaszthat egy virtuális gépet, amelyet a munkaterület bármely felhasználója létrehoz. 
+
+1. Ha nem találhatók virtuális gépek, válassza a **+ új virtuális gép** lehetőséget a virtuális gép létrehozásához.
+
+    ![Virtuális gép létrehozása](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+
+    1. Virtuális gép létrehozásakor adjon meg egy nevet.  A névnek 2 és 16 karakter közöttinek kell lennie. Az érvényes karakterek betűk, számjegyek és karakterek, és az Azure-előfizetésben is egyedinek kell lenniük.
+
+    1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása körülbelül 5 percet vesz igénybe.
+
+1. Miután a virtuális gép elérhetővé válik, megjelenik a felső eszköztáron.  Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a jegyzetfüzet kódjának **SHIFT + ENTER** billentyűkombinációjának használatával.
 
 
 ## <a name="next-steps"></a>További lépések

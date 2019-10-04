@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: cc6041a228545ffef158e3d627de983a154513a5
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350943"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843304"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -49,7 +49,7 @@ Az alábbi példákkal kipróbálhatja a következő műveleteket:
 | Biztonsági másolatok megőrzésének módosítása | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Felügyelt példány](sql-database-automated-backups.md#managed-instance-database) | [önálló adatbázis](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | A biztonsági másolatok hosszú távú megőrzésének módosítása | [Önálló adatbázis](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Felügyelt példány – N/A  | [önálló adatbázis](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Felügyelt példány – N/A  |
 | Adatbázis visszaállítása az adott időpontban | [Önálló adatbázis](sql-database-recovery-using-backups.md#point-in-time-restore) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Törölt adatbázis visszaállítása | [Önálló adatbázis](sql-database-recovery-using-backups.md#deleted-database-restore-using-azure-portal) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Törölt adatbázis visszaállítása | [Önálló adatbázis](sql-database-recovery-using-backups.md) | [Önálló adatbázis](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Felügyelt példány](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Adatbázis visszaállítása az Azure Blob Storage | Önálló adatbázis – N/A <br/>Felügyelt példány – N/A  | Önálló adatbázis – N/A <br/>[Felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Mennyi ideig tartanak a biztonsági másolatok

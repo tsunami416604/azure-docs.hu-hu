@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081658"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828431"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken a Jenkins és az Azure DevOps Services használatával
 
@@ -54,7 +54,7 @@ egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportb
 ## <a name="get-the-sample-app"></a>Mintaalkalmazás letöltése
 
 A telepítéshez szükséges egy Git-adattárban lévő alkalmazás.
-A jelen oktatóanyag esetében azt javasoljuk, hogy [ezt a mintaalkalmazást használja, amely a Githubon érhető el](https://github.com/azooinmyluggage/fabrikam-node). Ez az oktatóanyag tartalmaz egy szkriptet, amelyet a Node.js és egy alkalmazás telepítésére fog használni. Ha szeretne a saját adattárával dolgozni, konfigurálnia kell egy hasonló mintát.
+A jelen oktatóanyag esetében azt javasoljuk, hogy [ezt a mintaalkalmazást használja, amely a Githubon érhető el](https://github.com/azure-devops/fabrikam-node). Ez az oktatóanyag tartalmaz egy szkriptet, amelyet a Node.js és egy alkalmazás telepítésére fog használni. Ha szeretne a saját adattárával dolgozni, konfigurálnia kell egy hasonló mintát.
 
 Hozzon létre egy adattármásolatot az alkalmazáshoz, és jegyezze le a helyet (URL-címet) az oktatóanyag későbbi lépéseiben való felhasználáshoz. További információkat a [Fork a repo](https://help.github.com/articles/fork-a-repo/) (Adattármásolat készítése) témakörben talál.    
 

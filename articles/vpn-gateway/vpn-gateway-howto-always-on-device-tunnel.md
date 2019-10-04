@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295470"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841144"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>AlwaysOn VPN-eszközalagút konfigurálása
 
@@ -32,12 +32,7 @@ Az eszköz-alagút és a felhasználói alagút egymástól függetlenül műkö
 
 Konfigurálja úgy a VPN-átjárót, hogy a IKEv2 és a tanúsítványalapú hitelesítést használja ezen [pont – hely cikk](vpn-gateway-howto-point-to-site-resource-manager-portal.md)alapján.
 
-## <a name="2-configure-the-user-tunnel"></a>2. A felhasználói alagút konfigurálása
-
-1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélen a [pont – hely VPN-ügyfél című cikkben](point-to-site-how-to-vpn-client-install-azure-cert.md)látható módon. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie
-2. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a SCCM vagy az Intune használatával az [alábbi utasítások](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)segítségével.
-
-## <a name="3-configure-the-device-tunnel"></a>3. Az eszköz bújtatásának konfigurálása
+## <a name="2-configure-the-device-tunnel"></a>2. Az eszköz bújtatásának konfigurálása
 
 Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell teljesülniük:
 

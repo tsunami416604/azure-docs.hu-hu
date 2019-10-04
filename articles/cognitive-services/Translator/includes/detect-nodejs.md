@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b342838c41ad72609cf9917b345ef0f72b352f2e
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c180a5d751b44346760706b1bd3d1e8acb70099d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907206"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837526"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ Ezekre a modulokra a HTTP-kérelem és az `'X-ClientTraceId'` fejléc egyedi azo
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Az előfizetési kulcs és a végpont beállítása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`környezeti változókból: és. Ha nem ismeri a környezeti változókat, beállíthatja `subscriptionKey` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat, és megjegyzéseket fűzhet hozzájuk.
+Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből a környezeti változókból: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` és a `endpoint` karakterláncokat, és megjegyzéseket fűzhet a feltételes utasításokhoz.
 
 Másolja a projektbe a következő kódot:
 
@@ -51,9 +51,6 @@ var endpoint = process.env[endpoint_var];
 ## <a name="configure-the-request"></a>A kérelem konfigurálása
 
 A kérelemmodulon keresztül elérhető `request()` metódus lehetővé teszi a HTTP-metódus, az URL-cím, a kérelemparaméterek, a fejlécek és a JSON-törzs `options` objektumként való átadását. Az alábbi kódrészletben a kérelmet fogjuk konfigurálni:
-
->[!NOTE]
-> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: Észlelés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ```javascript
 let options = {
@@ -76,7 +73,7 @@ let options = {
 ```
 A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából.
 
-Ha Cognitive Services több szolgáltatást használó előfizetést használ, a `Ocp-Apim-Subscription-Region` kérések fejlécében is szerepelnie kell.
+Ha Cognitive Services többszolgáltatásos előfizetést használ, a kérések fejlécében szerepelnie kell a `Ocp-Apim-Subscription-Region` értéknek is.
 
 További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
@@ -103,7 +100,10 @@ node detect.js
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+A minta futtatása után a következőnek kell megjelennie a terminálon:
+
+> [!NOTE]
+> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

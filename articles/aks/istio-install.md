@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9344d2832c37c34d5690dc8f3aae7394ca644276
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542882"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827321"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>A Istio telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
 A [Istio][istio-github] egy nyílt forráskódú szolgáltatás rácsvonala, amely a Kubernetes-fürtökön futó összes szolgáltatás egyik kulcsfontosságú készletét biztosítja. Ezek a szolgáltatások közé tartoznak a forgalomirányítás, a szolgáltatások identitása és a biztonság, a házirendek betartatása és a Megfigyelhetőség. A Istio kapcsolatos további információkért tekintse meg a hivatalos [Mi az Istio?][istio-docs-concepts] dokumentációt.
 
-Ez a cikk bemutatja, hogyan telepítheti a Istio. A Istio `istioctl` -ügyfél bináris fájlja telepítve van az ügyfélszámítógépre, és a Istio-összetevők a Kubernetes-fürtön vannak telepítve az AK-ban.
+Ez a cikk bemutatja, hogyan telepítheti a Istio. A Istio `istioctl` ügyfél bináris fájlja telepítve van az ügyfélszámítógépre, és a Istio-összetevők Kubernetes-fürtbe vannak telepítve az AK-ban.
 
 > [!NOTE]
-> Ezek az utasítások a Istio `1.1.3`-verzióra hivatkoznak.
+> Ezek az utasítások a Istio `1.1.3` verziójára hivatkoznak.
 >
-> A Istio `1.1.x` `1.11`- `1.12` kiadásokataIstiocsapattesztelteaKubernetes`1.13`verzióiban,. További Istio-verziók a [GitHub-Istio kiadásokban][istio-github-releases] és az egyes kiadásokra vonatkozó információk a [Istio-kibocsátási megjegyzésekben][istio-release-notes]találhatók.
+> A Istio `1.1.x` kiadást a Istio csapat tesztelte a Kubernetes `1.11`, `1.12`, `1.13` verziójára. További Istio-verziók a [GitHub-Istio kiadásokban][istio-github-releases] és a [Istio-Hírek][istio-release-notes]egyes kiadásaival kapcsolatos információk is megtalálhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -38,9 +38,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt `1.11` (Kubernetes és újabb, RBAC engedélyezve), és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
+A cikkben részletesen ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.11` és újabb, RBAC engedélyezve), és létrehozott egy `kubectl`-es kapcsolatokat a fürttel. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
-Az utasítások követéséhez és a Istio telepítéséhez a [Helm][helm] szükséges. Javasoljuk, hogy a fürtben megfelelően `2.12.2` telepítse és konfigurálja a verziót. Ha segítségre van szüksége a Helm telepítéséhez, tekintse meg az [AK Helm telepítési útmutatóját][helm-install]. Az összes Istio-hüvelyt is be kell ütemezni a Linux-csomópontokon történő futtatásra.
+Az utasítások követéséhez és a Istio telepítéséhez a [Helm][helm] szükséges. Azt javasoljuk, hogy `2.12.2` vagy újabb verziójú verziót telepítsen, és konfigurálja a fürtben. Ha segítségre van szüksége a Helm telepítéséhez, tekintse meg az [AK Helm telepítési útmutatóját][helm-install]. Az összes Istio-hüvelyt is be kell ütemezni a Linux-csomópontokon történő futtatásra.
 
 Győződjön meg arról, hogy elolvasta a [Istio teljesítményének és méretezhetőségének](https://istio.io/docs/concepts/performance-and-scalability/) dokumentációját, és Ismerje meg a Istio futtatásához szükséges további erőforrás-követelményeket az AK-fürtben. Az alapvető és a memóriára vonatkozó követelmények az adott munkaterhelés alapján változhatnak. Válasszon megfelelő számú csomópontot és virtuálisgép-méretet a telepítéshez.
 
@@ -55,7 +55,7 @@ Először töltse le és bontsa ki a legújabb Istio-kiadást. A lépések némi
 
 ### <a name="bash"></a>Bash
 
-MacOS rendszeren töltse le `curl` a legújabb Istio-kiadást, majd `tar` bontsa ki a következőt a paranccsal:
+MacOS rendszeren a `curl` paranccsal töltse le a legújabb Istio-kiadást, majd az alábbi módon bontsa ki a `tar` értéket:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -65,7 +65,7 @@ ISTIO_VERSION=1.1.3
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-Linux vagy Windows rendszerű Linux rendszeren a használatával `curl` letöltheti a legújabb Istio-kiadást, majd `tar` kinyerheti a következővel:
+Linux vagy Windows rendszerű Linux rendszeren a `curl` használatával töltse le a legújabb Istio-kiadást, majd bontsa ki a `tar` értéket a következőképpen:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -78,7 +78,7 @@ Most lépjen a szakaszra a [Istio istioctl-ügyfél bináris](#install-the-istio
 
 ### <a name="powershell"></a>PowerShell
 
-A PowerShellben a `Invoke-WebRequest` használatával töltse le a legújabb Istio-kiadást, `Expand-Archive` majd a következő módon bontsa ki a kivonatot:
+A PowerShellben használja a `Invoke-WebRequest` lehetőséget a legújabb Istio-kiadás letöltéséhez, majd a `Expand-Archive` kibontásához a következő módon:
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -98,7 +98,7 @@ Most lépjen a szakaszra a [Istio istioctl-ügyfél bináris](#install-the-istio
 > [!IMPORTANT]
 > Győződjön meg arról, hogy az ebben a szakaszban leírt lépéseket a letöltött és kibontott Istio-kiadás legfelső szintű mappájából futtatja.
 
-Az `istioctl` ügyfél bináris fájlja az ügyfélszámítógépen fut, és lehetővé teszi a Istio szolgáltatás hálójának kezelését. A telepítési lépések némileg eltérnek az ügyféloldali operációs rendszerek között. Válasszon egyet a következő telepítési lépések közül, amelyek megfelelnek az Ön által választott környezetnek:
+A `istioctl` ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi, hogy a Istio Service Mesh használatával kommunikáljon. A telepítési lépések némileg eltérnek az ügyféloldali operációs rendszerek között. Válasszon egyet a következő telepítési lépések közül, amelyek megfelelnek az Ön által választott környezetnek:
 
 * [MacOS](#macos)
 * [Linux vagy Windows alrendszer Linux rendszeren](#linux-or-windows-subsystem-for-linux)
@@ -106,7 +106,7 @@ Az `istioctl` ügyfél bináris fájlja az ügyfélszámítógépen fut, és leh
 
 ### <a name="macos"></a>MacOS
 
-A Istio `istioctl` -ügyfél bináris fájljának MacOS rendszerű bash-alapú rendszerhéjból történő telepítéséhez használja a következő parancsokat. Ezek a parancsok az `istioctl` ügyfél bináris fájljait az általános jogú felhasználói program mappájába `PATH`másolják.
+A következő parancsokkal telepítheti a Istio `istioctl` ügyfél bináris fájlját egy bash-alapú rendszerhéjba MacOS rendszeren. Ezek a parancsok a `istioctl` ügyfél bináris fájljait a standard felhasználói program mappájába másolják a `PATH`.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -114,7 +114,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-Ha a Istio `istioctl` -ügyfél bináris fájljának a parancssori befejezését szeretné beállítani, a következőképpen állítsa be:
+Ha a Istio parancssori kiegészítést szeretne végrehajtani a `istioctl` ügyfél bináris fájljához, akkor az alábbiak szerint állítsa be:
 
 ```bash
 # Generate the bash completion file and source it in your current shell
@@ -130,7 +130,7 @@ Most lépjen a következő szakaszra, és [telepítse a Istio CRDs az AK-ra](#in
 
 ### <a name="linux-or-windows-subsystem-for-linux"></a>Linux vagy Windows alrendszer Linux rendszeren
 
-A következő parancsokkal telepítheti a Istio `istioctl` -ügyfél bináris fájlját egy bash-alapú rendszerhéjban Linuxon vagy Linuxon futó [Windows][install-wsl]alrendszeren. Ezek a parancsok az `istioctl` ügyfél bináris fájljait az általános jogú felhasználói program mappájába `PATH`másolják.
+A következő parancsokkal telepítheti a Istio `istioctl` ügyféloldali bináris fájlt egy bash-alapú rendszerhéjban Linuxon vagy [Linuxon futó Windows alrendszeren][install-wsl]. Ezek a parancsok a `istioctl` ügyfél bináris fájljait a standard felhasználói program mappájába másolják a `PATH`.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -138,7 +138,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-Ha a Istio `istioctl` -ügyfél bináris fájljának a parancssori befejezését szeretné beállítani, a következőképpen állítsa be:
+Ha a Istio parancssori kiegészítést szeretne végrehajtani a `istioctl` ügyfél bináris fájljához, akkor az alábbiak szerint állítsa be:
 
 ```bash
 # Generate the bash completion file and source it in your current shell
@@ -154,7 +154,7 @@ Most lépjen a következő szakaszra, és [telepítse a Istio CRDs az AK-ra](#in
 
 ### <a name="windows"></a>Windows
 
-Ha a Istio `istioctl` -ügyfél bináris fájlját **PowerShell**-alapú rendszerhéjban szeretné telepíteni Windows rendszeren, használja a következő parancsokat. Ezek a parancsok az `istioctl` ügyfél bináris fájljait egy Istio mappába másolják, majd azonnal elérhetővé teszik (a jelenlegi rendszerhéjban) és véglegesen (a rendszerhéj újraindításakor `PATH`) a használatával. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítani a rendszerhéjat.
+A Istio `istioctl` ügyféloldali bináris fájl Windows **PowerShell**-alapú rendszerhéjból történő telepítéséhez használja a következő parancsokat. Ezek a parancsok a `istioctl` ügyfél bináris fájljait egy Istio mappába másolják, majd azonnal elérhetővé teszik (a jelenlegi rendszerhéjban) és véglegesen (a rendszerhéj újraindításakor) a `PATH` használatával. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítani a rendszerhéjat.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio
@@ -176,13 +176,13 @@ Most lépjen a következő szakaszra, és [telepítse a Istio CRDs az AK-ra](#in
 > [!IMPORTANT]
 > Győződjön meg arról, hogy az ebben a szakaszban leírt lépéseket a letöltött és kibontott Istio-kiadás legfelső szintű mappájából futtatja.
 
-A Istio [egyéni erőforrás-definíciókat (CRDs)][kubernetes-crd] használ a futásidejű konfigurációjának kezeléséhez. Először telepíteni kell a Istio-CRDs, mert a Istio-összetevők függőséggel rendelkeznek. A Helm és a `istio-init` diagram segítségével telepítse a Istio-CRDs az `istio-system` AK-fürt névterében:
+A Istio [egyéni erőforrás-definíciókat (CRDs)][kubernetes-crd] használ a futásidejű konfigurációjának kezeléséhez. Először telepíteni kell a Istio-CRDs, mert a Istio-összetevők függőséggel rendelkeznek. Az Istio-CRDs a Helm és a `istio-init` diagram használatával telepítheti az AK-fürtben található `istio-system` névtérbe:
 
 ```azurecli
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 ```
 
-A [feladatok][kubernetes-jobs] üzembe helyezése a `istio-init` Helm diagram részeként történik a CRDs telepítéséhez. Ezeknek a feladatoknak a fürt-környezettől függően 1 – 2 percet kell elvégezniük. A feladatok sikeres befejezését a következőképpen ellenőrizheti:
+A [feladatok][kubernetes-jobs] üzembe helyezése az `istio-init` Helm diagram részeként történik a CRDs telepítéséhez. Ezeknek a feladatoknak a fürt-környezettől függően 1 – 2 percet kell elvégezniük. A feladatok sikeres befejezését a következőképpen ellenőrizheti:
 
 ```azurecli
 kubectl get jobs -n istio-system
@@ -196,7 +196,7 @@ istio-init-crd-10   1/1           16s        18s
 istio-init-crd-11   1/1           15s        18s
 ```
 
-Most, hogy megerősítettük a feladatok sikeres befejezését, ellenőrizze, hogy megfelelő számú Istio-CRDs van-e telepítve. A megfelelő parancs futtatásával ellenőrizheti, hogy az összes 53 Istio-CRDs telepítve van-e a környezetéhez. A parancsnak vissza kell adni `53`a számot.
+Most, hogy megerősítettük a feladatok sikeres befejezését, ellenőrizze, hogy megfelelő számú Istio-CRDs van-e telepítve. A megfelelő parancs futtatásával ellenőrizheti, hogy az összes 53 Istio-CRDs telepítve van-e a környezetéhez. A parancsnak az `53` számú számot kell visszaadnia.
 
 Bash
 
@@ -223,7 +223,7 @@ A Istio-összetevők telepítése előtt létre kell hozni a titkokat mind a Gra
 
 ### <a name="add-grafana-secret"></a>Titkos Grafana hozzáadása
 
-Cserélje le `REPLACE_WITH_YOUR_SECURE_PASSWORD` a tokent a jelszavára, és futtassa a következő parancsokat:
+Cserélje le a `REPLACE_WITH_YOUR_SECURE_PASSWORD` tokent a jelszavára, és futtassa a következő parancsokat:
 
 #### <a name="macos-linux"></a>MacOS, Linux
 
@@ -267,7 +267,7 @@ data:
 
 ### <a name="add-kiali-secret"></a>Titkos Kiali hozzáadása
 
-Cserélje le `REPLACE_WITH_YOUR_SECURE_PASSWORD` a tokent a jelszavára, és futtassa a következő parancsokat:
+Cserélje le a `REPLACE_WITH_YOUR_SECURE_PASSWORD` tokent a jelszavára, és futtassa a következő parancsokat:
 
 #### <a name="macos-linux"></a>MacOS, Linux
 
@@ -311,16 +311,16 @@ data:
 
 ### <a name="install-istio-components"></a>Istio-összetevők telepítése
 
-Most, hogy sikeresen létrehozta a Grafana és a Kiali titkot az AK-fürtben, itt az ideje, hogy telepítse a Istio-összetevőket. A Helm és a `istio` diagram segítségével telepítse a Istio összetevőket a `istio-system` névtérbe az AK-fürtben. Használja a megfelelő parancsokat a környezetéhez.
+Most, hogy sikeresen létrehozta a Grafana és a Kiali titkot az AK-fürtben, itt az ideje, hogy telepítse a Istio-összetevőket. A Helm és a `istio` diagram használatával telepítse a Istio összetevőket az AK-fürtben található `istio-system` névtérbe. Használja a megfelelő parancsokat a környezetéhez.
 
 > [!NOTE]
 > A telepítés részeként a következő beállításokat használjuk:
-> - `global.controlPlaneSecurityEnabled=true`– a vezérlési síkon engedélyezve van a kölcsönös TLS
-> - `mixer.adapters.useAdapterCRDs=false`– távolítsa el az órákat a keverő adapter CRDs, mivel azok elavultak lesznek, és ez javítja a teljesítményt
-> - `grafana.enabled=true`– Grafana üzembe helyezésének engedélyezése elemzési és figyelési irányítópultokhoz
-> - `grafana.security.enabled=true`– hitelesítés engedélyezése a Grafana
-> - `tracing.enabled=true`– a Jaeger üzembe helyezésének engedélyezése nyomkövetéshez
-> - `kiali.enabled=true`– a Kiali üzembe helyezésének engedélyezése a szolgáltatásbeli rácsvonalak megfigyelésére szolgáló irányítópulton
+> - `global.controlPlaneSecurityEnabled=true` – a vezérlési síkon engedélyezve van a kölcsönös TLS
+> - `mixer.adapters.useAdapterCRDs=false` – az órákat a keverő adapter CRDs távolíthatja el, mivel azok elavultak, és ez javítja a teljesítményt
+> - @no__t – 0 – Grafana üzembe helyezésének engedélyezése elemzési és figyelési irányítópultokhoz
+> - @no__t – 0 – hitelesítés engedélyezése a Grafana
+> - @no__t – 0 – a Jaeger központi telepítésének engedélyezése nyomkövetéshez
+> - @no__t – 0 – a Kiali központi telepítésének engedélyezése a szolgáltatásbeli háló Megfigyelhetőség irányítópultján
 
 Bash
 
@@ -353,7 +353,7 @@ Ezen a ponton üzembe helyezte a Istio-t az AK-fürtön. A Istio sikeres üzembe
 
 ## <a name="validate-the-istio-installation"></a>A Istio telepítésének ellenőrzése
 
-Először ellenőrizze, hogy létrejöttek-e a várt szolgáltatások. A futó szolgáltatások megtekintéséhez használja az [kubectl Get SVC][kubectl-get] parancsot. Kérdezze le `istio-system` a névteret, ahol a Istio és a kiegészítő összetevőket a `istio` Helm diagram telepítette:
+Először ellenőrizze, hogy létrejöttek-e a várt szolgáltatások. A futó szolgáltatások megtekintéséhez használja az [kubectl Get SVC][kubectl-get] parancsot. Kérdezze le a `istio-system` névteret, ahol a Istio és a kiegészítő összetevőket a `istio` Helm diagram telepítette:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -361,13 +361,13 @@ kubectl get svc --namespace istio-system --output wide
 
 Az alábbi példában szereplő kimenet a következő szolgáltatásokat mutatja be:
 
-- `istio-*`Services
-- `jaeger-*`, `tracing` és`zipkin` kiegészítő nyomkövetési szolgáltatások
-- `prometheus`kiegészítő metrikai szolgáltatás
-- `grafana`a kiegészítő elemzési és monitorozási irányítópult szolgáltatás
-- `kiali`kiegészítő szolgáltatás hálójának irányítópult szolgáltatása
+- @no__t – 0 szolgáltatás
+- `jaeger-*`, `tracing` és `zipkin` kiegészítő nyomkövetési szolgáltatás
+- `prometheus` kiegészítő metrikai szolgáltatás
+- `grafana` kiegészítő elemzési és monitorozási irányítópult szolgáltatás
+- `kiali` bővítmény Service Mesh irányítópult szolgáltatás
 
-Ha a `istio-ingressgateway` külső `<pending>`IP-címet mutat, várjon néhány percet, amíg az Azure-hálózat nem rendel hozzá IP-címet.
+Ha a `istio-ingressgateway` `<pending>` külső IP-címét jeleníti meg, várjon néhány percet, amíg az Azure-hálózat nem rendel hozzá IP-címet.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                                                                                                                                      AGE       SELECTOR
@@ -388,7 +388,7 @@ tracing                  ClusterIP      10.0.165.210   <none>          80/TCP   
 zipkin                   ClusterIP      10.0.126.211   <none>          9411/TCP                                                                                                                                     118s      app=jaeger
 ```
 
-Ezután győződjön meg arról, hogy a szükséges hüvelyek létre lettek hozva. Használja a [kubectl Get hüvely][kubectl-get] parancsot, és ismételje meg `istio-system` a névterek lekérdezését:
+Ezután győződjön meg arról, hogy a szükséges hüvelyek létre lettek hozva. Használja a [kubectl Get hüvely][kubectl-get] parancsot, és ismételje meg a `istio-system` névtér lekérdezését:
 
 ```console
 kubectl get pods --namespace istio-system
@@ -396,10 +396,10 @@ kubectl get pods --namespace istio-system
 
 A következő példa kimenete az alábbi, a-t futtató hüvelyeket mutatja:
 
-- a `istio-*` hüvelyek
+- a `istio-*` hüvely
 - a `prometheus-*` kiegészítő mérőszámok Pod
-- az `grafana-*` add-on Analytics és a monitoring Dashboard Pod
-- a `kiali` kiegészítő szolgáltatás hálójának irányítópult-Pod
+- a `grafana-*` add-on Analytics és monitoring Dashboard Pod
+- a `kiali` bővítmény Service Mesh irányítópult Pod
 
 ```console
 NAME                                     READY     STATUS      RESTARTS   AGE
@@ -418,7 +418,7 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-Az `Completed` állapotnak két `istio-init-crd-*` hüvelynek kell lennie. Ezek a hüvelyek felelősek voltak azon feladatok futtatásához, amelyek egy korábbi lépésben hoztak létre a CRDs. Az összes többi hüvely állapota `Running`a következő:. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
+A `Completed` állapotú két `istio-init-crd-*` hüvelynek kell lennie. Ezek a hüvelyek felelősek voltak azon feladatok futtatásához, amelyek egy korábbi lépésben hoztak létre a CRDs. Az összes többi hüvelynek `Running` állapotot kell mutatnia. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
 
 ## <a name="accessing-the-add-ons"></a>A bővítmények elérése
 
@@ -428,7 +428,7 @@ A Grafana és a Kiali egy további biztonsági réteget is hozzáadott a hiteles
 
 ### <a name="grafana"></a>Grafana
 
-A Istio tartozó elemzési és figyelési irányítópultokat a [Grafana][grafana]nyújtja. Továbbítsa a helyi `3000` portot az ügyfélszámítógépen a pod- `3000` porton, amely a Grafana-t futtatja az AK-fürtön:
+A Istio tartozó elemzési és figyelési irányítópultokat a [Grafana][grafana]nyújtja. Továbbítsa a `3000` helyi portot az ügyfélszámítógépen a (z) `3000` portra azon a pod gépen, amely Grafana-t futtat az AK-fürtben:
 
 ```console
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
@@ -441,11 +441,11 @@ Forwarding from 127.0.0.1:3000 -> 3000
 Forwarding from [::1]:3000 -> 3000
 ```
 
-A Grafana a következő URL-címen érheti el az ügyfélszámítógépen – [http://localhost:3000](http://localhost:3000). Ha a rendszer kéri, ne felejtse el használni a Grafana titkos kulcson keresztül létrehozott hitelesítő adatokat.
+A Grafana a következő URL-címen érheti el az ügyfélszámítógépen: [http://localhost:3000](http://localhost:3000). Ha a rendszer kéri, ne felejtse el használni a Grafana titkos kulcson keresztül létrehozott hitelesítő adatokat.
 
 ### <a name="prometheus"></a>Prometheus
 
-A Istio metrikáit a [Prometheus][prometheus]nyújtja. Továbbítsa a helyi `9090` portot az ügyfélszámítógépen a pod- `9090` portra, amely a Prometheus-t futtatja az AK-fürtön:
+A Istio metrikáit a [Prometheus][prometheus]nyújtja. Továbbítsa a `9090` helyi portot az ügyfélszámítógépen a `9090` portra, amely a Prometheus-t futtatja az AK-fürtben:
 
 ```console
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}') 9090:9090
@@ -458,11 +458,11 @@ Forwarding from 127.0.0.1:9090 -> 9090
 Forwarding from [::1]:9090 -> 9090
 ```
 
-Most már elérheti a Prometheus-kifejezés böngészőjét a következő URL-címen az ügyfélszámítógépen [http://localhost:9090](http://localhost:9090)–.
+Most már elérheti a Prometheus-kifejezés böngészőjét a következő URL-címen az ügyfélszámítógépen – [http://localhost:9090](http://localhost:9090).
 
 ### <a name="jaeger"></a>Jaeger
 
-A Istio belüli nyomkövetést a [Jaeger][jaeger]biztosítja. Továbbítsa a helyi `16686` portot az ügyfélszámítógépen a a pod `16686` -porton, amelyen a Jaeger fut az AK-fürtön:
+A Istio belüli nyomkövetést a [Jaeger][jaeger]biztosítja. Továbbítsa a `16686` helyi portot az ügyfélszámítógépen a (z) `16686` portra azon a pod gépen, amelyen a Jaeger fut az AK-fürtön:
 
 ```console
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686
@@ -479,7 +479,7 @@ Most már elérheti a Jaeger nyomkövetés felhasználói felületét a követke
 
 ### <a name="kiali"></a>Kiali
 
-A [Kiali][kiali]által biztosított Service Mesh-megfigyelő irányítópultot. Továbbítsa a helyi `20001` portot az ügyfélszámítógépen a pod- `20001` porton, amely a Kiali-t futtatja az AK-fürtön:
+A [Kiali][kiali]által biztosított Service Mesh-megfigyelő irányítópultot. Továbbítsa a `20001` helyi portot az ügyfélszámítógépen a (z) `20001` portra azon a pod gépen, amely Kiali-t futtat az AK-fürtben:
 
 ```console
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
@@ -492,7 +492,7 @@ Forwarding from 127.0.0.1:20001 -> 20001
 Forwarding from [::1]:20001 -> 20001
 ```
 
-Most már elérheti a Kiali Service Mesh-megfigyelő irányítópultját a következő URL-címen az ügyfélszámítógépen – [http://localhost:20001/kiali/console/](http://localhost:20001/kiali/console/). Ha a rendszer kéri, ne felejtse el használni a Kiali titkos kulcson keresztül létrehozott hitelesítő adatokat.
+Most már elérheti a Kiali Service Mesh-megfigyelő irányítópultját az ügyfélszámítógépen lévő következő URL-címen – [http://localhost:20001/kiali/console/](http://localhost:20001/kiali/console/). Ha a rendszer kéri, ne felejtse el használni a Kiali titkos kulcson keresztül létrehozott hitelesítő adatokat.
 
 ## <a name="uninstall-istio-from-aks"></a>Istio eltávolítása az AK-ból
 
@@ -501,7 +501,7 @@ Most már elérheti a Kiali Service Mesh-megfigyelő irányítópultját a köve
 
 ### <a name="remove-istio-components-and-namespace"></a>Istio összetevők és névtér eltávolítása
 
-Az alábbi parancsokkal távolíthatja el a Istio az AK-fürtből. A `helm delete` parancsok el fogják távolítani `istio` a `istio-init` és a diagramokat `kubectl delete ns` , és a parancs `istio-system` eltávolítja a névteret.
+Az alábbi parancsokkal távolíthatja el a Istio az AK-fürtből. A `helm delete` parancs eltávolítja a `istio` és a `istio-init` diagramot, és a `kubectl delete ns` parancs eltávolítja a `istio-system` névteret.
 
 ```azurecli
 helm delete --purge istio
@@ -555,7 +555,7 @@ A következő Azure Monitor dokumentációból megtudhatja, hogyan figyelheti az
 [istio-docs-concepts]: https://istio.io/docs/concepts/what-is-istio/
 [istio-github]: https://github.com/istio/istio
 [istio-github-releases]: https://github.com/istio/istio/releases
-[istio-release-notes]: https://istio.io/about/notes/
+[istio-release-notes]: https://istio.io/news/
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
 [istio-install-helm]: https://istio.io/docs/setup/kubernetes/install/helm/
 [istio-install-helm-options]: https://istio.io/docs/reference/config/installation-options/

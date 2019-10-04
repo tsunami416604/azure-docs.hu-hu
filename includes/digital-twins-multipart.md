@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 10/02/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 76a05817ae91bb49240e5d72988c776ce67ec1c0
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012154"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845469"
 ---
 > [!NOTE]
 > A többrészes kérelmek általában három darabot igényelnek:
@@ -24,9 +24,9 @@ ms.locfileid: "69012154"
 >   * `form-data; name="metadata"`
 > * A feltölteni kívánt fájl tartalma
 >
-> A **tartalom típusa** és a tartalomra való **hajlam** a használati forgatókönyvtől függően változhat.
+> A **tartalom típusa** és a **tartalomra való hajlam** a használati forgatókönyvtől függően változhat.
 
-A többrészes kérelmek programozott módon (átmenő C#), Rest-ügyféllel vagy más eszközzel (például [Poster](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi)) hozhatók létre. A REST-ügyfél eszközei eltérő szintű támogatást nyújthatnak az összetett többrészes kérelmekhez. A konfigurációs beállítások az eszköztől az eszköztől némileg eltérőek lehetnek. Ellenőrizze, hogy melyik eszköz megfelel az igényeinek.
+A többrészes kérelmek programozott módon (átmenő C#), Rest-ügyféllel vagy más eszközzel (például [Poster](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request)) hozhatók létre. A REST-ügyfél eszközei eltérő szintű támogatást nyújthatnak az összetett többrészes kérelmekhez. A konfigurációs beállítások az eszköztől az eszköztől némileg eltérőek lehetnek. Ellenőrizze, hogy melyik eszköz megfelel az igényeinek.
 
 > [!IMPORTANT]
 > Az Azure digitális Twins felügyeleti API-khoz küldött többrészes kérelmek általában két részből állnak:
@@ -35,4 +35,4 @@ A többrészes kérelmek programozott módon (átmenő C#), Rest-ügyféllel vag
 >
 > A **javítási** kérelmek esetében a két rész egyikének sem kell lennie. Mindkettő szükséges a **post** vagy a Create műveletekhez.
 
-A [Foglaltság](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) gyors üzembe helyezési forráskódja olyan teljes C# példákat tartalmaz, amelyek bemutatják, hogyan lehet többrészes kérelmeket készíteni az Azure digitális Twins felügyeleti API-
+A foglaltság gyors üzembe helyezési [forráskódja](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) olyan teljes C# példákat tartalmaz, amelyek bemutatják, hogyan lehet többrészes kérelmeket készíteni az Azure digitális Twins felügyeleti API-

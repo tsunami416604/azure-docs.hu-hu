@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210115"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827578"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
-Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az [](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal a Azure app Serviceban. [Azure-beli virtuális hálózatok][VNETOverview] A (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
+Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az alkalmazásokkal a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714). Az [Azure Virtual Networks][VNETOverview] (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
 
 A Azure App Service két változattal rendelkezik. 
 
 1. A több-bérlős rendszerek, amelyek támogatják az elkülönített árképzési csomagok teljes körét
 2. A VNet üzembe helyező és az elkülönített díjszabási csomagot támogató App Service Environment
 
-Ez a dokumentum a több-bérlős App Service való használatra szolgáló két VNet integrációs funkciót mutat be. Ha az alkalmazás App Service Environmentban [][ASEintro]van, akkor már egy VNet van, és nem igényli a VNet integrációs funkciójának használatát az erőforrások eléréséhez ugyanabban a VNet. Az összes App Service hálózati szolgáltatással kapcsolatos részletekért olvassa el a [app Service hálózatkezelési funkcióit](networking-features.md) .
+Ez a dokumentum a több-bérlős App Service való használatra szolgáló két VNet integrációs funkciót mutat be. Ha az alkalmazás [app Service Environmentban][ASEintro]van, akkor már egy VNet van, és nem igényli a VNet integrációs funkciójának használatát az erőforrások eléréséhez ugyanabban a VNet. Az összes App Service hálózati szolgáltatással kapcsolatos részletekért olvassa el a [app Service hálózatkezelési funkcióit](networking-features.md) .
 
 A VNet-integrációs szolgáltatásnak két formája van
 
@@ -105,7 +105,7 @@ Miután az alkalmazása integrálva van a VNet, ugyanazt a DNS-kiszolgálót fog
 
 A regionális VNet-integrációhoz az integrációs alhálózat delegálása szükséges a Microsoft. Web számára.  A VNet-integráció felhasználói felülete automatikusan delegálja az alhálózatot a Microsoft. Web számára. Ha a fiókja nem rendelkezik megfelelő hálózati engedélyekkel a beállításához, szüksége lesz egy olyan személyre, aki az integrációs alhálózaton attribútumokat állíthat be az alhálózat delegálásához. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózat felhasználói felületét, és állítsa be a Microsoft. Web delegálását.
 
-Ha le szeretné bontani az alkalmazást a VNet,válassza a leválasztás lehetőséget. Ezzel újraindítja a webalkalmazást. 
+Ha le szeretné bontani az alkalmazást a VNet, válassza a **Leválasztás**lehetőséget. Ezzel újraindítja a webalkalmazást. 
 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
@@ -158,7 +158,7 @@ Az alábbiakban néhány dolgot figyelembe kell vennie, mielőtt csatlakoztatja 
 Ha már van olyan átjáró, amely pont – hely címekkel van konfigurálva, ugorjon a VNet-integráció konfigurálása az alkalmazáshoz lehetőségre.  
 Átjáró létrehozása:
 
-1. [Hozzon létre egy átjáró][creategatewaysubnet] -alhálózatot a VNet.  
+1. [Hozzon létre egy átjáró-alhálózatot][creategatewaysubnet] a VNet.  
 
 1. [Hozza létre a VPN-átjárót][creategateway]. Válasszon egy Route-alapú VPN-típust.
 
@@ -171,13 +171,13 @@ Ha most hozza létre az átjárót App Service VNet-integrációval való haszn�
 Az VNet-integráció engedélyezése az alkalmazásban: 
 
 1. Nyissa meg az alkalmazást a Azure Portalon, és nyissa meg az alkalmazás beállításait, és válassza a hálózatkezelés > VNet-integráció lehetőséget. Az ASP-nek standard SKU-ban kell lennie, vagy jobb a VNet-integrációs funkció használatához. 
- ![VNet-integráció felhasználói felülete][1]
+ @no__t – 0VNet-integráció felhasználói felülete @ no__t-1
 
 1. Válassza a **VNet hozzáadása**lehetőséget. 
- ![VNet-integráció hozzáadása][2]
+ ![Add VNet Integration @ no__t-1
 
 1. Válassza ki a VNet. 
-  ![Válassza ki a VNet][8]
+  @no__t 0Select a VNet @ no__t-1
   
 Az alkalmazás az utolsó lépés után újraindul.  
 
@@ -226,7 +226,7 @@ Az alkalmazások a helyek közötti kapcsolatokkal rendelkező virtuális háló
 Nincs szükség további konfigurációra ahhoz, hogy a regionális VNet integrációs szolgáltatás elérje a VNet és a helyszíni környezettel. Egyszerűen csatlakoznia kell a VNet a helyszíni környezethez a ExpressRoute vagy a helyek közötti VPN használatával. 
 
 > [!NOTE]
-> Az átjáró szükséges VNet-integrációs funkciója nem integrálja az alkalmazást olyan VNet, amely ExpressRoute-átjáróval rendelkezik. Még akkor is, ha az ExpressRoute- [][VPNERCoex] átjáró párhuzamosan van konfigurálva, a VNet-integráció nem működik. Ha egy ExpressRoute-kapcsolaton keresztül kell hozzáférni az erőforrásokhoz, akkor használhatja a regionális VNet integrációs funkciót vagy egy [app Service Environment][ASE], amely a VNet fut. 
+> Az átjáró szükséges VNet-integrációs funkciója nem integrálja az alkalmazást olyan VNet, amely ExpressRoute-átjáróval rendelkezik. Még akkor [is, ha az ExpressRoute-átjáró][VPNERCoex] párhuzamosan van konfigurálva, a VNet-integráció nem működik. Ha egy ExpressRoute-kapcsolaton keresztül kell hozzáférni az erőforrásokhoz, akkor használhatja a regionális VNet integrációs funkciót vagy egy [app Service Environment][ASE], amely a VNet fut. 
 > 
 > 
 
@@ -277,13 +277,13 @@ Ha ezek az elemek nem válaszolnak a problémákra, először tekintse meg a kö
 **regionális VNet-integráció**
 * a cél az RFC 1918-címe
 * van olyan NSG, amely blokkolja az integrációs alhálózatról érkező kimenő forgalmat
-* Ha a ExpressRoute vagy egy VPN-en halad át, a helyszíni átjáró úgy van konfigurálva, hogy az Azure-ba irányítsa a forgalmat? Ha elérheti a végpontokat a VNet, de nem a helyszínen, akkor ez jó választás.
+* Ha a ExpressRoute vagy egy VPN-en halad át, a helyszíni átjáró úgy van konfigurálva, hogy a forgalmat az Azure-ba irányítsa? Ha elérheti a végpontokat a VNet, de nem a helyszínen, akkor ez jó választás.
 
 **átjáró szükséges VNet-integráció**
 * a pont – hely címtartomány az RFC 1918-tartományokban (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
 * Megjelenik az átjáró a portálon? Ha az átjáró nem működik, hozza létre a biztonsági mentést.
 * A tanúsítványok szinkronban jelennek meg, vagy feltételezi, hogy a hálózati konfiguráció megváltozott?  Ha a tanúsítványok nincsenek szinkronban, vagy ha azt gyanítja, hogy módosult a VNet konfigurációja, amely nem lett szinkronizálva a ASP, akkor nyomja meg a "Sync Network" (hálózat szinkronizálása) lehetőséget.
-* Ha a ExpressRoute vagy egy VPN-en halad át, a helyszíni átjáró úgy van konfigurálva, hogy az Azure-ba irányítsa a forgalmat? Ha elérheti a végpontokat a VNet, de nem a helyszínen, akkor ez jó választás.
+* Ha a ExpressRoute vagy egy VPN-en halad át, a helyszíni átjáró úgy van konfigurálva, hogy a forgalmat az Azure-ba irányítsa? Ha elérheti a végpontokat a VNet, de nem a helyszínen, akkor ez jó választás.
 
 A hálózati problémák hibakeresése kihívást jelent, mivel nem látható, hogy mi blokkolja a hozzáférést egy adott gazdagéphez: Port kombináció. Az okok némelyike a következőkből áll:
 
@@ -343,6 +343,6 @@ A PowerShell használatával integrálhatja App Serviceeit egy Azure-Virtual Net
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

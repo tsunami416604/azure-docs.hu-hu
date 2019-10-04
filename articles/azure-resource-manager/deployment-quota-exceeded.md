@@ -4,14 +4,14 @@ description: Ismerteti, hogyan oldható fel a több mint 800 üzemelő példány
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/01/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: f06aff74e2cf800d44115f34921825122b09a9e7
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719434"
+ms.locfileid: "71827016"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Hiba elhárítása, ha a központi telepítés száma meghaladja a 800
 
@@ -51,3 +51,9 @@ Az aktuális szám a telepítési előzményekben a következő paranccsal kérh
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
+## <a name="third-party-solutions"></a>Harmadik féltől származó megoldások
+
+A következő külső megoldások specifikus forgatókönyvek:
+
+* [Azure Logic Apps és PowerShell-megoldások](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [AzDevOps-bővítmény](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

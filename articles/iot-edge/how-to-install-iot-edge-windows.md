@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 513cf477e8c2899da17ee8e9bdfdb9ad2bedd159
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266081"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828093"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>A Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren
 
@@ -121,52 +121,12 @@ További információ ezekről a telepítési lehetőségekről: ugorjon előre 
 
 ### <a name="option-2-install-and-automatically-provision"></a>2\. lehetőség: Telepítés, és automatikusan üzembe helyezése
 
-Ebben a második lehetőségben az eszközt a IoT Hub Device Provisioning Service használatával kell kiépíteni. Adja meg a **hatókör-azonosítót** egy eszköz kiépítési szolgáltatásának példánya és az eszköz **regisztrációs azonosítója** alapján. Az igazolási mechanizmus alapján további értékeket is meg kell adni a DPS-vel való kiépítés során, például a [szimmetrikus kulcsok](how-to-auto-provision-symmetric-keys.md)használata esetén.
+Ebben a második lehetőségben az eszközt a IoT Hub Device Provisioning Service használatával kell kiépíteni. Adja meg az eszköz kiépítési szolgáltatásának **hatókör-azonosítóját** , valamint az Ön által előnyben részesített [igazolási mechanizmusra](../iot-dps/concepts-security.md#attestation-mechanism)vonatkozó egyéb információkat:
 
-Az alábbi példa egy automatikus telepítést mutat be a Windows-tárolókkal és a TPM-tanúsítvánnyal:
+* [Szimulált TPM Edge-eszköz létrehozása és kiépítése Windows rendszeren](how-to-auto-provision-simulated-device-windows.md)
+* [IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával](how-to-auto-provision-symmetric-keys.md)
 
-1. Kövesse a szimulált [tpm IoT Edge eszköz létrehozása és kiépítése Windows](how-to-auto-provision-simulated-device-windows.md) rendszeren című témakör lépéseit az eszköz kiépítési szolgáltatásának beállításához és a **Hatókör-azonosító**lekéréséhez, a TPM-eszköz szimulálásához és a **regisztrációs azonosító**lekéréséhez, majd hozzon létre egy egyéni tanúsítványigénylési. Ha az eszköz regisztrálva van az IoT hub-ban, folytassa ezeket a telepítési lépéseket.  
-
-   >[!TIP]
-   >Tartsa meg az ablak, amely a TPM-szimulátor fut, nyissa meg a telepítés során, és a tesztelés. 
-
-1. Futtassa a PowerShellt rendszergazdaként.
-
-   >[!NOTE]
-   >A PowerShell AMD64-munkamenetének használatával telepítse a IoT Edge, nem a PowerShellt (x86). Ha nem biztos abban, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
-   >
-   >```powershell
-   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
-   >```
-
-1. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, majd letölti a Moby Runtime és a IoT Edge futtatókörnyezetet. A parancs alapértelmezés szerint Windows-tárolókat használ. 
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
-
-1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés. `-Dps` A jelző használatával a manuális kiépítés helyett a Device kiépítési szolgáltatást használhatja. Cserélje `{scope ID}` le a elemet a hatókör-azonosítóra az eszköz kiépítési `{registration ID}` szolgáltatásában, valamint az eszköz regisztrációs azonosítóját, és mindkettőt le kell kérnie az 1. lépésben.
-
-   Az **inicializálás-IoTEdge** parancs használata a következőhöz: a DPS és a TPM-igazolás használata:
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
-   ```
-
-   Az **inicializálás-IoTEdge** parancs használatával a DPS szimmetrikus kulcsú igazolással használható. Cserélje `{symmetric key}` le a billentyűt egy eszköz kulcsára.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
-   ```
-
-1. Az eszközön lévő IoT Edge állapotának ellenőrzéséhez kövesse a [sikeres telepítés ellenőrzése](#verify-successful-installation) című témakörben leírtakat. 
-
-Ha manuálisan telepít és helyez üzembe egy eszközt, további paraméterek használatával módosíthatja a telepítést, beleértve a következőket:
+Amikor automatikusan telepít és kiépít egy eszközt, további paramétereket is használhat a telepítés módosításához, beleértve a következőket:
 
 * Egy proxykiszolgálón keresztüli közvetlen forgalom
 * A telepítő átirányítása offline könyvtárba
@@ -302,13 +262,13 @@ Az inicializálás-IoTEdge parancs a IoT Edge az eszköz kapcsolati karakterlán
 | **DPS** | Nincsenek | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális beállítás az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez.  |
 | **DeviceConnectionString** | Egy IoT Hubban, egyetlen idézőjelben regisztrált IoT Edge eszközhöz tartozó kapcsolatok karakterlánca | Manuális telepítéshez **szükséges** . Ha nem ad meg egy kapcsolatok karakterláncot a parancsfájl paraméterei között, a rendszer a telepítés során kérni fogja az egyiket. |
 | **Hatókör** | A IoT Hubhoz társított eszköz-kiépítési szolgáltatás példányának hatókör-azonosítója. | A DPS telepítéséhez **szükséges** . Ha nem ad meg hatókör-azonosítót a parancsfájl paraméterei között, a rendszer a telepítés során kérni fogja az egyiket. |
-| **RegistrationId** | Az eszköz által generált regisztrációs azonosító | A DPS telepítéséhez **szükséges** . |
+| **RegistrationId** | Az eszköz által generált regisztrációs azonosító | A DPS telepítéséhez **szükséges** a TPM vagy szimmetrikus kulcsú tanúsítvány használata esetén. |
 | **SymmetricKey** | A IoT Edge eszköz identitásának kiépítéséhez használt szimmetrikus kulcs a DPS használatakor | A DPS-telepítéshez **szükséges** , ha szimmetrikus kulcsú igazolást használ. |
 | **ContainerOs** | **Windows** vagy **Linux** | Ha nincs megadva tároló operációs rendszer, a Windows az alapértelmezett érték.<br><br>Windows-tárolók esetén a IoT Edge a telepítésben található Moby Container Engine-t használja. Linux-tárolók esetén a telepítés megkezdése előtt telepítenie kell egy tároló motort. |
 | **InvokeWebRequestParameters** | Paraméterek és értékek szórótábla | A telepítés során több webes kérelem készül. Ezt a mezőt használhatja a webes kérelmek paramétereinek megadásához. Ez a paraméter hasznos a proxykiszolgálók hitelesítő adatainak konfigurálásához. További információkért lásd: [proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása](how-to-configure-proxy-support.md). |
 | **AgentImage** | IoT Edge ügynök rendszerképének URI-ja | Alapértelmezés szerint egy új IoT Edge telepítés a IoT Edge-ügynök lemezképének legújabb gördülő címkéjét használja. Ezzel a paraméterrel megadhat egy adott címkét a rendszerkép verziójához, vagy megadhatja a saját ügynökének rendszerképét. További információ: [IoT Edge címkék ismertetése](how-to-update-iot-edge.md#understand-iot-edge-tags). |
 | **Felhasználónév** | Tároló beállításjegyzékbeli felhasználóneve | Ezt a paramétert csak akkor használja, ha a-AgentImage paramétert egy privát beállításjegyzékben lévő tárolóra állítja be. Adjon meg egy felhasználónevet a beállításjegyzékhez való hozzáféréssel. |
-| **Jelszó** | Biztonságos jelszó karakterlánca | Ezt a paramétert csak akkor használja, ha a-AgentImage paramétert egy privát beállításjegyzékben lévő tárolóra állítja be. Adja meg a beállításjegyzék eléréséhez szükséges jelszót. | 
+| **Jelszó** | Biztonságos jelszó karakterlánca | Ezt a paramétert csak akkor használja, ha a-AgentImage paramétert egy privát beállításjegyzékben lévő tárolóra állítja be. Adja meg a beállításjegyzék eléréséhez szükséges jelszót. |
 
 ### <a name="update-iotedge"></a>Update-IoTEdge
 

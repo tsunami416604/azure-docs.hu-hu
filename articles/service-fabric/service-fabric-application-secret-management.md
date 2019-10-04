@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric titkos alkalmazáskulcsok kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan védheti meg a Service Fabric-alkalmazás (platform-agnosztikus) titkos értékkel.
+title: Azure-Service Fabric alkalmazás-titkok kezelése | Microsoft Docs
+description: Megtudhatja, hogyan védheti meg a titkos értékeket egy Service Fabric alkalmazásban (platform – agnosztikus).
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: d151dbf20e68a2152e9d886a74e51786bb8fbfa6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614487"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828834"
 ---
-# <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>A Service Fabric-alkalmazásokat a titkosított titkos kulcsok kezelése
-Ez az útmutató végigvezeti a lépéseken, a Service Fabric-alkalmazás titkos kulcsok kezeléséhez. Titkos kódok lehet a bizalmas adatokat, például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek nem szövegként kezelje.
+# <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Titkosított titkok kezelése Service Fabric alkalmazásokban
+Ez az útmutató végigvezeti a Service Fabric alkalmazásban található titkok kezelésének lépésein. A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni.
 
-A titkosított titkos kulcsok használata a Service Fabric-alkalmazás három lépésből áll:
-* Hozzon létre egy titkosítási tanúsítványt, és titkosítani a titkos kulcsok.
-* Adja meg a titkosított titkos kulcsok egy alkalmazásban.
-* Szolgáltatás-code-ból a titkosított titkos kulcsok visszafejtéséhez.
+A Service Fabric alkalmazásokban a titkosított titkos kulcsok három lépést foglalnak magukban:
+* Titkosítási tanúsítvány beállítása és a titkok titkosítása.
+* Titkosított titkos kódok megadását egy alkalmazásban.
+* Titkosítatlan titkok visszafejtése a szolgáltatási kódból.
 
-## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Állítsa be a titkosítási tanúsítványt, és titkosítani a titkos kulcsok
-Egy titkosítási tanúsítványt beállítását, és titkosítani a titkos kulcsok segítségével Windows és Linux rendszerű közé esik.
-* [Állítsa be a titkosítási tanúsítványt, és a kulcsok a Windows-fürtök titkosítására.][secret-management-windows-specific-link]
-* [Hozzon létre egy titkosítási tanúsítványt, és titkosítani a titkos kulcsokat a Linux-fürtökön.][secret-management-linux-specific-link]
+## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Titkosítási tanúsítvány beállítása és a titkos kulcsok titkosítása
+A titkosítási tanúsítvány beállítása és a titkok titkosítása a Windows és a Linux között változhat.
+* [Titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön.][secret-management-windows-specific-link]
+* [Titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön.][secret-management-linux-specific-link]
 
-## <a name="specify-encrypted-secrets-in-an-application"></a>Adja meg a titkosított titkos kulcsok egy alkalmazásban
-Az előző lépés ismerteti, hogyan lehet egy tanúsítványt a titkos kulcs titkosításához, és előállít egy base-64 kódolású sztring az alkalmazásban használható. A base-64 kódolású sztring adható meg egy titkosított [paraméter] [ parameters-link] Settings.xml egy szolgáltatás vagy egy titkosított [környezeti változó] [ environment-variables-link] a ServiceManifest.xml a szolgáltatás.
+## <a name="specify-encrypted-secrets-in-an-application"></a>Titkosított titkok meghatározása egy alkalmazásban
+Az előző lépés leírja, hogyan titkosíthatja a titkos kódot egy tanúsítvánnyal, és hogyan hozhat létre Base-64 kódolású karakterláncot az alkalmazásokban való használathoz. Ez a Base-64 kódolású karakterlánc a szolgáltatás Settings. XML fájljában, illetve titkosított [környezeti változóként][environment-variables-link] is megadható titkosított [paraméterként][parameters-link] a szolgáltatás ServiceManifest. XML fájljában.
 
-Adjon meg egy titkosított [paraméter] [ parameters-link] a szolgáltatás Settings.xml konfigurációs fájlban és a `IsEncrypted` attribútum beállítása `true`:
+Adja meg a szolgáltatás Settings. xml konfigurációs fájljának titkosított [paraméterét][parameters-link] az `IsEncrypted` attribútummal, amely `true` értékre van beállítva:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -47,7 +47,7 @@ Adjon meg egy titkosított [paraméter] [ parameters-link] a szolgáltatás Sett
   </Section>
 </Settings>
 ```
-Adjon meg egy titkosított [környezeti változó] [ environment-variables-link] a ServiceManifest.xml fájlt a szolgáltatás a `Type` attribútum beállítása `Encrypted`:
+Adja meg a titkosított [környezeti változót][environment-variables-link] a szolgáltatás ServiceManifest. XML fájljában a `Type` attribútummal, amely `Encrypted` értékre van beállítva:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -56,11 +56,22 @@ Adjon meg egy titkosított [környezeti változó] [ environment-variables-link]
 </CodePackage>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>Az alkalmazáspéldányok a titkos alkalmazáskulcsok behelyezése
-Ideális esetben különböző környezetekben való üzembe helyezés kell lenniük, automatizált, amennyire csak lehetséges. A titkos végrehajtása egy-összeállító környezetet, és a titkosított titkos kulcsok megadásával meg paraméterként, az alkalmazáspéldányok létrehozásakor kell elvégezni.
+A titkokat a Service Fabric alkalmazásban is fel lehet venni egy tanúsítvány megadásával az alkalmazás jegyzékfájljában. Adjon hozzá egy **SecretsCertificate** elemet a **ApplicationManifest. xml fájlhoz** , és adja meg a kívánt tanúsítvány ujjlenyomatát.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Felülbírálható paramétereket használja a Settings.xml
-A Settings.xml konfigurációs fájl lehetővé teszi, hogy felülbírálható paramétereket, amely a létrehozás időpontjában adható meg. Használja a `MustOverride` attribútum, amely egy értéket egy paraméter helyett:
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
+
+### <a name="inject-application-secrets-into-application-instances"></a>Alkalmazási titkok behelyezése az alkalmazás példányaiba
+Ideális esetben a különböző környezetekben történő üzembe helyezésnek a lehető legautomatizáltnak kell lennie. Ezt úgy teheti meg, hogy a titkos titkosítást egy Build környezetben hajtja végre, és a titkosított titkokat paraméterekként adja meg az alkalmazás példányainak létrehozásakor.
+
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Overridable paraméterek használata a Settings. xml fájlban
+A Settings. xml konfigurációs fájl lehetővé teszi az alkalmazások létrehozási idején elérhető Overridable paraméterek használatát. A paraméter értékének megadása helyett használja a `MustOverride` attribútumot:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,7 +82,7 @@ A Settings.xml konfigurációs fájl lehetővé teszi, hogy felülbírálható p
 </Settings>
 ```
 
-A felülbírálási értékeket Settings.xml, deklaráljon egy felülbírálási paramétert, a szolgáltatás az ApplicationManifest.xml:
+A Settings. xml fájlban lévő értékek felülbírálásához deklaráljon egy felülbírálási paramétert a szolgáltatáshoz a ApplicationManifest. xml fájlban:
 
 ```xml
 <ApplicationManifest ... >
@@ -92,15 +103,15 @@ A felülbírálási értékeket Settings.xml, deklaráljon egy felülbírálási
   </ServiceManifestImport>
  ```
 
-Most az értéket adhat meg egy *parametr aplikace* létrehozásakor az alkalmazás egy példányát. Az alkalmazás-példányok létrehozásának parancsfájlalapú lehet PowerShell-lel, vagy nyelven írt C#, az megkönnyíti az integrációt a buildelési folyamat során.
+Az érték mostantól az alkalmazás egy példányának létrehozásakor is megadható *Application paraméterként* . Az alkalmazás-példányok létrehozásához a PowerShell használatával vagy a szolgáltatásba C#való beírásával lehet létrehozni az egyszerű integrációt egy összeállítási folyamat során.
 
-PowerShell használatával, a paraméter van megadva a `New-ServiceFabricApplication` parancsot, mint egy [kivonattábla](https://technet.microsoft.com/library/ee692803.aspx):
+A PowerShell használatával a paraméter a `New-ServiceFabricApplication` parancshoz van megadva [kivonatoló táblaként](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Használatával C#, alkalmazás-paraméterek vannak megadva egy `ApplicationDescription` , egy `NameValueCollection`:
+A C#használatakor az alkalmazás paramétereinek megadása egy `ApplicationDescription` `NameValueCollection`:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -118,8 +129,8 @@ ApplicationDescription applicationDescription = new ApplicationDescription(
 await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescription);
 ```
 
-## <a name="decrypt-encrypted-secrets-from-service-code"></a>A webszolgáltatás kódjához titkosított titkos kulcsok visszafejtéséhez
-Az API-k eléréséhez [paraméterek] [ parameters-link] és [környezeti változók] [ environment-variables-link] lehetővé teszik a titkosított értékek egyszerű visszafejtése. Mivel a titkosított karakterlánc a titkosításhoz használt tanúsítvány kapcsolatos információkat tartalmaz, nem kell manuálisan adja meg a tanúsítványt. A tanúsítvány csak a csomóponton, amelyen a szolgáltatás fut, telepíteni kell.
+## <a name="decrypt-encrypted-secrets-from-service-code"></a>Titkosított titkok visszafejtése a szolgáltatás kódjából
+A [Paraméterek][parameters-link] és [környezeti változók][environment-variables-link] elérésére szolgáló API-k lehetővé teszik a titkosított értékek egyszerű visszafejtését. Mivel a titkosított sztring információt tartalmaz a titkosításhoz használt tanúsítványról, nem kell manuálisan megadnia a tanúsítványt. A tanúsítványt csak arra a csomópontra kell telepíteni, amelyen a szolgáltatás fut.
 
 ```csharp
 // Access decrypted parameters from Settings.xml
@@ -136,7 +147,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [alkalmazás és szolgáltatás biztonsága](service-fabric-application-and-service-security.md)
+További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

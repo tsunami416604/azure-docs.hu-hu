@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568002"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828214"
 ---
 # <a name="in-memory-sample"></a>Memóriában tárolt minta
 
@@ -25,7 +25,7 @@ A Azure SQL Database memóriában lévő technológiái lehetővé teszik az alk
 Ebben a cikkben két olyan mintát fog látni, amelyek szemléltetik a memóriában lévő OLTP használatát, valamint a Azure SQL Database oszlopcentrikus indexeit.
 
 További információkért lásd:
-- [Memóriában tárolt OLTP – áttekintés és használati forgatókönyvek](https://msdn.microsoft.com/library/mt774593.aspx) (az ügyfél-esettanulmányokra és a kezdéshez szükséges információkra mutató hivatkozásokat tartalmaz)
+- [Memóriában tárolt OLTP – áttekintés és használati forgatókönyvek](https://msdn.microsoft.com/library/mt774593.aspx) (az első lépésekhez kapcsolódó esettanulmányokra és információkra mutató hivatkozásokat tartalmaz)
 - [A memóriában tárolt OLTP dokumentációja](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Útmutató a oszlopcentrikus indexekhez](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hibrid tranzakciós/analitikus feldolgozás (HTAP), más néven [valós idejű operatív elemzés](https://msdn.microsoft.com/library/dn817827.aspx)
@@ -49,9 +49,9 @@ A memóriabeli OLTP egyszerűbb, de vizuálisan vonzó teljesítmény-bemutatój
 
 2. Kapcsolódjon az adatbázishoz SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx)használatával.
 
-3. Másolja a [memóriában tárolt OLTP Transact-SQL-szkriptet](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL-szkript létrehozza a szükséges memóriában lévő objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
+3. Másolja a [memóriában tárolt OLTP Transact-SQL-szkriptet](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL-szkript létrehozza a szükséges memóriában lévő objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
 
-4. Illessze be a T-SQL-szkriptet a SSMS-be, majd hajtsa végre a parancsfájlt. A `MEMORY_OPTIMIZED = ON` záradék Create TABLEi utasítások elengedhetetlenek. Példa:
+4. Illessze be a T-SQL-szkriptet a SSMS-be, majd hajtsa végre a parancsfájlt. A `MEMORY_OPTIMIZED = ON` záradék CREATE TABLE utasítások kritikus fontosságúak. Példa:
 
 
 ```sql
@@ -87,7 +87,7 @@ A **0** eredmény azt jelenti, hogy a memóriában nem támogatott a memória, �
 - Demo.DemoSalesOrderDetailSeed
 
 
-A memóriára optimalizált táblákat a SSMS **Object Explorer** keresztül ellenőrizheti. Kattintson a jobb gombbal**a** **táblák** > **szűrő** > **beállításainak** > szűrése elemre. Az érték 1.
+A memóriára optimalizált táblákat a SSMS **Object Explorer** keresztül ellenőrizheti. Kattintson a jobb gombbal a **táblák** > **Filter** > **szűrési beállítások**elemre  > **memória optimalizált**. Az érték 1.
 
 
 Vagy lekérdezheti a katalógus nézeteit, például a következőket:
@@ -138,7 +138,7 @@ Azonban érdemes lehet sokkal kisebb értékekkel kezdeni, mint például a-N10 
 Ez a szakasz a ostress. exe parancssorba ágyazott T-SQL-parancsfájlt jeleníti meg. A parancsfájl a korábban telepített T-SQL-parancsfájl által létrehozott elemeket használja.
 
 
-A következő szkript egy példaként szolgáló értékesítési rendelést szúr be öt sorral a következő memóriáraoptimalizált táblákba:
+A következő szkript egy példaként szolgáló értékesítési rendelést szúr be öt sorral a következő memóriára optimalizált *táblákba*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -171,7 +171,7 @@ end
 A ostress. exe előző T-SQL-parancsfájljának *_ondisk* -verziójának lecserélése a *_inmem* alsztring mindkét előfordulását helyettesíti a *_ondisk*. Ezek a cserék a táblák és a tárolt eljárások nevét érintik.
 
 
-### <a name="install-rml-utilities-and-ostress"></a>RML segédprogramok telepítése és`ostress`
+### <a name="install-rml-utilities-and-ostress"></a>RML segédprogramok telepítése és @no__t – 0
 
 
 Ideális esetben azt tervezi, hogy a ostress. exe fájlt egy Azure-beli virtuális gépen (VM) szeretné futtatni. Hozzon létre egy [Azure-beli virtuális gépet](https://azure.microsoft.com/documentation/services/virtual-machines/) ugyanabban az Azure földrajzi régióban, ahol a AdventureWorksLT-adatbázis található. Ehelyett a ostress. exe fájlt is futtathatja a laptopon.
@@ -198,10 +198,10 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Először futtassa a *_inmem* Stress munkaterhelés-t
+### <a name="run-the-_inmem-stress-workload-first"></a>Először futtassa a *_inmem* Stress munkaterhelés-t
 
 
-A ostress. exe parancssorának futtatásához használhatja a *RML* parancssori ablakát. A közvetlen `ostress` parancssori paraméterek:
+A ostress. exe parancssorának futtatásához használhatja a *RML* parancssori ablakát. A közvetlen @no__t – 0 parancssori paraméterek:
 
 - Az 100-es kapcsolatok párhuzamos futtatása (-N100).
 - Minden egyes kapcsolatban futtassa a T-SQL-szkriptet 50-szor (-R50).
@@ -223,7 +223,7 @@ A fenti ostress. exe parancssor futtatása:
 
 2. Másolja az előző ostress. exe parancssori szöveget a vágólapra.
 
-3. A megfelelő `<placeholders>` valós értékekkel cserélje le a paramétert a-S-U-P-d paraméterekre.
+3. Cserélje le a `<placeholders>` értéket a megfelelő valós értékekkel rendelkező paraméterek-S-U-P-d paraméterre.
 
 4. Futtassa a szerkesztett parancssort egy RML cmd-ablakban.
 
@@ -231,12 +231,12 @@ A fenti ostress. exe parancssor futtatása:
 #### <a name="result-is-a-duration"></a>Az eredmény egy időtartam
 
 
-Ha `ostress.exe` befejeződik, a futtatási időtartamot a RML cmd ablakban a kimenet utolsó soraként írja be. Például egy rövidebb teszt futtatása körülbelül 1,5 percig tartott:
+Ha @no__t – 0, a futtatási időtartamot a RML cmd ablakban a kimenet utolsó soraként írja be. Például egy rövidebb teszt futtatása körülbelül 1,5 percig tartott:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Alaphelyzetbe állítás, szerkesztés a *_ondisk*, majd futtassa újra
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Alaphelyzetbe állítás, szerkesztés a *_ondisk*, majd futtassa újra
 
 
 Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a következő lépéseket a *_ondisk* futtatásához:
@@ -256,7 +256,7 @@ Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a köve
 
 #### <a name="expected-comparison-results"></a>Várt összehasonlító eredmények
 
-A memórián belüli tesztek azt mutatták, hogy a teljesítmény **kilenc alkalommal** javult ebben az egyszerű munkaterhelésben, és `ostress` egy Azure-beli virtuális gépen fut, amely ugyanabban az Azure-régióban található, mint az adatbázis.
+A memórián belüli tesztek azt mutatták, hogy a teljesítmény **kilenc alkalommal** javult ebben az egyszerű munkaterhelésben, és `ostress` fut egy Azure-beli virtuális gépen, amely ugyanabban az Azure-régióban található, mint az adatbázis.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -279,7 +279,7 @@ A OLTP számítási feladatokhoz a valós idejű elemzések esetében általába
    - Használja ezt a pontos nevet.
    - Válassza ki a prémium szintű szolgáltatási szintet.
 
-2. Másolja a [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) a vágólapra.
+2. Másolja a [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) a vágólapra.
    - A T-SQL-szkript létrehozza a szükséges memóriában lévő objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
    - A szkript létrehozza a dimenzió táblát és két egyedkapcsolat táblát. Az egyedkapcsolat-táblák 3 500 000-sorokkal vannak feltöltve.
    - A szkript végrehajtása 15 percet is igénybe vehet.
@@ -302,14 +302,14 @@ A OLTP számítási feladatokhoz a valós idejű elemzések esetében általába
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>A oszlopcentrikus index összehasonlítására szolgáló legfontosabb lekérdezések
 
 
-[Több T-SQL-lekérdezési típus is futtatható](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) a teljesítmény növelésének megtekintéséhez. A T-SQL-parancsfájl 2. lépésében figyeljen erre a pár lekérdezésre. Csak egy sorban térnek el:
+[Több T-SQL-lekérdezési típus is futtatható](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) a teljesítmény növelésének megtekintéséhez. A T-SQL-parancsfájl 2. lépésében figyeljen erre a pár lekérdezésre. Csak egy sorban térnek el:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-A fürtözött oszlopcentrikus index a FactResellerSalesXL\_CCI-táblázatban található.
+A fürtözött oszlopcentrikus index a FactResellerSalesXL @ no__t-0CCI táblában található.
 
 A következő T-SQL-szkript részletesen kinyomtatja az IO és az idő adatait az egyes táblák lekérdezéséhez.
 
@@ -382,11 +382,11 @@ A P2 díjszabási csomaggal rendelkező adatbázisban a lekérdezés teljesítm�
 
 ## <a name="next-steps"></a>További lépések
 
-- [1. gyors útmutató: Memóriabeli OLTP technológiák a gyorsabb T-SQL teljesítményhez](https://msdn.microsoft.com/library/mt694156.aspx)
+- @no__t – 1.0Quickstart: Memóriabeli OLTP technológiák a gyorsabb T-SQL teljesítményhez @ no__t-0
 
 - [Memóriában tárolt OLTP használata meglévő Azure SQL-alkalmazásokban](sql-database-in-memory-oltp-migration.md)
 
-- [Memóriában tárolt OLTP](sql-database-in-memory-oltp-monitoring.md) -tárolók figyelése a memóriában lévő OLTP
+- [Memóriában tárolt OLTP-tárolók figyelése](sql-database-in-memory-oltp-monitoring.md) a memóriában lévő OLTP
 
 
 ## <a name="additional-resources"></a>További források
@@ -403,7 +403,7 @@ A P2 díjszabási csomaggal rendelkező adatbázisban a lekérdezés teljesítm�
 
 - [Tudnivalók a valós idejű operatív elemzésekről](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- Tekintse meg a [gyakori számítási feladatok mintáit és](https://msdn.microsoft.com/library/dn673538.aspx) az áttelepítési megfontolásokat (amelyek a munkaterhelési mintákat ismertetik, ahol a memóriabeli OLTP gyakran jelentős teljesítmény
+- Tekintse meg a [gyakori számítási feladatok mintáit és az áttelepítési megfontolásokat](https://msdn.microsoft.com/library/dn673538.aspx) (amelyek a munkaterhelési mintákat ismertetik, ahol a memóriabeli OLTP gyakran jelentős teljesítmény
 
 #### <a name="application-design"></a>Az alkalmazás kialakítása
 

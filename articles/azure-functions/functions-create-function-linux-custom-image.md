@@ -3,17 +3,17 @@ title: Azure Functions létrehozása Linuxon egyéni rendszerkép használatáva
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
 author: ggailey777
 ms.author: glenga
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
-ms.translationtype: MT
+ms.openlocfilehash: b4fd931142f8a3daf11b0540241323453e25ea4f
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773134"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839061"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -34,6 +34,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Függvényalkalmazás üzembe helyezése a Docker Hubból.
 > * Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz.
 > * Folyamatos üzembe helyezés engedélyezése.
+> * Engedélyezze az SSH-kapcsolatokat a tárolóhoz.
+> * Adja hozzá a várólista-tároló kimeneti kötését. 
 > * Application Insights figyelés hozzáadása.
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógépeken követheti. 
@@ -51,7 +53,9 @@ Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>A helyi függvényalkalmazás-projekt létrehozása
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
+## <a name="create-the-local-project"></a>A helyi projekt létrehozása
 
 Futtassa a következő parancsot a parancssorból, hogy létrehozzon az aktuális helyi könyvtár `MyFunctionProj` mappájába egy függvényalkalmazás-projektet. Python-projektekhez [virtuális környezetben kell futnia](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
 
@@ -67,15 +71,6 @@ Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az 
 * `node`: létrehoz egy JavaScript-projektet.
 * `python`: létrehoz egy Python-projektet.  
 
-A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Writing Dockerfile
-```
-
 Az alábbi paranccsal léphet az új `MyFunctionProj` projektmappára.
 
 ```bash
@@ -86,7 +81,7 @@ cd MyFunctionProj
 
 [!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
-## <a name="build-the-image-from-the-docker-file"></a>A rendszerkép létrehozása a Docker-fájlból
+## <a name="build-from-the-docker-file"></a>Build a Docker-fájlból
 
 Tekintse meg a _Docker-fájlt_ a projekt gyökérmappájában. Ez a fájl írja le a függvényalkalmazás a Linux rendszeren való futtatásához szükséges környezetet. Az alábbi példa egy Docker-fájl, amely egy függvényalkalmazást a JavaScript (Node.js) feldolgozói futtatókörnyezetben futtató tárolót hoz létre: 
 
@@ -101,38 +96,16 @@ COPY . /home/site/wwwroot
 > A Azure Functions által támogatott alaplemezképek teljes listája megtalálható a [Azure functions alap lemezképe lapon](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 ### <a name="run-the-build-command"></a>A `build` parancs futtatása
+
 A gyökérmappában futtassa a [docker build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet (`mydockerimage`) és egy címkét (`v1.0.0`). A `<docker-id>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 ```
 
-A parancs végrehajtásakor az alábbihoz hasonló kimenet látható, ami jelen esetben egy JavaScript feldolgozói futtatókörnyezethez kapcsolódik:
+Ha a parancs befejeződik, az új tárolót helyileg is futtathatja.
 
-```bash
-Sending build context to Docker daemon  17.41kB
-Step 1/3 : FROM mcr.microsoft.com/azure-functions/node:2.0
-2.0: Pulling from azure-functions/node
-802b00ed6f79: Pull complete
-44580ea7a636: Pull complete
-73eebe8d57f9: Pull complete
-3d82a67477c2: Pull complete
-8bd51cd50290: Pull complete
-7bd755353966: Pull complete
-Digest: sha256:480e969821e9befe7c61dda353f63298f2c4b109e13032df5518e92540ea1d08
-Status: Downloaded newer image for mcr.microsoft.com/azure-functions/node:2.0
- ---> 7c71671b838f
-Step 2/3 : ENV AzureWebJobsScriptRoot=/home/site/wwwroot
- ---> Running in ed1e5809f0b7
-Removing intermediate container ed1e5809f0b7
- ---> 39d9c341368a
-Step 3/3 : COPY . /home/site/wwwroot
- ---> 5e196215935a
-Successfully built 5e196215935a
-Successfully tagged <docker-id>/mydockerimage:v1.0.0
-```
-
-### <a name="test-the-image-locally"></a>A rendszerkép helyi tesztelése
+### <a name="run-the-image-locally"></a>A rendszerkép helyi futtatása
 Ellenőrizze, hogy a létrehozott rendszerkép működik-e – ehhez futtassa a Docker-rendszerképet egy helyi tárolóban. Adja ki a [docker run](https://docs.docker.com/engine/reference/commandline/run/) parancsot, és adja meg a rendszerkép nevét és címkéjét. Ügyeljen arra, hogy a `-p` argumentum használatával megadja a portot is.
 
 ```bash
@@ -141,14 +114,14 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 Amikor az egyéni rendszerkép fut a helyi Docker-tárolóban, a függvényalkalmazás és -tároló megfelelő működésének ellenőrzéséhez keresse fel a böngészőben a <http://localhost:8080> címet.
 
-![Tesztelje helyben a függvényalkalmazást.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
+![Futtassa helyileg a Function alkalmazást.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
 > [!NOTE]
-> Ezen a ponton, amikor megpróbálja meghívni az adott HTTP-függvényt, HTTP 401-es hibaüzenetet kap. Ennek az az oka, hogy a függvény a helyi tárolóban fut, ahogyan az az Azure-ban lenne, ami azt jelenti, hogy a függvény kulcsának megadása kötelező. Mivel a tároló még nem lett közzétéve egy Function alkalmazásban, nincs elérhető funkcióbillentyű. Később láthatja, hogy amikor a fő eszközöket használja a tároló közzétételéhez, a funkciógombok megjelennek Önnek. Ha tesztelni szeretné a függvényt a helyi tárolóban, módosíthatja az [engedélyezési kulcsot](functions-bindings-http-webhook.md#authorization-keys) `anonymous`a következőre:. 
+> Ezen a ponton, amikor megpróbálja meghívni az adott HTTP-függvényt, HTTP 401-es hibaüzenetet kap. Ennek az az oka, hogy a függvény a helyi tárolóban fut, ahogyan az az Azure-ban lenne, ami azt jelenti, hogy a függvény kulcsának megadása kötelező. Mivel a tároló még nem lett közzétéve egy Function alkalmazásban, nincs elérhető funkcióbillentyű. Később láthatja, hogy amikor a fő eszközöket használja a tároló közzétételéhez, a funkciógombok megjelennek Önnek. Ha a helyi tárolóban futó függvényt szeretné tesztelni, az [engedélyezési kulcsot](functions-bindings-http-webhook.md#authorization-keys) `anonymous` értékre módosíthatja. 
 
 Miután ellenőrizte a függvényalkalmazást a tárolóban, állítsa le a végrehajtást. Most leküldheti az egyéni rendszerképet a Docker Hub-fiókjába.
 
-## <a name="push-the-custom-image-to-docker-hub"></a>Az egyéni rendszerkép leküldése a Docker Hubba
+## <a name="push-to-docker-hub"></a>Leküldés a Docker hub-ra
 
 A tárolójegyzék egy olyan alkalmazás, amely elérhetővé teszi a rendszerképeket, valamint rendszerkép- és tárolószolgáltatásokat is biztosít. A rendszerkép megosztásához le kell küldenie azt a tárolójegyzékbe. A Docker Hub egy olyan tárolójegyzék a Docker-rendszerképek számára, amely saját nyilvános vagy privát adattárak üzemeltetését teszi lehetővé.
 
@@ -164,19 +137,7 @@ A "sikeres bejelentkezés" üzenet megerősíti, hogy bejelentkezett. Miután be
 docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
-A parancs kimenetének megvizsgálásával győződjön meg a leküldés sikerességéről.
-
-```bash
-The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
-24d81eb139bf: Pushed
-fd9e998161c9: Mounted from <docker-id>/mydockerimage
-e7796c35add2: Mounted from <docker-id>/mydockerimage
-ae9a05b85848: Mounted from <docker-id>/mydockerimage
-45c86e20670d: Mounted from <docker-id>/mydockerimage
-v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 1796
-```
-
-A rendszerképet most már használhatja üzembehelyezési forrásként egy új függvényalkalmazáshoz az Azure-ban.
+A leküldéses művelet sikeres elvégzése után a rendszerképet használhatja egy új Function alkalmazás üzembe helyezési forrásaként az Azure-ban.
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
@@ -186,14 +147,14 @@ A rendszerképet most már használhatja üzembehelyezési forrásként egy új 
 
 A [dedikált (App Service) csomagok](functions-scale.md#app-service-plan) és [prémium csomagok](functions-premium-plan.md#features)által támogatott egyéni functions-tárolók Linux-üzemeltetése. Ez az oktatóanyag egy prémium szintű csomagot használ, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md).
 
-Az alábbi példa egy prémium szintű csomagot `myPremiumPlan` hoz létre a **rugalmas prémium 1** díjszabási szinten`--sku EP1`(), az USA nyugati régiójában`-location WestUS`() és egy Linux-tárolóban`--is-linux`().
+Az alábbi példa egy `myPremiumPlan` nevű prémium csomagot hoz létre az **1** . szintű prémium szintű 1. csomag (`--sku EP1`), az USA nyugati régiójában (`-location WestUS`), valamint egy Linux-tárolóban (`--is-linux`).
 
 ```azurecli-interactive
 az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
 --location WestUS --number-of-workers 1 --sku EP1 --is-linux
 ```
 
-## <a name="create-and-deploy-the-custom-image"></a>Egyéni rendszerkép létrehozása és üzembe helyezése
+## <a name="create-an-app-from-the-image"></a>Alkalmazás létrehozása a rendszerképből
 
 A Function alkalmazás kezeli a függvények végrehajtását a üzemeltetési tervben. A függvényalkalmazásokat a Docker Hub-rendszerképekből az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) parancs használatával hozhatja létre.
 
@@ -230,13 +191,37 @@ AzureWebJobsStorage=$storageConnectionString
 >
 > Ezen értékek kiválasztásához le kell állítania, majd el kell indítania a Function alkalmazást
 
-Most tesztelheti a Linuxon futó Azure-függvényeit.
+## <a name="verify-your-functions"></a>A függvények ellenőrzése
 
-[!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+<!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
+
+A létrehozott HTTP-trigger függvényhez egy [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) szükséges a végpont meghívásakor. Jelenleg a legegyszerűbb módszer a függvény URL-címének lekérésére, a kulcsot is beleértve, a [Azure Portal]. 
+
+> [!TIP]
+> A funkcióbillentyűk a [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)-k segítségével is beszerezhetők, amelyekhez [tulajdonosi jogkivonatot](/cli/azure/account#az-account-get-access-token)kell bemutatnia a hitelesítéshez.
+
+Keresse meg az új Function alkalmazást a [Azure Portal] írja be a Function alkalmazás nevét a lap tetején található **keresőmezőbe** , és válassza ki a **app Service** erőforrást.
+
+Válassza ki a **MyHttpTrigger** függvényt, válassza a **</> a függvény URL-címének beolvasása** > **alapértelmezett (Function Key)**  > **Másolás**elemet.
+
+![A függvény URL-címének másolása az Azure portálról](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
+
+Ebben az URL-ben a függvény kulcsa a `code` lekérdezési paraméter. 
+
+> [!NOTE]  
+> Mivel a Function alkalmazás tárolóként van telepítve, nem módosíthatja a függvény kódját a portálon. Ehelyett frissítenie kell a projektet a helyi tárolóban, és újra közzé kell tennie az Azure-ban.
+
+Illessze be a függvény URL-címét a böngésző címsorába. Az URL-cím végéhez adja hozzá a `&name=<yourname>` lekérdezési sztring értéket, majd nyomja le az `Enter` billentyűt a billentyűzeten a kérés végrehajtásához. Ekkor a függvény által visszaadott válasz jelenik meg a böngészőben.
+
+Az alábbi példa a böngészőben visszaadott választ mutatja:
+
+![A függvény által visszaadott válasz a böngészőben.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+
+A kérelem URL-címe alapértelmezés szerint tartalmazza a függvény HTTP protokollon keresztüli eléréséhez szükséges kulcsot. 
 
 ## <a name="enable-continuous-deployment"></a>Folyamatos üzembe helyezés engedélyezése
 
-A tárolók használatának egyik előnye, hogy automatikusan telepíti a frissítéseket, amikor a tárolók frissülnek a beállításjegyzékben. Engedélyezze a folyamatos üzembe helyezést az az [functionapp Deployment Container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) paranccsal.
+A tárolók használatának egyik előnye, hogy támogatja a folyamatos üzembe helyezést. A functions lehetővé teszi a frissítések automatikus központi telepítését, amikor a tároló frissül a beállításjegyzékben. Engedélyezze a folyamatos üzembe helyezést az az [functionapp Deployment Container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) paranccsal.
 
 ```azurecli-interactive
 az functionapp deployment container config --enable-cd \
@@ -248,36 +233,147 @@ Ez a parancs visszaadja a üzembe helyezési webhook URL-címét a folyamatos ü
 
 Másolja a telepítési URL-címet, és keresse meg a DockerHub-tárházat, válassza a **webhookok** fület, írja be a webhook **nevét** , illessze be az URL-címet a **webhook URL-címébe**, majd válassza a pluszjelet ( **+** ).
 
-![Webhook hozzáadása a DockerHub-tárházban](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+![Webhook hozzáadása a DockerHub-tárházban](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
 A webhook készlettel a DockerHub csatolt rendszerképének minden frissítése a Function alkalmazás letöltésével és a legújabb rendszerkép telepítésével jár.
 
-## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
+## <a name="enable-ssh-connections"></a>SSH-kapcsolatok engedélyezése
 
-A függvények végrehajtásának ajánlott figyelése a Function alkalmazás Azure Application Insights-nal való integrálásával. Ha a Azure Portalban hoz létre egy Function alkalmazást, a rendszer alapértelmezés szerint ezt az integrációt végzi. Ha azonban az Azure CLI használatával hozza létre a Function alkalmazást, az Azure-beli Function alkalmazásban nem történik meg az integráció.
+Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ha engedélyezve van az SSH, App Service speciális eszközökkel (kudu) is csatlakozhat a tárolóhoz. Ahhoz, hogy az SSH használatával könnyedén csatlakozhasson a tárolóhoz, a functions olyan alaprendszerképet biztosít, amely már engedélyezve van az SSH-val. 
 
-Application Insights engedélyezése a Function alkalmazáshoz:
+### <a name="change-the-base-image"></a>Az alaprendszerkép módosítása
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+A Docker fűzze hozzá a `-appservice` karakterláncot a `FROM` utasításban található alaprendszerképhez, amely egy JavaScript-projekthez hasonlóan néz ki.
 
-További információért lásd: [Azure functions figyelése](functions-monitoring.md).
+```docker
+FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+```
+
+A két alaprendszerkép különbségei lehetővé teszik az SSH-kapcsolatokat a tárolóba. Ezek a különbségek részletesen [jelennek meg a app Services oktatóanyagban](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections).
+
+### <a name="rebuild-and-redeploy-the-image"></a>A rendszerkép újraépítése és újbóli üzembe helyezése
+
+A gyökérkönyvtárban futtassa újra a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot az előzőekben lecserélve a Docker hub-fiók azonosítójának `<docker-id>` helyére. 
+
+```bash
+docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+```
+
+Küldje vissza a frissített képet a Docker hub-ra.
+
+```bash
+docker push <docker-id>/mydockerimage:v1.0.0
+```
+
+A rendszer újratelepíti a frissített lemezképet a Function alkalmazásba.
+
+### <a name="connect-to-your-container-in-azure"></a>Kapcsolódás a tárolóhoz az Azure-ban
+
+A böngészőben nyissa meg az alábbi speciális eszközöket (kudu) `scm.` végpontot a Function app-tárolóhoz, és cserélje le a `<app_name>` értéket a Function alkalmazás nevével.
+
+```
+https://<app_name>.scm.azurewebsites.net/
+```
+
+Jelentkezzen be az Azure-fiókjába, majd válassza az **SSH** fület SSH-kapcsolatok létrehozásához a tárolóban.
+
+A kapcsolódás után futtassa a `top` parancsot az aktuálisan futó folyamatok megtekintéséhez. 
+
+![Egy SSH-munkamenetben futó Linux-alapú legfelső szintű parancs.](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
+
+## <a name="write-to-queue-storage"></a>Írás a várólista-tárolóba
+
+A functions lehetővé teszi az Azure-szolgáltatások és egyéb erőforrások a funkciókhoz való összekapcsolását anélkül, hogy saját integrációs kódot kellene írnia. Ezek a *kötések*, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatait paraméterként a függvény kapja meg. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
+
+Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
+
+### <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
+
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+
+### <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
+
+Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatása előtt telepítenie kell a Storage-kötések bővítményt. 
+
+#### <a name="javascriptpython"></a>JavaScript/Python
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+#### <a name="c-class-library"></a>C#osztály könyvtára
+
+A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. Futtassa a következő [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a terminál ablakban a tárolási bővítmény csomagjának a projekthez való hozzáadásához.
+
+```bash
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+```
+
+> [!TIP]
+> A Visual Studio használata esetén a NuGet csomagkezelő használatával is hozzáadhatja ezt a csomagot.
+
+Most hozzáadhat egy tárolási kimeneti kötést a projekthez.
+
+### <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
+
+A functions esetében minden típusú kötéshez `direction`, `type` és egy egyedi `name` szükséges, amely a function. JSON fájlban adható meg. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
+
+####  <a name="javascriptpython"></a>JavaScript/Python
+
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
+
+#### <a name="c-class-library"></a>C#osztály könyvtára
+
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+### <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
+
+A kötés meghatározása után a kötés `name` értékkel férhet hozzá a függvény aláírása attribútumként. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
+
+#### <a name="javascript"></a>JavaScript
+
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+
+#### <a name="python"></a>Python
+
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+
+#### <a name="c-class-library"></a>C#osztály könyvtára
+
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
+### <a name="update-the-hosted-container"></a>Az üzemeltetett tároló frissítése
+
+A gyökérkönyvtárban futtassa újra a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és ezúttal frissítse a címkén lévő verziót `v1.0.2` értékre. Ahogy korábban is, cserélje le a `<docker-id>` értéket a Docker hub-fiók azonosítójával. 
+
+```bash
+docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+```
+
+Küldje vissza a frissített képet a tárházba.
+
+```bash
+docker push <docker-id>/mydockerimage:v1.0.0
+```
+
+### <a name="verify-the-updates-in-azure"></a>A frissítések ellenőrzése az Azure-ban
+
+A függvény elindításához ugyanazt az URL-címet használja, mint a böngészőben. Ugyanezt a választ kell látnia. Ezúttal azonban a `name` paraméternek átadott karakterlánc a `outqueue` tárolási várólistába íródik.
+
+### <a name="set-the-storage-account-connection"></a>A Storage-fiók kapcsolatainak beállítása
+
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
+
+### <a name="query-the-storage-queue"></a>A tárolási várólista lekérdezése
+
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+Most, hogy sikeresen telepítette az egyéni tárolót egy Azure-beli Function-alkalmazásba, érdemes megfontolnia a következő témaköröket:
 
-> [!div class="checklist"]
-> * Függvényalkalmazás és a Docker-fájl létrehozása a Core Tools használatával.
-> * Egyéni rendszerkép készítése a Docker használatával.
-> * Egyéni rendszerkép közzététele egy tárolójegyzékben.
-> * Azure Storage-fiók létrehozása.
-> * Hozzon létre egy linuxos prémium csomagot.
-> * Függvényalkalmazás üzembe helyezése a Docker Hubból.
-> * Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz.
-> * Folyamatos üzembe helyezés engedélyezése.
-> * Application Insights figyelés hozzáadása.
++ [Figyelési függvények](functions-monitoring.md)
++ [Méretezési és üzemeltetési lehetőségek](functions-scale.md)
++ [Kubernetes-alapú kiszolgáló nélküli üzemeltetés](functions-kubernetes-keda.md)
 
-> [!div class="nextstepaction"] 
-> [További információ a függvények Azure-beli üzembe helyezési lehetőségeiről](functions-deployment-technologies.md)
+[Azure Portal]: https://portal.azure.com

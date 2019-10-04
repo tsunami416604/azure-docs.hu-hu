@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d758b63b56bb84b1cb4e5793731da5eb4f5209
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 6a81ecd855b098ec59c5b6f7761ceebfa7a03fa9
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103874"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936732"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése Power BI Mobile Azure-AD Application Proxy
 
@@ -121,6 +121,8 @@ Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Servic
    Power BI Mobile **Androidhoz**készült alkalmazás konfigurálásakor adja hozzá a következő átirányítási URI-k nyilvános ügyfélként (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
    > Az alkalmazás megfelelő működéséhez hozzá kell adni az átirányítási URI-azonosítókat. Ha az alkalmazást Power BI Mobile iOS és Android rendszerhez is konfigurálja, adja hozzá a nyilvános ügyfél (Mobile & Desktop) típusú átirányítási URI-t az iOS-hez konfigurált átirányítási URI- `urn:ietf:wg:oauth:2.0:oob`k listájához:.

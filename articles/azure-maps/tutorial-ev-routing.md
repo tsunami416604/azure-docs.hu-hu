@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803928"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836357"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Elektromos járművek útválasztása Azure Notebooks használatával (Python)
 
-A Azure Maps a térinformatikai szolgáltatási API-k natívan integrált portfoliója, amely lehetővé teszi a fejlesztők, a vállalatok és az ISV-k számára, hogy helyet IoT, mobilitási, logisztikai és Asset Tracking-megoldásokat hozzanak létre. A Azure Maps REST API-kat olyan nyelvekről hívhatjuk, mint például a Python és az R a térinformatikai adatok elemzéséhez és a gépi tanulási forgatókönyvekhez. Azure Maps az [útválasztási API]([https://docs.microsoft.com/rest/api/maps/route) -k robusztus készletét kínálja, amely lehetővé teszi, hogy a felhasználók különböző feltételek (például járműtípus vagy elérhető terület) alapján számítsanak ki útvonalakat több adatpont között. Ebben az oktatóanyagban egy olyan forgatókönyvet ismertetünk, amely segít egy olyan elektromos jármű-illesztőprogram létrehozásában, amelynek a járművei alacsony töltöttségi szinten vannak, hogy megtalálják a lehető legközelebb töltő állomást a meghajtó időpontjára vonatkozóan.
+A Azure Maps a térinformatikai szolgáltatási API-k natívan integrált portfoliója, amely lehetővé teszi a fejlesztők, a vállalatok és az ISV-k számára, hogy helyet IoT, mobilitási, logisztikai és Asset Tracking-megoldásokat hozzanak létre. A Azure Maps REST API-kat olyan nyelvekről hívhatjuk, mint például a Python és az R a térinformatikai adatok elemzéséhez és a gépi tanulási forgatókönyvekhez. Azure Maps az [útválasztási API](https://docs.microsoft.com/rest/api/maps/route) -k robusztus készletét kínálja, amely lehetővé teszi, hogy a felhasználók különböző feltételek (például járműtípus vagy elérhető terület) alapján számítsanak ki útvonalakat több adatpont között. Ebben az oktatóanyagban egy olyan forgatókönyvet ismertetünk, amely segít egy olyan elektromos jármű-illesztőprogram létrehozásában, amelynek a járművei alacsony töltöttségi szinten vannak, hogy megtalálják a lehető legközelebb töltő állomást a meghajtó időpontjára vonatkozóan.
 
 Ebben az oktatóanyagban a következőket fogja elsajátítani:
 

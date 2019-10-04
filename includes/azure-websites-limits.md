@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8cdfe82888cca471aa5aae6717a16f62000c4ad5
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69657795"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839206"
 ---
 | Resource | Free | Megosztott | Alapszintű | Standard | Prémium (v2) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ ms.locfileid: "69657795"
 <sup>2</sup> Az ezeken a gépeken üzemeltethető alkalmazások tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.  
 <sup>3</sup> A dedikált példányok különböző méretűek lehetnek. További információ: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup> További kérések esetén engedélyezett.  
-<sup>5</sup> A tárolási korlát a teljes tartalom mérete az összes alkalmazásban ugyanabban a App Service tervben.  
+<sup>5</sup> A tárolási korlát a teljes tartalom mérete az adott app Service-csomagban lévő összes alkalmazásban. Az egyetlen erőforráscsoport és régió összes app Service-csomagjában lévő alkalmazások teljes tartalmának mérete nem haladhatja meg az 500 GB-ot.  
 <sup>6</sup> Ezeket az erőforrásokat a dedikált példányokon található fizikai erőforrások korlátozzák (a példány mérete és a példányok száma).  
 <sup>7</sup> Ha az alkalmazást az alapszintű csomagból két példányra méretezi, akkor a két példány esetében 350 egyidejű kapcsolat. A standard szinthez és a fentiekhez nem tartoznak elméleti korlátok a webes szoftvercsatornák számára, más tényezők pedig korlátozhatják a webes szoftvercsatornák számát. Például a maximálisan megengedett kérelmek (a által `maxConcurrentRequestsPerCpu`definiált) a következők: 7 500/kisméretű VM, 15 000/közepes méretű virtuális gép (7 500 x 2 mag) és 75 000/nagyméretű virtuális gép (18 750 x 4 mag).  
 <sup>8</sup> Az egyéni végrehajtható fájlokat és/vagy parancsfájlokat igény szerint, ütemezés szerint, vagy a App Service-példányon belüli háttérbeli feladatként futtathatja. A folyamatos WebJobs-végrehajtáshoz folyamatos üzem szükséges. Az ütemezett WebJobs-végrehajtás csak az Azure Scheduler Ingyenes vagy Standard rétegével használható. Nincs előre meghatározott korlát a App Service-példányban futtatható webjobs-feladatok számánál. Az alkalmazás kódjának működéséhez szükséges gyakorlati korlátozások is megváltoznak.  

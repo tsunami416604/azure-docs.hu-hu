@@ -16,25 +16,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290822"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827111"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Gyors útmutató: Bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript egyoldalas alkalmazásból
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhat egy kód mintát, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára. A JavaScript SPA a Microsoft Graph API vagy bármely webes API meghívására is kérhet hozzáférési jogkivonatot.
-
-![A jelen rövid útmutatóban szereplő minta alkalmazás működése](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára. A JavaScript SPA a Microsoft Graph API vagy bármely webes API meghívására is kérhet hozzáférési jogkivonatot. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a rövid útmutatóhoz a következő beállítás szükséges:
-* A projekt Node. js-kiszolgálóval való futtatásához töltse le és telepítse a [Node. js](https://nodejs.org/en/download/)-t.
-* A projektfájlok szerkesztéséhez töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/download)-ot.
-* A projekt Visual Studio-megoldásként való futtatásához töltse le és telepítse a [Visual studio 2019](https://visualstudio.microsoft.com/downloads/)alkalmazást.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Node.js](https://nodejs.org/en/download/).
+* Vagy Visual Studio [Code](https://code.visualstudio.com/download) (a projektfájlok szerkesztéséhez) vagy a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (ro a projektet Visual Studio-megoldásként futtatja).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>A gyors üzembe helyezési alkalmazás regisztrálása és letöltése
@@ -82,8 +79,6 @@ Válassza ki a fejlesztési környezetének megfelelő lehetőséget:
 
 * Választható A projekt IIS-kiszolgálóval való futtatásához [töltse le a Visual Studio-projektet](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Bontsa ki a zip-fájlt egy helyi mappába (például *C:\Azure-Samples*).
 
-
-
 #### <a name="step-3-configure-your-javascript-app"></a>3\. lépés: A JavaScript-alkalmazás konfigurálása
 
 > [!div renderon="docs"]
@@ -114,8 +109,8 @@ var msalConfig = {
 > [!div renderon="docs"]
 >
 > Az elemek magyarázata:
-> - A Enter_the_Application_Id_here > a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .  *\<*
-> - A Enter_the_Tenant_info_here > az alábbi lehetőségek egyikére van beállítva:  *\<*
+> - *\<Enter_the_Application_Id_here >* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
+> - a *\<Enter_the_Tenant_info_here >* az alábbi lehetőségek egyikére van beállítva:
 >    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
 >    - Ha az alkalmazás *minden szervezeti címtárban*támogatja a fiókokat, cserélje leezt az értéket szervezetekkel.
 >    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is*támogatja a fiókokat, cserélje le ezt az értéket közösre. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
@@ -144,6 +139,10 @@ var msalConfig = {
 Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehetőséget. Amikor először jelentkezik be, a rendszer arra kéri, hogy adja meg a beleegyezik, hogy engedélyezze az alkalmazásnak a profil elérését és a bejelentkezést. Miután sikeresen bejelentkezett, a felhasználói profil adatai megjelennek az oldalon.
 
 ## <a name="more-information"></a>További információ
+
+### <a name="how-the-sample-works"></a>A minta működése
+
+![A jelen rövid útmutatóban szereplő minta alkalmazás működése](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
 ### <a name="msaljs"></a>msal.js
 

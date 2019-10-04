@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: a9de9924b851024dd36c848203cc3ada2cde208c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329408"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937143"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>A IoT alapkonfigurációjának és egyéni ellenőrzésének Azure Security Center
 
@@ -32,7 +32,7 @@ Az alapkonfiguráció minden eszköz esetében szabványos viselkedést hoz lét
 
 ## <a name="baseline-custom-checks"></a>Alapkonfiguráció egyéni ellenőrzése
 
-Az alapkonfiguráció egyéni ellenőrzése az eszközhöz tartozó Identity Twin használatával egyéni ellenőrzési listát hoz létre az egyes eszközök alapértékei számára. 
+Az alapkonfiguráció egyéni ellenőrzése az eszközhöz tartozó **Identity Twin** használatával egyéni ellenőrzési listát hoz létre az egyes eszközök alapértékei számára. 
 
 ## <a name="setting-baseline-properties"></a>Alapterv tulajdonságainak beállítása
 
@@ -67,8 +67,8 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 | Name (Név)| State | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Logikai érték** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
-|baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **Karakterlánc**, **Null** |Alapértelmezett érték: **PT5H** |Az eredeti XML-konfiguráció teljes elérési útja|
-|baselineCustomChecksFileHash |Kötelező: igaz|Érvényes értékek: **Karakterlánc**, **Null** |Alapértelmezett érték: **PT5H** |@no__t – 0 az XML-konfigurációs fájlból. További információkért használja az [sha256sum-referenciát](https://linux.die.net/man/1/sha256sum) . |
+|baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **Karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|
+|baselineCustomChecksFileHash |Kötelező: igaz|Érvényes értékek: **Karakterlánc**, **Null** |Alapértelmezett érték: **Null** |@no__t – 0 az XML-konfigurációs fájlból. További információkért használja az [sha256sum-referenciát](https://linux.die.net/man/1/sha256sum) . |
 
 További alapkonfigurációk áttekintéséhez tekintse meg az [Egyéni Alapterv – 1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) . és az [Egyéni alapterv – 2. példát](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
 

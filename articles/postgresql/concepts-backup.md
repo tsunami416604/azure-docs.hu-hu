@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bf2e289ad12f459c37a93ad3936c30339ecf663d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a4d8cd9f8198002b0b9ade8fe5058de1fcacc68f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907540"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937354"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -25,7 +25,7 @@ A Azure Database for PostgreSQL teljes, differenciális és tranzakciós naplób
 
 Általánosságban elmondható, hogy a teljes biztonsági mentés hetente, a különbözeti biztonsági mentések naponta kétszer történnek, és a tranzakciónaplók biztonsági mentései öt percenként történnek. Az első teljes biztonsági mentést a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára.
 
-### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
+### <a name="backup-redundancy-options"></a>Biztonsági mentési redundancia beállításai
 
 Azure Database for PostgreSQL rugalmasságot biztosít a helyileg redundáns vagy geo-redundáns biztonsági mentési tárolók közötti választáshoz a általános célú és a memóriára optimalizált rétegekben. Ha a biztonsági mentések a földrajzilag redundáns biztonsági mentési tárolóban tárolódnak, azok nem csak abban a régióban vannak tárolva, amelyben a kiszolgáló üzemeltetve van, de [](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)egy párosított adatközpontba is replikálódnak. Ez jobb védelmet nyújt, és lehetővé teszi a kiszolgáló egy másik régióban való visszaállítását vészhelyzet esetén. Az alapszintű csomag csak a helyileg redundáns biztonsági mentési tárhelyet kínálja.
 
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL a Restore művelet elvégzésével létrehoz egy �
 
 Két típusú visszaállítás érhető el:
 
-- Az időponthoz **való visszaállítás** a Backup redundancia beállítással érhető el, és egy új kiszolgálót hoz létre ugyanabban a régióban, ahol az eredeti kiszolgáló található.
+- Az **időponthoz való visszaállítás** a Backup redundancia beállítással érhető el, és egy új kiszolgálót hoz létre ugyanabban a régióban, ahol az eredeti kiszolgáló található.
 - A **geo-visszaállítás** csak akkor érhető el, ha a kiszolgálót a földrajzilag redundáns tároláshoz konfigurálta, és lehetővé teszi a kiszolgáló másik régióba való visszaállítását.
 
 A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.

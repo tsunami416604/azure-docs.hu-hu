@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: a97081101df5199d3201a6ec47df4c2ac2747416
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a808216b62459869e9adfd88afc60ee53259221d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309139"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838640"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Gyors útmutató: Telemetria küldése egy Azure IoT hub-ba, és beolvasása Java-alkalmazással
 
@@ -125,7 +125,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    ![A szimulált eszköz futtatása](media/quickstart-send-telemetry-java/SimulatedDevice.png)
+    ![Az eszköz által az IoT hubhoz elküldett telemetria kimenete](media/quickstart-send-telemetry-java/iot-hub-simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
@@ -155,7 +155,7 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
     A következő képernyőképen az a kimenet látható, amikor a háttéralkalmazás fogadja a szimulálteszköz-alkalmazás által az IoT Hubhoz küldött telemetriát:
 
-    ![A háttéralkalmazás futtatása](media/quickstart-send-telemetry-java/ReadDeviceToCloud.png)
+    ![A kimeneti háttérbeli alkalmazás fogadja az IoT hub-ba küldött telemetria](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

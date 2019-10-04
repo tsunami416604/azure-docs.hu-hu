@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 63008de6d29790333764f4dcca27b8dc03cedbdb
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169171"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838176"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -384,7 +384,7 @@ Ez a választható szakasz vezérli a [tetszőleges típusú](https://github.com
 
 Elem | Value
 ------- | -----
-névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)által megvalósított "root/SCX".
+névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
 query | A végrehajtandó a kipróbálható adatlekérdezés.
 table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
 frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
@@ -695,7 +695,7 @@ A JsonBlob elküldhető adattárolók a [védett beállítások](#protected-sett
 Emellett használhatja ezeket a felhasználói felületi eszközöket az Azure Storage-ban tárolt adatok eléréséhez:
 
 * Visual Studio Server Explorer.
-* [Microsoft Azure Storage Explorer] (https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azure Storage-táblákat és-tárolókat mutatja be egy, a teszt virtuális gépen megfelelően konfigurált, LAD 3,0-es bővítménnyel. A rendszerkép nem egyezik pontosan a [LAD 3,0](#an-example-lad-30-configuration)-konfigurációval.
 

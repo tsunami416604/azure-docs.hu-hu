@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815949"
+ms.locfileid: "71827807"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Az adatüzemek riasztása és monitorozása Azure Monitor használatával
 
@@ -472,7 +472,7 @@ Néhány pillanat elteltével az új beállítás megjelenik az adat-előállít
 * Az _Azure-diagnosztika_ módban a diagnosztikai naplók beáramlanak a _AzureDiagnostics_ táblába
 
 > [!NOTE]
-> Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal, javasoljuk, hogy az erőforrás-specifikus módot válassza. További információ: [log Analytics ismert korlátozások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
+> Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal, javasoljuk, hogy az erőforrás-specifikus módot válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Data Factory Analytics telepítése az Azure Marketplace-ről
 

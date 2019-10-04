@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102328"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828365"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. További információkat az **SQL Virtual Machines** csempén a **Részletek megjelenítése** lehetőség kiválasztásával tekinthet meg.
-1. Válassza ki **az ingyenes SQL Server licencet: SQL Server 2017 fejlesztő a Windows Server 2016** rendszerképet a legördülő menüből.
+1. Válassza ki **az ingyenes SQL Server licencet: SQL Server 2017 fejlesztő a Windows Server 2016 @ no__t-0 képen a legördülő menüből.
 
    ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
@@ -81,9 +81,10 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
 A **SQL Server beállítások** lapon adja meg a következő beállításokat:
 
 1. A **Biztonság & hálózatkezelés**területen válassza a _nyilvános (Internet_) lehetőséget az **SQL** -kapcsolathoz, `1401` és módosítsa a portot úgy, hogy ne használjon jól ismert portszámot a nyilvános forgatókönyvben. 
-1. Az **SQL-hitelesítés**területen válassza az **Engedélyezés**lehetőséget. Az SQL-bejelentkezés ugyanarra a felhasználónévre és jelszóra van állítva, amelyet a virtuális géphez konfigurált. Használja az alapértelmezett beállításokat **Azure Key Vault az integráció** és a **tárolás konfigurációját**.  
+1. Az **SQL-hitelesítés**területen válassza az **Engedélyezés**lehetőséget. Az SQL-bejelentkezés ugyanarra a felhasználónévre és jelszóra van állítva, amelyet a virtuális géphez konfigurált. [**Azure Key Vault integrációhoz**](virtual-machines-windows-ps-sql-keyvault.md)használja az alapértelmezett beállítást. A **tárolási konfiguráció** nem érhető el az alapszintű SQL Server VM lemezképhez, de további információkat talál a [tárolási konfigurációban](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)található egyéb rendszerképek elérhető lehetőségeiről.  
 
    ![Az SQL Server biztonsági beállításai](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+
 
 1. Szükség esetén módosítsa az egyéb beállításokat, majd válassza a **felülvizsgálat + létrehozás**elemet. 
 

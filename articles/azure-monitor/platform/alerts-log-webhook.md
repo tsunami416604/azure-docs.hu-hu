@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677767"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838576"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
 Ha egy [naplóbeli riasztást hoz létre az Azure-ban](alerts-log.md), akkor beállíthatja, hogy a [műveleti csoportok használatával](action-groups.md) egy vagy több műveletet végezzen. Ez a cikk az elérhető különböző webhook-műveleteket ismerteti, és bemutatja, hogyan konfigurálhat egyéni JSON-alapú webhookot.
 
 > [!NOTE]
-> Használhatja a [gyakori riasztási sémát](https://aka.ms/commonAlertSchemaDocs) is a webhook-integrációhoz. Az általános riasztási séma előnye, hogy egyetlen bővíthető és egységesített riasztási adattartalommal rendelkezik a Azure Monitor összes riasztási szolgáltatásában. [Ismerje meg a riasztási séma általános definícióit.](https://aka.ms/commonAlertSchemaDefinitions)
+> Használhatja a [gyakori riasztási sémát](https://aka.ms/commonAlertSchemaDocs) is a webhook-integrációhoz. Az általános riasztási séma lehetővé teszi, hogy a Azure Monitor összes riasztási szolgáltatásában egyetlen bővíthető és egységesített riasztási adattartalmat lehessen használni. vegye figyelembe, hogy a Common Alert séma nem felel meg a naplók egyéni JSON-beállításának. A rendszer elhalasztja a riasztási séma általános adattartalmát, ha a riasztási szabály szintjén végzett testreszabástól függetlenül van kiválasztva. [Ismerje meg a riasztási séma általános definícióit.](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook-műveletek
 

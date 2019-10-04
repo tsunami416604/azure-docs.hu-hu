@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 1a3859e1831f64269e7684072ddf166f29566fd9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670751"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828968"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -395,7 +395,7 @@ A Virtual Network (VNet) szolgáltatás végponti házirendjei lehetővé teszik
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Támogatja az Azure Active Directory (Azure AD) a VNet-szolgáltatási végpontok támogatását?
 
-Azure Active Directory (Azure AD) nem támogatja natív módon a szolgáltatási végpontokat. [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)megtekintheti az VNet szolgáltatási végpontokat támogató Azure-szolgáltatások teljes listáját. Vegye figyelembe, hogy a szolgáltatások támogatása szolgáltatási végpontok területen felsorolt "Microsoft. AzureActiveDirectory" címkét a rendszer az 1. generációs ADLS-végpontok támogatásához használja. Az 1. generációs ADLS-hez készült Virtual Network Integration for Azure Data Lake Storage Gen1 a virtuális hálózat és a Azure Active Directory (Azure AD) közötti virtuális hálózati szolgáltatás végpontjának biztonságát használja a hozzáférési jogkivonat további biztonsági jogcímeinek létrehozásához. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. További információ: [Azure Data Lake Store Gen 1 VNet Integration] (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. JSON
+Azure Active Directory (Azure AD) nem támogatja natív módon a szolgáltatási végpontokat. [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)megtekintheti az VNet szolgáltatási végpontokat támogató Azure-szolgáltatások teljes listáját. Vegye figyelembe, hogy a szolgáltatások támogatása szolgáltatási végpontok területen felsorolt "Microsoft. AzureActiveDirectory" címkét a rendszer az 1. generációs ADLS-végpontok támogatásához használja. Az 1. generációs ADLS-hez készült Virtual Network Integration for Azure Data Lake Storage Gen1 a virtuális hálózat és a Azure Active Directory (Azure AD) közötti virtuális hálózati szolgáltatás végpontjának biztonságát használja a hozzáférési jogkivonat további biztonsági jogcímeinek létrehozásához. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. További információ az [1. generációs VNet-integrációról Azure Data Lake Store](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Van-e korlátozás arra vonatkozóan, hogy hány VNet szolgáltatás-végpontot állíthatok be a VNet?
 A virtuális hálózatok VNet-végpontok teljes száma nincs korlátozva. Az Azure-szolgáltatási erőforrások (például egy Azure Storage-fiók) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. A következő táblázat néhány példát mutat be: 

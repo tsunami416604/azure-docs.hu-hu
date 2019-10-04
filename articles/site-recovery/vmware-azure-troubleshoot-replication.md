@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b02e819255db0cdf8b9d241f2ec0d41df7494162
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742568"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844356"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és a fizikai kiszolgálók replikációs problémáinak elhárítása
 
@@ -41,49 +41,29 @@ A problémák megoldásához a [kapcsolat és a replikálás hibaelhárítása](
 
 Ha a Site Recovery használatával szeretné engedélyezni a replikálást, a gép a következő okok egyike miatt nem érhető el:
 
-* **Két virtuális gép ugyanazzal a példány UUID-val**: Ha a vCenter két virtuális gépnek ugyanaz a példány UUID azonosítója, a konfigurációs kiszolgáló által felderített első virtuális gép megjelenik a Azure Portal. A probléma megoldásához győződjön meg arról, hogy egyetlen példány UUID-je sincs két virtuális gépen. Ez a forgatókönyv általában olyan példányokban látható, ahol a biztonsági mentési virtuális gép aktívvá válik, és bekerül a felderítési rekordba. Tekintse [meg a VMware – Azure Azure site Recovery: Ismétlődő vagy elavult bejegyzések](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) törlése a megoldáshoz.
+* **Két virtuális gép ugyanazzal a példány UUID-val**: Ha a vCenter két virtuális gépnek ugyanaz a példány UUID azonosítója, a konfigurációs kiszolgáló által felderített első virtuális gép megjelenik a Azure Portal. A probléma megoldásához győződjön meg arról, hogy egyetlen példány UUID-je sincs két virtuális gépen. Ez a forgatókönyv általában olyan példányokban látható, ahol a biztonsági mentési virtuális gép aktívvá válik, és bekerül a felderítési rekordba. Tekintse meg a [Azure Site Recovery VMware – Azure-ban: Duplikált vagy elavult bejegyzések törlése @ no__t-0 a feloldáshoz.
 * **Helytelen vCenter felhasználói hitelesítő adatok**: Győződjön meg arról, hogy a megfelelő vCenter hitelesítő adatokat adta hozzá a konfigurációs kiszolgáló a OVF sablon vagy az egyesített telepítő használatával történő beállításakor. A telepítés során hozzáadott hitelesítő adatok ellenőrzéséhez tekintse meg az [automatikus felderítés hitelesítő adatainak módosítása](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery)című témakört.
 * a **vCenter nem megfelelő jogosultságokkal rendelkezik**: Ha a vCenter való hozzáféréshez megadott engedélyek nem rendelkeznek a szükséges engedélyekkel, előfordulhat, hogy a virtuális gépek felderítése sikertelen. Győződjön meg arról, hogy a [fiók előkészítése automatikus felderítéshez](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) című témakörben leírt engedélyek hozzáadódnak a vCenter felhasználói fiókhoz.
 * **Azure site Recovery felügyeleti kiszolgálók**: Ha a virtuális gép felügyeleti kiszolgálóként van használatban a következő szerepkörök közül egyet vagy többet: konfigurációs kiszolgáló/scale-out Process Server/fő célkiszolgáló, nem fogja tudni kiválasztani a virtuális gépet a portálról. A felügyeleti kiszolgálók nem replikálhatók.
 * **Már védett/átadott feladatátvétel Azure site Recovery szolgáltatásokon keresztül**: Ha a virtuális gép már védett, vagy Site Recovery keresztül átadja a feladatátvételt, a virtuális gép nem érhető el védelemre a portálon. Győződjön meg arról, hogy a portálon keresett virtuális gépet más felhasználók vagy más előfizetések már nem védik.
 * a **vCenter nincs csatlakoztatva**: Ellenőrizze, hogy a vCenter csatlakoztatott állapotban van-e. Az ellenőrzéshez nyissa meg a Recovery Services-tárolót > Site Recovery infrastruktúra > konfigurációs kiszolgálók > kattintson a megfelelő konfigurációs kiszolgálóra, > egy panel megnyílik a jobb oldalon a társított kiszolgálók részleteivel. Ellenőrizze, hogy a vCenter csatlakoztatva van-e. Ha "nincs csatlakoztatva" állapotú, oldja meg a problémát, majd frissítse a [konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép fel lesz sorolva a portálon.
-* **ESXi**kikapcsolva: Ha az ESXi-gazdagép, amelyben a virtuális gép található, kikapcsolt állapotban van, a virtuális gép nem jelenik meg, vagy nem lesz kiválasztható a Azure Portal. Kapcsolja be az ESXi-gazdagépet, [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép fel lesz sorolva a portálon.
+* **ESXi kikapcsolva**: Ha az ESXi-gazdagép, amelyben a virtuális gép található, kikapcsolt állapotban van, a virtuális gép nem jelenik meg, vagy nem lesz kiválasztható a Azure Portal. Kapcsolja be az ESXi-gazdagépet, [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép fel lesz sorolva a portálon.
 * **Újraindítás függőben**: Ha van függőben lévő újraindítás a virtuális gépen, akkor nem fogja tudni kiválasztani a gépet Azure Portalon. Győződjön meg arról, hogy elvégezte a függőben lévő újraindítási tevékenységeket, [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Ezt követően a virtuális gép fel lesz sorolva a portálon.
 * Az **IP-cím nem található**: Ha a virtuális gépen nincs érvényes IP-cím társítva, akkor nem fogja tudni kiválasztani a gépet Azure Portal. Győződjön meg arról, hogy érvényes IP-címet rendel a virtuális géphez, és [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Ezt követően a virtuális gép fel lesz sorolva a portálon.
 
 ### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>A védett virtuális gépek hibáinak megoldása a portálon
 
-A Site Recovery alatt replikált virtuális gépek nem érhetők el a Azure Portalban, ha ismétlődő bejegyzések vannak a rendszerben. Az elavult bejegyzések törlésének és a probléma megoldásának megismeréséhez tekintse [meg a következőt: Azure site Recovery VMware – Azure: Ismétlődő vagy elavult bejegyzések](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)törlése.
+A Site Recovery alatt replikált virtuális gépek nem érhetők el a Azure Portalban, ha ismétlődő bejegyzések vannak a rendszerben. Az elavult bejegyzések törlésének és a probléma megoldásának megismeréséhez tekintse meg a [Azure Site Recovery VMware – Azure: Ismétlődő vagy elavult bejegyzések törlése @ no__t-0.
 
-## <a name="common-errors-and-solutions"></a>Gyakori hibák és megoldások
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Nem érhető el összeomlás-konzisztens helyreállítási pont a virtuális géphez az utolsó "XXX" percben
+
+A leggyakoribb problémák némelyike alább látható
 
 ### <a name="initial-replication-issues-error-78169"></a>Kezdeti replikálási problémák [78169-es hiba]
 
 A fentiek alapján biztosíthatja, hogy a kapcsolat, a sávszélesség vagy az idő szinkronizálásával kapcsolatos problémák ne legyenek elérhetők, ügyeljen a következőkre:
 
 - A víruskereső szoftver nem blokkolja a Azure Site Recovery. [További](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) információ a Azure site Recoveryhoz szükséges mappák kizárásáról.
-
-### <a name="missing-app-consistent-recovery-points-error-78144"></a>Hiányzó alkalmazás-konzisztens helyreállítási pontok [Error 78144]
-
- Ez a Kötet árnyékmásolata szolgáltatás (VSS) problémái miatt fordul elő. A probléma megoldása: 
- 
-- Ellenőrizze, hogy a Azure Site Recovery ügynök telepített verziója legalább 9.22.2-e. 
-- Győződjön meg arról, hogy a VSS-szolgáltató szolgáltatásként van telepítve a Windows-szolgáltatásokban, valamint ellenőrizze a Komponensszolgáltatások MMC-t, hogy ellenőrizze, Azure Site Recovery VSS-szolgáltató szerepel-e a listáján.
-- Ha a VSS-szolgáltató nincs telepítve, olvassa el a [telepítési hibák elhárítása című cikket](vmware-azure-troubleshoot-push-install.md#vss-installation-failures).
-
-- Ha a VSS le van tiltva,
-    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
-    - Indítsa újra a következő szolgáltatásokat:
-        - VSS szolgáltatás
-        - Azure Site Recovery VSS-szolgáltató
-        - VDS szolgáltatás
-
-- Ha SQL-vagy Exchange-munkaterheléseket futtat, ellenőrizze az alkalmazás-írók naplóit a hibákért. Gyakori hibák és a megoldásuk rögzítése a következő cikkekben történik:
-    -  [SQL Server adatbázis automatikus lezárási beállítása TRUE (igaz)](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 nem újrapróbálkozást lehetővé tevő hibát dobott](https://support.microsoft.com/help/4504103)
-    - [Ismert probléma a SQL Server 2016-es és 2017-es verziójában](https://support.microsoft.com/help/4493364)
-    - [Gyakori probléma az Exchange-kiszolgálókkal 2013 és 2016](https://support.microsoft.com/help/4037535)
-
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Nagy forgalmú forrásoldali gépek [Error 78188]
 
@@ -138,8 +118,21 @@ A probléma megoldásához kövesse az alábbi lépéseket a szolgáltatás áll
     - A hiba részleteinek megtekintéséhez keresse meg a naplófájlokat a következő helyen:
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+3. A fő cél a konfigurációs kiszolgálóval való regisztrálásához navigáljon a mappa **%PROGRAMDATA%\ASR\Agent**, és futtassa a következő parancsot a parancssorban:
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>78144-es AZONOSÍTÓJÚ hiba – nem érhető el alkalmazás-konzisztens helyreállítási pont a virtuális géphez az utolsó "XXX" percben
+
+Fejlesztéseket hajtottak végre a mobilitási ügynök [9,23](vmware-physical-mobility-service-overview.md##from-923-version-onwards) & [9,27](site-recovery-whats-new.md#update-rollup-39) verziójában a VSS telepítési hibák viselkedésének kezeléséhez. Győződjön meg arról, hogy a legújabb verziók a VSS-hibák elhárításával kapcsolatos legjobb útmutatást biztosítják.
 
 A leggyakoribb problémák némelyike alább látható
 
@@ -147,11 +140,11 @@ A leggyakoribb problémák némelyike alább látható
 **A javítás módja** : Ismert probléma van az SQL Server 2008/2008 R2-vel. Tekintse meg ezt a TUDÁSBÁZISCIKK [Azure site Recovery Agent vagy más, nem összetevővel rendelkező VSS biztonsági mentést, amely a SQL Server 2008 R2-t futtató kiszolgálókon meghiúsul.](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
 #### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. ok: Azure Site Recovery feladatok meghiúsulnak a SQL Server példányok bármely verzióját üzemeltető kiszolgálókon a AUTO_CLOSE-adatbázisok segítségével 
-**A javítás módja** : Tudásbáziscikk [](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+**A javítás módja** : [Tudásbáziscikk](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. ok: Ismert probléma a SQL Server 2016-es és 2017-es verziójában
-**A javítás módja** : Tudásbáziscikk [](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+**A javítás módja** : [Tudásbáziscikk](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>További okok a VSS-vel kapcsolatos problémák miatt:

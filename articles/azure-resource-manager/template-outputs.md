@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3805e0bb86772836ba4a1c91661477f29d5e0f70
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 0ff1e3cb71bd1bf5ee947eb5204839d48103628b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384046"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827931"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
 
@@ -46,7 +46,7 @@ A kimenetek szakaszban feltételesen adhat vissza értéket. A kimenetekben jell
 
 A feltételes kimenet egyszerű példáját lásd: [feltételes kimeneti sablon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
-## <a name="linked-templates"></a>Összekapcsolt sablonok
+## <a name="linked-templates"></a>Hivatkozott sablonok
 
 Egy csatolt sablon kimeneti értékének lekéréséhez használja a fölérendelt sablon [hivatkozási](resource-group-template-functions-resource.md#reference) függvényét. A fölérendelt sablon szintaxisa a következőket eredményezi:
 
@@ -64,7 +64,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be az IP-címet egy terhelésel
 }
 ```
 
-Nem használhatja a `reference` függvény kimenetek szakaszában egy [beágyazott sablont](resource-group-linked-templates.md#link-or-nest-a-template). Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
+Nem használhatja a `reference` függvény kimenetek szakaszában egy [beágyazott sablont](resource-group-linked-templates.md#nested-template). Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
 
 ## <a name="get-output-values"></a>Kimeneti értékek beolvasása
 

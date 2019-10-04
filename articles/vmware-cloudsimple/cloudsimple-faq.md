@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972843"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828921"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Gyakori kérdések a VMware-megoldásról a CloudSimple
 
@@ -29,11 +29,11 @@ A CloudSimple privát felhő egy privát, dedikált felhő, amely egy nagy telje
 
 **Hol érhető el a CloudSimple szolgáltatás?**
 
-A CloudSimple az USA keleti régiójában és az USA nyugati régiójában érhető el, és hamarosan további régiók is elérhetők.
+A CloudSimple az USA keleti régiójában, az USA nyugati régiójában és a Nyugat-európai régióban is elérhető, és hamarosan további régiókban érhető el.
 
 **Hogyan engedélyezni a CloudSimple-előfizetést?**
 
-A CloudSimple szolgáltatás előfizetésének engedélyezéséhez vegye fel a kapcsolatot a Microsoft-fiók képviselőjével [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) . Adja meg az előfizetés-AZONOSÍTÓját az e-mailben, amelyhez engedélyezni szeretné a CloudSimple szolgáltatást.  
+A CloudSimple szolgáltatás előfizetésének engedélyezéséhez vegye fel a kapcsolatot a Microsoft-fiók képviselőjével [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) címen. Adja meg az előfizetés-AZONOSÍTÓját az e-mailben, amelyhez engedélyezni szeretné a CloudSimple szolgáltatást.  
 
 **Hogyan hozzáférni a CloudSimple-portálhoz?**
 
@@ -41,7 +41,7 @@ A CloudSimple-portálhoz a Azure Portal férhet hozzá.  Részletekért lásd: [
 
 **Hogyan a saját felhő kapacitásának növelését?**
 
-A kapacitás növeléséhez vásároljon további csomópontokat a Azure Portal, majd a csomópontok segítségével bontsa ki a saját Felhőjét a CloudSimple portálról.  Hozzáadhat további csomópontokat egy meglévő vSphere-fürthöz, vagy hozzáadhat egy új vSphere-fürthöz.  Részletekért lásd: [CloudSimple privát felhő](expand-private-cloud.md)kibontása.
+A kapacitás növeléséhez vásároljon további csomópontokat a Azure Portal, majd a csomópontok segítségével bontsa ki a saját Felhőjét a CloudSimple portálról.  Hozzáadhat további csomópontokat egy meglévő vSphere-fürthöz, vagy hozzáadhat egy új vSphere-fürthöz.  Részletekért lásd: [CloudSimple privát felhő kibontása](expand-private-cloud.md).
 
 **Mi történik a saját felhővel a karbantartás során?**
 
@@ -56,7 +56,7 @@ A CloudSimple egy ütemezett karbantartási időszak előtt több nappal biztos�
 
 A CloudSimple a következő csatlakozási lehetőségeket biztosítja a CloudSimple-régió hálózatához való csatlakozáshoz. Egyszerre több lehetőség is használható.
 
-* **ExpressRoute**a helyszíni adatközpontból a CloudSimple-régió hálózatára. Ez egy nagy sebességű, kis késleltetésű, biztonságos magánhálózati kapcsolat, amely Global Reacht használ a helyszíni ExpressRoute áramkör a CloudSimple ExpressRoute-áramkörhöz való áthidalása érdekében. A kapcsolat beállításával kapcsolatos útmutatásért lásd: [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](on-premises-connection.md).
+* **ExpressRoute a helyszíni adatközpontból a CloudSimple-régió hálózatára**. Ez egy nagy sebességű, kis késleltetésű, biztonságos magánhálózati kapcsolat, amely Global Reacht használ a helyszíni ExpressRoute áramkör a CloudSimple ExpressRoute-áramkörhöz való áthidalása érdekében. A kapcsolat beállításával kapcsolatos útmutatásért lásd: [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](on-premises-connection.md).
 * **ExpressRoute az Azure-beli virtuális hálózatról a CloudSimple-régió hálózatához való kapcsolódást**. Ez egy nagy sebességű, kis késleltetésű, biztonságos magánhálózati kapcsolat, amely virtuális hálózati átjárókat használ az Azure-beli virtuális hálózat CloudSimple ExpressRoute-áramkörre való áthidalása érdekében. A kapcsolat beállításával kapcsolatos útmutatásért lásd: [a CloudSimple saját felhőalapú környezetének csatlakoztatása az Azure Virtual networkhez a ExpressRoute használatával](azure-expressroute-connection.md).
 * **Helyek közötti VPN-kapcsolat a helyszíni adatközpontból a CloudSimple-régió hálózatára**. Ez egy biztonságos virtuális magánhálózat a helyszíni VPN-eszközről a CloudSimple saját felhő-régiójába.  Részletekért lásd: [VPN-átjárók beállítása a CloudSimple hálózaton](vpn-gateway.md).
 
@@ -68,7 +68,7 @@ A privát felhő részleteit a CloudSimple-portálon tekintheti meg. A privát f
 
 Az Azure ExpressRoute áramkör nagy sebességű, kis késleltetésű és biztonságos kapcsolat.  A CloudSimple egy régiónként dedikált ExpressRoute-áramkört biztosít az ügyfelek számára.  Ezen áramkör használatával biztonságos kapcsolatot létesíthet a helyszínen vagy az Azure-előfizetésében.
 
-**Milyen hálózati költségekkel csatlakozhat a CloudSimple?  A kimenő forgalomra vonatkozó díjak a CloudSimple és az Azure, illetve az egyes régiók között is érvényesek?**
+@no__t 0What a CloudSimple-hez való kapcsolódáshoz szükséges hálózati költségek?  A kimenő forgalomra vonatkozó díjak a CloudSimple és az Azure között, illetve a régiók között is érvényesek? **
 
 A hálózati kimenő forgalomért nem számítunk fel CloudSimple díjat.  Az Azure standard díjszabása a virtuális hálózatról vagy a helyszíni ExpressRoute áramkörről érkező kimenő forgalomra vonatkozik.
 
@@ -106,8 +106,9 @@ A CloudSimple a következő biztonsági funkciókat biztosítja a saját felhőa
 
 A CloudSimple a következő gazdagép-típusokat kínálja:
 
-* **CS28 csomópont:** CPU: 2x 2,2 GHz, összesen 28 mag, 48 HT.  RAM: 256 GB.  Storage: 1600 GB NVMe cache, 5760 GB adat (all-Flash). Hálózati 2x25Gbe NIC
-* **CS36 csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB adat (all-Flash).  Hálózati 2x25Gbe NIC
+* **CS28 csomópont:** CPU: 2x 2,2 GHz, összesen 28 mag, 48 HT.  RAM: 256 GB.  Storage: 1600 GB NVMe cache, 5760 GB adat (all-Flash). Hálózati 4x25Gbe hálózati adapter
+* **CS36 csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB adat (all-Flash).  Hálózati 4x25Gbe hálózati adapter
+* **CS36m csomópont:** CPU 2x 2,3 GHz, összesen 36 mag, 72 HT.  RAM: 576 GB.  Storage: 3200 GB NVMe cache 13360 GB adat (all-Flash).  Hálózati 4x25Gbe hálózati adapter
 
 **Hogyan történik a hardveres hibák kezelése?**
 

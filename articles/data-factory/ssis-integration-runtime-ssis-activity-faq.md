@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104925"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936966"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban
 
@@ -121,12 +121,17 @@ Ez a hiba akkor fordul elő, ha a SSIS Integration Runtime nem fér hozzá az eg
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Hibaüzenet: "Microsoft OLE DB-szolgáltató Analysis Serviceshoz. HRESULT 0x80004005 leírása: " COM-hiba: COM-hiba: mscorlib; A kivételt a hívás célja okozta.
 
 Az egyik lehetséges ok az, hogy az Azure Multi-Factor Authentication engedélyezve beállítású Felhasználónév vagy jelszó Azure Analysis Services hitelesítésre van konfigurálva. Ez a hitelesítés nem támogatott a SSIS Integration Runtime-ban. Próbáljon meg egy egyszerű szolgáltatásnevet használni Azure Analysis Services hitelesítéshez:
+
 1. Készítsen elő egy egyszerű szolgáltatást az [automatizálás az egyszerű szolgáltatásokkal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)című témakörben leírtak szerint.
 2. A Csatlakozáskezelőben konfigurálja a **megadott Felhasználónév és jelszó használata**: **AppID** beállítása felhasználónévként és **clientSecret** jelszóként.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Hibaüzenet: „Az ADONET-forrás nem tudta létrehozni a kapcsolatot ({GUID}), a következő hibaüzenettel: Felügyelt identitás használata esetén sikertelen volt a bejelentkezés a (z) "NT AUTHORITY \ névtelen LOGON" felhasználónál
 
 Győződjön meg arról, hogy nem konfigurálja a Csatlakozáskezelő hitelesítési módszerét **Active Directory jelszó-hitelesítésre** , ha a *ConnectUsingManagedIdentity* paraméter értéke **true (igaz**). Ehelyett **SQL-hitelesítésként** is konfigurálható, amelyet a rendszer figyelmen kívül hagy, ha a *ConnectUsingManagedIdentity* be van állítva.
+
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Hibaüzenet: "0xC020801F..., OData forrás [...]: Nem lehet felügyelt kapcsolatokat beszerezni a futásidejű kapcsolatkezelő szolgáltatásból.
+
+Az egyik lehetséges ok az, hogy a Transport Layer Security (TLS) nem engedélyezhető a SSIS integrációs moduljában, amelyet a OData-forrás igényel. A TLS-t SSIS integrációs modulban engedélyezheti a beállítások testreszabása lehetőség használatával. További részletek találhatók a [Project online OData a SSIS-ből való összekapcsolásához](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) és [Az Azure-SSIS Integration Runtime telepítőjének testreszabásához](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Hibaüzenet: "Az előkészítési feladat kérése a műveleti GUID azonosítóval... hiba a hiba óta: Sikertelen volt az előkészítési művelet küldése a következő hibaüzenettel: Microsoft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: Nem sikerült betölteni az adatproxyt. "
 

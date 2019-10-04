@@ -5,16 +5,15 @@ manager: nitinme
 author: MarkHeff
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b40cd63062e961848eb1ab6b956e63a83a634817
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744761"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936941"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Oktatóanyag Cognitive Services API-k hívása egy Azure Search indexelési folyamatban
 
@@ -70,7 +69,7 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez. Ez az oktatóanyag azt feltételezi, hogy a tároló neve "Basic-demo-adat-PR".
+1. [Hozzon létre egy blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) -tárolót a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez. Ez az oktatóanyag azt feltételezi, hogy a tároló neve "Basic-demo-adat-PR".
 
 1. A tároló létrehozása után nyissa meg, és válassza a parancssáv **feltöltés** elemét a [mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)feltöltéséhez.
 
@@ -96,15 +95,15 @@ A [Azure Search .net SDK](https://aka.ms/search-sdk) néhány ügyféloldali kó
 
 Ehhez a projekthez telepítenie kell a `Microsoft.Azure.Search` NuGet csomag 9-es verzióját és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
 
-Telepítse a `Microsoft.Azure.Search` NuGet csomagot a Visual Studióban található Package Manager konzol használatával. A Package Manager konzol megnyitásához válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**. A parancs futtatásához keresse meg a [Microsoft. Azure. Search NuGet-csomag lapot](https://www.nuget.org/packages/Microsoft.Azure.Search), válassza a 9-es verzió lehetőséget, és másolja a Package Manager parancsot. Futtassa ezt a parancsot a Package Manager konzolon.
+Telepítse a `Microsoft.Azure.Search` NuGet csomagot a Visual Studióban található Package Manager konzol használatával. A csomagkezelő konzol megnyitásához válassza az **eszközök** > **NuGet Package Manager** > **csomagkezelő konzolt**. A parancs futtatásához keresse meg a [Microsoft. Azure. Search NuGet-csomag lapot](https://www.nuget.org/packages/Microsoft.Azure.Search), válassza a 9-es verzió lehetőséget, és másolja a Package Manager parancsot. Futtassa ezt a parancsot a Package Manager konzolon.
 
-Ha a NuGet `Microsoft.Extensions.Configuration.Json` csomagot a Visual Studióban szeretné telepíteni, válassza az **eszközök** > **NuGet Package Manager** > **NuGet-csomagok kezelése megoldást..** . lehetőséget. Válassza a Tallózás lehetőséget, és `Microsoft.Extensions.Configuration.Json` keresse meg a NuGet csomagot. Ha megtalálta, válassza ki a csomagot, válassza ki a projektet, erősítse meg, hogy a verzió a legújabb stabil verzió, majd válassza a telepítés lehetőséget.
+Ha a Visual Studióban szeretné telepíteni a `Microsoft.Extensions.Configuration.Json` NuGet csomagot, válassza az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése a megoldáshoz..** . lehetőséget. Válassza a Tallózás lehetőséget, és keresse meg a `Microsoft.Extensions.Configuration.Json` NuGet csomagot. Ha megtalálta, válassza ki a csomagot, válassza ki a projektet, erősítse meg, hogy a verzió a legújabb stabil verzió, majd válassza a telepítés lehetőséget.
 
 ## <a name="add-azure-search-service-information"></a>Azure Search szolgáltatás adatainak hozzáadása
 
-Ahhoz, hogy csatlakozni tudjanak a Azure Search szolgáltatáshoz, hozzá kell adnia a keresési szolgáltatás információit a projekthez. Kattintson a jobb gombbal a projektre a megoldáskezelő, > majd válassza az**új elem hozzáadása..** . lehetőséget. Nevezze el a `appsettings.json` fájlt, majd válassza a **Hozzáadás**lehetőséget. 
+Ahhoz, hogy csatlakozni tudjanak a Azure Search szolgáltatáshoz, hozzá kell adnia a keresési szolgáltatás információit a projekthez. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza az **Add** > **új elem...** lehetőséget. Nevezze el a fájlt `appsettings.json`, majd válassza a **Hozzáadás**lehetőséget. 
 
-A fájlnak szerepelnie kell a kimeneti könyvtárban. Ehhez kattintson a jobb gombbal a elemre, és válassza a `appsettings.json` **Tulajdonságok**lehetőséget. Módosítsa a másolás értékét a **kimeneti könyvtárba** az **újabb másolatként**.
+A fájlnak szerepelnie kell a kimeneti könyvtárban. Ehhez kattintson a jobb gombbal a `appsettings.json` elemre, és válassza a **Tulajdonságok**lehetőséget. Módosítsa a másolás értékét a **kimeneti könyvtárba** az **újabb másolatként**.
 
 Másolja az alábbi JSON-t az új JSON-fájlba.
 
@@ -299,7 +298,7 @@ LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
 
 ### <a name="text-split-skill"></a>Szöveg felosztása készség
 
-Az alábbi **felosztott** képesség a szövegeket lapok alapján osztja szét, és az oldal hosszát 4 000 karakterre `String.Length`korlátozza. Az algoritmus megpróbálja felosztani a szöveget a nagy `maximumPageLength` méretű adattömbökbe. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb `maximumPageLength`lehet.
+Az alábbi **felosztott** képesség a szöveget lapok alapján osztja szét, és az oldal hosszát 4 000 karakterre korlátozza `String.Length` értékkel mérve. Az algoritmus megpróbálja felosztani a szöveget a nagy `maximumPageLength` méretű adattömbökbe. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb `maximumPageLength`lehet.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -326,9 +325,9 @@ SplitSkill splitSkill = new SplitSkill(
 
 ### <a name="entity-recognition-skill"></a>Entitás-felismerési szakértelem
 
-Ez `EntityRecognitionSkill` a példány a kategória típusának `organization`felismerésére van beállítva. Az **entitás-felismerési** képesség is felismerheti `location`a kategóriák típusát `person` és a.
+Ez `EntityRecognitionSkill` a példány a kategória típusának `organization`felismerésére van beállítva. Az **entitás-felismerési** képesség az `person` és a `location` kategória típusát is felismeri.
 
-Figyelje meg, hogy a "Context" mező csillaggal van beállítva ```"/document/pages/*"``` , ami azt jelenti, hogy a dúsítási lépést minden egyes ```"/document/pages"```lapon meg kell hívni.
+Figyelje meg, hogy a "Context" mező csillaggal ```"/document/pages/*"``` értékre van beállítva, ami azt jelenti, hogy a dúsítási lépést a ```"/document/pages"``` alatt lévő összes oldal esetében meghívjuk.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -355,7 +354,7 @@ EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
 
 ### <a name="key-phrase-extraction-skill"></a>Kulcs kifejezés kinyerési készség
 
-Az imént létrehozott példányhozhasonlóanakulcsszókeresésskillismeghívvaleszadokumentummindenoldalára`EntityRecognitionSkill` .
+Az imént létrehozott `EntityRecognitionSkill` példányhoz hasonlóan a rendszer a dokumentum minden oldalához meghívja a **kulcsszókeresés** szakértelmet.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -425,7 +424,7 @@ A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
 Az index mezői a Model osztály használatával vannak meghatározva. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. 
 
-A Model osztályt hozzáadjuk egy új C# fájlhoz. Kattintson a jobb gombbal a projektre > , és válassza az**új elem hozzáadása...** lehetőséget, válassza a " `DemoIndex.cs`class" elemet, és nevezze el a fájlt, majd válassza a **Hozzáadás**lehetőséget.
+A Model osztályt hozzáadjuk egy új C# fájlhoz. Kattintson a jobb gombbal a projektre, és válassza az **add** > **új elem...** lehetőséget, válassza a Class (osztály) elemet, nevezze el a fájlt `DemoIndex.cs`, majd válassza a **Hozzáadás**lehetőséget.
 
 Ügyeljen arra, hogy a és `Microsoft.Azure.Search` `Microsoft.Azure.Search.Models` a névterek típusait is használni kívánja.
 
@@ -574,7 +573,7 @@ A kód a ```"maxFailedItems"``` -1 értékre van kijelölve, amely arra utasítj
 
 Azt is figyelje ```"dataToExtract"``` meg, hogy ```"contentAndMetadata"```a be van állítva. Ez az utasítást meghatározza, hogy az indexelő automatikusan kinyerje a tartalmat a különböző fájlformátumokból, beleértve az egyes fájlokra vonatkozó metaadatokat is.
 
-Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget az adatforrásban talált képekből. A ```"imageAction"``` konfiguráció```"generateNormalizedImages"``` beállítása, az OCR-képesség és a szöveges egyesítési képesség kombinálva azt jelzi, hogy az indexelő Kinyeri a szöveget a képekből (például a "Leállítás" szót egy forgalom leállításakor), és beágyazza a tartalom mezőbe. Ez a működés mind a dokumentumokban beágyazott képekre (például egy PDF-fájlban található képre), mind az adatforrásban talált képekre (például egy JPG-fájlra) vonatkozik.
+Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget az adatforrásban talált képekből. A ```"imageAction"``` ```"generateNormalizedImages"``` konfigurációra van beállítva, az OCR-képességgel és a szöveges egyesítési képességgel együtt, és azt jelzi, hogy az indexelő Kinyeri a szöveget a képekből (például a "Leállítás" szót egy forgalom leállításakor), és beágyazza azt a Content (tartalom) mező részeként. Ez a működés mind a dokumentumokban beágyazott képekre (például egy PDF-fájlban található képre), mind az adatforrásban talált képekre (például egy JPG-fájlra) vonatkozik.
 
 ## <a name="check-indexer-status"></a>Az indexelő állapotának ellenőrzése
 

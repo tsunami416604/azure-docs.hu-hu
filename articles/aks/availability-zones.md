@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d76578de0c80570e67db03046c42985500ddcdb
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e8ffb9051220cc80aa12adaa9dc9b1fcc6ddfc20
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914726"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839985"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Előzetes verzió – az Availability Zonest használó Azure Kubernetes Service (ak) fürt létrehozása
 
@@ -71,9 +71,14 @@ az provider register --namespace Microsoft.ContainerService
 
 Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozhatók létre a következő régiókban:
 
+* USA középső régiója
 * USA 2. keleti régiója
+* East US
+* Közép-Franciaország
+* Kelet-Japán
 * Észak-Európa
 * Délkelet-Ázsia
+* Az Egyesült Királyság déli régiója
 * Nyugat-Európa
 * USA nyugati régiója, 2.
 

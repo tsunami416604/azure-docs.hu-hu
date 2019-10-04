@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142671"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827409"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -260,6 +260,7 @@ A kép karanténba helyezése jelenleg az ACR előzetes verziójú funkciója. E
 - [Előfordulhat, hogy az új felhasználói engedélyek nem lépnek azonnal érvénybe a frissítés után](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [A hitelesítési adatok nem a megfelelő formátumban vannak megadva a közvetlen REST API hívásokban](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Miért nem sorolja fel a Azure Portal az összes saját tárházat vagy címkét?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Miért nem sikerül beolvasni a Azure Portal adattárakat vagy címkéket?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Állapot-ellenõrzés`az acr check-health`
@@ -409,6 +410,17 @@ curl $redirect_url
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Miért nem sorolja fel a Azure Portal az összes saját tárházat vagy címkét? 
 
 Ha a Microsoft Edge/IE böngészőt használja, legfeljebb 100 adattárat vagy címkét láthat. Ha a beállításjegyzék több mint 100 adattárat vagy címkét tartalmaz, javasoljuk, hogy a Firefox vagy a Chrome böngészőt használja az összes elem listázásához.
+
+### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Miért nem sikerül beolvasni a Azure Portal adattárakat vagy címkéket?
+
+Előfordulhat, hogy a böngésző nem tudja elküldeni a tárolók vagy címkék kiszolgálónak való beolvasására vonatkozó kérést. Többek között a következők lehetnek:
+
+* Hálózati kapcsolat hiánya
+* Tűzfal
+* Ad-blokkolók
+* DNS-hibák
+
+Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigurációt és a kapcsolatot. Emellett a böngészőben egy inkognitóban-vagy privát munkamenetet is kipróbálhat, hogy elkerülje az elavult böngésző gyorsítótárának vagy cookie-jait.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?
 

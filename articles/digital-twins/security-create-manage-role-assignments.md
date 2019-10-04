@@ -1,20 +1,20 @@
 ---
-title: Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Twinsban | Microsoft Docs
-description: Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben.
+title: Szerepkör-hozzárendelések létrehozása és kezelése – Azure digitális Twins | Microsoft Docs
+description: További információ a szerepkör-hozzárendelések létrehozásáról és kezeléséről az Azure digitális Twins szolgáltatásban.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: MT
+ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703355"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827697"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
@@ -165,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | Sztring |   A UserId-objectIdType objectId. |
 | YOUR_PATH | True | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
-| YOUR_ACCESS_TYPE |  True | Sztring |   A kereséshez használandó hozzáférési típus. |
-| YOUR_RESOURCE_TYPE | True | Sztring |  Az ellenőrzött erőforrás. |
+| YOUR_ACCESS_TYPE |  True | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
+| YOUR_RESOURCE_TYPE | True | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*,  *Definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *System* , *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
 
 Egy sikeres kérelem egy logikai értéket `true` `false` ad vissza, amely jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
 
@@ -198,7 +198,7 @@ Egy sikeres kérelem egy JSON-tömböt ad vissza, amely a kiválasztott **path**
 
 ### <a name="revoke-a-permission"></a>Engedély visszavonása
 
-A címzettek engedélyeinek visszavonásához törölje a szerepkör-hozzárendelést egy hitelesített HTTP-TÖRLÉSi kérelem létrehozásával:
+A címzettek engedélyének visszavonásához törölje a szerepkör-hozzárendelést egy hitelesített HTTP-TÖRLÉSi kérelem létrehozásával:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID

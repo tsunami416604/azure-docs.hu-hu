@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8024130b986d111abe3b470d6b06e86ed6419dc4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: def5dc82f8cbda93f6ac18f8a2af41d5c82ce5da
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320917"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936750"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Több-bérlős alkalmazás hozzáadása az Azure AD Application Galleryhez
 
@@ -33,7 +33,7 @@ A Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás. 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Ha az alkalmazás támogatja az SAML-t vagy a OpenIDConnect-t
 Ha rendelkezik egy több-bérlős alkalmazással, amelyet az Azure AD-alkalmazás-katalógusban szeretne felvenni, először győződjön meg arról, hogy az alkalmazás támogatja a következő egyszeri bejelentkezési technológiák egyikét:
 
-- **OpenID Connect**: Az alkalmazás listájának létrehozásához hozza létre a több-bérlős alkalmazást az Azure AD-ben, és implementálja az [Azure ad-beli engedélyezési keretrendszert](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) az alkalmazáshoz. Küldje el a bejelentkezési kérést egy közös végpontra, hogy bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a jogkivonatban kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja. Küldje el az alkalmazást az [alkalmazás listázása az Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című részében ismertetett eljárással.
+- **OpenID Connect**: Az alkalmazás listájának létrehozásához hozza létre a több-bérlős alkalmazást az Azure AD-ben, és implementálja az [Azure ad-beli engedélyezési keretrendszert](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) az alkalmazáshoz. Küldje el a bejelentkezési kérést egy közös végpontra, hogy bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a jogkivonatban kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja. Küldje el az alkalmazást az [alkalmazás listázása az Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című részében ismertetett eljárással.
 
 - **SAML**: Ha az alkalmazás támogatja az SAML 2,0-et, az alkalmazás a katalógusban is szerepelhet. Kövesse az [alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakör utasításait.
 

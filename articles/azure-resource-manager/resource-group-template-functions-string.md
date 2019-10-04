@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194780"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937036"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények Azure Resource Manager-sablonokhoz
 
@@ -331,7 +331,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| visszatérési | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| Visszatérési | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>contains
 
@@ -894,7 +894,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | lastT | Int | 3 |
 | firstString | Int | 2 |
 | lastString | Int | 0 |
-| notFound | Int | -1 |
+| NotFound | Int | -1 |
 
 ## <a name="last"></a>utolsó
 
@@ -946,7 +946,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Sztring | három |
-| stringOutput | Sztring | e |
+| stringOutput | Sztring | E |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1007,7 +1007,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | lastT | Int | 3 |
 | firstString | Int | 2 |
 | lastString | Int | 0 |
-| notFound | Int | -1 |
+| NotFound | Int | -1 |
 
 ## <a name="length"></a>length
 
@@ -1097,7 +1097,7 @@ Ezt a függvényt csak egy paraméter alapértelmezett értékére használhatja
 
 A newGuid függvény eltér a [GUID](#guid) függvénytől, mert nem végez paramétereket. Ha ugyanazzal a paraméterrel hívja meg a GUID azonosítót, minden alkalommal ugyanazt az azonosítót adja vissza. Használja a GUID azonosítót, ha megbízhatóan kell létrehoznia egy adott környezethez tartozó GUID azonosítót. Akkor használja a newGuid, ha minden alkalommal eltérő azonosítóra van szükség, például erőforrások üzembe helyezése tesztkörnyezetben.
 
-Ha a [korábbi sikeres központi telepítés](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)újbóli üzembe helyezését használja, és a korábbi telepítés newGuid-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
+Ha a [korábbi sikeres központi telepítés újbóli üzembe helyezését](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)használja, és a korábbi telepítés newGuid-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
 
 Tesztelési környezetben szükség lehet az olyan erőforrások ismételt üzembe helyezésére, amelyek csak rövid ideig élnek. Az egyedi nevek létrehozása helyett a newGuid és a [uniqueString](#uniquestring) segítségével egyedi neveket hozhat létre.
 
@@ -1364,7 +1364,7 @@ Karakterláncok tömbjét adja vissza, amely a megadott elválasztó karakterrel
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | inputString |Igen |Karakterlánc |A felosztani kívánt karakterlánc. |
-| elválasztó |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
+| Elválasztó |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1824,7 +1824,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Value |
 | ---- | ---- | ----- |
-| visszatérési | Sztring | egy két há' |
+| Visszatérési | Sztring | egy két há' |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1904,7 +1904,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 }
 ```
 
-## <a name="uri"></a>uri azonosító
+## <a name="uri"></a>uri
 
 `uri (baseUri, relativeUri)`
 
@@ -1914,10 +1914,26 @@ Abszolút URI-t hoz létre a baseUri és a relativeUri karakterlánc kombinálá
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseUri |Igen |Karakterlánc |Az alap URI-karakterlánc. |
+| baseUri |Igen |Karakterlánc |Az alap URI-karakterlánc. Ügyeljen arra, hogy figyelje a záró perjel ("/") kezelésével kapcsolatos viselkedést a táblázatban látható módon.  |
 | relativeUri |Igen |Karakterlánc |Az alap URI-karakterlánchoz hozzáadandó relatív URI-karakterlánc. |
 
-A **baseUri** paraméter értéke tartalmazhat egy adott fájlt, de a rendszer csak az alap elérési utat használja az URI összeállításakor. Például a baseUri paraméternek való átadás `http://contoso.com/resources/azuredeploy.json` a (z `http://contoso.com/resources/`) alap URI-ját eredményezi.
+* Ha a **baseUri** egy záró perjelet ér véget, az eredmény egyszerűen **baseUri** , amelyet a **relativeUri**követ.
+
+* Ha a **baseUri** nem fejeződik be záró perjel, akkor két dolog egyike történik.  
+
+   * Ha a **baseUri** nem rendelkezik ferde vonallal (a "//" elől közel), az eredmény egyszerűen **baseUri** , amelyet a **relativeUri**követ.
+
+   * Ha a **baseUri** tartalmaz némi perjelet, de nem egy perjeltel végződik, akkor az utolsó perjeltől kezdve a rendszer eltávolítja a **baseUri** , és az eredményt a **baseUri** , majd a **relativeUri**.
+     
+Néhány példa:
+
+```
+uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
+uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
+```
+A teljes részletesség érdekében a **baseUri** és a **relativeUri** paramétereket a [3986-es RFC-dokumentum 5. szakasza](https://tools.ietf.org/html/rfc3986#section-5)határozza meg.
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1976,7 +1992,7 @@ URI kódolása.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Szükséges | Típus | Leírás |
+| Paraméter | Szükséges | Type | Leírás |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |Igen |Karakterlánc |A kódolni kívánt érték. |
 
@@ -2094,7 +2110,7 @@ Az aktuális (UTC) dátum és idő értéket adja vissza a megadott formátumban
 
 Ezt a függvényt csak egy paraméter alapértelmezett értékére használhatja egy kifejezésen belül. Ha ezt a funkciót a sablonban bárhol máshol használja, hibaüzenetet ad vissza. A függvény nem engedélyezett a sablon más részeiben, mert minden egyes híváskor más értéket ad vissza. Ugyanazon sablon ugyanazon paraméterekkel való üzembe helyezése nem eredményezi megbízhatóan ugyanazt az eredményt.
 
-Ha a [korábbi sikeres központi telepítés](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)újbóli üzembe helyezését használja, és a korábbi telepítés utcNow-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
+Ha a [korábbi sikeres központi telepítés újbóli üzembe helyezését](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)használja, és a korábbi telepítés utcNow-t használó paramétert tartalmaz, a paraméter nem lett újraértékelve. Ehelyett a korábbi központi telepítés paraméterének értékét a rendszer automatikusan újra felhasználja a visszaállítási telepítésben.
 
 Ügyeljen arra, hogy egy alapértelmezett érték esetén a utcNow függvényre támaszkodó sablont telepítse újra. Ha újratelepíti, és nem ad meg értéket a paraméterhez, a függvény újraértékelése megtörténik. Ha egy meglévő erőforrást nem új létrehozása helyett szeretne frissíteni, adja át a paraméter értékét a korábbi telepítésből.
 

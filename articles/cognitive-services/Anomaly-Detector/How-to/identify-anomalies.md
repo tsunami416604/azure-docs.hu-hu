@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882889"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840222"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Útmutató: A rendellenesség-Kiderítő API használata az idősorozat-adatain  
 
@@ -26,7 +26,7 @@ Az [anomália-érzékelő API](https://westus2.dev.cognitive.microsoft.com/docs/
 Az anomália detektor API az észlelési módokat biztosítja: a Batch és a streaming.
 
 > [!NOTE]
-> A következő kérelem URL-címeit össze kell kapcsolni az előfizetéséhez tartozó megfelelő végponttal. Például:`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> A következő kérelem URL-címeit össze kell kapcsolni az előfizetéséhez tartozó megfelelő végponttal. Például:`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Kötegelt észlelés
@@ -47,7 +47,7 @@ Az új adatpontok létrehozásakor az adatok valós időben figyelhetők. A rend
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alsó és felső anomáliák észlelési határainak módosítása
 
-Alapértelmezés szerint a rendszer a, `expectedValue` `upperMargin`és `lowerMargin`a használatával számítja ki a anomáliák észlelésének alsó és felső határát. Ha eltérő határokra van szüksége, javasoljuk, hogy `marginScale` `upperMargin` alkalmazzon `lowerMargin`a vagy a rendszerre. A határok kiszámítása a következőképpen történik:
+Alapértelmezés szerint a rendszer a `expectedValue`, `upperMargin` és `lowerMargin` használatával számítja ki a anomáliák észlelésének alsó és felső határát. Ha eltérő határokra van szüksége, javasoljuk, hogy `marginScale` `upperMargin` vagy `lowerMargin` értéket alkalmazzon. A határok kiszámítása a következőképpen történik:
 
 |Határ  |Számítás  |
 |---------|---------|

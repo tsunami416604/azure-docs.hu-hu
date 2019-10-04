@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390697"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827479"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -45,7 +45,7 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 ### <a name="valid-uses"></a>Érvényes használati módok
 
-A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](resource-group-create-multiple.md#property-iteration)használ, használhatja a List függvényeket `input` , mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
+A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](resource-group-create-multiple.md#property-iteration)használ, használhatja az `input` lista funkcióit, mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
 
 ### <a name="implementations"></a>Megvalósítások
 
@@ -189,7 +189,7 @@ Más lista függvények, különböző visszaadott formátumokat. Szeretné megt
 
 Az erőforrás neve használatával adja meg az erőforrás vagy a [resourceId függvény](#resourceid). Ha egy, a hivatkozott erőforrást telepítő sablonban egy list függvényt használ, használja az erőforrás nevét.
 
-Ha feltételesen telepített erőforrásban használ egy **List** függvényt, akkor a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve. Hibaüzenet jelenik meg, ha a **lista** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse meg a if [függvényt](resource-group-template-functions-logical.md#if) egy olyan minta sablon esetében, amely a IF és a listát feltételesen telepített erőforrást használja.
+Ha feltételesen telepített erőforrásban használ egy **List** függvényt, akkor a függvény akkor is kiértékelésre kerül, ha az erőforrás nincs telepítve. Hibaüzenet jelenik meg, ha a **lista** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse [](resource-group-template-functions-logical.md#if) meg a if függvényt egy olyan minta sablon esetében, amely a IF és a listát feltételesen telepített erőforrást használja.
 
 ### <a name="list-example"></a>Példa a listára
 
@@ -400,9 +400,9 @@ Használat `'Full'` erőforrás értékek, amelyek nem részei a Tulajdonságok 
 
 A referencia-függvény csak egy erőforrás-definíció tulajdonságainak és a kimeneti szakasz egy sablon vagy telepítési használható. Ha tulajdonság- [iterációt](resource-group-create-multiple.md#property-iteration)használ, használhatja a Reference függvényt `input` , mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Nem használhatja a t, `count` mert a hivatkozási függvény feloldása előtt meg kell határozni a darabszámot.
 
-A [beágyazott](resource-group-linked-templates.md#nested-template) sablon kimenetében lévő Reference függvény nem használható a beágyazott sablonban üzembe helyezett erőforrások visszaküldéséhez. Ehelyett használjon [csatolt sablont](resource-group-linked-templates.md#external-template-and-external-parameters).
+A [beágyazott](resource-group-linked-templates.md#nested-template) sablon kimenetében lévő Reference függvény nem használható a beágyazott sablonban üzembe helyezett erőforrások visszaküldéséhez. Ehelyett használjon [csatolt sablont](resource-group-linked-templates.md#external-template).
 
-Ha a **hivatkozási** függvényt egy feltételesen üzembe helyezett erőforrásban használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve.  Hibaüzenet jelenik meg, ha a **hivatkozási** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse meg az IF [függvényt](resource-group-template-functions-logical.md#if) egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
+Ha a **hivatkozási** függvényt egy feltételesen üzembe helyezett erőforrásban használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve.  Hibaüzenet jelenik meg, ha a **hivatkozási** függvény olyan erőforrásra hivatkozik, amely nem létezik. Az **IF** függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor lesz kiértékelve. Tekintse [](resource-group-template-functions-logical.md#if) meg az IF függvényt egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
 
 ### <a name="implicit-dependency"></a>Implicit függőség
 

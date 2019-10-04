@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843224"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830102"
 ---
 Fontos, hogy a virtuális gép (VM) biztonságos legyen a futtatott alkalmazások számára. A virtuális gépek biztonságossá tételéhez tartozhat egy vagy több olyan Azure-szolgáltatás és szolgáltatás, amely a virtuális gépek biztonságos elérését és az adatai biztonságos tárolását is magában foglalja. Ez a cikk a virtuális gép és az alkalmazások védelmét lehetővé tevő információkat tartalmaz.
 
@@ -25,7 +25,7 @@ Security Center az igény szerinti hozzáférés a virtuális gépek üzembe hel
 
 ## <a name="encryption"></a>Encryption
 
-A továbbfejlesztett [Windowsos](../articles/virtual-machines/windows/encrypt-disks.md) virtuális gépek és a [linuxos](../articles/virtual-machines/linux/encrypt-disks.md) virtuális gépek biztonsága és megfelelősége érdekében az Azure-ban található virtuális lemezek titkosíthatók. A Windows rendszerű virtuális gépeken futó virtuális lemezek a BitLocker használatával titkosítva vannak. A Linux rendszerű virtuális gépeken futó virtuális lemezek a dm-crypt használatával titkosítva vannak. 
+A továbbfejlesztett [Windowsos](../articles/virtual-machines/windows/encrypt-disks.md) virtuális gépek és a [linuxos](../articles/virtual-machines/linux/disk-encryption-overview.md) virtuális gépek biztonsága és megfelelősége érdekében az Azure-ban található virtuális lemezek titkosíthatók. A Windows rendszerű virtuális gépeken futó virtuális lemezek a BitLocker használatával titkosítva vannak. A Linux rendszerű virtuális gépeken futó virtuális lemezek a dm-crypt használatával titkosítva vannak. 
 
 A virtuális lemezek titkosítása az Azure-ban díjmentes. A titkosítási kulcsokat a szoftveres védelem Azure Key Vault tárolja, vagy importálhatja vagy létrehozhatja a kulcsokat az FIPS 140-2 2. szintű standard minősítésű hardveres biztonsági modulokban (HSM). Ezek a titkosítási kulcsok a virtuális GÉPHEZ csatolt virtuális lemezek titkosítására és visszafejtésére szolgálnak. Megőrzi a titkosítási kulcsok felügyeletét, és naplózhatja a használatukat. Az Azure Active Directory egyszerű szolgáltatás biztonságos mechanizmust biztosít a titkosítási kulcsok kiadására, mivel a virtuális gépek be-és kikapcsolva vannak.
 
@@ -45,7 +45,7 @@ Az Azure Active Directory (Azure AD) Azure-erőforrások felügyelt identitásai
 
 ## <a name="policies"></a>Házirendek
 
-Az [Azure](../articles/azure-policy/azure-policy-introduction.md) -szabályzatok segítségével meghatározhatja a szervezet Windows-és Linux- [alapú](../articles/virtual-machines/windows/policy.md) [virtuális](../articles/virtual-machines/linux/policy.md)gépei kívánt viselkedését. A házirendek használatával a szervezetek különböző egyezményeket és szabályokat alkalmazhatnak a vállalaton belül. A kívánt viselkedés kényszerítésével csökkentheti a kockázatokat, miközben hozzájárul a szervezet sikeréhez.
+Az [Azure-szabályzatok](../articles/azure-policy/azure-policy-introduction.md) segítségével meghatározhatja a szervezet Windows-és Linux- [alapú](../articles/virtual-machines/windows/policy.md) [virtuális](../articles/virtual-machines/linux/policy.md)gépei kívánt viselkedését. A házirendek használatával a szervezetek különböző egyezményeket és szabályokat alkalmazhatnak a vállalaton belül. A kívánt viselkedés kényszerítésével csökkentheti a kockázatokat, miközben hozzájárul a szervezet sikeréhez.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 

@@ -11,20 +11,18 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5202b86d5b665c39fbb93365928c928aad2f40c1
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: fcbf6878be53d7aa6bf9569da194b4e90f2b10db
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393893"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827454"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Gyors útmutató: Szavak keresése kétnyelvű szótárral
 
 Ebből a rövid útmutatóból megtudhatja, hogyan lehet alternatív fordításokat lekérni egy kifejezésre, és hogyan használhatja ezeket a alternatív fordításokat a Translator Text API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

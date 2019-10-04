@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: ac101c6079eee908a6499f5e6ed8cc3aadffb75a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210298"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827391"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
 
@@ -55,14 +55,14 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását A
 
 Mielőtt elkezdené, tegye a következőket:
 
-1. Győződjön meg arról, hogy van egy vagy több [Windows](../security/azure-security-disk-encryption-windows.md) vagy [Linux](../security/azure-security-disk-encryption-linux.md) rendszerű virtuális gép, amelyen az ade engedélyezve van.
+1. Győződjön meg arról, hogy van egy vagy több Windows vagy [Linux](../virtual-machines/linux/disk-encryption-overview.md) [rendszerű](../security/azure-security-disk-encryption-windows.md) virtuális gép, amelyen az ade engedélyezve van.
 2. [Tekintse át az](backup-support-matrix-iaas.md) Azure virtuális gép biztonsági mentésének támogatási mátrixát
 3. Ha nem rendelkezik ilyennel, [hozzon létre](backup-azure-arm-vms-prepare.md#create-a-vault) egy Recovery Services backup-tárolót.
 4. Ha engedélyezi a titkosítást olyan virtuális gépek számára, amelyek már engedélyezve vannak a biztonsági mentéshez, egyszerűen biztonsági mentést kell biztosítania a Key Vault eléréséhez, hogy a biztonsági mentések megszakítás nélkül is folytatódnak. [További](#provide-permissions) információ az engedélyek hozzárendeléséről.
 
 Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
-- **Telepítse a**virtuálisgép-ügynököt a virtuális gépre: Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure virtuálisgép-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy [manuálisan kell telepítenie az ügynököt](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
+- **Telepítse a virtuálisgép-ügynököt a virtuális gépre**: Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure virtuálisgép-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy [manuálisan kell telepítenie az ügynököt](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 - **Kimenő hozzáférés explicit módon történő engedélyezése**: Általában nem kell explicit módon engedélyeznie az Azure-beli virtuális gépek kimenő hálózati hozzáférését ahhoz, hogy kommunikálni tudjon a Azure Backupával. Előfordulhat azonban, hogy egyes virtuális gépek kapcsolódási problémákba ütközik, és a kapcsolódási kísérlet során **ExtensionSnapshotFailedNoNetwork** hibaüzenetet jelenítenek meg. Ha ez történik, [explicit módon engedélyeznie kell a kimenő hozzáférést](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), így a Azure Backup bővítmény képes kommunikálni az Azure nyilvános IP-címeivel a biztonsági mentési forgalomhoz.
 
 
@@ -74,12 +74,12 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
     ![Biztonsági mentés panel](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. A **biztonsági mentés célja** > , hogy**hol fut a munkaterhelés?** válassza az **Azure**lehetőséget.
-4. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép** > **OK**elemet.
+3. A **biztonsági mentési cél** > **hol fut a munkaterhelés?** válassza az **Azure**lehetőséget.
+4. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép**@no__t **– 2 elemet**.
 
       ![Forgatókönyv panel](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. A **biztonsági mentési házirendben** > **válassza a biztonsági mentési házirend**elemet, és válassza ki a tárolóhoz társítandó szabályzatot. Ezután kattintson az **OK** gombra.
+5. A **biztonsági mentési szabályzat** >  elemnél**válassza a biztonsági mentési szabályzat**lehetőséget, majd válassza ki a tárolóhoz társítandó szabályzatot. Ezután kattintson az **OK** gombra.
     - A biztonsági mentési szabályzat meghatározza, hogy mikor készüljön biztonsági mentés, és mennyi ideig tárolja a rendszer.
     - Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben.
 
@@ -114,7 +114,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 3. A **biztonsági mentési elemek** listában kattintson a három pontra (...).
 4. Kattintson a **biztonsági mentés**gombra.
 5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
-6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok** > **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok** > **folyamatban**van. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 
 ## <a name="provide-permissions"></a>Engedélyek megadása
@@ -134,7 +134,7 @@ Engedélyek beállítása:
 
     ![Backup szolgáltatás kiválasztása](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. A **hozzáférési szabályzat** > **beállítása sablonból (nem kötelező) beállításnál**válassza a **Azure Backup**lehetőséget.
+6. A **hozzáférési házirend hozzáadása** > **Konfigurálás sablonból (nem kötelező) beállításnál**válassza a **Azure Backup**lehetőséget.
     - A szükséges engedélyek a **legfontosabb engedélyek** és a **titkos engedélyek**előtt vannak feltöltve.
     - Ha a virtuális gép **csak BEK**használatával van titkosítva, távolítsa el a **kulcs engedélyeinek** kijelölését, mert csak a titkokra vonatkozó engedélyekre van szüksége.
 

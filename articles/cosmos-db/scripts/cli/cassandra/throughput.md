@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 9/25/2019
-ms.openlocfilehash: fc635be68c87d29b21c41bb70aac4e3cbe34bcd3
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3615157543d826050b8adf0e6ae59bf62ad9cb1b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275415"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827303"
 ---
 # <a name="update-rus-for-a-cassandra-keyspace-and-table-using-azure-cli"></a>Az RU/s frissítése az Azure CLI-vel rendelkező Cassandra Space és Table használatával
 
@@ -44,7 +44,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-fiókot. |
 | [az cosmosdb Cassandra Space Create](/cli/azure/cosmosdb/cassandra/keyspace#az-cosmosdb-cassandra-keyspace-create) | Létrehoz egy Azure Cosmos Cassandra-területet. |
 | [az cosmosdb Cassandra Table Create](/cli/azure/cosmosdb/cassandra/table#az-cosmosdb-cassandra-table-create) | Létrehoz egy Azure Cosmos Cassandra-táblázatot. |
-| [az cosmosdb Cassandra-re Space átviteli sebességének frissítése](/cli/azure/cosmosdb/cassandra/keyspace/throughputaz-cosmosdb-cassandra-keyspace-throughput-update) | Az RU/s frissítése az Azure Cosmos Cassandra Space-re. |
+| [az cosmosdb Cassandra-re Space átviteli sebességének frissítése](/cli/azure/cosmosdb/cassandra/keyspace/throughput?view=azure-cli-latest#az-cosmosdb-cassandra-keyspace-throughput-update) | Az RU/s frissítése az Azure Cosmos Cassandra Space-re. |
 | [az cosmosdb Cassandra Table átviteli sebességének frissítése](/cli/azure/cosmosdb/cassandra/table/throughput#az-cosmosdb-cassandra-table-throughput-update) | Az RU/s frissítése Azure Cosmos Cassandra-táblához. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 09/16/2019
-ms.openlocfilehash: 5eaade975adac86b6842d1d8f9f9b8f522d15bca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/02/2019
+ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816079"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935626"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -25,13 +25,9 @@ Ez a cikk áttekintést nyújt a Azure SQL Database felügyelt példányának te
 > [!NOTE]
 > A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](sql-database-features.md) és a [t-SQL-utasítások támogatását](sql-database-managed-instance-transact-sql-information.md). Az önálló adatbázis és a felügyelt példány szolgáltatási szintjei közötti általános különbségekért lásd a [szolgáltatási réteg összehasonlítását](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
-## <a name="instance-level-resource-limits"></a>Példány szintű erőforrás-korlátok
+## <a name="hardware-generation-characteristics"></a>Hardver generálási jellemzői
 
-A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal rendelkezik, amelyek az alapul szolgáló infrastruktúrától és architektúrától függenek. A korlátozások a hardver előállítási és szolgáltatási szintjétől függenek.
-
-### <a name="hardware-generation-characteristics"></a>Hardver generálási jellemzői
-
-Azure SQL Database felügyelt példány két hardveres generáción is üzembe helyezhető: Gen4 és Gen5. A hardveres generációk különböző jellemzőkkel rendelkeznek, az alábbi táblázatban leírtak szerint:
+A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal rendelkezik, amelyek az alapul szolgáló infrastruktúrától és architektúrától függenek. Azure SQL Database felügyelt példány két hardveres generáción is üzembe helyezhető: Gen4 és Gen5. A hardveres generációk különböző jellemzőkkel rendelkeznek, az alábbi táblázatban leírtak szerint:
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
@@ -45,22 +41,22 @@ Azure SQL Database felügyelt példány két hardveres generáción is üzembe h
 > - A Gen4 hardvere folyamatban van. Ajánlott új felügyelt példányokat telepíteni a Gen5 hardveren.
 > - A Gen4 hardver jelenleg csak a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, USA középső régiója, Közép-Kanada, Dél-India, Délkelet-Ázsia
 
-#### <a name="in-memory-oltp-available-space"></a>Memóriában tárolt OLTP szabad területe 
+### <a name="in-memory-oltp-available-space"></a>Memóriában tárolt OLTP szabad területe 
 
-A memóriában tárolt OLTP-terület mennyisége a virtuális mag és a hardveres generáció számától függ. A következő táblázatban a memóriában tárolt OLTP-objektumok számára felhasználható memória korlátai láthatók.
+[Üzletileg kritikus](sql-database-service-tier-business-critical.md) szolgáltatási szinten a memóriában lévő OLTP-terület mennyisége a virtuális mag és a hardveres generáció számától függ. A következő táblázatban a memóriában tárolt OLTP-objektumok számára felhasználható memória korlátai láthatók.
 
-| Memóriában tárolt OLTP-terület/virtuális mag    | **Gen5** | **Gen4** |
+| Memóriában tárolt OLTP terület  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 | 3,14 GB | |   
-| 8 | 6,28 GB | 8 GB |
-| 16    | 15,77 GB | 20 GB |
-| 24    | 25,25 GB | 36 GB |
-| 32    | 37,94 GB | |
-| 40    | 52,23 GB | |
-| 64    | 99,9 GB   | |
-| 80    | 131,68 GB| |
+| 4 virtuális mag  | 3,14 GB | |   
+| 8 virtuális mag  | 6,28 GB | 8 GB |
+| 16 virtuális mag | 15,77 GB | 20 GB |
+| 24 virtuális mag | 25,25 GB | 36 GB |
+| 32 virtuális mag | 37,94 GB | |
+| 40 virtuális mag | 52,23 GB | |
+| 64 virtuális mag | 99,9 GB    | |
+| 80 virtuális mag | 131,68 GB| |
 
-### <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
+## <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
 
 A felügyelt példány két szolgáltatási szintet tartalmaz: [Általános célú](sql-database-service-tier-general-purpose.md) és [üzletileg kritikus](sql-database-service-tier-business-critical.md). Ezek a szintek [különböző képességeket](sql-database-service-tiers-general-purpose-business-critical.md)biztosítanak, az alábbi táblázatban leírtak szerint:
 
@@ -75,7 +71,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [Általános cél
 | Adatbázisfájlok maximális száma egy példányban | Akár 280-ig, kivéve, ha elérte a példány tárolási méretét vagy az [Azure Premium lemez tárterületének lefoglalási](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) korlátját. | 32 767 fájl/adatbázis, kivéve, ha elérte a példány tárolási méretének korlátját. |
 | Az adatfájlok maximális mérete | A jelenleg elérhető példányok tárolási mérete (max. 2 TB-8 TB) és az [Azure Premium Disk Storage kiosztási területe](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)korlátozódik. | A jelenleg elérhető példányok tárolási méretére korlátozódik (legfeljebb 1 TB-4 TB). |
 | Naplófájl maximális mérete | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. |
-| Adat/napló IOPS (hozzávetőleges) | 500 – 7 500/fájl<br/>\*[A fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
+| Adat/napló IOPS (hozzávetőleges) | Akár 30-40 K IOPS *, 500-7500/fájl<br/>\*[A fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375 IOPS/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[A fájlméret növelése jobb i/o-teljesítmény eléréséhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
@@ -88,9 +84,23 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [Általános cél
 > - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
 > - Az átviteli sebesség és a IOPS a felügyelt példányok által kifejezetten nem korlátozott oldalméret is függ.
 > Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
+> - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Ha például 7 x GB-nyi fájlt hoz létre, amely Max 5K IOPS-val rendelkezik, minden egyes és 7 kis fájl (128 GB-nál kisebb) és 500 IOPS mindegyike 38500, akkor a számítási feladatok az összes fájlt igénybe vehetik (7x5000 + 7x500). Vegye figyelembe, hogy az automatikus biztonsági mentések esetében bizonyos mennyiségű IOPS is használatban van.
 
 > [!NOTE]
 > A [felügyelt példányok készletében található erőforrás-korlátokkal](sql-database-instance-pools.md#instance-pools-resource-limitations)kapcsolatos további információkat ebben a cikkben talál.
+
+### <a name="file-io-characteristics-in-general-purpose-tier"></a>A fájl i/o-jellemzői általános célú szinten
+
+Általános célú szolgáltatási szinten minden adatbázisfájl dedikált IOPS és adatátviteli sebességet kap, amely a fájlmérettől függ. A nagyobb fájlok egyre több IOPS és átviteli sebességgel rendelkeznek. Az adatbázisfájlok IO-jellemzői az alábbi táblázatban láthatók:
+
+| Fájlméret           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+|---------------------|-------|-------|-------|-------|-------|-------|-------|
+| IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
+| Átviteli sebesség fájlonként | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
+
+Ha bizonyos adatbázisfájlok esetében magas IO-késleltetést észlel, vagy ha azt látja, hogy a IOPS/átviteli sebesség eléri a korlátot, [a fájlméret növelésével](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)növelheti a teljesítményt.
+
+Léteznek olyan példány-szintű korlátok is, mint a maximális írási sebesség (22 MB/s), ezért előfordulhat, hogy a naplófájlt a rendszer nem tudja elérni a naplófájlban, mert a példány átviteli sebessége elérte a határértéket.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 

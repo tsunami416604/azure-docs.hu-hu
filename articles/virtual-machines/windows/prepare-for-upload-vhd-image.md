@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: MT
+ms.openlocfilehash: 3922388aaa7dd244b74404e50001e9c87870728d
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695384"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937496"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -207,7 +207,10 @@ Győződjön meg arról, hogy a következő beállítások megfelelően vannak k
 8. Távolítsa el az RDP-figyelőhöz kötött összes önaláírt tanúsítványt:
     
     ```PowerShell
-    Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
+    if ((Get-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp').Property -contains "SSLCertificateSHA1Hash")
+    {
+        Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "SSLCertificateSHA1Hash" -Force
+    }
     ```
     Ez a kód gondoskodik arról, hogy a virtuális gép telepítésekor a rendszer az elején is csatlakozhasson. Ha később is át kell tekintenie ezt, ezt a virtuális gép Azure-ban való üzembe helyezése után teheti meg.
 

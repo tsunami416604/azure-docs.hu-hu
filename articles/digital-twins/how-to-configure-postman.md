@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
-ms.translationtype: MT
+ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803419"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844502"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -122,7 +122,8 @@ Az előző lépések elvégzése után konfigurálja a Poster-t egy hitelesítet
    [@no__t – 1Content típus többrészes/kevert](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Nem szöveges adatfájlok szerializálása fájlokba. A JSON-fájlok JSON-fájlként lesznek mentve.
-1. A **törzs** lapon adja hozzá az egyes fájlokat a **kulcs** nevének hozzárendelésével, `file` vagy `text` elem kiválasztásával.
+1. A **törzs** lapon válassza a `form-data` elemet. 
+1. Adja hozzá az egyes fájlokat egy **Kulcsnév** hozzárendelésével, majd válassza a `file` elemet.
 1. Ezután válassza ki az egyes fájlokat a **Fájl választása** gombbal.
 
    [@no__t – 1Postman-ügyfél – példa](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

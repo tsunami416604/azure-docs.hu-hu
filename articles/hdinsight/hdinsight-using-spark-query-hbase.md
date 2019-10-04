@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: e6b3fc4f9badeedbed55f89702933b41a952977b
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/02/2019
+ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180805"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937619"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
@@ -144,7 +144,7 @@ Ebben a lépésben olyan katalógus-objektumot határoz meg, amely a sémát Apa
     |}""".stripMargin
     ```
 
-    A kód a következőket hajtja végre:  
+    A kód a következő műveleteket végzi el:  
 
      a. Definiáljon egy katalógus-sémát a nevű `Contacts`HBase táblához.  
      b. Azonosítsa a rowkey `key`, és képezze le a Sparkban használt oszlopnevek az oszlop családja, az oszlop neve és az oszlop típusaként a HBase-ben használt módon.  
@@ -192,8 +192,7 @@ Ebben a lépésben olyan katalógus-objektumot határoz meg, amely a sémát Apa
 8. SQL-lekérdezés kiadása a `contacts` táblán:
 
     ```scala
-    val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
-    query.show()
+    spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
 9. A következőhöz hasonló eredményeknek kell megjelennie:

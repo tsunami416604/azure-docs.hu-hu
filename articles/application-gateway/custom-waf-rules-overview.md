@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716626"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937468"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>A webalkalmazási tűzfal v2-hez tartozó egyéni szabályok
 
@@ -29,7 +29,7 @@ Ugyanazon szabályon belül a különböző egyeztetési feltételek mindig a **
 Ha **vagy** két különböző feltételt szeretne használni, a két feltételnek különböző szabályokban kell lennie. Például letilthatja a forgalmat egy adott IP-címről, vagy letilthatja a forgalmat, ha egy adott böngészőt használnak.
 
 > [!NOTE]
-> Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és](../azure-subscription-service-limits.md#application-gateway-limits)megkötései című témakört.
+> Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../azure-subscription-service-limits.md#application-gateway-limits)című témakört.
 
 A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, mint a CRS-szabályrendszerek. Ezekről a példákat lásd: 3. és 5. példa az [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md)című témakörben.
 
@@ -37,7 +37,7 @@ A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, 
 
 A forgalom engedélyezése és blokkolása egyszerű az egyéni szabályokkal. Letilthatja például az IP-címtartományból érkező összes forgalmat. Ha a kérelem egy adott böngészőből származik, egy másik szabályt is beállíthat, amely engedélyezi a forgalmat.
 
-Ha valamit szeretne engedélyezni, győződjön meg `-Action` arról, hogy a paraméter értéke **Engedélyezés**. Ha blokkolni szeretne valamit, győződjön `-Action` meg arról, hogy a paraméter **blokkolás**értékre van beállítva.
+Ha engedélyezni szeretné a kívánt értéket, győződjön meg arról, hogy a `-Action` paraméter **engedélyezve**értékre van állítva. Ha blokkolni szeretne valamit, győződjön meg arról, hogy a `-Action` paraméter **blokkolásra**van beállítva.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Az előző `$BlockRule` leképezések a Azure Resource Manager következő egyéni szabályához:
+Az előző `$BlockRule` a következő egyéni szabályhoz rendeli a Azure Resource Managerban:
 
 ```json
 "customRules": [
@@ -96,8 +96,8 @@ Ez a szabály neve. Ez a név jelenik meg a naplókban.
 
 ### <a name="priority-required"></a>Prioritás [kötelező]
 
-- Meghatározza azt a sorrendet, amelyben a szabályok ki vannak értékelve. Minél kisebb a érték, annál korábbi a szabály kiértékelése.
-– Az egyéni szabályok között egyedinek kell lennie. A 100 prioritású szabályt a rendszer a 200 prioritású szabály előtt értékeli ki.
+- Meghatározza azt a sorrendet, amelyben a szabályok ki vannak értékelve. Minél kisebb a érték, annál korábbi a szabály kiértékelése. A megengedett tartomány 1-100. 
+- Az egyéni szabályok között egyedinek kell lennie. A 40 prioritású szabályt a rendszer a 80 prioritású szabály előtt értékeli ki.
 
 ### <a name="rule-type-required"></a>Szabály típusa [kötelező]
 
@@ -132,7 +132,7 @@ A következő operátorok egyikének kell lennie:
 - LessThanOrEqual
 - GreaterThanOrEqual
 - BeginsWith
-- EndsWith
+- endsWith
 - Regex
 
 ### <a name="negate-condition-optional"></a>Tagadási feltétel [opcionális]

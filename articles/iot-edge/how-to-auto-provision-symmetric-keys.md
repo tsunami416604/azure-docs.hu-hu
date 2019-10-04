@@ -1,25 +1,24 @@
 ---
-title: Eszközök kiépítése a DPS használatával szimmetrikus kulcs igazolásával – Azure IoT Edge | Microsoft Docs
+title: Eszközök automatikus kiépítése a DPS használatával szimmetrikus kulcs igazolásával – Azure IoT Edge | Microsoft Docs
 description: A szimmetrikus kulcsos tanúsítványok használata a Azure IoT Edge automatikus eszköz-kiépítés teszteléséhez az eszköz kiépítési szolgáltatásával
 author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 07/10/2019
+ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 53b1abca25119f4168aaf12a66c4347c53ed0a62
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299845"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828078"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával
 
-Az Azure IoT Edge-eszközökön lehet autoprovisioned használatával a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri a autoprovisioning folyamatán, tekintse át a [autoprovisioning fogalmak](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt.
+Az Azure IoT Edge-eszközök automatikus – helyezhetők a [Device Provisioning Service](../iot-dps/index.yml) ugyanúgy, mint az eszközök, amelyek az edge-kompatibilis nem. Ha még nem ismeri az Automatikus kiépítés folyamatát, tekintse át a [automatikus kiépítés alapfogalmait](../iot-dps/concepts-auto-provisioning.md) a folytatás előtt.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni regisztrációt egy IoT Edge eszközön a szimmetrikus kulcs igazolásával egy eszköz kiépítési szolgáltatásához a következő lépések végrehajtásával:
 
@@ -27,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni regisztrációt egy 
 * Hozzon létre egyéni regisztrációt az eszközön.
 * Telepítse a IoT Edge futtatókörnyezetet, és kapcsolódjon a IoT Hubhoz.
 
-A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz kiépítési szolgáltatási példánnyal való hitelesítésére. Ez az igazolási módszer a "Hello World" felhasználói élményt jelöli olyan fejlesztők számára, akik még nem ismerik az eszközök üzembe helyezését, vagy nincsenek szigorú biztonsági követelmények. Az eszköz tanúsítványa [TPM](../iot-dps/concepts-tpm-attestation.md) használatával biztonságosabb, és szigorúbb biztonsági követelményekhez kell használni.
+A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz kiépítési szolgáltatási példánnyal való hitelesítésére. Ez az igazolási módszer a "Hello World" felhasználói élményt jelöli olyan fejlesztők számára, akik még nem ismerik az eszközök üzembe helyezését, vagy nincsenek szigorú biztonsági követelmények. A [TPM](../iot-dps/concepts-tpm-attestation.md) vagy [X. 509 tanúsítványokat](../iot-dps/concepts-security.md#x509-certificates) használó eszközök igazolása biztonságosabb, és szigorúbb biztonsági követelményekhez kell használni őket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -191,9 +190,29 @@ Cserélje le a `{scope_id}`, `{registration_id}`és `{symmetric_key}` a helyőrz
 
 ### <a name="windows-device"></a>Windows-eszköz
 
-Az utasításokat követve telepítse a IoT Edge futtatókörnyezetet azon az eszközön, amelyhez létrehozta a származtatott eszköz kulcsát. Ellenőrizze, hogy az IoT Edge-futtatókörnyezet, az automatikus, nem manuális üzembe helyezést.
+Telepítse a IoT Edge futtatókörnyezetet azon az eszközön, amelyhez létrehozta a származtatott eszköz kulcsát. A IoT Edge futtatókörnyezetet automatikus, nem manuális, kiépítés esetén kell konfigurálnia.
 
-[IoT Edge telepítése és automatikus kiépítése Windows rendszeren](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+A IoT Edge Windows rendszeren való telepítésével kapcsolatos további információkért, beleértve a tárolók kezeléséhez és a IoT Edge frissítéséhez szükséges feladatok előfeltételeit és utasításait lásd: [a Azure IoT Edge futtatókörnyezet telepítése Windows](how-to-install-iot-edge-windows.md)rendszeren.
+
+1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban. Ügyeljen arra, hogy az IoT Edge telepítésekor a PowerShell AMD64-munkamenetét használja, nem a PowerShell (x86) rendszerre.
+
+1. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, majd letölti a Moby Runtime és a IoT Edge futtatókörnyezetet. A parancs alapértelmezés szerint Windows-tárolókat használ.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Deploy-IoTEdge
+   ```
+
+1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
+
+1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés, ha a `-Dps` jelzőt használja az automatikus kiépítés használatára.
+
+   Cserélje le a `{scope_id}`, `{registration_id}`és `{symmetric_key}` a helyőrző értékét a korábban összegyűjtött adatokra.
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   ```
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 

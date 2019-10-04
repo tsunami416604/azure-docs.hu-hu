@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900467"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937226"
 ---
 # <a name="azure-best-practices-for-network-security"></a>A hálózati biztonságra vonatkozó Azure ajánlott eljárások
 Ez a cikk az Azure ajánlott eljárásainak gyűjteményét ismerteti a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure hálózatkezelési tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -63,13 +63,13 @@ Ha hálózati biztonsági csoportokat használ az alhálózatok közötti háló
 **Ajánlott eljárás**: Az egyszerűség és a rugalmasság érdekében kerülje a kis virtuális hálózatok és alhálózatok elkerülését.   
 **Részletek**: A legtöbb szervezet az eredetileg tervezettnél több erőforrást ad hozzá, és a címek ismételt kiosztása a munkaigényes. A kis alhálózatok használata korlátozott biztonsági értéket tesz elérhetővé, és egy hálózati biztonsági csoportot rendel hozzá az egyes alhálózatokhoz. Az alhálózatok széles körű meghatározása a növekedés rugalmasságának biztosításához.
 
-**Ajánlott eljárás**: A hálózati biztonsági csoportokra vonatkozó szabályok kezelésének egyszerűsítése az [alkalmazás biztonsági csoportjainak](https://docs.microsoft.com/rest/api/virtualnetwork/applicationsecuritygroups)definiálásával.  
+**Ajánlott eljárás**: A hálózati biztonsági csoportokra vonatkozó szabályok kezelésének egyszerűsítése az [alkalmazás biztonsági csoportjainak](https://azure.microsoft.com/blog/applicationsecuritygroups/)definiálásával.  
 **Részletek**: Definiáljon egy alkalmazás biztonsági csoportot azon IP-címek listájához, amelyeket úgy gondol, hogy a későbbiekben változhat, vagy számos hálózati biztonsági csoporton belül használható. Ügyeljen arra, hogy az alkalmazás biztonsági csoportjai egyértelműen megnevezzenek, hogy mások is megértsék a tartalmukat és célját.
 
 ## <a name="adopt-a-zero-trust-approach"></a>Nullára való megbízhatósági megközelítés elfogadása
 A peremhálózati hálózatok abban a feltételezésben működnek, hogy a hálózaton belüli összes rendszer megbízható. A mai alkalmazottak azonban különböző eszközökön és alkalmazásokon keresztül férhetnek hozzá a szervezet erőforrásaihoz, így a peremhálózat biztonsági ellenőrzése nem releváns. A csak az erőforrásokhoz hozzáférő hozzáférés-vezérlési szabályzatok nem elegendőek. A biztonság és a termelékenység egyensúlyának elsajátításához a biztonsági rendszergazdáknak is meg kell ismerniük az erőforrások elérésének *módját* .
 
-A hálózatoknak a hagyományos védelemből kell fejlődnek, mivel a hálózatok sebezhetőek lehetnek a behatolások miatt: a támadók a megbízható határon belül egyetlen végpontot veszélyeztethetik, majd gyorsan kiterjeszthetik a teljes hálózatban lévő lábát. A megbízhatósági kapcsolatok [nulla](https://www.microsoft.com/security/blog/2018/06/14/building-zero-trust-networks-with-microsoft-365/) a körzeten belüli hálózati hely alapján megszüntetik a megbízhatóság fogalmát. Ehelyett a bizalmi kapcsolatok architektúrái az eszköz-és felhasználói megbízhatósági jogcímeket használják a szervezeti információkhoz és erőforrásokhoz való hozzáféréshez. Az új kezdeményezésekhez olyan zéró megbízhatósági megközelítést kell alkalmazni, amely a hozzáférés időpontjában érvényesíti a megbízhatósági kapcsolatot.
+A hálózatoknak a hagyományos védelemből kell fejlődnek, mivel a hálózatok sebezhetőek lehetnek a behatolások miatt: a támadók a megbízható határon belül egyetlen végpontot veszélyeztethetik, majd gyorsan kiterjeszthetik a teljes hálózatban lévő lábát. A [megbízhatósági kapcsolatok nulla](https://www.microsoft.com/security/blog/2018/06/14/building-zero-trust-networks-with-microsoft-365/) a körzeten belüli hálózati hely alapján megszüntetik a megbízhatóság fogalmát. Ehelyett a bizalmi kapcsolatok architektúrái az eszköz-és felhasználói megbízhatósági jogcímeket használják a szervezeti információkhoz és erőforrásokhoz való hozzáféréshez. Az új kezdeményezésekhez olyan zéró megbízhatósági megközelítést kell alkalmazni, amely a hozzáférés időpontjában érvényesíti a megbízhatósági kapcsolatot.
 
 Az ajánlott eljárások a következők:
 
@@ -153,7 +153,7 @@ Ajánlott terheléselosztást alkalmazni a szolgáltatásaihoz, és szükség es
 - Csak biztonságos kapcsolatot fogad el, ezért a kiszolgálóhoz való titkosítatlan kommunikáció nem elfogadható megoldás.
 - Több HTTP-kérést igényel ugyanarra a hosszan futó TCP-kapcsolatra, hogy a különböző háttér-kiszolgálókra irányítsák vagy terheléselosztást lehessen készíteni.
 
-**Terheléselosztási beállítás**: Az [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), egy http webes forgalom terheléselosztó. Application Gateway támogatja a végpontok közötti SSL-titkosítást és az [SSL](/azure/application-gateway/application-gateway-introduction) -lezárást az átjárón. A webkiszolgálók ezt követően nem terhelik a titkosítást és a visszafejtési terhelést, és titkosítatlan forgalmat végeznek a háttér-kiszolgálókra.
+**Terheléselosztási beállítás**: Az [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction), egy http webes forgalom terheléselosztó. Application Gateway támogatja a végpontok közötti SSL-titkosítást és az [SSL-lezárást](/azure/application-gateway/application-gateway-introduction) az átjárón. A webkiszolgálók ezt követően nem terhelik a titkosítást és a visszafejtési terhelést, és titkosítatlan forgalmat végeznek a háttér-kiszolgálókra.
 
 **Forgatókönyv**: Az internetről érkező bejövő kapcsolatokat az Azure virtuális hálózatban található kiszolgálók között kell terheléselosztással elosztania. A forgatókönyvek a következők:
 
@@ -177,7 +177,7 @@ Ha például a felhasználó egy kérést küld a szolgáltatásnak az EU-ból, 
 ## <a name="disable-rdpssh-access-to-virtual-machines"></a>RDP/SSH-hozzáférés letiltása a virtuális gépekhez
 Az Azure-beli virtuális gépeket [RDP protokoll](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) és a [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) (SSH) protokoll használatával lehet elérni. Ezek a protokollok lehetővé teszik, hogy a felügyeleti virtuális gépek távoli helyekről legyenek, és standard szintűek az adatközpont számítástechnikai
 
-Lehetséges biztonsági probléma a protokollok interneten keresztüli használatával, hogy a támadók a találgatásos [kényszerítési](https://en.wikipedia.org/wiki/Brute-force_attack) technikákat használják az Azure-beli virtuális gépek eléréséhez. Miután a támadók hozzáférnek, a virtuális GÉPET kiindulási pontként használhatják a virtuális hálózat más gépei, vagy akár az Azure-on kívüli hálózati eszközök támadása esetén is.
+Lehetséges biztonsági probléma a protokollok interneten keresztüli használatával, hogy a támadók a [találgatásos kényszerítési](https://en.wikipedia.org/wiki/Brute-force_attack) technikákat használják az Azure-beli virtuális gépek eléréséhez. Miután a támadók hozzáférnek, a virtuális GÉPET kiindulási pontként használhatják a virtuális hálózat más gépei, vagy akár az Azure-on kívüli hálózati eszközök támadása esetén is.
 
 Javasoljuk, hogy tiltsa le az internetről az Azure-beli virtuális gépek közvetlen RDP-és SSH-hozzáférését. Ha az internetről történő közvetlen RDP-és SSH-hozzáférés le van tiltva, akkor más beállítások is elérhetők, amelyekkel a távoli felügyelethez hozzáférhet ezekhez a virtuális gépekhez.
 
@@ -203,11 +203,11 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 - **Nagyobb biztonság az Azure-szolgáltatások erőforrásaiban**: A szolgáltatásvégpontokkal az Azure-szolgáltatások erőforrásai leköthetőek a virtuális hálózathoz. A szolgáltatási erőforrások virtuális hálózathoz való biztonságossá tétele nagyobb biztonságot nyújt azáltal, hogy teljes mértékben eltávolítja a nyilvános internet-hozzáférést az erőforrásokhoz, és csak a virtuális hálózatról engedélyezi a forgalmat.
 - **Optimális útválasztás az Azure-szolgáltatás forgalmához a virtuális hálózatról**: A virtuális hálózat bármely olyan útvonala, amely a helyszíni és/vagy virtuális készülékekre irányuló internetes forgalmat kényszeríti, azaz kényszerített bújtatásnak nevezi, az Azure szolgáltatás forgalmát is kényszeríti, hogy az internetes forgalmat megegyező útvonalat használja. A szolgáltatásvégpontok optimális útválasztást biztosítanak az Azure-forgalom számára.
 
-  A végpontok mindig közvetlenül a virtuális hálózatról a szolgáltatásba irányítják a szolgáltatás forgalmát az Azure gerinces hálózaton. Az Azure gerinc hálózat forgalmának fenntartása lehetővé teszi a kimenő internetes forgalom naplózását és figyelését a virtuális hálózatokról a kényszerített bújtatással, a szolgáltatási forgalom befolyásolása nélkül. További információ a [felhasználó által megadott útvonalakról és](../../virtual-network/virtual-networks-udr-overview.md)a kényszerített bújtatásról.
+  A végpontok mindig közvetlenül a virtuális hálózatról a szolgáltatásba irányítják a szolgáltatás forgalmát az Azure gerinces hálózaton. Az Azure gerinc hálózat forgalmának fenntartása lehetővé teszi a kimenő internetes forgalom naplózását és figyelését a virtuális hálózatokról a kényszerített bújtatással, a szolgáltatási forgalom befolyásolása nélkül. További információ a [felhasználó által megadott útvonalakról és a kényszerített bújtatásról](../../virtual-network/virtual-networks-udr-overview.md).
 
 - **Egyszerű beállítás kevesebb felügyeleti terheléssel**: Az Azure-erőforrások IP-tűzfalon keresztüli biztonságossá tételéhez már nincs szüksége fenntartott, nyilvános IP-címekre a virtuális hálózatokban. A szolgáltatásvégpontok beállításához nincs szükség NAT- és útválasztó eszközökre. A szolgáltatásvégpontok egy egyszerű kattintással konfigurálhatóak az alhálózatokon. A végpontok karbantartásához nincs további terhelés.
 
 Ha többet szeretne megtudni a szolgáltatási végpontokról, valamint azokról az Azure-szolgáltatásokról és-régiókról, amelyek a szolgáltatás-végpontok számára elérhetők, tekintse meg a [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
 ## <a name="next-steps"></a>További lépések
-Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági](best-practices-and-patterns.md) eljárásaival és modelljeivel foglalkozó témakörben talál.
+Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.

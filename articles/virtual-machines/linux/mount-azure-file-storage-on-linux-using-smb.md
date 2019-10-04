@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091830"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828392"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést\<Random Number >* nevű Storage-fiókot, és az adott Storage-fiók nevét a **storageacct tárfiókban**változóba helyezi. A Storage-fiók nevének egyedinek kell `$RANDOM` lennie, ezzel egy számot fűz a végponthoz, hogy az egyedi legyen.
+Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést @ no__t-1random number >* nevű Storage-fiókot, és a **storageacct tárfiókban**változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, a `$RANDOM` értékkel hozzáfűz egy számot a végéhez, hogy az egyedi legyen.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -82,7 +82,7 @@ az storage share create --name myshare \
 
 ## <a name="create-a-mount-point"></a>Csatlakoztatási pont létrehozása
 
-Ahhoz, hogy csatlakoztatni lehessen az Azure-fájlmegosztást a Linux rendszerű számítógépén, meg kell győződnie arról, hogy telepítve van a **CIFS-utils** csomag. A telepítési utasításokért lásd: [a CIFS-utils csomag telepítése a Linux](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils)-disztribúcióhoz.
+Ahhoz, hogy csatlakoztatni lehessen az Azure-fájlmegosztást a Linux rendszerű számítógépén, meg kell győződnie arról, hogy telepítve van a **CIFS-utils** csomag. A telepítési utasításokért lásd: [a CIFS-utils csomag telepítése a Linux-disztribúcióhoz](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
 
 Azure Files SMB protokollt használ, amely a 445-as TCP-porton keresztül kommunikál.  Ha nem sikerül csatlakoztatni az Azure-fájlmegosztást, győződjön meg arról, hogy a tűzfal nem blokkolja a 445-es TCP-portot.
 
@@ -99,7 +99,7 @@ Csatlakoztassa az Azure-fájlmegosztást a helyi könyvtárba.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. Pontosabban, a file_mode és a dir_mode beállítások a fájlok és könyvtárak `0777`beállítását engedélyezik. Az `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
+A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. Pontosabban, a file_mode és a dir_mode beállítások a fájlok és könyvtárak beállítását `0777` engedélyre állítja be. A `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
 
 
 ## <a name="persist-the-mount"></a>A csatlakoztatás fenntartása
@@ -115,5 +115,5 @@ Az éles környezetek fokozott biztonsága érdekében a hitelesítő adatokat a
 
 - [Linux rendszerű virtuális gép testreszabása a Cloud-init használatával a létrehozás során](using-cloud-init.md)
 - [Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)](add-disk.md)
-- [Lemezek titkosítása Linux rendszerű virtuális gépen az Azure CLI használatával](encrypt-disks.md)
+- [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md)
 

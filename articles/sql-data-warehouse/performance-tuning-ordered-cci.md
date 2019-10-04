@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
-ms.translationtype: MT
+ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802573"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845699"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
 Amikor a felhasználók lekérdezik Azure SQL Data Warehouse egy oszlopcentrikus-tábláját, a-optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a memóriába.  A lekérdezés gyorsabb teljesítményt érhet el, ha a beolvasandó szegmensek száma és a teljes mérete kicsi.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Rendezett és nem rendezett, fürtözött oszlopcentrikus index 
-Alapértelmezés szerint minden olyan Azure-adattárház-tábla esetében, amely index-beállítás nélkül lett létrehozva, a belső összetevő (index Builder) nem rendezett, fürtözött oszlopcentrikus indexet (CCI) hoz létre.  Az egyes oszlopokban lévő összes adathalmaz egy külön CCI sorcsoport-szegmensbe van tömörítve.  Vannak metaadatok az egyes szegmensek érték-tartományán, így a lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a lekérdezés végrehajtása során.  A KKU a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, hogy a lekérdezések gyorsabban fussanak. Mivel azonban az index-szerkesztő nem rendezi az adatait, mielőtt tömöríti azokat a szegmensekre, az átfedésben lévő értékekkel rendelkező szegmensek felmerülhetnek, így a lekérdezések több szegmenst olvasnak be a lemezről, és hosszabb időt vesznek igénybe.  
+Alapértelmezés szerint minden olyan Azure-adattárház-tábla esetében, amely index-beállítás nélkül lett létrehozva, a belső összetevő (index Builder) nem rendezett, fürtözött oszlopcentrikus indexet (CCI) hoz létre.  Az egyes oszlopokban lévő összes adathalmaz egy külön CCI sorcsoport-szegmensbe van tömörítve.  Vannak metaadatok az egyes szegmensek érték-tartományán, így a lekérdezési predikátum határain kívüli szegmensek nem olvashatók be a lemezről a lekérdezés végrehajtása során.  A KKU a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, hogy a lekérdezések gyorsabban fussanak. Mivel azonban az index-szerkesztő nem rendezi az adatait, mielőtt tömöríti őket a szegmensekre, az átfedésben lévő értékekkel rendelkező szegmensek felmerülhetnek, ami miatt a lekérdezések több szegmenst olvasnak be a lemezről, és hosszabb ideig tartanak.  
 
-Rendezett CCI létrehozásakor a Azure SQL Data Warehouse motor a megrendelési kulcs (ok) alapján rendezi a memóriában lévő adatmennyiséget, mielőtt az index-szerkesztő tömöríti az index szegmenseket.  A rendezett adatok esetében a szegmens átfedésben van, ami lehetővé teszi a lekérdezések hatékonyabb szegmensének megszüntetését, és így gyorsabb teljesítményt, mivel a lemezről beolvasott szegmensek száma kisebb.  Ha az összes adatmennyiséget egyszerre rendezheti a memóriában, akkor a szegmens átfedése elkerülhető lehet.  Az adatraktár tábláiban nagy mennyiségű adat miatt ez a forgatókönyv nem fordul elő gyakran.  
+Rendezett CCI létrehozásakor a Azure SQL Data Warehouse motor a rendelkezésre álló adatok alapján rendezi a memóriában lévő meglévő adatmennyiséget, mielőtt az index-készítő tömöríti őket az index szegmensbe.  A rendezett adatok esetében a szegmens átfedésben van, ami lehetővé teszi a lekérdezések hatékonyabb szegmensének megszüntetését, és így gyorsabb teljesítményt, mivel a lemezről beolvasott szegmensek száma kisebb.  Ha az összes adatmennyiséget egyszerre rendezheti a memóriában, akkor a szegmens átfedése elkerülhető lehet.  Az adatraktár tábláiban nagy mennyiségű adat miatt ez a forgatókönyv nem fordul elő gyakran.  
 
 Egy oszlop szegmens tartományának vizsgálatához futtassa ezt a parancsot a tábla nevével és az oszlop nevével:
 
@@ -42,6 +42,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+> [!NOTE] 
+> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok nem rendezhetők automatikusan.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  
+
 ## <a name="data-loading-performance"></a>Adattöltési teljesítmény
 
 A rendezett CCI-táblázatba betöltött betöltési teljesítmény hasonló a particionált táblába betöltött adatmennyiséghez.  
@@ -51,12 +54,24 @@ Az alábbi példa egy olyan teljesítménybeli összehasonlítást mutat be, ame
 ![Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>Szegmens átfedésének csökkentése
-Az alábbiakban megtalálhatja azokat a lehetőségeket, amelyek tovább csökkentik az átfedésben lévő szegmenseket, amikor a CTAS-on vagy egy meglévő táblában található, adatmennyiséggel rendelkező, megrendelt KKU
 
-- Nagyobb erőforrás-osztály használata, amely lehetővé teszi, hogy több adatok legyenek sorba rendezve a memóriában, mielőtt az index-készítő tömöríti azokat a szegmensekre.  Az index szegmensben az adatfizikai hely nem módosítható.  Egy szegmensen vagy szegmensen belül nincs Adatrendezés.  
+Az átfedésben lévő szegmensek száma a rendezni kívánt adatok méretétől, a rendelkezésre álló memóriától és a maximális párhuzamossági fok (MAXDOP) beállítástól függ. Az alábbiakban megtalálhatja azokat a lehetőségeket, amelyekkel csökkenthető a rendezett CCI létrehozásakor a szegmens átfedés.
 
-- Használjon alacsonyabb párhuzamossági fokot (például DOP = 1).  A rendezett CCI-létrehozáshoz használt minden szál az adathalmazon működik, és helyileg rendezi.  Nincs globális rendezés a különböző szálak között rendezve.  A párhuzamos szálak használatával csökkentheti a rendezett CCI létrehozásának idejét, de több átfedésben lévő szegmenst fog létrehozni, mint egyetlen szál használata esetén. 
+- A xlargerc-erőforrás osztályának használata magasabb DWU, így több memória is engedélyezhető az adatok rendezéséhez, mielőtt az index-szerkesztő tömöríti az adatszegmenseket.  Az index szegmensben az adatfizikai hely nem módosítható.  Egy szegmensen vagy szegmensen belül nincs Adatrendezés.  
+
+- Rendezett CCI létrehozása a MAXDOP = 1 paranccsal.  A rendezett CCI-létrehozáshoz használt minden szál az adathalmazon működik, és helyileg rendezi.  Nincs globális rendezés a különböző szálak között rendezve.  A párhuzamos szálak használatával csökkentheti a rendezett CCI létrehozásának idejét, de több átfedésben lévő szegmenst fog létrehozni, mint egyetlen szál használata esetén.  Jelenleg a MAXDOP beállítás csak olyan rendezett CCI-táblázat létrehozásakor támogatott, CREATE TABLE AS SELECT parancs használatával.  A rendezett CCI LÉTREHOZÁSi INDEXen vagy CREATE TABLE parancsok használatával történő létrehozása nem támogatja a MAXDOP beállítást. Például:
+
+```sql
+CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
+AS SELECT * FROM ExampleTable
+OPTION (MAXDOP 1);
+```
 - A rendezési kulcs (ok) alapján előre rendezheti az adathalmazt, mielőtt betölti azokat Azure SQL Data Warehouse táblákba.
+
+
+Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása nulla szegmenst tartalmaz, amely a fenti ajánlásokat követve átfedésben van. A rendezett CCI-táblázat egy DWU1000c-adatbázisban jön létre a CTAS-on keresztül egy 20 GB-os halom-táblából, amely az 1. és a xlargerc.  A KKU nem duplikált BIGINT oszlopra van rendezve.  
+
+![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Rendezett CCI létrehozása nagyméretű táblákon
 A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó táblák esetében az adathozzáférés nem lesz elérhető a felhasználók számára, amíg a rendezett CCI-létrehozási folyamat be nem fejeződik.   A particionált táblák esetében, mivel a motor partíció alapján hozza létre a rendezett CCI-partíciót, a felhasználók továbbra is hozzáférhetnek az olyan partíciókban lévő adatbázisokhoz, ahol a rendezett CCI-létrehozás nincs folyamatban.   Ezzel a beállítással minimálisra csökkentheti az állásidőt a nagy táblákon a rendezett CCI-létrehozás során: 
